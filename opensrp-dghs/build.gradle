@@ -14,8 +14,8 @@ dependencies {
     compile project(':opensrp-app')
 }
 android {
-    compileSdkVersion androidCompileSdkVersion
-    buildToolsVersion androidBuildToolsVersion
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         applicationId "org.ei.opensrp.dghs"

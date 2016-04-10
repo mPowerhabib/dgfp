@@ -194,16 +194,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:text="New Button"
-                    android:id="@+id/general"
-                    android:maxLines="10"
-                    style="@style/CustomFontTextViewStyle.ListView.Medium"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1" />
-                <org.ei.opensrp.view.customControls.CustomFontTextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="New Button"
-                    android:id="@+id/followup"
+                    android:id="@+id/next_visit_date"
                     android:maxLines="10"
                     style="@style/CustomFontTextViewStyle.ListView.Medium"
                     android:layout_marginLeft="5dp"
