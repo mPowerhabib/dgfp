@@ -359,6 +359,8 @@
     <string name="no_internet_connectivity">No internet connection. Please ensure data connectivity</string>
     <string name="forminputerror">Please check the form for any error/missing input marked in Red box</string>
     <string name="okforminputerror">ok</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="hh_next_visit_date">Next Visit Date</string>
 
 
 </resources>

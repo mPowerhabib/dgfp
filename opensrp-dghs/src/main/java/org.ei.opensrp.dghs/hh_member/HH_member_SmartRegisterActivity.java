@@ -10,10 +10,11 @@ import android.util.Log;
 
 import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
+import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.fragment.HouseHoldSmartRegisterFragment;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.domain.form.FormSubmission;
 import org.ei.opensrp.dghs.LoginActivity;
-import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.pageradapter.BaseRegisterActivityPagerAdapter;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.repository.AllSharedPreferences;
@@ -26,7 +27,6 @@ import org.ei.opensrp.view.fragment.DisplayFormFragment;
 import org.ei.opensrp.view.fragment.SecuredNativeSmartRegisterFragment;
 import org.ei.opensrp.view.viewpager.OpenSRPViewPager;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,7 +105,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
     public DialogOption[] getEditOptions() {
 
         HashMap <String,String> overridemap = new HashMap<String,String>();
-        CommonPersonObjectClient pc = HouseHoldDetailActivity.householdclient;
+        CommonPersonObjectClient pc = null;
         String alertstate = "";
         if(pc!=null) {
             alertstate = getalertstateforcensus(pc);
