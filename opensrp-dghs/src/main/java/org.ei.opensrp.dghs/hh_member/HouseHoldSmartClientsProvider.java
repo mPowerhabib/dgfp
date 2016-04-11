@@ -77,23 +77,20 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
             viewHolder = new ViewHolder();
             viewHolder.profilelayout =  (LinearLayout)convertView.findViewById(R.id.profile_info_layout);
             viewHolder.gobhhid = (TextView)convertView.findViewById(R.id.gobhhid);
+        viewHolder.nid = (TextView)convertView.findViewById(R.id.nid);
+        viewHolder.brid = (TextView)convertView.findViewById(R.id.brid);
+        viewHolder.bdh = (TextView)convertView.findViewById(R.id.bdh);
             viewHolder.village = (TextView)convertView.findViewById(R.id.village);
             viewHolder.profilepic =(ImageView)convertView.findViewById(R.id.profilepic);
+             viewHolder.age = (TextView)convertView.findViewById(R.id.txt_age);
+        viewHolder.mobileno = (TextView)convertView.findViewById(R.id.mobile_no);
 
             viewHolder.headofhouseholdname = (TextView)convertView.findViewById(R.id.householdheadname);
               viewHolder.last_visit_date = (TextView)convertView.findViewById(R.id.last_visit_date);
             viewHolder.due_visit_date = (TextView)convertView.findViewById(R.id.next_visit_date);
             viewHolder.due_date_holder = (FrameLayout)convertView.findViewById(R.id.hh_due_date_holder);
-            viewHolder.follow_up = (ImageButton)convertView.findViewById(R.id.btn_edit);
             viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
             convertView.setTag(viewHolder);
-//        }else{
-//            viewHolder = (ViewHolder) convertView.getTag();
-//            viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
-//        }
-
-        viewHolder.follow_up.setOnClickListener(onClickListener);
-        viewHolder.follow_up.setTag(smartRegisterClient);
            viewHolder.profilelayout.setOnClickListener(onClickListener);
         viewHolder.profilelayout.setTag(smartRegisterClient);
         CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
@@ -108,58 +105,33 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
             }
 
         }else{
-            if((pc.getDetails().get("FWHOHGENDER")!=null?pc.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("2")){
+            if((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")){
                 viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.drawable.woman_placeholder));
-            }else if ((pc.getDetails().get("FWHOHGENDER")!=null?pc.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("1")){
+            }else if ((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
                 viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
             }
         }
 
-        boolean noNIDPic = getIfHouseholdHasElcoWithoutNationalID(pc);
-//        boolean noNIDPic = false;
 
-        if(!noNIDPic){
-            viewHolder.warnbutton.setVisibility(View.VISIBLE);
-        }else{
-            viewHolder.warnbutton.setVisibility(View.INVISIBLE);
-        }
 //
-        viewHolder.gobhhid.setText(pc.getColumnmaps().get("FWGOBHHID")!=null?pc.getColumnmaps().get("FWGOBHHID"):"");
-        viewHolder.jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-        viewHolder.village.setText((humanize((pc.getDetails().get("existing_Mauzapara")!=null?pc.getDetails().get("existing_Mauzapara"):"").replace("+","_"))));
-        viewHolder.headofhouseholdname.setText(pc.getColumnmaps().get("FWHOHFNAME")!=null?pc.getColumnmaps().get("FWHOHFNAME"):"");
-        viewHolder.no_of_mwra.setText(pc.getDetails().get("ELCO")!=null?pc.getDetails().get("ELCO"):"");
+        viewHolder.gobhhid.setText(pc.getDetails().get("GOB_HHID")!=null?pc.getDetails().get("GOB_HHID"):"");
+        viewHolder.age.setText(pc.getDetails().get("HoH_Age")!=null?pc.getDetails().get("HoH_Age"):"");
+        viewHolder.nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
+        viewHolder.brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
+        viewHolder.mobileno.setText(pc.getDetails().get("HoH_Mobile_No")!=null?pc.getDetails().get("HoH_Mobile_No"):"");
+        viewHolder.bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
+
+//        viewHolder.jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
+        viewHolder.village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_"))));
+        viewHolder.headofhouseholdname.setText(pc.getDetails().get("HoH_FName")!=null?pc.getDetails().get("HoH_FName"):"");
         Date lastdate = null;
-        if(pc.getDetails().get("FWNHREGDATE")!= null && pc.getDetails().get("FWCENDATE")!= null) {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                Date regdate = format.parse(pc.getDetails().get("FWNHREGDATE"));
-                Date cendate = format.parse(pc.getDetails().get("FWCENDATE"));
 
-                if(regdate.before(cendate)){
-                    viewHolder.last_visit_date.setText(pc.getDetails().get("FWCENDATE")!=null?pc.getDetails().get("FWCENDATE"):"");
-                    lastdate = cendate;
-                }else{
-                    viewHolder.last_visit_date.setText(pc.getDetails().get("FWNHREGDATE")!=null?pc.getDetails().get("FWNHREGDATE"):"");
-                    lastdate = regdate;
-                }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }else if (pc.getDetails().get("FWNHREGDATE")!= null && pc.getDetails().get("FWCENDATE")== null){
-            viewHolder.last_visit_date.setText(pc.getDetails().get("FWNHREGDATE")!=null?pc.getDetails().get("FWNHREGDATE"):"");
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                Date regdate = format.parse(pc.getDetails().get("FWNHREGDATE"));
-                lastdate = regdate;
-            }catch (Exception e){
 
-            }
 
-        }else {
-            viewHolder.last_visit_date.setText(pc.getDetails().get("FWNHREGDATE") != null ? pc.getDetails().get("FWNHREGDATE") : "");
-        }
+                    viewHolder.last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
+
+
+
 
         if(alertlist_for_client.size() == 0 ){
             viewHolder.due_visit_date.setText("Not Synced to Server");
@@ -214,7 +186,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
             lastdate.setTime(calendar.getTime().getTime());
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //            String result = String.format(Locale.ENGLISH, format.format(lastdate) );
-            viewHolder.due_visit_date.setText( format.format(lastdate) );
+            viewHolder.due_visit_date.setText(format.format(lastdate) );
 //            viewHolder.due_visit_date.append(format.format(lastdate));
 
         }
@@ -276,11 +248,14 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
     class ViewHolder {
 
+         TextView nid ;
+         TextView brid ;
+         TextView bdh ;
          TextView gobhhid ;
-         TextView jvitahhid ;
+         TextView mobileno ;
          TextView village;
          TextView headofhouseholdname;
-         TextView no_of_mwra;
+         TextView age;
          TextView last_visit_date;
          TextView due_visit_date;
          ImageButton follow_up;

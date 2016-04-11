@@ -9,10 +9,6 @@
         "shouldLoadValue": true
       },
       {
-        "name": "relationalid",
-        "shouldLoadValue": true
-      },
-      {
         "name": "start",
         "bind": "/model/instance/HHMemberReg/start"
       },

@@ -3,23 +3,11 @@
     {
       "name": "household",
       "columns": [
-
+        {"name":"HHID"}
       ]
     },
     {
       "name": "members",
-      "columns": [
-
-      ]
-    },
-    {
-      "name": "mcaremother",
-      "columns": [
-
-      ]
-    },
-    {
-      "name": "mcarechild",
       "columns": [
 
       ]

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 
+import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.view.activity.NativeANCSmartRegisterActivity;
 import org.ei.opensrp.view.controller.ANMController;
 
@@ -23,7 +24,7 @@ public class McareNavigationController extends org.ei.opensrp.view.controller.Na
     @Override
     public void startECSmartRegistry() {
 
-//        activity.startActivity(new Intent(activity, HouseHoldSmartRegisterActivity.class));
+        activity.startActivity(new Intent(activity, HH_member_SmartRegisterActivity.class));
 
 
     }
