@@ -34,11 +34,11 @@
             <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
             <!--android:windowSoftInputMode="adjustResize"-->
             <!--android:screenOrientation="landscape"/>-->
-        <!--<activity android:name=".elco.ElcoSmartRegisterActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
-            <!--android:windowSoftInputMode="adjustResize"-->
-            <!--android:screenOrientation="landscape"/>-->
+        <activity android:name=".HH_woman.HH_woman_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
         <!--<activity android:name=".elco.ElcoDetailActivity"-->
             <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
             <!--android:screenOrientation="landscape"/>-->

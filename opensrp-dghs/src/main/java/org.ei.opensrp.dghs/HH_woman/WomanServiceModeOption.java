@@ -1,4 +1,4 @@
-package org.ei.opensrp.dghs.hh_member;
+package org.ei.opensrp.dghs.HH_woman;
 
 import android.view.View;
 
@@ -17,9 +17,9 @@ import org.ei.opensrp.view.viewHolder.NativePNCSmartRegisterViewHolder;
 
 import static org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity.ClientsHeaderProvider;
 
-public class HouseHoldServiceModeOption extends ServiceModeOption {
+public class WomanServiceModeOption extends ServiceModeOption {
 
-    public HouseHoldServiceModeOption(SmartRegisterClientsProvider provider) {
+    public WomanServiceModeOption(SmartRegisterClientsProvider provider) {
         super(provider);
     }
 
@@ -49,8 +49,8 @@ public class HouseHoldServiceModeOption extends ServiceModeOption {
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.elco_unique_id, R.string.mobile_no,
-                        R.string.hh_last_visit_date,R.string.hh_next_visit_date
+                        R.string.hh_profile, R.string.elco_unique_id, R.string.lmp_edd_ga,
+                        R.string.last_vaccine,R.string.next_vaccine
                         };
             }
         };
