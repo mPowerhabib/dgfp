@@ -331,38 +331,29 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             return returnvalue;
         }
     }
-    public String ancMainSelectWithJoins(){
-        return "Select id as _id,relationalid,details,FWWOMFNAME,FWPSRLMP,FWSORTVALUE,JiVitAHHID,GOBHHID,Is_PNC,FWBNFSTS,FWBNFDTOO \n" +
-                "from mcaremother\n" +
-                "Left Join alerts on alerts.caseID = mcaremother.id and alerts.scheduleName = 'Ante Natal Care Reminder Visit'\n" +
-                "Left Join alerts as alerts2 on alerts2.caseID = mcaremother.id and alerts2.scheduleName = 'BirthNotificationPregnancyStatusFollowUp'";
-    }
-    public String ancMainCountWithJoins(){
-        return "Select Count(*) \n" +
-                "from mcaremother\n" +
-                "Left Join alerts on alerts.caseID = mcaremother.id and alerts.scheduleName = 'Ante Natal Care Reminder Visit'\n" +
-                "Left Join alerts as alerts2 on alerts2.caseID = mcaremother.id and alerts2.scheduleName = 'BirthNotificationPregnancyStatusFollowUp'";
-    }
+
     public void initializeQueries(){
         CommonRepository commonRepository = context.commonrepository("members");
         setTablename("members");
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
-        countqueryBUilder.joinwithALerts("members","FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details is not null ");
+        countqueryBUilder.joinwithALerts("members", "FW CENSUS");
+        countSelect = countqueryBUilder.mainCondition(" details like '%\"Is_TT\":\"1\"%' ");
+        Sortqueries = sortByAlertmethod();
+
         CountExecute();
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details"});
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "Age", "Member_GOB_HHID", "Marital_Status", "Pregnancy_Status"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details is not null ");
+        mainSelect = queryBUilder.mainCondition(" details like '%\"Is_TT\":\"1\"%' ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HH_woman_member_SmartClientsProvider hhscp = new HH_woman_member_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","Age","Member_GOB_HHID","Marital_Status","Pregnancy_Status"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();
         refresh();
@@ -372,7 +363,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return " FWSORTVALUE ASC";
     }
     private String sortByFWWOMFNAME(){
-        return " FWWOMFNAME ASC";
+        return " Member_Fname ASC";
     }
     private String sortByJiVitAHHID(){
         return " JiVitAHHID ASC";
@@ -393,7 +384,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return "and alerts.visitCode LIKE '%ancrv_4%'";
     }
     private String sortByGOBHHID(){
-        return " GOBHHID ASC";
+        return " Member_GOB_HHID ASC";
     }
     private String sortByAlertmethod() {
         return " CASE WHEN alerts.status = 'urgent' THEN '1'"

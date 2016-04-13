@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201604101214">
+    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201604130908">
       <formhub>
         <uuid/>
       </formhub>
@@ -57,7 +57,6 @@
           <Date_of_PCV_3/>
           <Date_of_MR/>
           <Date_of_Measles/>
-          <note/>
           <Date_BRID/>
           <Child_BRID/>
           <Date_Child_Death/>

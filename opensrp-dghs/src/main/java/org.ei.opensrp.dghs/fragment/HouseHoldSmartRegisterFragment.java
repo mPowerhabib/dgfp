@@ -210,14 +210,15 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("household");
         countqueryBUilder.joinwithALerts("household","FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details is not null ");
+        Sortqueries = sortByAlertmethod();
+        countSelect = countqueryBUilder.mainCondition(" HoH_FName is not null ");
         CountExecute();
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("household", new String[]{"relationalid", "details"});
+        queryBUilder.SelectInitiateMainTable("household", new String[]{"relationalid", "details","HoH_FName","HHID"});
         queryBUilder.joinwithALerts("household","FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details is not null ");
+        mainSelect = queryBUilder.mainCondition(" HoH_FName is not null ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
@@ -227,7 +228,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //        Cursor c = commonRepository.CustomQueryForAdapter(new String[]{"id as _id","relationalid","details"},"household",""+currentlimit,""+currentoffset);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HouseHoldSmartClientsProvider hhscp = new HouseHoldSmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("household",new String []{}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("household",new String []{"HoH_FName","HHID"}));
         clientsView.setAdapter(clientAdapter);
 //        setServiceModeViewDrawableRight(null);
         updateSearchView();
