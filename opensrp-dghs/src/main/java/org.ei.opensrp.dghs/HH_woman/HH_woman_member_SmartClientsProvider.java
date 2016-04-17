@@ -85,19 +85,14 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
-//        if(pc.getDetails().get("profilepic")!=null){
-//            HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.gedtDetails().get("profilepic"), profilepic, R.mipmap.woman_placeholder);
-//        }
-//
-//        id.setText(pc.getDetails().get("case_id")!=null?pc.getCaseId():"");
+
         name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
         pregnancystatus.setText(pc.getColumnmaps().get("Pregnancy_Status") != null ? pc.getColumnmaps().get("Pregnancy_Status") : "");
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
         maritalstatus.setText(pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"");
         village.setText(humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
-//
-//
-//
+
+
         age.setText(pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
         nid.setText("NID :" +(pc.getDetails().get("NID")!=null?pc.getDetails().get("NID"):""));
         brid.setText("BRID :" +(pc.getDetails().get("BRID")!=null?pc.getDetails().get("BRID"):""));

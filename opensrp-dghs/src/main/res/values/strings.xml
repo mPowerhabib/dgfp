@@ -364,6 +364,10 @@
     <string name="lmp_edd_ga">LMP/EDD/GA</string>
     <string name="last_vaccine">Last Vaccine</string>
     <string name="next_vaccine">Next Vaccine</string>
+    <string name="woman_register_label">Woman</string>
+    <string name="child_dob">DOB (age)</string>
+    <string name="hh_male">Male</string>
+    <string name="hh_female">Female</string>
 
 
 </resources>

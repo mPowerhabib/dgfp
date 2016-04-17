@@ -14,10 +14,10 @@
         android:gravity="center_vertical">
 
         <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp">
 
             <FrameLayout
@@ -62,13 +62,13 @@
                         android:id="@+id/btn_fp_register"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/register_fp"
+                        android:src="@mipmap/register_woman"
                         style="@style/ImageButton.Home.Register"/>
 
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/home_ec_label"
+                        android:text="@string/woman_register_label"
                         style="@style/CustomFontTextViewStyle.Home.RegisterName"/>
 
                 <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -87,7 +87,8 @@
             <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                android:visibility="gone">
 
                 <ImageButton
                         android:id="@+id/btn_anc_register"
@@ -118,7 +119,8 @@
             <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                android:visibility="gone">
 
                 <ImageButton
                         android:id="@+id/btn_pnc_register"

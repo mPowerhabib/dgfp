@@ -2,6 +2,7 @@ package org.ei.opensrp.dghs;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
+import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.event.Listener;
 import org.ei.opensrp.service.PendingFormSubmissionService;
 import org.ei.opensrp.sync.SyncAfterFetchListener;
@@ -75,6 +77,9 @@ public class NativeHomeActivity extends SecuredActivity {
     private TextView pncRegisterClientCountView;
     private TextView fpRegisterClientCountView;
     private TextView childRegisterClientCountView;
+    private int hhcount;
+    private int childcount;
+    private int womancount;
 
     @Override
     protected void onCreation() {
@@ -140,7 +145,22 @@ public class NativeHomeActivity extends SecuredActivity {
     }
 
     private void updateRegisterCounts(HomeContext homeContext) {
-
+        SmartRegisterQueryBuilder sqb = new SmartRegisterQueryBuilder();
+        Cursor hhcountcursor = context.commonrepository("household").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("household", " HoH_FName is not null "));
+        hhcountcursor.moveToFirst();
+        hhcount= hhcountcursor.getInt(0);
+        hhcountcursor.close();
+        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_TT\":\"1\"%' "));
+        elcocountcursor.moveToFirst();
+        womancount= elcocountcursor.getInt(0);
+        elcocountcursor.close();
+        Cursor childcountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_NewBorn\":\"1\"%' "));
+        childcountcursor.moveToFirst();
+        childcount = childcountcursor.getInt(0);
+        childcountcursor.close();
+        ecRegisterClientCountView.setText(valueOf(hhcount));
+        fpRegisterClientCountView.setText(valueOf(womancount));
+        childRegisterClientCountView.setText(valueOf(childcount));
     }
 
     @Override
@@ -236,7 +256,7 @@ public class NativeHomeActivity extends SecuredActivity {
                     break;
 
                 case R.id.btn_child_register:
-//                    navigationController.startChildSmartRegistry();
+                    navigationController.startChildSmartRegistry();
                     break;
 
                 case R.id.btn_fp_register:

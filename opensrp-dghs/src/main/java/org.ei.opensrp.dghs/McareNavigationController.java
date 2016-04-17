@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 
+import org.ei.opensrp.dghs.HH_child.HH_child_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.view.activity.NativeANCSmartRegisterActivity;
@@ -34,8 +35,8 @@ public class McareNavigationController extends org.ei.opensrp.view.controller.Na
         activity.startActivity(new Intent(activity, HH_woman_member_SmartRegisterActivity.class));
     }
     @Override
-    public void startANCSmartRegistry() {
-//        activity.startActivity(new Intent(activity, mCareANCSmartRegisterActivity.class));
+    public void startChildSmartRegistry() {
+        activity.startActivity(new Intent(activity, HH_child_member_SmartRegisterActivity.class));
     }
 
 }

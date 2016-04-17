@@ -25,6 +25,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.hh_member.HouseHoldServiceModeOption;
 import org.ei.opensrp.dghs.hh_member.HouseHoldSmartClientsProvider;
@@ -115,8 +116,8 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
                 ArrayList<DialogOption> dialogOptionslist = new ArrayList<DialogOption>();
 
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_all_label),filterStringForAll()));
-                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_no_mwra),filterStringForNoElco()));
-                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_has_mwra),filterStringForOneOrMoreElco()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_male),filterStringForMale()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_female),filterStringForFemale()));
 
                 String locationjson = context.anmLocationController().get();
                 LocationTree locationTree = EntityUtils.fromJson(locationjson, LocationTree.class);
@@ -144,8 +145,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 
                         new CursorCommonObjectSort(getResources().getString(R.string.due_status),sortByAlertmethod()),
                         new CursorCommonObjectSort(getResources().getString(R.string.hh_alphabetical_sort),householdSortByName()),
-                        new CursorCommonObjectSort(getResources().getString(R.string.hh_fwGobhhid_sort),householdSortByFWGOBHHID()),
-                        new CursorCommonObjectSort(getResources().getString(R.string.hh_fwJivhhid_sort),householdSortByFWJIVHHID())
+                        new CursorCommonObjectSort(getResources().getString(R.string.hh_fwGobhhid_sort),householdSortByGOBHHID())
 //""
 //                        new CommonObjectSort(true,false,true,"age")
                 };
@@ -275,23 +275,20 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
     }
 
 
-    private String filterStringForOneOrMoreElco(){
-        return "and details not LIKE '%\"ELCO\":\"0\"%'";
+    private String filterStringForFemale(){
+        return "and details LIKE '%\"HoH_Gender\":\"0\"%'";
     }
-    private String filterStringForNoElco(){
-        return " and details LIKE '%\"ELCO\":\"0\"%'";
+    private String filterStringForMale(){
+        return " and details LIKE '%\"HoH_Gender\":\"1\"%'";
     }
     private String filterStringForAll(){
         return "";
     }
     private String householdSortByName() {
-        return " FWHOHFNAME COLLATE NOCASE ASC";
+        return " HoH_FName COLLATE NOCASE ASC";
     }
-    private String householdSortByFWGOBHHID(){
-        return " FWGOBHHID ASC";
-    }
-    private String householdSortByFWJIVHHID(){
-      return " FWJIVHHID ASC";
+    private String householdSortByGOBHHID(){
+        return " HHID ASC";
     }
 
     private class EditDialogOptionModel implements DialogOptionModel {
@@ -343,7 +340,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and FWHOHFNAME Like '%" + cs.toString() + "%' or FWGOBHHID Like '%" + cs.toString() + "%'  or FWJIVHHID Like '%" + cs.toString() + "%' ";
+                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
                         return null;
                     }
 
@@ -389,7 +386,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and FWHOHFNAME Like '%"+cs.toString()+"%' or FWGOBHHID Like '%"+cs.toString()+"%'  or FWJIVHHID Like '%"+cs.toString()+"%' or household.id in (Select elco.relationalid from elco where FWWOMFNAME Like '%"+cs.toString()+"%' )";
+                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
                         return null;
                     }
 
@@ -430,7 +427,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
             }else{
                 StringUtil.humanize(entry.getValue().getLabel());
                 String name = StringUtil.humanize(entry.getValue().getLabel());
-//                dialogOptionslist.add(new HHMauzaCommonObjectFilterOption(name,"existing_Mauzapara", name));
+                dialogOptionslist.add(new HHWardCommonObjectFilterOption(name,"existing_Mauzapara", name));
 
             }
         }

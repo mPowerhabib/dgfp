@@ -42,11 +42,11 @@
         <!--<activity android:name=".elco.ElcoDetailActivity"-->
             <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
             <!--android:screenOrientation="landscape"/>-->
-        <!--<activity android:name=".anc.mCareANCSmartRegisterActivity"-->
-            <!--android:configChanges="keyboardHidden|orientation|screenSize"-->
-            <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
-            <!--android:windowSoftInputMode="adjustResize"-->
-            <!--android:screenOrientation="landscape"/>-->
+        <activity android:name=".HH_child.HH_child_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
         <!--<activity android:name=".anc.mCareAncDetailActivity"-->
             <!--android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"-->
             <!--android:screenOrientation="landscape"/>-->
