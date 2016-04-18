@@ -25,7 +25,7 @@ public class WomanServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.household_entries);
+       return Context.getInstance().getStringResource(R.string.woman_entries);
     }
 
     @Override

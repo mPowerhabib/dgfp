@@ -27,6 +27,7 @@ import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
+import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.dghs.hh_member.HouseHoldServiceModeOption;
 import org.ei.opensrp.dghs.hh_member.HouseHoldSmartClientsProvider;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
@@ -256,10 +257,10 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-//                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
-//                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
-//                    startActivity(intent);
-//                    getActivity().finish();
+                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
+                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
                     break;
                 case R.id.next_visit_date:
 //                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();

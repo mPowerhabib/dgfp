@@ -1,0 +1,18 @@
+<model>
+    <instance>
+        <FamilyPlanning encounter_type="Family Planning" id="FamilyPlanning" version="201602081338">
+            <formhub>
+                <uuid/>
+            </formhub>
+            <start/>
+            <today/>
+            <DATE_OF_REG/>
+            <FP_USER/>
+            <FP_Methods/>
+            <end/>
+            <meta>
+                <instanceID/>
+            </meta>
+        </FamilyPlanning>
+    </instance>
+</model>

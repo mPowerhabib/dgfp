@@ -94,7 +94,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String nameInShortFormForTitle() {
-                return getResources().getString(R.string.mcare_ANC_register_title_in_short);
+                return getResources().getString(R.string.woman_register_label);
             }
         };
     }

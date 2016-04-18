@@ -1,0 +1,19 @@
+<model>
+    <instance>
+        <GeneralPatient encounter_type="General Patient" id="GeneralPatient" version="201604030913">
+            <formhub>
+                <uuid/>
+            </formhub>
+            <start openmrs_entity="encounter" openmrs_entity_id="encounter_start"/>
+            <today openmrs_entity="encounter" openmrs_entity_id="encounted_date"/>
+            <Date_Of_Reg/>
+            <Patient_Diagnosis/>
+            <Comment/>
+            <Treatment/>
+            <end openmrs_entity="encounter" openmrs_entity_id="encounter_end"/>
+            <meta>
+                <instanceID/>
+            </meta>
+        </GeneralPatient>
+    </instance>
+</model>

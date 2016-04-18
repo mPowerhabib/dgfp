@@ -1,5 +1,6 @@
 package org.ei.opensrp.dghs.fragment;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.text.Editable;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import org.ei.opensrp.Context;
 import org.ei.opensrp.adapter.SmartRegisterPaginatedAdapter;
 import org.ei.opensrp.commonregistry.CommonPersonObject;
+import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.commonregistry.CommonRepository;
 import org.ei.opensrp.commonregistry.ControllerFilterMap;
@@ -26,6 +28,7 @@ import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.util.StringUtil;
@@ -213,8 +216,8 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-//                    mCareAncDetailActivity.ancclient = (CommonPersonObjectClient)view.getTag();
-//                    Intent intent = new Intent(getActivity(),mCareAncDetailActivity.class);
+//                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
+//                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
 //                    startActivity(intent);
                     break;
 //                case R.id.nbnf_due_date:
