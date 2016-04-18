@@ -46,6 +46,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     private String[] formNames = new String[]{};
     private android.support.v4.app.Fragment mBaseFragment = null;
+    private android.support.v4.app.Fragment mProfileFragment = null;
 
 
     ZiggyService ziggyService;
@@ -60,9 +61,9 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
         formNames = this.buildFormNameList();
         mBaseFragment = new HouseHoldSmartRegisterFragment();
-
+        mProfileFragment = new HouseHoldDetailActivity();
         // Instantiate a ViewPager and a PagerAdapter.
-        mPagerAdapter = new BaseRegisterActivityPagerAdapter(getSupportFragmentManager(), formNames, mBaseFragment);
+        mPagerAdapter = new BaseRegisterActivityPagerAdapter(getSupportFragmentManager(), formNames, mBaseFragment,mProfileFragment);
         mPager.setOffscreenPageLimit(formNames.length);
         mPager.setAdapter(mPagerAdapter);
         mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -76,7 +77,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
         ziggyService = context.ziggyService();
     }
     public void onPageChanged(int page){
-        setRequestedOrientation(page == 0 ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(page < 2 ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         LoginActivity.setLanguage();
     }
 
@@ -164,9 +165,9 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     @Override
     public void startFormActivity(String formName, String entityId, String metaData) {
-        Log.v("fieldoverride", metaData);
+//        Log.v("fieldoverride", metaData);
         try {
-            int formIndex = FormUtils.getIndexForFormName(formName, formNames) + 1; // add the offset
+            int formIndex = FormUtils.getIndexForFormName(formName, formNames) + ((BaseRegisterActivityPagerAdapter)mPagerAdapter).offset; // add the offset
             if (entityId != null || metaData != null){
                 String data = null;
                 //check if there is previously saved data for the form
@@ -202,16 +203,17 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
                 if (registerFragment != null && data != null) {
                     registerFragment.refreshListView();
                 }
+                if (prevPageIndex != 1){
+                    //hack reset the form
+                    DisplayFormFragment displayFormFragment = getDisplayFormFragmentAtIndex(prevPageIndex);
+                    if (displayFormFragment != null) {
+                        displayFormFragment.hideTranslucentProgressDialog();
+                        displayFormFragment.setFormData(null);
+                        displayFormFragment.loadFormData();
+                    }
 
-                //hack reset the form
-                DisplayFormFragment displayFormFragment = getDisplayFormFragmentAtIndex(prevPageIndex);
-                if (displayFormFragment != null) {
-                    displayFormFragment.hideTranslucentProgressDialog();
-                    displayFormFragment.setFormData(null);
-                    displayFormFragment.loadFormData();
+                    displayFormFragment.setRecordId(null);
                 }
-
-                displayFormFragment.setRecordId(null);
             }
         });
 
@@ -224,6 +226,11 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     public DisplayFormFragment getDisplayFormFragmentAtIndex(int index) {
         return  (DisplayFormFragment)findFragmentByPosition(index);
+    }
+    public void showProfileView(){
+        HouseHoldDetailActivity profile = (HouseHoldDetailActivity)findFragmentByPosition(1);
+        profile.initiallize();
+        mPager.setCurrentItem(1);
     }
 
     @Override
@@ -283,6 +290,8 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
         List<String> formNames = new ArrayList<String>();
         formNames.add("new_household_registration");
 //        formNames.add("census_enrollment_form");
+        formNames.add("general");
+
 //        DialogOption[] options = getEditOptions();
 //        for (int i = 0; i < options.length; i++){
 //            formNames.add(((OpenFormOption) options[i]).getFormName());

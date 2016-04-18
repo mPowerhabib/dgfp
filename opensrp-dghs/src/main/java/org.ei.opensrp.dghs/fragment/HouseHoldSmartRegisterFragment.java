@@ -258,9 +258,10 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
             switch (view.getId()) {
                 case R.id.profile_info_layout:
                     HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
-                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    ((HH_member_SmartRegisterActivity)getActivity()).showProfileView();
+//                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
+//                    startActivity(intent);
+//                    getActivity().finish();
                     break;
                 case R.id.next_visit_date:
 //                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();

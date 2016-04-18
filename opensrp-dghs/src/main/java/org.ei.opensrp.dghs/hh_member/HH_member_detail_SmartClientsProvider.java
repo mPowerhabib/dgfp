@@ -64,7 +64,8 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         TextView uniqueid = (TextView)itemView.findViewById(R.id.unique_id);
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView maritalstatus = (TextView)itemView.findViewById(R.id.marital_status);
-//        TextView dateofbirth = (TextView)itemView.findViewById(R.id.dateofbirth);
+        TextView general = (TextView)itemView.findViewById(R.id.general);
+
 
 
 
@@ -72,10 +73,12 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 ////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
 //
 //        ImageButton follow_up = (ImageButton)itemView.findViewById(R.id.btn_edit);
-//        profileinfolayout.setOnClickListener(onClickListener);
-//        profileinfolayout.setTag(smartRegisterClient);
+
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
+
+        general.setOnClickListener(onClickListener);
+        general.setTag(smartRegisterClient);
 
 
         if((pc.getColumnmaps().get("Is_NewBorn")!=null?pc.getColumnmaps().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
