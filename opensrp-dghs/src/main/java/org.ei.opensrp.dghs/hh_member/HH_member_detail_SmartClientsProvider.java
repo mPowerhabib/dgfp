@@ -59,12 +59,13 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
 //        LinearLayout profileinfolayout = (LinearLayout)itemView.findViewById(R.id.profile_info_layout);
 
-//        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
+        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
         TextView name = (TextView)itemView.findViewById(R.id.name);
         TextView uniqueid = (TextView)itemView.findViewById(R.id.unique_id);
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView maritalstatus = (TextView)itemView.findViewById(R.id.marital_status);
         TextView general = (TextView)itemView.findViewById(R.id.general);
+        TextView newborn_or_fp = (TextView)itemView.findViewById(R.id.newborn_pr_fp);
 
 
 
@@ -76,12 +77,14 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
-
         general.setOnClickListener(onClickListener);
         general.setTag(smartRegisterClient);
 
+        newborn_or_fp.setOnClickListener(onClickListener);
+        newborn_or_fp.setTag(smartRegisterClient);
 
-        if((pc.getColumnmaps().get("Is_NewBorn")!=null?pc.getColumnmaps().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
+
+        if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("Display_Age")!=null?pc.getColumnmaps().get("Display_Age"):"");
@@ -93,6 +96,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             uniqueid.setText(pc.getDetails().get("NID") != null ? pc.getDetails().get("NID") : "");
             age.setText(pc.getColumnmaps().get("Age") != null ? pc.getColumnmaps().get("Age") : "");
             maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
+            profilepic.setImageResource(R.drawable.woman_placeholder);
         }
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
 

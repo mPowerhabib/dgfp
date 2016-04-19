@@ -206,7 +206,15 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
                     dispatchTakePictureIntent((ImageView) view);
                     break;
             case R.id.general:
-                    ((HH_member_SmartRegisterActivity)getActivity()).startFormActivity("general", ((CommonPersonObjectClient) view.getTag()).entityId(),null);
+                    ((HH_member_SmartRegisterActivity)getActivity()).startFormActivity("general", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
+                    break;
+            case R.id.newborn_pr_fp:
+                    CommonPersonObjectClient pc =  ((CommonPersonObjectClient) view.getTag());
+                   if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")) {
+                       ((HH_member_SmartRegisterActivity) getActivity()).startFormActivity("new_born_information", pc.entityId(), null);
+                   }else{
+                       ((HH_member_SmartRegisterActivity) getActivity()).startFormActivity("family_planning", pc.entityId(), null);
+                   }
                     break;
             }
 

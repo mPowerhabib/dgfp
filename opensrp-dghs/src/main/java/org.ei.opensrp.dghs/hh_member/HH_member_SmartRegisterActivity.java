@@ -291,6 +291,8 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
         formNames.add("new_household_registration");
 //        formNames.add("census_enrollment_form");
         formNames.add("general");
+        formNames.add("new_born_information");
+        formNames.add("family_planning");
 
 //        DialogOption[] options = getEditOptions();
 //        for (int i = 0; i < options.length; i++){
