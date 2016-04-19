@@ -136,11 +136,14 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 return new DialogOption[]{
 //                        new ElcoPSRFDueDateSort(),
                         new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
+                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.elco_alphabetical_sort),sortByFWWOMFNAME()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.hh_fwJivhhid_sort),sortByJiVitAHHID()),
-//                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sortbyLmp),sortByLmp())
-
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_marital_status),sortByMaritalStatus()),
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_edd_label),sortByEDD()),
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_pregnancy_status),sortByPregnancyStatus())
+//
+//
 //                        new CommonObjectSort(true,false,true,"age")
                 };
             }
@@ -359,17 +362,28 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         refresh();
 
     }
-    private String sortBySortValue(){
-        return " FWSORTVALUE ASC";
+    private String sortByage(){
+        return " Age ASC";
     }
     private String sortByFWWOMFNAME(){
         return " Member_Fname ASC";
     }
-    private String sortByJiVitAHHID(){
-        return " JiVitAHHID ASC";
+    private String sortByMaritalStatus(){
+        return " CASE WHEN Marital_Status = '2' THEN '1'"
+                +
+                "WHEN Marital_Status = '1' THEN '2'\n" +
+                "WHEN Marital_Status = '3' THEN '3'\n" +
+                "Else alerts.status END ASC";
     }
-    private String sortByLmp(){
-        return " FWPSRLMP ASC";
+    private String sortByPregnancyStatus(){
+        return " CASE WHEN Pregnancy_Status = '1' THEN '1'"
+                +
+                "WHEN Pregnancy_Status = '0' THEN '2'\n" +
+                "WHEN Pregnancy_Status = '9' THEN '3'\n" +
+                "Else alerts.status END ASC";
+    }
+    private String sortByEDD(){
+        return " EDD ASC";
     }
     private String filterStringForANCRV1(){
         return "and alerts.visitCode LIKE '%ancrv_1%'";

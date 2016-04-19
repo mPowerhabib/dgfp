@@ -87,7 +87,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
-            age.setText(pc.getColumnmaps().get("Display_Age")!=null?pc.getColumnmaps().get("Display_Age"):"");
+            age.setText(pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
             maritalstatus.setVisibility(View.GONE);
 //
 
@@ -96,7 +96,13 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             uniqueid.setText(pc.getDetails().get("NID") != null ? pc.getDetails().get("NID") : "");
             age.setText(pc.getColumnmaps().get("Age") != null ? pc.getColumnmaps().get("Age") : "");
             maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
-            profilepic.setImageResource(R.drawable.woman_placeholder);
+            if((pc.getDetails().get("Is_TT") != null ? pc.getDetails().get("Is_TT") : "").equalsIgnoreCase("1")) {
+                profilepic.setImageResource(R.drawable.woman_placeholder);
+                newborn_or_fp.setText("Family Planning");
+            }else{
+                profilepic.setImageResource(R.mipmap.household_profile_thumb);
+                newborn_or_fp.setVisibility(View.INVISIBLE);
+            }
         }
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
 
