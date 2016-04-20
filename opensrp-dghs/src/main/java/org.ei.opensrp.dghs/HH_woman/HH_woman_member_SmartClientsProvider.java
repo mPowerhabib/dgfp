@@ -75,7 +75,10 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView nid = (TextView)itemView.findViewById(R.id.nid);
         TextView brid = (TextView)itemView.findViewById(R.id.brid);
+        TextView hid = (TextView)itemView.findViewById(R.id.bdh);
         TextView edd = (TextView)itemView.findViewById(R.id.edd);
+        TextView lmp = (TextView)itemView.findViewById(R.id.lmp);
+        TextView ga = (TextView)itemView.findViewById(R.id.ga);
 //        TextView psrfdue = (TextView)itemView.findViewById(R.id.psrf_due_date);
 ////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
 //
@@ -88,6 +91,13 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
+        hid.setText("BDH :" +pc.getDetails().get("HID")!=null?pc.getDetails().get("HID"):"");
+
+        edd.setText("EDD :" +pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):"");
+        lmp.setText("LMP :" +pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):"");
+        ga.setText("GA :" +pc.getDetails().get("GA")!=null?pc.getDetails().get("GA"):"");
+
+
 
         if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
             maritalstatus.setText("Unmarried");
@@ -113,21 +123,21 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         nid.setText("NID :" +(pc.getDetails().get("NID")!=null?pc.getDetails().get("NID"):""));
         brid.setText("BRID :" +(pc.getDetails().get("BRID")!=null?pc.getDetails().get("BRID"):""));
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
-            GregorianCalendar calendar = new GregorianCalendar();
-                calendar.setTime(edd_date);
-                calendar.add(Calendar.DATE, 259);
-                edd_date.setTime(calendar.getTime().getTime());
-            edd.setText("EDD :" + format.format(edd_date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        try {
+//            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
+//            GregorianCalendar calendar = new GregorianCalendar();
+//                calendar.setTime(edd_date);
+//                calendar.add(Calendar.DATE, 259);
+//                edd_date.setTime(calendar.getTime().getTime());
+//            edd.setText("EDD :" + format.format(edd_date));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         constructRiskFlagView(pc,itemView);
 //        constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
 //        constructNBNFDueBlock(pc, itemView);
-        constructvaccineVisitStatusBlock(pc,itemView);
+        constructvaccineVisitStatusBlock(pc, itemView);
         contstructNextVaccinedateBlock(pc,itemView);
 
 
@@ -229,23 +239,28 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
             tt5tick.setVisibility(View.VISIBLE);
             tt5text.setVisibility(View.VISIBLE);
             tt5text.setText("TT5-"+ pc.getDetails().get("TT5_Date_of_Vaccination"));
-        }else if(!(pc.getDetails().get("TT4_Date_of_Vaccination")!=null?pc.getDetails().get("TT4_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+        }
+        if(!(pc.getDetails().get("TT4_Date_of_Vaccination")!=null?pc.getDetails().get("TT4_Date_of_Vaccination"):"").equalsIgnoreCase("")){
             tt4tick.setVisibility(View.VISIBLE);
             tt4text.setVisibility(View.VISIBLE);
             tt4text.setText("TT4-" + pc.getDetails().get("TT4_Date_of_Vaccination"));
-        }else if(!(pc.getDetails().get("TT3_Date_of_Vaccination")!=null?pc.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+        }
+        if(!(pc.getDetails().get("TT3_Date_of_Vaccination")!=null?pc.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
             tt3tick.setVisibility(View.VISIBLE);
             tt3text.setVisibility(View.VISIBLE);
             tt3text.setText("TT3-" + pc.getDetails().get("TT3_Date_of_Vaccination"));
-        }else if(!(pc.getDetails().get("TT2_Date_of_Vaccination")!=null?pc.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+        }
+        if(!(pc.getDetails().get("TT2_Date_of_Vaccination")!=null?pc.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
             tt2tick.setVisibility(View.VISIBLE);
             tt2text.setVisibility(View.VISIBLE);
             tt2text.setText("TT2-" + pc.getDetails().get("TT2_Date_of_Vaccination"));
-        }else if(!(pc.getDetails().get("TT1_Date_of_Vaccination")!=null?pc.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+        }
+        if(!(pc.getDetails().get("TT1_Date_of_Vaccination")!=null?pc.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
             tt1tick.setVisibility(View.VISIBLE);
             tt1text.setVisibility(View.VISIBLE);
             tt1text.setText("TT1-" + pc.getDetails().get("TT1_Date_of_Vaccination"));
-        }else if(!(pc.getDetails().get("measles_Date_of_Vaccination")!=null?pc.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+        }
+        if(!(pc.getDetails().get("measles_Date_of_Vaccination")!=null?pc.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
             measlestick.setVisibility(View.VISIBLE);
             measlestext.setVisibility(View.VISIBLE);
             measlestext.setText("Measles-" + pc.getDetails().get("measles_Date_of_Vaccination"));
