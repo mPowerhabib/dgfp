@@ -166,7 +166,7 @@ public class HH_woman_member_SmartRegisterActivity extends SecuredNativeSmartReg
 
     @Override
     public void startFormActivity(String formName, String entityId, String metaData) {
-        Log.v("fieldoverride", metaData);
+//        Log.v("fieldoverride", metaData);
         try {
             int formIndex = FormUtils.getIndexForFormName(formName, formNames) + 1; // add the offset
             if (entityId != null || metaData != null){
@@ -283,8 +283,12 @@ public class HH_woman_member_SmartRegisterActivity extends SecuredNativeSmartReg
 
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-        formNames.add("new_household_registration");
-//        formNames.add("census_enrollment_form");
+        formNames.add("woman_vaccination_measles");
+        formNames.add("woman_vaccination_tt1");
+        formNames.add("woman_vaccination_tt2");
+        formNames.add("woman_vaccination_tt3");
+        formNames.add("woman_vaccination_tt4");
+        formNames.add("woman_vaccination_tt5");
 //        DialogOption[] options = getEditOptions();
 //        for (int i = 0; i < options.length; i++){
 //            formNames.add(((OpenFormOption) options[i]).getFormName());

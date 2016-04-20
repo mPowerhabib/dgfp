@@ -15,7 +15,7 @@
     <dimen name="list_status_view_width">0dp</dimen>
     <dimen name="list_edit_icon_view_width">0dp</dimen>
     <dimen name="list_delivery_info_view_width">0dp</dimen>
-
+    <dimen name="list_item_height_woman">110dp</dimen>
     <dimen name="list_item_height">82dp</dimen>
     <dimen name="image_thumbnail_spacing">1dp</dimen>
     <dimen name="client_profile_pic_width">80dp</dimen>

@@ -1,0 +1,33 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/WomanVaccination_Measles",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/WomanVaccination_Measles/start"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/WomanVaccination_Measles/today"
+      },
+      {
+        "name": "Has_Vaccinated",
+        "bind": "/model/instance/WomanVaccination_Measles/Has_Vaccinated"
+      },
+      {
+        "name": "measles_Date_of_Vaccination",
+        "bind": "/model/instance/WomanVaccination_Measles/Date_of_Vaccination"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/WomanVaccination_Measles/end"
+      }
+    ]
+  }
+}

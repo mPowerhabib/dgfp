@@ -29,7 +29,7 @@
             <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
             <!--android:windowSoftInputMode="adjustResize"-->
             <!--android:screenOrientation="landscape"/>-->
-        <activity android:name=".hh_member.HouseHoldDetailActivity"
+        <activity android:name=".HH_woman.WomanDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppThemeNoActionBarAndTitle"
             android:windowSoftInputMode="adjustResize"

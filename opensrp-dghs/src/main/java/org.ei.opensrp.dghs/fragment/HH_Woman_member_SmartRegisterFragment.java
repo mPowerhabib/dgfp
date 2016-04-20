@@ -23,9 +23,11 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartClientsProvider;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
+import org.ei.opensrp.dghs.HH_woman.WomanDetailActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.util.StringUtil;
@@ -34,7 +36,6 @@ import org.ei.opensrp.view.contract.ECClient;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
 import org.ei.opensrp.view.controller.VillageController;
-import org.ei.opensrp.view.customControls.CustomFontTextView;
 import org.ei.opensrp.view.dialog.AllClientsFilter;
 import org.ei.opensrp.view.dialog.DialogOption;
 import org.ei.opensrp.view.dialog.DialogOptionMapper;
@@ -217,13 +218,13 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-//                    mCareAncDetailActivity.ancclient = (CommonPersonObjectClient)view.getTag();
-//                    Intent intent = new Intent(getActivity(),mCareAncDetailActivity.class);
-//                    startActivity(intent);
+                    WomanDetailActivity.womanclient = (CommonPersonObjectClient)view.getTag();
+                    Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
+                    startActivity(intent);
                     break;
-//                case R.id.nbnf_due_date:
-//                    showFragmentDialog(new EditDialogOptionModelfornbnf(), view.getTag(R.id.clientobject));
-//                    break;
+                case R.id.next_vaccine_date:
+                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity((String)view.getTag(R.id.formname), ((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId(), null);
+                    break;
 //                case R.id.anc_reminder_due_date:
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
 //                    Log.v("do as you will", (String) view.getTag(R.id.textforAncRegister));
@@ -236,7 +237,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             navigationController.startEC(client.entityId());
         }
     }
-    private class EditDialogOptionModelfornbnf implements DialogOptionModel {
+    private class EditDialogOptionModelforwoman implements DialogOptionModel {
         @Override
         public DialogOption[] getDialogOptions() {
             return getEditOptions();

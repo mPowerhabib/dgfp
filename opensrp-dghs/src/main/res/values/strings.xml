@@ -371,6 +371,7 @@
     <string name="woman_entries">All Woman Entries</string>
     <string name="sort_by_marital_status">Marital Status</string>
     <string name="sort_by_pregnancy_status">Pregnancy Status</string>
+    <string name="woman_details">Woman Details</string>
 
 
 </resources>

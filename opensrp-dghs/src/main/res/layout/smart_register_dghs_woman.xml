@@ -231,20 +231,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="✔"
-                android:id="@+id/tt1tick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
+                android:id="@+id/measlestick"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
+                android:text="measles"
+                android:id="@+id/measlestext"
+                android:textSize="8sp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✔"
+                android:id="@+id/tt1tick"
+                android:layout_margin="1dp"
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="tt1text"
                 android:id="@+id/tt1text"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="8sp"
+                android:textColor="#000000" />
         </LinearLayout>
 
         <LinearLayout
@@ -257,19 +280,18 @@
                 android:layout_height="wrap_content"
                 android:text="✔"
                 android:id="@+id/tt2tick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:text="anc1text"
                 android:id="@+id/tt2text"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="8sp"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -283,19 +305,18 @@
                 android:layout_height="wrap_content"
                 android:text="✔"
                 android:id="@+id/tt3tick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="anc1text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:id="@+id/tt3text"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="8sp"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -309,19 +330,18 @@
                 android:layout_height="wrap_content"
                 android:text="✔"
                 android:id="@+id/tt4tick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="anc1text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:id="@+id/tt4text"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="8sp"
+                android:textColor="#000000" />
 
         </LinearLayout>
         <LinearLayout
@@ -334,19 +354,18 @@
                 android:layout_height="wrap_content"
                 android:text="✔"
                 android:id="@+id/tt5tick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:textColor="@color/alert_complete_green"
+                android:textSize="8sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="anc1text"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:id="@+id/tt5text"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="8sp"
+                android:textColor="#000000" />
 
         </LinearLayout>
     </LinearLayout>
