@@ -1,5 +1,6 @@
 package org.ei.opensrp.dghs.hh_member;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +84,9 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         newborn_or_fp.setOnClickListener(onClickListener);
         newborn_or_fp.setTag(smartRegisterClient);
 
+        profilepic.setOnClickListener(onClickListener);
+        profilepic.setTag(smartRegisterClient);
+
 
         if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
@@ -93,17 +97,38 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
         }else {
             name.setText(pc.getColumnmaps().get("Member_Fname") != null ? pc.getColumnmaps().get("Member_Fname") : "");
-            uniqueid.setText(pc.getDetails().get("NID") != null ? pc.getDetails().get("NID") : "");
+
+            String unique_id_string = "NID : "+ (pc.getDetails().get("NID") != null ? pc.getDetails().get("NID") : "");
+            unique_id_string = unique_id_string + " / " + "BRID : "+ (pc.getDetails().get("BRID") != null ? pc.getDetails().get("BRID") : "");
+            unique_id_string = unique_id_string + " / " + "BDH : "+ (pc.getDetails().get("HID") != null ? pc.getDetails().get("HID") : "");
+
+            uniqueid.setText(unique_id_string);
             age.setText(pc.getColumnmaps().get("Age") != null ? pc.getColumnmaps().get("Age") : "");
-            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
-            if((pc.getDetails().get("Is_TT") != null ? pc.getDetails().get("Is_TT") : "").equalsIgnoreCase("1")) {
+//            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
+            if ((pc.getDetails().get("Is_TT") != null ? pc.getDetails().get("Is_TT") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.woman_placeholder);
                 newborn_or_fp.setText("Family Planning");
-            }else{
+            } else {
                 profilepic.setImageResource(R.mipmap.household_profile_thumb);
                 newborn_or_fp.setVisibility(View.INVISIBLE);
             }
+
+
+            if (pc.getDetails().get("profilepic") != null) {
+                HH_member_SmartRegisterActivity.setImagetoHolderFromUri((Activity)context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.womanimageload);
+            }
+
+
+            if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
+                maritalstatus.setText("Unmarried");
+            }
+            else if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("2")){
+                maritalstatus.setText("Married");
+            }else if ((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("3")){
+                maritalstatus.setText("Divorced/Widow/Widower");
+            }
         }
+
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
 
 

@@ -1,23 +1,36 @@
 package org.ei.opensrp.dghs.hh_member;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.fragment.HouseHoldSmartRegisterFragment;
 import org.ei.opensrp.domain.Alert;
+import org.ei.opensrp.domain.ProfileImage;
 import org.ei.opensrp.domain.form.FormSubmission;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.pageradapter.BaseRegisterActivityPagerAdapter;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.repository.AllSharedPreferences;
+import org.ei.opensrp.repository.ImageRepository;
 import org.ei.opensrp.service.ZiggyService;
 import org.ei.opensrp.util.FormUtils;
 import org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity;
@@ -27,12 +40,21 @@ import org.ei.opensrp.view.fragment.DisplayFormFragment;
 import org.ei.opensrp.view.fragment.SecuredNativeSmartRegisterFragment;
 import org.ei.opensrp.view.viewpager.OpenSRPViewPager;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import util.ImageCache;
+import util.ImageFetcher;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
@@ -304,7 +326,9 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
     @Override
     protected void onPause() {
         super.onPause();
-        retrieveAndSaveUnsubmittedFormData();
+        if(mPager.getCurrentItem() > 1) {
+            retrieveAndSaveUnsubmittedFormData();
+        }
     }
 
     public void retrieveAndSaveUnsubmittedFormData(){
@@ -317,4 +341,116 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
     private boolean currentActivityIsShowingForm(){
         return currentPage != 0;
     }
+
+
+    static final int REQUEST_TAKE_PHOTO = 1;
+    static final int REQUEST_TAKE_PHOTO_NID = 9000;
+    static ImageView mImageView;
+    static File currentfile;
+    static String bindobject;
+    static String entityid;
+    void dispatchTakePictureIntent(ImageView imageView) {
+        mImageView = imageView;
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(this.getPackageManager()) != null) {
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                currentfile = photoFile;
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photoFile));
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            String imageBitmap = (String) extras.get(MediaStore.EXTRA_OUTPUT);
+//            Toast.makeText(this,imageBitmap,Toast.LENGTH_LONG).show();
+            HashMap <String,String> details = new HashMap<String,String>();
+            details.put("profilepic",currentfile.getAbsolutePath());
+            saveimagereference(bindobject,entityid,details);
+//            BitmapFactory.Options options = new BitmapFactory.Options();
+//            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+//            Bitmap bitmap = BitmapFactory.decodeFile(currentfile.getPath(), options);
+//            mImageView.setImageBitmap(bitmap);
+//            setImagetoHolder(this,currentfile.getAbsolutePath(),mImageView,R.drawable.householdload);
+//            Log.v("see imageview",""+(String)mImageView.getTag());
+            Log.v("see imageview", "" + currentfile.getAbsolutePath());
+            setImagetoHolderFromUri(this, currentfile.getAbsolutePath(), mImageView, R.mipmap.householdload);
+//            recalladapterinitialization();
+        }
+    }
+    public void saveimagereference(String bindobject,String entityid,Map<String,String> details){
+        Context.getInstance().allCommonsRepositoryobjects(bindobject).mergeDetails(entityid,details);
+        String anmId = Context.getInstance().allSharedPreferences().fetchRegisteredANM();
+        ProfileImage profileImage = new ProfileImage(UUID.randomUUID().toString(),anmId,entityid,"Image",details.get("profilepic"), ImageRepository.TYPE_Unsynced,"dp");
+        ((ImageRepository) Context.getInstance().imageRepository()).add(profileImage);
+//                householdclient.entityId();
+//        Toast.makeText(this,entityid,Toast.LENGTH_LONG).show();
+    }
+
+    public Drawable getDrawableFromPath(String filePath) {
+        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+        //Here you can make logic for decode bitmap for ignore oom error.
+        return new BitmapDrawable(bitmap);
+    }
+    public static void setImagetoHolder(Activity activity,String file, ImageView view, int placeholder){
+        String TAG = "ImageGridFragment";
+        String IMAGE_CACHE_DIR = "thumbs";
+
+        int mImageThumbSize;
+        int mImageThumbSpacing;
+
+        mImageThumbSize = 300;
+        mImageThumbSpacing = Context.getInstance().applicationContext().getResources().getDimensionPixelSize(R.dimen.image_thumbnail_spacing);
+
+
+        ImageCache.ImageCacheParams cacheParams =
+                new ImageCache.ImageCacheParams(activity, IMAGE_CACHE_DIR);
+        cacheParams.setMemCacheSizePercent(0.80f); // Set memory cache to 25% of app memory
+        ImageFetcher mImageFetcher = new ImageFetcher(activity, mImageThumbSize);
+        mImageFetcher.setLoadingImage(placeholder);
+        mImageFetcher.addImageCache(activity.getFragmentManager(), cacheParams);
+//        Toast.makeText(activity,file,Toast.LENGTH_LONG).show();
+        mImageFetcher.loadImage("file:///"+file,view);
+
+    }
+    public static void setImagetoHolderFromUri(Activity activity,String file, ImageView view, int placeholder){
+        view.setImageDrawable(activity.getResources().getDrawable(placeholder));
+        File externalFile = new File(file);
+        Uri external = Uri.fromFile(externalFile);
+        view.setImageURI(external);
+
+
+    }
+    String mCurrentPhotoPath;
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
+        return image;
+    }
+
 }

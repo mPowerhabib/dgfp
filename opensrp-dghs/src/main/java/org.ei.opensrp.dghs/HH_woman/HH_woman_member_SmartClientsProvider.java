@@ -1,5 +1,6 @@
 package org.ei.opensrp.dghs.HH_woman;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
@@ -66,7 +68,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        itemView = (ViewGroup) inflater().inflate(R.layout.smart_register_mcare_anc_client, null);
         LinearLayout profileinfolayout = (LinearLayout)itemView.findViewById(R.id.profile_info_layout);
 
-//        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
+        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
         TextView name = (TextView)itemView.findViewById(R.id.name);
         TextView maritalstatus = (TextView)itemView.findViewById(R.id.maritalstatus);
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
@@ -104,8 +106,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         }
 
-
-
+        if(pc.getDetails().get("profilepic")!= null) {
+            HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
+        }else{
+            profilepic.setImageResource(R.drawable.woman_placeholder);
+        }
         if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
             maritalstatus.setText("Unmarried");
         }

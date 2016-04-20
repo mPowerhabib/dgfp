@@ -27,6 +27,7 @@ import org.ei.opensrp.dghs.HH_woman.WomanDetailActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dghs.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
@@ -108,7 +109,12 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             public DialogOption[] filterOptions() {
                 ArrayList<DialogOption> dialogOptionslist = new ArrayList<DialogOption>();
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_all_label),""));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc1),filterStringForANCRV1()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbymarried),filterStringFormarried()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbyUnmarried),filterStringForunmarried()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbywidowed),filterStringForwidow()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbypregnant),filterStringForpregnant()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbynotpregnant),filterStringFornotpregnant()));
+
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc2),filterStringForANCRV2()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc3),filterStringForANCRV3()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc4),filterStringForANCRV4()));
@@ -151,7 +157,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String searchHint() {
-                return getString(org.ei.opensrp.R.string.str_anc_search_hint);
+                return getString(org.ei.opensrp.dghs.R.string.str_woman_search_hint);
             }
         };
     }
@@ -273,7 +279,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         if(cs.toString().equalsIgnoreCase("")){
                             filters = "";
                         }else {
-                            filters = "and FWWOMFNAME Like '%" + cs.toString() + "%' or GOBHHID Like '%" + cs.toString() + "%'  or JiVitAHHID Like '%" + cs.toString() + "%' ";
+                            filters = "and Member_Fname Like '%" + cs.toString() + "%' or Member_GOB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
                         }
                         return null;
                     }
@@ -310,7 +316,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             }else{
                 StringUtil.humanize(entry.getValue().getLabel());
                 String name = StringUtil.humanize(entry.getValue().getLabel());
-//                dialogOptionslist.add(new ElcoMauzaCommonObjectFilterOption(name,"location_name", name));
+                dialogOptionslist.add(new HHWardCommonObjectFilterOption(name,"existing_Mauzapara", name));
 
             }
         }
@@ -367,7 +373,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return " Age ASC";
     }
     private String sortByFWWOMFNAME(){
-        return " Member_Fname ASC";
+        return " Member_Fname COLLATE NOCASE ASC";
     }
     private String sortByMaritalStatus(){
         return " CASE WHEN Marital_Status = '2' THEN '1'"
@@ -386,8 +392,20 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
     private String sortByEDD(){
         return " EDD ASC";
     }
-    private String filterStringForANCRV1(){
-        return "and alerts.visitCode LIKE '%ancrv_1%'";
+    private String filterStringFormarried(){
+        return "and Marital_Status = '2'";
+    }
+    private String filterStringForunmarried(){
+        return "and Marital_Status = '1'";
+    }
+    private String filterStringForwidow(){
+        return "and Marital_Status = '3'";
+    }
+    private String filterStringForpregnant(){
+        return "and Pregnancy_Status = '1'";
+    }
+    private String filterStringFornotpregnant(){
+        return "and Pregnancy_Status = '0'";
     }
     private String filterStringForANCRV2(){
         return "and alerts.visitCode LIKE '%ancrv_2%'";
@@ -399,7 +417,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return "and alerts.visitCode LIKE '%ancrv_4%'";
     }
     private String sortByGOBHHID(){
-        return " Member_GOB_HHID ASC";
+        return " Member_GOB_HHID  ASC";
     }
     private String sortByAlertmethod() {
         return " CASE WHEN alerts.status = 'urgent' THEN '1'"

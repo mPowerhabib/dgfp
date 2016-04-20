@@ -342,7 +342,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
+                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' )";
                         return null;
                     }
 
@@ -388,7 +388,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
+                        filters = "and HoH_FName Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' )";
                         return null;
                     }
 

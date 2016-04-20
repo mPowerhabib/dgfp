@@ -372,6 +372,12 @@
     <string name="sort_by_marital_status">Marital Status</string>
     <string name="sort_by_pregnancy_status">Pregnancy Status</string>
     <string name="woman_details">Woman Details</string>
+    <string name="filterbymarried">married</string>
+    <string name="filterbyUnmarried">Unmarried</string>
+    <string name="filterbywidowed">Divorced/Widow/Widower</string>
+    <string name="filterbypregnant">Pregnant</string>
+    <string name="filterbynotpregnant">Not pregnant</string>
+    <string name="str_woman_search_hint">Search Woman</string>
 
 
 </resources>

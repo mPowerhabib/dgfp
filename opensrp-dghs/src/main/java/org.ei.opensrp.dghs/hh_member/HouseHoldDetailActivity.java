@@ -112,18 +112,18 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
         final ImageView householdview = (ImageView)mView.findViewById(R.id.householdprofileview);
 
         if(householdclient.getDetails().get("profilepic")!= null){
-            if((householdclient.getDetails().get("FWHOHGENDER")!=null?householdclient.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("2")) {
+            if((householdclient.getDetails().get("HoH_Gender")!=null?householdclient.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")) {
 
                 setImagetoHolderFromUri(getActivity(), householdclient.getDetails().get("profilepic"), householdview, R.mipmap.womanimageload);
-            } else if ((householdclient.getDetails().get("FWHOHGENDER")!=null?householdclient.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("1")){
+            } else if ((householdclient.getDetails().get("HoH_Gender")!=null?householdclient.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
                 setImagetoHolderFromUri(getActivity(), householdclient.getDetails().get("profilepic"), householdview, R.mipmap.householdload);
 
             }
         }else{
 
-            if((householdclient.getDetails().get("FWHOHGENDER")!=null?householdclient.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("2")){
+            if((householdclient.getDetails().get("HoH_Gender")!=null?householdclient.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")){
                 householdview.setImageDrawable(getResources().getDrawable(R.drawable.woman_placeholder));
-            }else if ((householdclient.getDetails().get("FWHOHGENDER")!=null?householdclient.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("1")){
+            }else if ((householdclient.getDetails().get("HoH_Gender")!=null?householdclient.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
                 householdview.setImageDrawable(getResources().getDrawable(R.mipmap.household_profile_thumb));
             }
         }
@@ -136,9 +136,9 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
         householdview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindobject = "household";
-                entityid = householdclient.entityId();
-                dispatchTakePictureIntent(householdview);
+                HH_member_SmartRegisterActivity.bindobject = "household";
+                HH_member_SmartRegisterActivity.entityid = householdclient.entityId();
+                ((HH_member_SmartRegisterActivity)getActivity()).dispatchTakePictureIntent(householdview);
 
             }
         });
@@ -199,11 +199,11 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
         public void onClick(View view) {
             switch (view.getId()) {
             case R.id.profilepic:
-                    entityid = ((CommonPersonObjectClient)view.getTag()).entityId();
-                    bindobject = "members";
+                    HH_member_SmartRegisterActivity.entityid = ((CommonPersonObjectClient)view.getTag()).entityId();
+                HH_member_SmartRegisterActivity.bindobject = "members";
                     mImageView = (ImageView)view;
 //                    mImageView.setTag("womanpic");
-                    dispatchTakePictureIntent((ImageView) view);
+                ((HH_member_SmartRegisterActivity)getActivity()).dispatchTakePictureIntent((ImageView) view);
                     break;
             case R.id.general:
                     ((HH_member_SmartRegisterActivity)getActivity()).startFormActivity("general", ((CommonPersonObjectClient) view.getTag()).entityId(), null);

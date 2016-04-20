@@ -98,10 +98,10 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "FW CENSUS");
 
         if(pc.getDetails().get("profilepic")!=null){
-            if((pc.getDetails().get("FWHOHGENDER")!=null?pc.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("2")) {
-//                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.womanimageload);
-            }else if ((pc.getDetails().get("FWHOHGENDER")!=null?pc.getDetails().get("FWHOHGENDER"):"").equalsIgnoreCase("1")){
-//                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.householdload);
+            if((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")) {
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.womanimageload);
+            }else if ((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.householdload);
             }
 
         }else{
