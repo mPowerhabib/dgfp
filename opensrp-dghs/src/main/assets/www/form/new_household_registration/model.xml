@@ -1,0 +1,117 @@
+<model>
+  <instance>
+    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201604201259">
+      <formhub>
+        <uuid/>
+      </formhub>
+      <start openmrs_entity="encounter" openmrs_entity_id="encounter_start"/>
+      <today openmrs_entity="encounter" openmrs_entity_id="encounter_date"/>
+      <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id"/>
+      <existing_Country/>
+      <existing_Division/>
+      <existing_District/>
+      <existing_Upazilla/>
+      <existing_Union/>
+      <existing_Ward/>
+      <Date_Of_Reg/>
+      <HHID/>
+      <HoH_Reg_No/>
+      <COUNTRY openmrs_entity="person_address" openmrs_entity_id="country" openmrs_entity_parent="usual_residence"/>
+      <DIVISION openmrs_entity="person_address" openmrs_entity_id="stateProvince" openmrs_entity_parent="usual_residence"/>
+      <DISTRICT openmrs_entity="person_address" openmrs_entity_id="countyDistrict" openmrs_entity_parent="usual_residence"/>
+      <UPAZILLA openmrs_entity="person_address" openmrs_entity_id="cityVillage" openmrs_entity_parent="usual_residence"/>
+      <UNION openmrs_entity="person_address" openmrs_entity_id="address1" openmrs_entity_parent="usual_residence"/>
+      <WARD openmrs_entity="person_address" openmrs_entity_id="address2" openmrs_entity_parent="usual_residence"/>
+      <GOB_HHID openmrs_entity="person_address" openmrs_entity_id="address5" openmrs_entity_parent="usual_residence"/>
+      <GPS openmrs_entity="person_address" openmrs_entity_id="geopoint" openmrs_entity_parent="usual_residence"/>
+      <HoH_FName openmrs_entity="person" openmrs_entity_id="first_name"/>
+      <HoH_Lname openmrs_entity="person" openmrs_entity_id="last_name"/>
+      <HoH_DoB openmrs_entity="person" openmrs_entity_id="birthdate"/>
+      <HoH_Age/>
+      <HoH_Gender openmrs_entity="person" openmrs_entity_id="gender"/>
+      <HoH_Unique_ID/>
+      <HoH_NID/>
+      <HoH_BRID/>
+      <HoH_HID/>
+      <HoH_Mobile_No/>
+      <HoH_Education/>
+      <HoH_Occupation/>
+      <HH_Member_No/>
+      <HH_Member template="" openmrs_entity="person" openmrs_entity_id="New Member Registration">
+        <Reg_No/>
+        <BDH/>
+        <Member_Fname openmrs_entity="person" openmrs_entity_id="first_name"/>
+        <Member_LName openmrs_entity="person" openmrs_entity_id="last_name"/>
+        <Gender openmrs_entity="person" openmrs_entity_id="gender"/>
+        <DoB openmrs_entity="person" openmrs_entity_id="birthdate"/>
+        <Type_DoB/>
+        <Age/>
+        <Display_Age/>
+        <Child_Info>
+          <Child_Vital_Status/>
+          <MOTHER_Vaccine_Dates/>
+          <Date_of_BCG_OPV_0/>
+          <Date_of_OPV_Penta_PCV_1/>
+          <Date_of_OPV_Penta_PCV_2/>
+          <Date_of_OPV_Penta_3_IPV/>
+          <Date_of_PCV_3/>
+          <Date_of_MR/>
+          <Date_of_Measles/>
+          <Child_BRID/>
+          <Date_Child_Death/>
+          <C_Guardian_Type/>
+          <C_Guardian_Name>
+            <C_Guardian_Name_Father/>
+            <C_Guardian_Name_Mother/>
+            <C_Guardian_Name_Hus/>
+          </C_Guardian_Name>
+        </Child_Info>
+        <MemberInfo>
+          <Marital_Status/>
+          <Couple_No/>
+          <LMP openmrs_entity="concept" openmrs_entity_id="12580"/>
+          <EDD openmrs_entity="concept" openmrs_entity_id="12581"/>
+          <GA openmrs_entity="concept" openmrs_entity_id="12582"/>
+          <Pregnancy_Status/>
+          <Date_of_MR_wom/>
+          <Date_of_TT1/>
+          <Date_of_TT2/>
+          <Date_of_TT3/>
+          <Date_of_TT4/>
+          <Date_of_TT5/>
+          <note1/>
+          <note2/>
+          <Unique_ID/>
+          <NID/>
+          <BRID/>
+          <HID/>
+          <Guardian_Type/>
+          <Guardian_Name>
+            <Guardian_Name_Father/>
+            <Guardian_Name_Mother/>
+            <Guardian_Name_Hus/>
+          </Guardian_Name>
+          <Mobile_No/>
+          <Education/>
+          <Occupation/>
+        </MemberInfo>
+        <Is_TT/>
+        <Is_Measles/>
+        <Is_FP/>
+        <Is_NewBorn/>
+        <Member_COUNTRY openmrs_entity="person_address" openmrs_entity_id="country" openmrs_entity_parent="usual_residence"/>
+        <Member_DIVISION openmrs_entity="person_address" openmrs_entity_id="stateProvince" openmrs_entity_parent="usual_residence"/>
+        <Member_DISTRICT openmrs_entity="person_address" openmrs_entity_id="countyDistrict" openmrs_entity_parent="usual_residence"/>
+        <Member_UPAZILLA openmrs_entity="person_address" openmrs_entity_id="cityVillage" openmrs_entity_parent="usual_residence"/>
+        <Member_UNION openmrs_entity="person_address" openmrs_entity_id="address1" openmrs_entity_parent="usual_residence"/>
+        <Member_WARD openmrs_entity="person_address" openmrs_entity_id="address2" openmrs_entity_parent="usual_residence"/>
+        <Member_GOB_HHID openmrs_entity="person_address" openmrs_entity_id="address5" openmrs_entity_parent="usual_residence"/>
+        <Member_GPS openmrs_entity="person_address" openmrs_entity_id="geopoint" openmrs_entity_parent="usual_residence"/>
+      </HH_Member>
+      <end openmrs_entity="encounter" openmrs_entity_id="encounter_end"/>
+      <meta>
+        <instanceID/>
+      </meta>
+    </HHMemberReg>
+  </instance>
+</model>

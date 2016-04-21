@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="clientobject" type="id">clientobject</item>
+    <item name="formname" type="id">formname</item>
+</resources>

@@ -1,0 +1,16 @@
+{
+  "bindobjects": [
+    {
+      "name": "household",
+      "columns": [
+        {"name":"HoH_FName"},{"name":"HHID"}
+      ]
+    },
+    {
+      "name": "members",
+      "columns": [
+        {"name":"Member_Fname"},{"name":"EDD"},{"name":"Age"},{"name":"Member_GOB_HHID"},{"name":"Marital_Status"},{"name":"Pregnancy_Status"}
+      ]
+    }
+  ]
+}
