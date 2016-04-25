@@ -112,210 +112,55 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView encc2text = (TextView)itemview.findViewById(R.id.encc2text);
         TextView encc3tick = (TextView)itemview.findViewById(R.id.encc3tick);
         TextView encc3text = (TextView)itemview.findViewById(R.id.encc3text);
-        checkEncc1StatusAndform(encc1tick,encc1text,pc);
-        checkEncc2StatusAndform(encc2tick, encc2text, pc);
-        checkEncc3StatusAndform(encc3tick, encc3text, pc);
+
 
 
     }
+    private void contstructNextVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
 
-
-
-    private void checkEncc1StatusAndform(TextView anc1tick, TextView anc1text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWENC1DATE")!=null){
-            anc1text.setText("ENCC1-"+pc.getDetails().get("FWENC1DATE"));
-            if(pc.getDetails().get("encc1_current_formStatus")!=null){
-                if(pc.getDetails().get("encc1_current_formStatus").equalsIgnoreCase("upcoming")){
-
-                }else if(pc.getDetails().get("encc1_current_formStatus").equalsIgnoreCase("urgent")){
-                    anc1tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                    anc1text.setText("urgent");
-                }
-            }
+        TextView nextVaccineDate = (TextView)itemView.findViewById(R.id.next_vaccine_date);
+        if(!(pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
+            nextVaccineDate.setText("Completed");
+        }else if(!(pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("Measles-"+ (pc.getDetails().get("Date_of_Measles")!=null?pc.getDetails().get("Date_of_Measles"):""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname, "child_vaccination_measles");
+        }else if(!(pc.getDetails().get("TT3_Date_of_Vaccination")!=null?pc.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("TT4-"+ (pc.getDetails().get("Date_of_TT4")!=null?pc.getDetails().get("Date_of_TT4"):""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname, "woman_vaccination_tt4");
+        }else if(!(pc.getDetails().get("TT2_Date_of_Vaccination")!=null?pc.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("TT3-"+ (pc.getDetails().get("Date_of_TT3")!=null?pc.getDetails().get("Date_of_TT3"):""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname, "woman_vaccination_tt3");
+        }else if(!(pc.getDetails().get("TT1_Date_of_Vaccination")!=null?pc.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("TT2-"+ (pc.getDetails().get("Date_of_TT2")!=null?pc.getDetails().get("Date_of_TT2"):""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname, "woman_vaccination_tt2");
+        }else if(!(pc.getDetails().get("measles_Date_of_Vaccination")!=null?pc.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("TT1-"+ (pc.getDetails().get("Date_of_TT1")!=null?pc.getDetails().get("Date_of_TT1"):""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname, "woman_vaccination_tt1");
+        }else if(!(pc.getDetails().get("Date_of_Measles")!=null?pc.getDetails().get("Date_of_Measles"):"").equalsIgnoreCase("")){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            nextVaccineDate.setText("Measles-" + (pc.getDetails().get("Date_of_Measles") != null ? pc.getDetails().get("Date_of_Measles") : ""));
+            nextVaccineDate.setTag(R.id.clientobject, pc);
+            nextVaccineDate.setTag(R.id.formname,"woman_vaccination_measles");
         }else{
-            List<Alert> alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_1");
-            String alertstate = "";
-            String alertDate = "";
-            if(alertlist.size()!=0){
-                for(int i = 0;i<alertlist.size();i++){
-                    alertstate = alertlist.get(i).status().value();
-                    alertDate = alertlist.get(i).startDate();
-                }              ;
-            }
-            if(alertstate != null && !(alertstate.trim().equalsIgnoreCase(""))){
-                if(alertstate.equalsIgnoreCase("expired")){
-                    anc1tick.setText("✘");
-                    anc1tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                    anc1text.setText( "ENCC1-" + alertDate);
-//                    (anc+ "-"+alertlist.get(i).startDate(),alertlist.get(i).status().value())
-                }else {
-                    anc1text.setVisibility(View.GONE);
-                    anc1tick.setVisibility(View.GONE);
-                }
-            } else {
-                anc1text.setVisibility(View.GONE);
-                anc1tick.setVisibility(View.GONE);
-            }
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.client_list_header_dark_grey));
+            nextVaccineDate.setText("not applicable");
         }
-    }
-    private void checkEncc2StatusAndform(TextView anc2tick, TextView anc2text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWENC2DATE")!=null){
-            anc2text.setText("ENCC2-"+pc.getDetails().get("FWENC2DATE"));
-            if(pc.getDetails().get("encc2_current_formStatus")!=null){
-                if(pc.getDetails().get("encc2_current_formStatus").equalsIgnoreCase("upcoming")){
-
-                }else if(pc.getDetails().get("encc2_current_formStatus").equalsIgnoreCase("urgent")){
-                    anc2tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                }
-            }
-        }else{
-            List<Alert> alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_2");
-            String alertstate = "";
-            String alertDate = "";
-            if(alertlist.size()!=0){
-                for(int i = 0;i<alertlist.size();i++){
-                    alertstate = alertlist.get(i).status().value();
-                    alertDate = alertlist.get(i).startDate();
-                }              ;
-            }
-            if(alertstate != null && !(alertstate.trim().equalsIgnoreCase(""))){
-                if(alertstate.equalsIgnoreCase("expired")){
-                    anc2tick.setText("✘");
-                    anc2tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                    anc2text.setText( "ENCC2-" + alertDate);
-//                    (anc+ "-"+alertlist.get(i).startDate(),alertlist.get(i).status().value())
-                }else {
-                    anc2text.setVisibility(View.GONE);
-                    anc2tick.setVisibility(View.GONE);
-                }
-            } else {
-                anc2text.setVisibility(View.GONE);
-                anc2tick.setVisibility(View.GONE);
-            }
-        }
-    }
-    private void checkEncc3StatusAndform(TextView anc3tick, TextView anc3text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWENC3DATE")!=null){
-            anc3text.setText("ENCC3-"+pc.getDetails().get("FWENC3DATE"));
-            if(pc.getDetails().get("encc3_current_formStatus")!=null){
-                if(pc.getDetails().get("encc3_current_formStatus").equalsIgnoreCase("upcoming")){
-
-                }else if(pc.getDetails().get("encc3_current_formStatus").equalsIgnoreCase("urgent")){
-                    anc3tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                }
-            }
-        }else{
-            List<Alert> alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_3");
-            String alertstate = "";
-            String alertDate = "";
-            if(alertlist.size()!=0){
-                for(int i = 0;i<alertlist.size();i++){
-                    alertstate = alertlist.get(i).status().value();
-                    alertDate = alertlist.get(i).startDate();
-                }              ;
-            }
-            if(alertstate != null && !(alertstate.trim().equalsIgnoreCase(""))){
-                if(alertstate.equalsIgnoreCase("expired")){
-                    anc3tick.setText("✘");
-                    anc3tick.setTextColor(context.getResources().getColor(R.color.alert_urgent_red));
-                    anc3text.setText( "ENCC3-" + alertDate);
-//                    (anc+ "-"+alertlist.get(i).startDate(),alertlist.get(i).status().value())
-                }else {
-                    anc3text.setVisibility(View.GONE);
-                    anc3tick.setVisibility(View.GONE);
-                }
-            } else {
-                anc3text.setVisibility(View.GONE);
-                anc3tick.setVisibility(View.GONE);
-            }
-        }
+        nextVaccineDate.setOnClickListener(onClickListener);
+        nextVaccineDate.setTag(pc);
     }
 
-    private void constructENCCReminderDueBlock(CommonPersonObjectClient pc, View itemView) {
-        alertTextandStatus alerttextstatus = null;
-            List<Alert> alertlist3 = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_3");
-            if(alertlist3.size() != 0){
-                alerttextstatus = setAlertStatus("ENCC3",alertlist3);
-            }else{
-                List<Alert> alertlist2 = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_2");
-                if(alertlist2.size()!=0){
-                    alerttextstatus = setAlertStatus("ENCC2",alertlist2);
-                }else{
-                    List<Alert> alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(), "enccrv_1");
-                    if(alertlist.size()!=0){
-                        alerttextstatus = setAlertStatus("ENCC1",alertlist);
 
-                    }else{
-                        alerttextstatus = new alertTextandStatus("Not synced","not synced");
-                    }
-                }
-            }
-
-//        CustomFontTextView pncreminderDueDate = (CustomFontTextView)itemView.findViewById(R.id.encc_reminder_due_date);
-//        setalerttextandColorInView(pncreminderDueDate, alerttextstatus,pc);
-
-
-    }
-
-    private void setalerttextandColorInView(CustomFontTextView customFontTextView, alertTextandStatus alerttextstatus, CommonPersonObjectClient pc) {
-        customFontTextView.setText(alerttextstatus.getAlertText() != null ? alerttextstatus.getAlertText() : "");
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("normal")){
-            customFontTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-            customFontTextView.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
-        }
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("upcoming")){
-            customFontTextView.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            customFontTextView.setOnClickListener(onClickListener);
-//            customFontTextView.setTag(R.id.clientobject, pc);
-//            customFontTextView.setTag(R.id.textforEnccRegister, alerttextstatus.getAlertText() != null ? alerttextstatus.getAlertText() : "");
-//            customFontTextView.setTag(R.id.AlertStatustextforEnccRegister,"upcoming");
-        }
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("urgent")){
-            customFontTextView.setOnClickListener(onClickListener);
-//            customFontTextView.setTag(R.id.clientobject, pc);
-//            customFontTextView.setTag(R.id.textforEnccRegister,alerttextstatus.getAlertText() != null ? alerttextstatus.getAlertText() : "");
-//            customFontTextView.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
-//            customFontTextView.setTag(R.id.AlertStatustextforEnccRegister, "urgent");
-
-        }
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("expired")){
-            customFontTextView.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
-            customFontTextView.setText("expired");
-            customFontTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("complete")){
-//               psrfdue.setText("visited");
-            customFontTextView.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
-            customFontTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
-        if(alerttextstatus.getAlertstatus().equalsIgnoreCase("not synced")){
-            customFontTextView.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.status_bar_text_almost_white));
-//
-        }
-    }
-
-    private alertTextandStatus setAlertStatus(String anc, List<Alert> alertlist) {
-        alertTextandStatus alts = null;
-        for(int i = 0;i<alertlist.size();i++){
-            alts = new alertTextandStatus(anc+ "-"+alertlist.get(i).startDate(),alertlist.get(i).status().value());
-            }
-        return alts;
-    }
 
     private void constructRiskFlagView(CommonPersonObjectClient pc,  View itemView) {
 //        AllCommonsRepository allancRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
