@@ -127,17 +127,8 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     public DialogOption[] getEditOptions() {
 
-        HashMap <String,String> overridemap = new HashMap<String,String>();
-        CommonPersonObjectClient pc = null;
-        String alertstate = "";
-        if(pc!=null) {
-            alertstate = getalertstateforcensus(pc);
-            overridemap.put("existing_ELCO", pc.getDetails().get("ELCO"));
-            overridemap.put("existing_location", pc.getDetails().get("existing_location"));
-            overridemap.put("current_formStatus", alertstate);
-        }
-            return new DialogOption[]{
-                    new OpenFormOption(getResources().getString(R.string.censusenrollmentform), "census_enrollment_form", formController, overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)
+               return new DialogOption[]{
+                    new OpenFormOption(getResources().getString(R.string.censusenrollmentform), "census_enrollment", formController)
             };
 
     }
@@ -311,7 +302,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
         formNames.add("new_household_registration");
-//        formNames.add("census_enrollment_form");
+        formNames.add("census_enrollment");
         formNames.add("general");
         formNames.add("new_born_information");
         formNames.add("family_planning");

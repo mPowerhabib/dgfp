@@ -1,0 +1,17 @@
+<model>
+    <instance>
+        <ChildVaccination_IPV encounter_type="Child Vaccination IPV" id="ChildVaccination_IPV" version="201604200751">
+            <formhub>
+                <uuid/>
+            </formhub>
+            <start/>
+            <today/>
+            <Has_Vaccinated/>
+            <Date_of_Vaccination/>
+            <end/>
+            <meta>
+                <instanceID/>
+            </meta>
+        </ChildVaccination_IPV>
+    </instance>
+</model>

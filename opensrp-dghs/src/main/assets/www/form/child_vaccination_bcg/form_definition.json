@@ -1,0 +1,33 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/ChildVaccination_BCG",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/ChildVaccination_BCG/start"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/ChildVaccination_BCG/today"
+      },
+      {
+        "name": "Has_Vaccinated",
+        "bind": "/model/instance/ChildVaccination_BCG/Has_Vaccinated"
+      },
+      {
+        "name": "ChildVaccination_BCG_Date_of_Vaccination",
+        "bind": "/model/instance/ChildVaccination_BCG/Date_of_Vaccination"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/ChildVaccination_BCG/end"
+      }
+    ]
+  }
+}

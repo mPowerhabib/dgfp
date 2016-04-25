@@ -266,7 +266,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
                 case R.id.next_visit_date:
 //                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
 //
-//                    showFragmentDialog(new EditDialogOptionModel(), view.getTag());
+                    showFragmentDialog(new EditDialogOptionModel(), view.getTag());
                     break;
             }
         }

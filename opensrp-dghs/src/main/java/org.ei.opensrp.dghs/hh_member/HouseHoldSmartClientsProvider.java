@@ -51,6 +51,21 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
     private final AbsListView.LayoutParams clientViewLayoutParams;
 
     protected CommonPersonObjectController controller;
+    TextView nid ;
+    TextView brid ;
+    TextView bdh ;
+    TextView gobhhid ;
+    TextView mobileno ;
+    TextView village;
+    TextView headofhouseholdname;
+    TextView age;
+    TextView last_visit_date;
+    TextView due_visit_date;
+    ImageButton follow_up;
+    LinearLayout profilelayout;
+    ImageView profilepic;
+    FrameLayout due_date_holder;
+    Button warnbutton;
 
     AlertService alertService;
     public HouseHoldSmartClientsProvider(Context context,
@@ -71,103 +86,102 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
     @Override
     public void getView(SmartRegisterClient smartRegisterClient, View convertView) {
 
-        ViewHolder viewHolder;
-//        if (convertView == null){
-//           convertView = (ViewGroup) inflater().inflate(R.layout.smart_register_household_client, null);
-            viewHolder = new ViewHolder();
-            viewHolder.profilelayout =  (LinearLayout)convertView.findViewById(R.id.profile_info_layout);
-            viewHolder.gobhhid = (TextView)convertView.findViewById(R.id.gobhhid);
-        viewHolder.nid = (TextView)convertView.findViewById(R.id.nid);
-        viewHolder.brid = (TextView)convertView.findViewById(R.id.brid);
-        viewHolder.bdh = (TextView)convertView.findViewById(R.id.bdh);
-            viewHolder.village = (TextView)convertView.findViewById(R.id.village);
-            viewHolder.profilepic =(ImageView)convertView.findViewById(R.id.profilepic);
-             viewHolder.age = (TextView)convertView.findViewById(R.id.txt_age);
-        viewHolder.mobileno = (TextView)convertView.findViewById(R.id.mobile_no);
+        
+            profilelayout =  (LinearLayout)convertView.findViewById(R.id.profile_info_layout);
+             gobhhid = (TextView)convertView.findViewById(R.id.gobhhid);
+         nid = (TextView)convertView.findViewById(R.id.nid);
+         brid = (TextView)convertView.findViewById(R.id.brid);
+         bdh = (TextView)convertView.findViewById(R.id.bdh);
+             village = (TextView)convertView.findViewById(R.id.village);
+             profilepic =(ImageView)convertView.findViewById(R.id.profilepic);
+              age = (TextView)convertView.findViewById(R.id.txt_age);
+         mobileno = (TextView)convertView.findViewById(R.id.mobile_no);
 
-            viewHolder.headofhouseholdname = (TextView)convertView.findViewById(R.id.householdheadname);
-              viewHolder.last_visit_date = (TextView)convertView.findViewById(R.id.last_visit_date);
-            viewHolder.due_visit_date = (TextView)convertView.findViewById(R.id.next_visit_date);
-            viewHolder.due_date_holder = (FrameLayout)convertView.findViewById(R.id.hh_due_date_holder);
-            viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
-            convertView.setTag(viewHolder);
-           viewHolder.profilelayout.setOnClickListener(onClickListener);
-        viewHolder.profilelayout.setTag(smartRegisterClient);
+             headofhouseholdname = (TextView)convertView.findViewById(R.id.householdheadname);
+               last_visit_date = (TextView)convertView.findViewById(R.id.last_visit_date);
+             due_visit_date = (TextView)convertView.findViewById(R.id.next_visit_date);
+             due_date_holder = (FrameLayout)convertView.findViewById(R.id.hh_due_date_holder);
+             profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
+            profilelayout.setOnClickListener(onClickListener);
+         profilelayout.setTag(smartRegisterClient);
         CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "FW CENSUS");
 
         if(pc.getDetails().get("profilepic")!=null){
             if((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")) {
-                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.womanimageload);
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"),  profilepic, R.mipmap.womanimageload);
             }else if ((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
-                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), viewHolder.profilepic, R.mipmap.householdload);
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"),  profilepic, R.mipmap.householdload);
             }
 
         }else{
             if((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("2")){
-                viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.drawable.woman_placeholder));
+                 profilepic.setImageDrawable(context.getResources().getDrawable(R.drawable.woman_placeholder));
             }else if ((pc.getDetails().get("HoH_Gender")!=null?pc.getDetails().get("HoH_Gender"):"").equalsIgnoreCase("1")){
-                viewHolder.profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
+                 profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
             }
         }
 
 
 //
-        viewHolder.gobhhid.setText(pc.getDetails().get("GOB_HHID")!=null?pc.getDetails().get("GOB_HHID"):"");
-        viewHolder.age.setText(pc.getDetails().get("HoH_Age")!=null?pc.getDetails().get("HoH_Age"):"");
-        viewHolder.nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
-        viewHolder.brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
-        viewHolder.mobileno.setText(pc.getDetails().get("HoH_Mobile_No")!=null?pc.getDetails().get("HoH_Mobile_No"):"");
-        viewHolder.bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
+         gobhhid.setText(pc.getDetails().get("GOB_HHID")!=null?pc.getDetails().get("GOB_HHID"):"");
+         age.setText(pc.getDetails().get("HoH_Age")!=null?pc.getDetails().get("HoH_Age"):"");
+         nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
+         brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
+         mobileno.setText(pc.getDetails().get("HoH_Mobile_No")!=null?pc.getDetails().get("HoH_Mobile_No"):"");
+         bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
-//        viewHolder.jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-        viewHolder.village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_"))));
-        viewHolder.headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
+//         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
+         village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_"))));
+         headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
         Date lastdate = null;
 
 
 
-                    viewHolder.last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
+                     last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
 
 
 
 
         if(alertlist_for_client.size() == 0 ){
-            viewHolder.due_visit_date.setText("Not Synced to Server");
-            viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            viewHolder.due_visit_date.setOnClickListener(new View.OnClickListener() {
+             due_visit_date.setText("Not Synced to Server");
+             due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+             due_visit_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                 }
             });
+//            due_visit_date.setOnClickListener(onClickListener);
+//            due_visit_date.setTag(smartRegisterClient);
+
         }
         for(int i = 0;i<alertlist_for_client.size();i++){
-            viewHolder.due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
+             due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                viewHolder.due_visit_date.setOnClickListener(new View.OnClickListener() {
+                 due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                     }
                 });
-                viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
+                 due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-                viewHolder.due_visit_date.setOnClickListener(onClickListener);
-                viewHolder.due_visit_date.setTag(smartRegisterClient);
+                 due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                 due_visit_date.setOnClickListener(onClickListener);
+                 due_visit_date.setTag(smartRegisterClient);
 
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                viewHolder.due_visit_date.setOnClickListener(onClickListener);
-                viewHolder.due_visit_date.setTag(smartRegisterClient);
-                viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+                 due_visit_date.setOnClickListener(onClickListener);
+                 due_visit_date.setTag(smartRegisterClient);
+                 due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
-                viewHolder.due_visit_date.setOnClickListener(new View.OnClickListener() {
+                 due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                 due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -175,8 +189,8 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
                 });
             }
             if(alertlist_for_client.get(i).isComplete()){
-                viewHolder.due_visit_date.setText("visited");
-                viewHolder.due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                 due_visit_date.setText("visited");
+                 due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
             }
         }
         if(lastdate!= null){
@@ -186,8 +200,8 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
             lastdate.setTime(calendar.getTime().getTime());
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //            String result = String.format(Locale.ENGLISH, format.format(lastdate) );
-            viewHolder.due_visit_date.setText(format.format(lastdate) );
-//            viewHolder.due_visit_date.append(format.format(lastdate));
+             due_visit_date.setText(format.format(lastdate) );
+//             due_visit_date.append(format.format(lastdate));
 
         }
 
@@ -246,24 +260,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
     }
 
 
-    class ViewHolder {
-
-         TextView nid ;
-         TextView brid ;
-         TextView bdh ;
-         TextView gobhhid ;
-         TextView mobileno ;
-         TextView village;
-         TextView headofhouseholdname;
-         TextView age;
-         TextView last_visit_date;
-         TextView due_visit_date;
-         ImageButton follow_up;
-         LinearLayout profilelayout;
-         ImageView profilepic;
-         FrameLayout due_date_holder;
-         Button warnbutton;
-    }
+    
 
 
 }

@@ -55,6 +55,3 @@ buildDashboard {
 }
 test.reports.html.enabled = false
 test.reports.junitXml.enabled = false
-dependencies {
-    compile project(':opensrp-app')
-}

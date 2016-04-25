@@ -1,0 +1,33 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/ChildVaccination_OPV2",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/ChildVaccination_OPV2/start"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/ChildVaccination_OPV2/today"
+      },
+      {
+        "name": "Has_Vaccinated",
+        "bind": "/model/instance/ChildVaccination_OPV2/Has_Vaccinated"
+      },
+      {
+        "name": "ChildVaccination_OPV2_Date_of_Vaccination",
+        "bind": "/model/instance/ChildVaccination_OPV2/Date_of_Vaccination"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/ChildVaccination_OPV2/end"
+      }
+    ]
+  }
+}

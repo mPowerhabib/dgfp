@@ -343,7 +343,7 @@
     <string name="anc_edd_ga">EDD and GA</string>
     <string name="anc_reminder_due">ANC reminder due</string>
     <string name="take_nid_picture">Take Picture-NID/BRID</string>
-    <string name="censusenrollmentform">Census New Woman Registration Form</string>
+    <string name="censusenrollmentform">Census Enrollment Form</string>
     <string name="psrfform">Pregnancy Surveillance And Registration Form</string>
     <string name="all_mcare_anc">All Pregnant Women</string>
     <string name="history">History</string>
@@ -378,6 +378,7 @@
     <string name="filterbypregnant">Pregnant</string>
     <string name="filterbynotpregnant">Not pregnant</string>
     <string name="str_woman_search_hint">Search Woman</string>
+    <string name="child_details">Child Details</string>
 
 
 </resources>

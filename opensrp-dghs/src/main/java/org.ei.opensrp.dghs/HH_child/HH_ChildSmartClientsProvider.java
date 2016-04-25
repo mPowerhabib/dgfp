@@ -68,7 +68,9 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView parentname = (TextView)itemView.findViewById(R.id.parent_name);
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
         TextView village = (TextView)itemView.findViewById(R.id.village);
-//        TextView dateofbirth = (TextView)itemView.findViewById(R.id.dateofbirth);
+        TextView dateofbirth = (TextView)itemView.findViewById(R.id.dob_age);
+
+
 
 
 
@@ -86,7 +88,9 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
         village.setText(humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
-
+        String dataofbirth = (pc.getDetails().get("DoB")!=null?pc.getDetails().get("DoB"):"") + "\n";
+        dataofbirth = dataofbirth + "age : " + (pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
+        dateofbirth.setText(dataofbirth);
 
 
 
