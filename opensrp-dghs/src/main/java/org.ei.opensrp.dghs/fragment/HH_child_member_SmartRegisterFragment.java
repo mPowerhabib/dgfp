@@ -30,6 +30,7 @@ import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
@@ -111,7 +112,9 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
             public DialogOption[] filterOptions() {
                 ArrayList<DialogOption> dialogOptionslist = new ArrayList<DialogOption>();
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_all_label),""));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc1),filterStringForANCRV1()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_male),filterStringForMale()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_female),filterStringForFemale()));
+
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc2),filterStringForANCRV2()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc3),filterStringForANCRV3()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc4),filterStringForANCRV4()));
@@ -142,7 +145,9 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.elco_alphabetical_sort),sortByFWWOMFNAME()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.hh_fwJivhhid_sort),sortByJiVitAHHID()),
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
+
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_birth),sortByage())
 //                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sortbyLmp),sortByLmp())
 
 //                        new CommonObjectSort(true,false,true,"age")
@@ -273,7 +278,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         if(cs.toString().equalsIgnoreCase("")){
                             filters = "";
                         }else {
-                            filters = "and FWWOMFNAME Like '%" + cs.toString() + "%' or GOBHHID Like '%" + cs.toString() + "%'  or JiVitAHHID Like '%" + cs.toString() + "%' ";
+                            filters = "and Member_Fname Like '%" + cs.toString() + "%' or details Like '%" + cs.toString() + "%'   ";
                         }
                         return null;
                     }
@@ -310,7 +315,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
             }else{
                 StringUtil.humanize(entry.getValue().getLabel());
                 String name = StringUtil.humanize(entry.getValue().getLabel());
-//                dialogOptionslist.add(new ElcoMauzaCommonObjectFilterOption(name,"location_name", name));
+                dialogOptionslist.add(new HHWardCommonObjectFilterOption(name,"location_name", name));
 
             }
         }
@@ -331,7 +336,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                     }
                 }
             }
-            Log.v("the filter",""+returnvalue);
+            Log.v("the filter", "" + returnvalue);
             return returnvalue;
         }
     }
@@ -363,33 +368,35 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         refresh();
 
     }
+    private String sortByage(){
+        return " Age ASC";
+    }
+    private String sortByFWWOMFNAME(){
+        return " Member_Fname COLLATE NOCASE ASC";
+    }
+    private String sortByGOBHHID(){
+        return " Member_GOB_HHID  ASC";
+    }
+
+
     private String sortBySortValue(){
         return " FWSORTVALUE ASC";
     }
-    private String sortByFWWOMFNAME(){
-        return " Member_Fname ASC";
-    }
+
     private String sortByJiVitAHHID(){
         return " JiVitAHHID ASC";
     }
     private String sortByLmp(){
         return " FWPSRLMP ASC";
     }
-    private String filterStringForANCRV1(){
-        return "and alerts.visitCode LIKE '%ancrv_1%'";
+
+    private String filterStringForFemale(){
+        return "and details LIKE '%\"Gender\":\"2\"%'";
     }
-    private String filterStringForANCRV2(){
-        return "and alerts.visitCode LIKE '%ancrv_2%'";
+    private String filterStringForMale(){
+        return " and details LIKE '%\"Gender\":\"1\"%'";
     }
-    private String filterStringForANCRV3(){
-        return "and alerts.visitCode LIKE '%ancrv_3%'";
-    }
-    private String filterStringForANCRV4(){
-        return "and alerts.visitCode LIKE '%ancrv_4%'";
-    }
-    private String sortByGOBHHID(){
-        return " Member_GOB_HHID ASC";
-    }
+
     private String sortByAlertmethod() {
         return " CASE WHEN alerts.status = 'urgent' THEN '1'"
                 +

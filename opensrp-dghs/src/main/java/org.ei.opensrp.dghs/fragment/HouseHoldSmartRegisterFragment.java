@@ -278,7 +278,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 
 
     private String filterStringForFemale(){
-        return "and details LIKE '%\"HoH_Gender\":\"0\"%'";
+        return "and details LIKE '%\"HoH_Gender\":\"2\"%'";
     }
     private String filterStringForMale(){
         return " and details LIKE '%\"HoH_Gender\":\"1\"%'";
