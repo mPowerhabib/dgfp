@@ -47,9 +47,9 @@
             android:theme="@style/AppThemeNoActionBarAndTitle"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape"/>
-        <!--<activity android:name=".anc.mCareAncDetailActivity"-->
-            <!--android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"-->
-            <!--android:screenOrientation="landscape"/>-->
+        <activity android:name=".HH_child.ChildDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"/>
 
     </application>
 

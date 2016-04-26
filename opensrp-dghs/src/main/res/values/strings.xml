@@ -379,6 +379,7 @@
     <string name="filterbynotpregnant">Not pregnant</string>
     <string name="str_woman_search_hint">Search Woman</string>
     <string name="child_details">Child Details</string>
+    <string name="child_details_parents_name_label">Parent\'s name :</string>
 
 
 </resources>

@@ -145,19 +145,6 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
-    private void constructENCCVisitStatusBlock(CommonPersonObjectClient pc, View itemview) {
-        TextView encc1tick = (TextView)itemview.findViewById(R.id.encc1tick);
-        TextView encc1text = (TextView)itemview.findViewById(R.id.encc1text);
-        TextView encc2tick = (TextView)itemview.findViewById(R.id.encc2tick);
-        TextView encc2text = (TextView)itemview.findViewById(R.id.encc2text);
-        TextView encc3tick = (TextView)itemview.findViewById(R.id.encc3tick);
-        TextView encc3text = (TextView)itemview.findViewById(R.id.encc3text);
-        checkEncc1StatusAndform(encc1tick,encc1text,pc);
-        checkEncc2StatusAndform(encc2tick, encc2text, pc);
-        checkEncc3StatusAndform(encc3tick, encc3text, pc);
-
-
-    }
 
 
 

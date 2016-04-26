@@ -21,8 +21,10 @@ import org.ei.opensrp.cursoradapter.CursorCommonObjectSort;
 import org.ei.opensrp.cursoradapter.SecuredNativeSmartRegisterCursorAdapterFragment;
 import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
+import org.ei.opensrp.dghs.HH_child.ChildDetailActivity;
 import org.ei.opensrp.dghs.HH_child.ChildServiceModeOption;
 import org.ei.opensrp.dghs.HH_child.HH_ChildSmartClientsProvider;
+import org.ei.opensrp.dghs.HH_child.HH_child_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartClientsProvider;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
@@ -216,13 +218,13 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-//                    HouseHoldDetailActivity.householdclient = (CommonPersonObjectClient)view.getTag();
-//                    Intent intent = new Intent(getActivity(),HouseHoldDetailActivity.class);
-//                    startActivity(intent);
+                    ChildDetailActivity.childclient = (CommonPersonObjectClient)view.getTag();
+                    Intent intent = new Intent(getActivity(),ChildDetailActivity.class);
+                    startActivity(intent);
                     break;
-//                case R.id.nbnf_due_date:
-//                    showFragmentDialog(new EditDialogOptionModelfornbnf(), view.getTag(R.id.clientobject));
-//                    break;
+                case R.id.next_vaccine:
+                    ((HH_child_member_SmartRegisterActivity)getActivity()).startFormActivity((String) view.getTag(R.id.formname), ((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId(), null);
+                    break;
 //                case R.id.anc_reminder_due_date:
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
 //                    Log.v("do as you will", (String) view.getTag(R.id.textforAncRegister));
