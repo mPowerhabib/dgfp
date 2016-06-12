@@ -33,19 +33,16 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 /**
  * Created by Geoffrey Koros on 9/12/2015.
  */
 public class DisplayFormFragment extends Fragment {
 
     public static final String TAG = "DisplayFormFragment";
-
     WebView webView;
     ProgressBar progressBar;
-
     public static String formInputErrorMessage = "Form contains errors please try again";// externalize this
-
+    
     private static final String headerTemplate = "web/forms/header";
     private static final String footerTemplate = "web/forms/footer";
     private static final String scriptFile = "web/forms/js_include.js";
