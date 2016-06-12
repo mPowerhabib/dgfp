@@ -54,6 +54,7 @@ android {
         versionCode 1
         versionName "3.0.1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        multiDexEnabled = true
     }
 
     sourceSets {

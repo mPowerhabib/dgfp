@@ -1,7 +1,10 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.ei.opensrp.dghs">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.ei.opensrp.dghs">
 
     <application android:allowBackup="true"
         android:label="@string/app_name"
+        tools:replace="android:name"
         android:name=".application.dghsApplication"
         >
 

@@ -1,6 +1,7 @@
 package org.ei.opensrp.view.activity;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import org.ei.opensrp.Context;
@@ -8,7 +9,7 @@ import org.ei.opensrp.Context;
 import java.util.Locale;
 
 
-public class DrishtiApplication extends Application {
+public class DrishtiApplication extends MultiDexApplication {
     private static final String TAG = "DrishtiApplication";
 
     protected Locale locale = null;

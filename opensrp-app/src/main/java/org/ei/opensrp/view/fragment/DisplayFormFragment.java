@@ -30,6 +30,7 @@ import android.widget.Toast;
 import org.ei.opensrp.R;
 import org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity;
 import org.json.JSONObject;
+import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,6 +40,7 @@ import java.io.InputStream;
 public class DisplayFormFragment extends Fragment {
 
     public static final String TAG = "DisplayFormFragment";
+    XWalkView XwebView;
     WebView webView;
     ProgressBar progressBar;
     public static String formInputErrorMessage = "Form contains errors please try again";// externalize this
@@ -96,6 +98,7 @@ public class DisplayFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.display_form_fragment, container, false);
         webView = (WebView)view.findViewById(R.id.webview);
+        XwebView = new XWalkView(getActivity());
         progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
         initWebViewSettings();
         loadHtml();
@@ -140,7 +143,7 @@ public class DisplayFormFragment extends Fragment {
         StringBuilder sb = new StringBuilder();
         sb.append(header).append(form).append(footer);
         webView.loadDataWithBaseURL("file:///android_asset/web/forms/", sb.toString(), "text/html", "utf-8", null);
-
+        XwebView.load("file:///android_asset/web/forms/", sb.toString());
         resizeForm();
     }
 
