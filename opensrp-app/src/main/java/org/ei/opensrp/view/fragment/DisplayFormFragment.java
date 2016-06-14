@@ -117,6 +117,7 @@ public class DisplayFormFragment extends Fragment {
 //        webView.getSettings().setGeolocationEnabled(true);
 //        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         XwebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        XwebView.
 //
 //        webView.setWebViewClient(new AppWebViewClient(progressBar));
 //        webView.setWebChromeClient(new WebChromeClient() {

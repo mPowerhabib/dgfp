@@ -31,6 +31,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        armv7 {
+            versionCode defaultConfig.versionCode + 2
+            ndk {
+                abiFilters "armeabi", ""
+            }
+        }
+        x86 {
+            versionCode defaultConfig.versionCode + 4
+            ndk {
+                abiFilters "x86", ""
+            }
+        }
+    }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
         exclude 'META-INF/LICENSE.txt'
