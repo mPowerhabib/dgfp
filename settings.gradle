@@ -1,5 +1,6 @@
 rootProject.name = 'opensrp-app-parent'
 
-include ':opensrp-app', ':opensrp-drishti', ':opensrp-mcare',':opensrp-dghs', 'opensrp-indonesia', ':opensrp-vaccinator'
+include ':opensrp-app', ':opensrp-drishti', ':opensrp-mcare', ':opensrp-dghs', 'opensrp-indonesia', ':opensrp-vaccinator', ':android-support-multidex'
 
 project(':opensrp-app').projectDir = "$rootDir/opensrp-app" as File
+include ':xwalk_core_library'

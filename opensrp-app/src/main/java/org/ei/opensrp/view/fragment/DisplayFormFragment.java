@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.GeolocationPermissions;
-import android.webkit.JavascriptInterface;
+import org.xwalk.core.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -30,22 +30,22 @@ import android.widget.Toast;
 import org.ei.opensrp.R;
 import org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity;
 import org.json.JSONObject;
+import org.xwalk.core.XWalkPreferences;
+import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 /**
  * Created by Geoffrey Koros on 9/12/2015.
  */
 public class DisplayFormFragment extends Fragment {
 
     public static final String TAG = "DisplayFormFragment";
-
-    WebView webView;
+    XWalkView XwebView;
+//    WebView webView;
     ProgressBar progressBar;
-
     public static String formInputErrorMessage = "Form contains errors please try again";// externalize this
-
+    
     private static final String headerTemplate = "web/forms/header";
     private static final String footerTemplate = "web/forms/footer";
     private static final String scriptFile = "web/forms/js_include.js";
@@ -98,7 +98,12 @@ public class DisplayFormFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.display_form_fragment, container, false);
-        webView = (WebView)view.findViewById(R.id.webview);
+//        webView = (WebView)view.findViewById(R.id.webview);
+        XWalkPreferences.setValue("enable-javascript", true);
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+        XWalkPreferences.setValue(XWalkPreferences.JAVASCRIPT_CAN_OPEN_WINDOW, true);
+
+        XwebView = (XWalkView)view.findViewById(R.id.xwalkWebView);
         progressBar = (ProgressBar)view.findViewById(R.id.progressBar);
         initWebViewSettings();
         loadHtml();
@@ -107,28 +112,29 @@ public class DisplayFormFragment extends Fragment {
     }
 
     private void initWebViewSettings(){
-        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setGeolocationEnabled(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-
-        webView.setWebViewClient(new AppWebViewClient(progressBar));
-        webView.setWebChromeClient(new WebChromeClient() {
-            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-                callback.invoke(origin, true, false);
-            }
-        });
-
-        webView.getSettings().setGeolocationDatabasePath(getActivity().getFilesDir().getPath());
-        webView.getSettings().setDefaultTextEncodingName("utf-8");
-
-        final MyJavaScriptInterface myJavaScriptInterface = new MyJavaScriptInterface(getActivity());
-        webView.addJavascriptInterface(myJavaScriptInterface, "Android");
+//        webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setGeolocationEnabled(true);
+//        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        XwebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+//        XwebView.
+//
+//        webView.setWebViewClient(new AppWebViewClient(progressBar));
+//        webView.setWebChromeClient(new WebChromeClient() {
+//            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+//                callback.invoke(origin, true, false);
+//            }
+//        });
+//
+//        webView.getSettings().setGeolocationDatabasePath(getActivity().getFilesDir().getPath());
+//        webView.getSettings().setDefaultTextEncodingName("utf-8");
+               final MyJavaScriptInterface myJavaScriptInterface = new MyJavaScriptInterface(getActivity());
+//        webView.addJavascriptInterface(myJavaScriptInterface, "Android");
+        XwebView.addJavascriptInterface(myJavaScriptInterface,"Android");
     }
 
     public void loadHtml(){
-        showProgressDialog();
+//        showProgressDialog();
         String header = readFileAssets(headerTemplate);
 
         String script = readFileAssets(scriptFile);
@@ -142,9 +148,10 @@ public class DisplayFormFragment extends Fragment {
 
         StringBuilder sb = new StringBuilder();
         sb.append(header).append(form).append(footer);
-        webView.loadDataWithBaseURL("file:///android_asset/web/forms/", sb.toString(), "text/html", "utf-8", null);
-
-        resizeForm();
+//        webView.loadDataWithBaseURL("file:///android_asset/web/forms/", sb.toString(), "text/html", "utf-8", null);
+        XwebView.load("file:///android_asset/web/forms/", sb.toString());
+//        resizeForm();
+        dismissProgressDialog();
     }
 
     public String readFileAssets(String fileName) {
@@ -165,19 +172,19 @@ public class DisplayFormFragment extends Fragment {
     }
 
     private void showProgressDialog(){
-        webView.setVisibility(View.INVISIBLE);
+        XwebView.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.VISIBLE);
     }
 
     private void dismissProgressDialog(){
         //dialog.dismiss();
-        webView.setVisibility(View.VISIBLE);
+        XwebView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
         //loadFormData();
     }
 
     public void showTranslucentProgressDialog(){
-        webView.post(new Runnable() {
+        XwebView.post(new Runnable() {
             @Override
             public void run() {
                 progressDialog.show();
@@ -186,7 +193,7 @@ public class DisplayFormFragment extends Fragment {
     }
 
     public void hideTranslucentProgressDialog(){
-        webView.post(new Runnable() {
+        XwebView.post(new Runnable() {
             @Override
             public void run() {
                 if (progressDialog.isShowing()) {
@@ -213,10 +220,10 @@ public class DisplayFormFragment extends Fragment {
                     }
 
                     formData = formData != null && !formData.isEmpty() ? formData.replaceAll("\"","\\\"") : "";
-                    webView.post(new Runnable() {
+                    XwebView.post(new Runnable() {
                         @Override
                         public void run() {
-                            webView.loadUrl("javascript:loadDraft('" + formData + "')");
+                            XwebView.load("javascript:loadDraft('" + formData + "')",null);
                             Log.e("posting data", formData);
                         }
                     });
@@ -233,14 +240,15 @@ public class DisplayFormFragment extends Fragment {
     }
 
     public void saveCurrentFormData() {
-        webView.loadUrl("javascript:savePartialData()");
+
+        XwebView.load("javascript:savePartialData()",null);
     }
 
     public void reloadDateWidget() {
-        webView.post(new Runnable() {
+        XwebView.post(new Runnable() {
             @Override
             public void run() {
-                webView.loadUrl("javascript:refreshDateFields()");
+                XwebView.load("javascript:refreshDateFields()",null);
                 Log.d(TAG, "date widgets reloaded");
             }
         });
@@ -350,7 +358,7 @@ public class DisplayFormFragment extends Fragment {
                     }
                 }
 
-                webView.setLayoutParams(new RelativeLayout.LayoutParams(landHeightPixels, landWidthPixels));
+                XwebView.setLayoutParams(new RelativeLayout.LayoutParams(landHeightPixels, landWidthPixels));
             }
         });
     }

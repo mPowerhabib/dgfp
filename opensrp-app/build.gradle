@@ -54,6 +54,7 @@ android {
         versionCode 1
         versionName "3.0.1"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        multiDexEnabled = true
     }
 
     sourceSets {
@@ -109,7 +110,7 @@ configurations.all {
 dependencies {
     compile 'org.ei.drishti:drishti-interface:0.1-SNAPSHOT'
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile "org.apache.httpcomponents:httpmime:4.2.3"
+    compile 'org.apache.httpcomponents:httpmime:4.2.3'
     compile 'commons-io:commons-io:2.1'
     compile 'com.google.code.gson:gson:2.3'
     compile 'org.apache.commons:commons-lang3:3.1'
@@ -120,8 +121,8 @@ dependencies {
     compile 'com.github.johnkil.print:print:1.2.3'
     compile 'ch.acra:acra:4.5.0'
     compile 'com.google.guava:guava:18.0'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':xwalk_core_library')
 }
 
 dependencies {
