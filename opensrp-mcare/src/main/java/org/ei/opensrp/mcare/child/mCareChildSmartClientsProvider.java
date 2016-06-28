@@ -375,6 +375,8 @@ public class mCareChildSmartClientsProvider implements SmartRegisterCLientsProvi
             });
         }
         if(alerttextstatus.getAlertstatus().equalsIgnoreCase("not synced")){
+            customFontTextView.setText("Not Synced");
+            customFontTextView.setTextColor(context.getResources().getColor(R.color.text_black));
             customFontTextView.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.status_bar_text_almost_white));
 //
         }
