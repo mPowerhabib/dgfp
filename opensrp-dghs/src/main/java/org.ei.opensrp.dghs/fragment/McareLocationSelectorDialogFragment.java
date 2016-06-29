@@ -95,7 +95,7 @@ public class McareLocationSelectorDialogFragment extends DialogFragment {
     public TreeNode createNode(String locationlevel, String locationname){
         TreeNode node = new TreeNode(locationname,locationlevel).setViewHolder(new SelectableItemHolder(getActivity(),locationlevel+": "));
         node.setSelectable(false);
-        addselectlistener(node, "");
+//        addselectlistener(node, "");
         return node;
     }
 
@@ -128,7 +128,7 @@ public class McareLocationSelectorDialogFragment extends DialogFragment {
 //            }
 //        });
 //    }
-    public void addselectlistener (TreeNode node,final String id){
+    public void addselectlistener(TreeNode node, final String id, final Map<String, String> addressFields){
         node.setClickListener(new TreeNode.TreeNodeClickListener() {
             @Override
             public void onClick(TreeNode node, Object value) {
@@ -149,6 +149,14 @@ public class McareLocationSelectorDialogFragment extends DialogFragment {
                         }
                         traversingnode = traversingnode.getParent();
                     }
+                    for (Map.Entry<String, String> entry : addressFields.entrySet())
+                    {
+                        try {
+                            locationjson.put("existing_"+entry.getKey(), entry.getValue());
+                        }catch(Exception e){
+
+                        }
+                    }
                     FieldOverrides fieldOverrides = new FieldOverrides(locationjson.toString());
                     parentActivity.startFormActivity(formname, null, fieldOverrides.getJSONString());
                     savestate = tView.getSaveState();
@@ -166,7 +174,7 @@ public class McareLocationSelectorDialogFragment extends DialogFragment {
                     Strings.isNullOrEmpty(locationTag)?"-":humanize(locationTag),
                     humanize(entry.getValue().getLabel()));
             node.addChild(tree);
-            addselectlistener(tree, entry.getValue().getId());
+            addselectlistener(tree, entry.getValue().getId(),entry.getValue().getNode().getAddress().getAddressFields());
             if(entry.getValue().getChildren() != null) {
                 locationTreeToTreNode(tree, entry.getValue().getChildren());
             }
