@@ -248,7 +248,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     @Override
     public void onBackPressed() {
-        if (currentPage != 0){
+        if (currentPage >1 ){
             retrieveAndSaveUnsubmittedFormData();
             String BENGALI_LOCALE = "bn";
             AllSharedPreferences allSharedPreferences = new AllSharedPreferences(getDefaultSharedPreferences(Context.getInstance().applicationContext()));
@@ -296,6 +296,8 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
         }else if (currentPage == 0) {
             super.onBackPressed(); // allow back key only if we are
+        }else if (currentPage == 1) {
+            switchToBaseFragment(null); // allow back key only if we are
         }
     }
 
