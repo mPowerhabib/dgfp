@@ -381,6 +381,8 @@
     <string name="child_details">Child Details</string>
     <string name="child_details_parents_name_label">Parent\'s name :</string>
     <string name="sort_by_child_birth">Date Of Birth</string>
+    <string name="child_alphabetical_sort">Name</string>
+    <string name="search_register">Search</string>
 
 
 </resources>

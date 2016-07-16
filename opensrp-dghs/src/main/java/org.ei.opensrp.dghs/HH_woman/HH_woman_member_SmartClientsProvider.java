@@ -113,11 +113,14 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         }
         if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
             maritalstatus.setText("Unmarried");
+            pregnancystatus.setText("");
         }
         else if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("2")){
             maritalstatus.setText("Married");
+            pregnancystatus.setText("");
         }else if ((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("3")){
             maritalstatus.setText("Divorced/Widow/Widower");
+            pregnancystatus.setText("");
         }
 
         if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){

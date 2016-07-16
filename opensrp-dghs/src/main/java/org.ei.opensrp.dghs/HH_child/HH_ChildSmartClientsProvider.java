@@ -63,7 +63,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
         LinearLayout profileinfolayout = (LinearLayout)itemView.findViewById(R.id.profile_info_layout);
 
-//        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
+        ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
         TextView childname = (TextView)itemView.findViewById(R.id.child_name);
         TextView parentname = (TextView)itemView.findViewById(R.id.parent_name);
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
@@ -91,6 +91,14 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         String dataofbirth = (pc.getDetails().get("DoB")!=null?pc.getDetails().get("DoB"):"") + "\n";
         dataofbirth = dataofbirth + "age : " + (pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
         dateofbirth.setText(dataofbirth);
+
+        if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
+            profilepic.setImageResource(R.drawable.child_boy_infant);
+//                newborn_or_fp.setText("Family Planning");
+        } else {
+            profilepic.setImageResource(R.drawable.child_girl_infant);
+//                newborn_or_fp.setVisibility(View.INVISIBLE);
+        }
 
 
 

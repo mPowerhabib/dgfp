@@ -142,7 +142,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             public DialogOption[] sortingOptions() {
                 return new DialogOption[]{
 //                        new ElcoPSRFDueDateSort(),
-                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
+//                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.elco_alphabetical_sort),sortByFWWOMFNAME()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
@@ -380,14 +380,14 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 +
                 "WHEN Marital_Status = '1' THEN '2'\n" +
                 "WHEN Marital_Status = '3' THEN '3'\n" +
-                "Else alerts.status END ASC";
+                "Else '10' END ASC";
     }
     private String sortByPregnancyStatus(){
         return " CASE WHEN Pregnancy_Status = '1' THEN '1'"
                 +
                 "WHEN Pregnancy_Status = '0' THEN '2'\n" +
                 "WHEN Pregnancy_Status = '9' THEN '3'\n" +
-                "Else alerts.status END ASC";
+                "ELSE '10' END ASC";
     }
     private String sortByEDD(){
         return " EDD ASC";
@@ -417,7 +417,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return "and alerts.visitCode LIKE '%ancrv_4%'";
     }
     private String sortByGOBHHID(){
-        return " Member_GOB_HHID  ASC";
+        return " CAST(Member_GOB_HHID AS INTEGER) ASC";
     }
     private String sortByAlertmethod() {
         return " CASE WHEN alerts.status = 'urgent' THEN '1'"

@@ -133,7 +133,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
          bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-         village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_"))));
+         village.setText((humanize((pc.getDetails().get("existing_Ward")!=null?pc.getDetails().get("existing_Ward"):"").replace("+","_"))));
          headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
         Date lastdate = null;
 

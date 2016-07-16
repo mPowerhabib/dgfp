@@ -204,11 +204,52 @@ public class DisplayFormFragment extends Fragment {
     }
 
     String formData;
-    public void setFormData(String data){
-        if (data != null){
-            this.formData = data;
-        }
+    public void setFormData(final String data){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    // Wait for the page to initialize
+                    while (!javascriptLoaded){
+                        Thread.sleep(100);
+                    }
+
+                    if (data != null && !data.isEmpty()){
+                        postXmlDataToForm(data);
+                    }else{
+                        resetForm();
+                    }
+
+                }catch(Exception e){
+                    Log.e(TAG, e.toString(), e);
+                }
+            }
+        }).start();
     }
+    /**
+     * reset the form
+     */
+    public void resetForm(){
+        XwebView.post(new Runnable() {
+            @Override
+            public void run() {
+                XwebView.load("javascript:resetForm()",null);
+                Log.d(TAG, "reseting form");
+            }
+        });
+    }
+
+
+    private void postXmlDataToForm(final String data) {
+        XwebView.post(new Runnable() {
+            @Override
+            public void run() {
+                XwebView.load("javascript:loadDraft('" + data + "')", null);
+                Log.d("posting data", data);
+            }
+        });
+    }
+
 
     public void loadFormData(){
         new Thread(new Runnable() {

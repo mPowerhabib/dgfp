@@ -93,6 +93,13 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
             maritalstatus.setVisibility(View.GONE);
+            if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
+                profilepic.setImageResource(R.drawable.child_boy_infant);
+//                newborn_or_fp.setText("Family Planning");
+            } else {
+                profilepic.setImageResource(R.drawable.child_girl_infant);
+//                newborn_or_fp.setVisibility(View.INVISIBLE);
+            }
 //
 
         }else {

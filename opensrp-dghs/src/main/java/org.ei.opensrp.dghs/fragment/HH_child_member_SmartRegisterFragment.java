@@ -142,8 +142,8 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
             public DialogOption[] sortingOptions() {
                 return new DialogOption[]{
 //                        new ElcoPSRFDueDateSort(),
-                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
-                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.elco_alphabetical_sort),sortByFWWOMFNAME()),
+//                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
+                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.child_alphabetical_sort),sortByFWWOMFNAME()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
                         new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
 
@@ -375,7 +375,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return " Member_Fname COLLATE NOCASE ASC";
     }
     private String sortByGOBHHID(){
-        return " Member_GOB_HHID  ASC";
+        return " CAST(Member_GOB_HHID AS INTEGER) ASC";
     }
 
 

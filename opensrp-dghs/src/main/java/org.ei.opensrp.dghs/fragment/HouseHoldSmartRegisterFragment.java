@@ -290,7 +290,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         return " HoH_FName COLLATE NOCASE ASC";
     }
     private String householdSortByGOBHHID(){
-        return " HHID ASC";
+        return "CAST(HHID AS INTEGER) ASC";
     }
 
     private class EditDialogOptionModel implements DialogOptionModel {
