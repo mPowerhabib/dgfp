@@ -168,10 +168,6 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/Reg_No"
           },
           {
-            "name": "BDH",
-            "bind": "/model/instance/HHMemberReg/HH_Member/BDH"
-          },
-          {
             "name": "Member_Fname",
             "bind": "/model/instance/HHMemberReg/HH_Member/Member_Fname"
           },
@@ -246,6 +242,10 @@
           {
             "name": "Child_BRID",
             "bind": "/model/instance/HHMemberReg/HH_Member/Child_Info/Child_BRID"
+          },
+          {
+            "name": "note",
+            "bind": "/model/instance/HHMemberReg/HH_Member/Child_Info/note"
           },
           {
             "name": "Date_Child_Death",
