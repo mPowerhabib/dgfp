@@ -196,7 +196,7 @@ public class DisplayFormFragment extends Fragment {
         });
     }
 
-    String formData;
+//    String formData;
     public void setFormData(String data){
         if (data != null){
             this.formData = data;
@@ -225,6 +225,17 @@ public class DisplayFormFragment extends Fragment {
             }
         }).start();
 
+    }
+   String formData="";
+    private void postXmlDataToForm(final String data){
+        webView.post(new Runnable() {
+            @Override
+            public void run() {
+                formData = data.replaceAll("template=\"\"","");
+                webView.loadUrl("javascript:loadDraft('" + formData + "')");
+                Log.d("posting data", data);
+            }
+        });
     }
 
     //override this on tha child classes to override specific fields
