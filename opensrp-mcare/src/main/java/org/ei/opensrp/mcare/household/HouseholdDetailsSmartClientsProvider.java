@@ -183,6 +183,28 @@ public class HouseholdDetailsSmartClientsProvider implements SmartRegisterClient
                     age.setText("("+(pc.getDetails().get("FWWOMAGE") != null ? pc.getDetails().get("FWWOMAGE") : "")+")");
                     LinearLayout child_parent_carrier = (LinearLayout)itemView.findViewById(R.id.child_parent_holder);
                     addchildrenifany(child_parent_carrier,mcaremother);
+                }else {
+
+                    itemView = (ViewGroup) inflater().inflate(R.layout.household_inhabitants_nonregister_clients, null);
+                    TextView name = (TextView) itemView.findViewById(R.id.name);
+                    TextView age = (TextView) itemView.findViewById(R.id.age);
+                    ImageView profilepic = (ImageView) itemView.findViewById(R.id.profilepic);
+
+                    if (pc.getDetails().get("profilepic") != null) {
+                        HouseHoldDetailActivity.setImagetoHolderFromUri((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.womanimageload);
+                    }
+
+                    profilepic.setOnClickListener(onClickListener);
+                    profilepic.setTag(smartRegisterClient);
+
+
+                    Button editform = (Button) itemView.findViewById(R.id.edit_forms);
+                    editform.setOnClickListener(onClickListener);
+                    editform.setTag(smartRegisterClient);
+
+
+                    name.setText(humanize(pc.getColumnmaps().get("FWWOMFNAME") != null ? pc.getColumnmaps().get("FWWOMFNAME") : ""));
+                    age.setText("("+(pc.getDetails().get("FWWOMAGE") != null ? pc.getDetails().get("FWWOMAGE") : "")+")");
                 }
             }else {
 
