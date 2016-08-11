@@ -383,6 +383,7 @@
     <string name="sort_by_child_birth">Date Of Birth</string>
     <string name="child_alphabetical_sort">Name</string>
     <string name="search_register">Search</string>
+    <string name="vaccination_history">VACCINATION HISTORY</string>
 
 
 </resources>

@@ -95,7 +95,7 @@ public class NativeHomeActivity extends SecuredActivity {
 
     private void setupViews() {
         findViewById(R.id.btn_ec_register).setOnClickListener(onRegisterStartListener);
-        findViewById(R.id.btn_pnc_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.btn_stock_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_anc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_fp_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
@@ -251,7 +251,7 @@ public class NativeHomeActivity extends SecuredActivity {
                     navigationController.startANCSmartRegistry();
                     break;
 
-                case R.id.btn_pnc_register:
+                case R.id.btn_stock_register:
 //                    navigationController.startPNCSmartRegistry();
                     break;
 

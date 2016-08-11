@@ -8,11 +8,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.ei.opensrp.Context;
@@ -95,11 +99,14 @@ public class ChildDetailActivity extends Activity {
         if (childclient.getDetails().get("profilepic") != null) {
             setImagetoHolder(this, childclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
-        TextView lmp  = (TextView)findViewById(R.id.dateofbirth);
-        lmp.setText(childclient.getDetails().get("DoB")!=null?childclient.getDetails().get("DoB"):"not available");
+//        TextView lmp  = (TextView)findViewById(R.id.dateofbirth);
+//        lmp.setText(childclient.getDetails().get("DoB")!=null?childclient.getDetails().get("DoB"):"not available");
 
-        
-        contstructLastVaccinedateBlock(childclient);
+
+        ListView vaccinelist1 = (ListView)findViewById(R.id.vaccinelist1);
+        vaccinelist1.setAdapter(new childVaccineDetailAdapter(this,dummyChildView1()));
+        ListView vaccinelist2 = (ListView)findViewById(R.id.vaccinelist2);
+        vaccinelist2.setAdapter(new childVaccineDetailAdapter(this,dummyChildView2()));
 
 
 
@@ -111,43 +118,29 @@ public class ChildDetailActivity extends Activity {
 
         return vaccinerow;
     }
-    private void contstructLastVaccinedateBlock(CommonPersonObjectClient pc) {
-        LinearLayout vaccine_record_layout = (LinearLayout)findViewById(R.id.vaccine_record_layout);
-
-        if(!(pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("Measles", (pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("MR", (pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("IPV", (pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("OPV3", (pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("OPV2", (pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("OPV1", (pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("PCV1", (pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("OPV0", (pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination") : "")));
-        }
-        if(!(pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            vaccine_record_layout.addView(makevaccinerow("BCG", (pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination") : "")));
-        }
-
+    public vaccineInfo[] dummyChildView1(){
+        vaccineInfo [] vaccineinfos = new vaccineInfo[8];
+        vaccineinfos[0] = new vaccineInfo("BCG","upcoming","28/06/16");
+        vaccineinfos[1] = new vaccineInfo("Penta-1","upcoming","28/06/16");
+        vaccineinfos[2] = new vaccineInfo("Penta-2","upcoming","30/06/16");
+        vaccineinfos[3] = new vaccineInfo("Penta-3","expired","Expired");
+        vaccineinfos[4] = new vaccineInfo("OPV-0","upcoming","28/06/16");
+        vaccineinfos[5] = new vaccineInfo("OPV-1","upcoming","28/06/16");
+        vaccineinfos[6] = new vaccineInfo("OPV-2","upcoming","30/06/16");
+        vaccineinfos[7] = new vaccineInfo("OPV-3","expired","Expired");
+        return vaccineinfos;
     }
 
-
-
-
-
+    public vaccineInfo[] dummyChildView2(){
+        vaccineInfo [] vaccineinfos = new vaccineInfo[8];
+        vaccineinfos[0] = new vaccineInfo("IPV","urgent","25/07/16");
+        vaccineinfos[1] = new vaccineInfo("PCV-1","upcoming","25/07/16");
+        vaccineinfos[2] = new vaccineInfo("PCV-2","upcoming","29/06/16");
+        vaccineinfos[3] = new vaccineInfo("PCV-3","urgent","29/06/2016");
+        vaccineinfos[5] = new vaccineInfo("Measles-1","upcoming","25/07/16");
+        vaccineinfos[6] = new vaccineInfo("Measles-2","not yet due","Due : 22/08/16");
+        return vaccineinfos;
+    }
 
     String mCurrentPhotoPath;
 
@@ -240,5 +233,68 @@ public class ChildDetailActivity extends Activity {
 //        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 //        Bitmap bitmap = BitmapFactory.decodeFile(file, options);
 //        view.setImageBitmap(bitmap);
+    }
+
+   class childVaccineDetailAdapter extends BaseAdapter {
+       vaccineInfo [] vaccineInfos;
+       android.content.Context context;
+       public childVaccineDetailAdapter(android.content.Context context,vaccineInfo [] childvaccineInfo){
+           this.vaccineInfos = childvaccineInfo;
+           this.context = context;
+       }
+
+       @Override
+       public int getCount() {
+           return vaccineInfos.length;
+       }
+
+       @Override
+       public Object getItem(int position) {
+           return null;
+       }
+
+       @Override
+       public long getItemId(int position) {
+           return 0;
+       }
+
+       @Override
+       public View getView(int position, View convertView, ViewGroup parent) {
+
+           LayoutInflater inflater = (LayoutInflater)this.context.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE);
+           convertView = inflater.inflate(R.layout.vaccine_row,null);
+           TextView vaccinename = (TextView)convertView.findViewById(R.id.vaccinename);
+           TextView vaccinedate = (TextView)convertView.findViewById(R.id.vaccine_date);
+           Button vaccinestate = (Button) convertView.findViewById(R.id.vacc_state);
+           vaccinename.setText(vaccineInfos[position].name);
+           vaccinedate.setText(vaccineInfos[position].date);
+           if(vaccineInfos[position].state.equalsIgnoreCase("upcoming")){
+               vaccinestate.setBackgroundColor(getResources().getColor(R.color.alert_complete_green));
+           }
+           if(vaccineInfos[position].state.equalsIgnoreCase("urgent")){
+               vaccinestate.setBackgroundColor(getResources().getColor(R.color.alert_urgent_red));
+           }
+           if(vaccineInfos[position].state.equalsIgnoreCase("expired")){
+               vaccinestate.setBackgroundColor(getResources().getColor(R.color.client_list_header_dark_grey));
+           }
+           if(vaccineInfos[position].state.equalsIgnoreCase("not yet due")){
+               vaccinestate.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_yellow));
+           }
+
+           return null;
+       }
+
+
+   }
+    class vaccineInfo {
+        String name;
+        String state;
+        String date;
+
+        public vaccineInfo(String name, String state, String date) {
+            this.name = name;
+            this.state = state;
+            this.date = date;
+        }
     }
 }

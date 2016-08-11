@@ -21,7 +21,14 @@
             android:textColor="@color/text_black"
             android:textStyle="bold"
             android:text="Measles"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="10dp" />
+
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/vacc_state"
+            android:layout_gravity="center_vertical"
+            android:background="@color/alert_complete_green" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +38,8 @@
             android:id="@+id/vaccine_date"
             android:layout_gravity="center_vertical"
             android:textColor="@color/text_black"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 
 </LinearLayout>
