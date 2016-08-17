@@ -67,7 +67,7 @@ public class ChildDetailActivity extends Activity {
         setContentView(R.layout.child_detail_activity);
         TextView name = (TextView) findViewById(R.id.name);
         TextView brid = (TextView) findViewById(R.id.brid);
-        TextView parentsname = (TextView) findViewById(R.id.parentsname);
+//        TextView parentsname = (TextView) findViewById(R.id.parentsname);
         TextView age = (TextView) findViewById(R.id.age);
         TextView godhhid = (TextView) findViewById(R.id.gobhhid);
         TextView village = (TextView) findViewById(R.id.ward);
@@ -84,7 +84,7 @@ public class ChildDetailActivity extends Activity {
 
         brid.setText(getString(R.string.BRID) +humanize((childclient.getDetails().get("BRID") != null ? childclient.getDetails().get("BRID") : "").replace("+", "_")));
 
-        parentsname.setText(getString(R.string.child_details_parents_name_label) +(childclient.getDetails().get("C_Guardian_Name_Father") != null ? childclient.getDetails().get("C_Guardian_Name_Father") : ""));
+//        parentsname.setText(getString(R.string.child_details_parents_name_label) +(childclient.getDetails().get("C_Guardian_Name_Father") != null ? childclient.getDetails().get("C_Guardian_Name_Father") : ""));
         age.setText(getString(R.string.elco_age_label) + (childclient.getColumnmaps().get("Age") != null ? childclient.getColumnmaps().get("Age") : ""));
        godhhid.setText(getString(R.string.hhid_gob_elco_label) + (childclient.getColumnmaps().get("Member_GOB_HHID") != null ? childclient.getColumnmaps().get("Member_GOB_HHID") : ""));
 //        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
