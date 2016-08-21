@@ -13,12 +13,12 @@
 
         <ImageView
             android:layout_width="@dimen/client_profile_pic_width"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/client_profile_pic_height"
             android:id="@+id/childdetailprofileview"
             android:src="@drawable/child_boy_infant"
             android:layout_margin="5dp"
             android:scaleType="fitXY"
-            android:layout_weight="0.15" />
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:orientation="vertical"

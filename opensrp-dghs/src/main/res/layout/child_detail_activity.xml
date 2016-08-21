@@ -79,49 +79,29 @@
             android:layout_height="@dimen/smart_register_client_divider_height"
             android:src="@color/smart_register_client_divider_color"/>
 
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
-        android:id="@+id/scrollView" >
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/smart_register_client_divider_height"
+            android:src="@color/smart_register_client_divider_color"
+            android:id="@+id/imageView" />
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/smart_register_client_divider_height"
-                android:src="@color/smart_register_client_divider_color"
-                android:id="@+id/imageView" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#ffffff">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ListView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/vaccinelist1"
-                        android:layout_weight="1" />
-
-                    <ListView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/vaccinelist2"
-                        android:layout_weight="1" />
-                </LinearLayout>
-            </LinearLayout>
-
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                layout="@layout/childdetail_vaccine_detail" />
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
 </LinearLayout>

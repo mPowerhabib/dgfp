@@ -65,48 +65,40 @@ public class ChildDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         Context context = Context.getInstance();
         setContentView(R.layout.child_detail_activity);
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView brid = (TextView) findViewById(R.id.brid);
-//        TextView parentsname = (TextView) findViewById(R.id.parentsname);
-        TextView age = (TextView) findViewById(R.id.age);
-        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
-        TextView village = (TextView) findViewById(R.id.ward);
-
-        ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-        name.setText(humanize((childclient.getColumnmaps().get("Member_Fname") != null ? childclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));
-
-        brid.setText(getString(R.string.BRID) +humanize((childclient.getDetails().get("BRID") != null ? childclient.getDetails().get("BRID") : "").replace("+", "_")));
-
-//        parentsname.setText(getString(R.string.child_details_parents_name_label) +(childclient.getDetails().get("C_Guardian_Name_Father") != null ? childclient.getDetails().get("C_Guardian_Name_Father") : ""));
-        age.setText(getString(R.string.elco_age_label) + (childclient.getColumnmaps().get("Age") != null ? childclient.getColumnmaps().get("Age") : ""));
-       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (childclient.getColumnmaps().get("Member_GOB_HHID") != null ? childclient.getColumnmaps().get("Member_GOB_HHID") : ""));
-//        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
-
-
-        village.setText(humanize(childclient.getDetails().get("Member_WARD") != null ? childclient.getDetails().get("Member_WARD") : ""));
+        TextView name = (TextView) findViewById(R.id.child_detail_name_field);
+        TextView brid = (TextView) findViewById(R.id.child_detail_brid_nid_field);
+        TextView fathername = (TextView) findViewById(R.id.child_detail_fathername_field);
+        TextView mothername = (TextView) findViewById(R.id.child_detail_mothername_field);
+        TextView epicarno = (TextView) findViewById(R.id.child_detail_epicard_field);
+        TextView birthdate = (TextView) findViewById(R.id.child_detail_birthdate_field);
+        TextView contactno = (TextView) findViewById(R.id.child_detail_contactno_field);
+        TextView address = (TextView) findViewById(R.id.child_detail_address_field);
 
 
 
-        final ImageView householdview = (ImageView) findViewById(R.id.householdprofileview);
+//        TextView age = (TextView) findViewById(R.id.age);
+//        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
+//        TextView village = (TextView) findViewById(R.id.ward);
+//
+//        ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//
+        name.setText(humanize((childclient.getColumnmaps().get("Member_Fname") != null ? childclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));//
+        brid.setText((childclient.getDetails().get("Member_BRID") != null ? childclient.getDetails().get("Member_BRID") : "").replace("+", "_"));//
+        fathername.setText((childclient.getDetails().get("Child_father_name") != null ? childclient.getDetails().get("Child_father_name") : ""));
+        mothername.setText((childclient.getDetails().get("Child_mother_name") != null ? childclient.getDetails().get("Child_mother_name") : ""));
+        epicarno.setText((childclient.getDetails().get("epi_card_number") != null ? childclient.getDetails().get("epi_card_number") : ""));
+        birthdate.setText((childclient.getDetails().get("Child_birth_date") != null ? childclient.getDetails().get("Child_birth_date") : ""));
+        contactno.setText((childclient.getDetails().get("contact_phone_number") != null ? childclient.getDetails().get("contact_phone_number") : ""));
+        address.setText((childclient.getDetails().get("HH_Address") != null ? childclient.getDetails().get("HH_Address") : ""));
 
-        if (childclient.getDetails().get("profilepic") != null) {
-            setImagetoHolder(this, childclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
-        }
-//        TextView lmp  = (TextView)findViewById(R.id.dateofbirth);
-//        lmp.setText(childclient.getDetails().get("DoB")!=null?childclient.getDetails().get("DoB"):"not available");
 
 
-        ListView vaccinelist1 = (ListView)findViewById(R.id.vaccinelist1);
-        vaccinelist1.setAdapter(new childVaccineDetailAdapter(this,dummyChildView1()));
-        ListView vaccinelist2 = (ListView)findViewById(R.id.vaccinelist2);
-        vaccinelist2.setAdapter(new childVaccineDetailAdapter(this,dummyChildView2()));
 
 
 
@@ -281,7 +273,7 @@ public class ChildDetailActivity extends Activity {
                vaccinestate.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_yellow));
            }
 
-           return null;
+           return convertView;
        }
 
 

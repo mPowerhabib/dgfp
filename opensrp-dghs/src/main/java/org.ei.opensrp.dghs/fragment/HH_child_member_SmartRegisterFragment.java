@@ -347,7 +347,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
         countqueryBUilder.joinwithALerts("members", "FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details like '%\"Is_NewBorn\":\"1\"%' ");
+        countSelect = countqueryBUilder.mainCondition(" details like '%\"Is_child\":\"1\"%' ");
         Sortqueries = sortByAlertmethod();
 
         CountExecute();
@@ -356,7 +356,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "Age", "Member_GOB_HHID", "Marital_Status", "Pregnancy_Status"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details like '%\"Is_NewBorn\":\"1\"%' ");
+        mainSelect = queryBUilder.mainCondition(" details like '%\"Is_child\":\"1\"%' ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
