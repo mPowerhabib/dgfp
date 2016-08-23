@@ -68,6 +68,15 @@ public class WomanDetailActivity extends Activity {
         TextView godhhid = (TextView) findViewById(R.id.gobhhid);
         TextView village = (TextView) findViewById(R.id.ward);
 
+        //VACCINES INFORMATION/////////////////////////////////////////////////
+        TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
+        TextView tt2TextView =(TextView) findViewById(R.id.womandetail_tt2);
+        TextView tt3TextView =(TextView) findViewById(R.id.womandetail_tt3);
+        TextView tt4TextView =(TextView) findViewById(R.id.womandetail_tt4);
+        TextView tt5TextView =(TextView) findViewById(R.id.womandetail_tt5);
+        ///////////////////////////////////////////////////////////////////////
+
+
         ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
