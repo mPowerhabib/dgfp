@@ -61,9 +61,42 @@
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
-                android:id="@+id/name" />
+                android:id="@+id/name"
+                android:textColor="@color/pnc_circle_red"
+                android:singleLine="false"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="Medium Text"
+                    android:textSize="12sp"
+                    android:id="@+id/father_name"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="Medium Text"
+                    android:textSize="12sp"
+                    android:id="@+id/husband_name"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -74,46 +107,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
+                    style="@style/CustomFontTextViewStyle.noPadding"
                     android:textSize="12sp"
-                    android:id="@+id/maritalstatus"/>
+                    android:id="@+id/maritalstatus"
+                    android:textStyle="normal" />
 
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
+                    style="@style/CustomFontTextViewStyle.noPadding"
                     android:textSize="12sp"
-                    android:id="@+id/pregnancystatus" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <org.ei.opensrp.view.customControls.CustomFontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
-                    android:text="Medium Text"
-                    android:textColor="@color/light_blue"
-                    android:textSize="12sp"
-                    android:id="@+id/gobhhid" />
-
-
-
-
+                    android:id="@+id/coupleno"
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
-                android:textSize="14sp"
-                android:id="@+id/village" />
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:textSize="12sp"
+                android:id="@+id/village"
+                android:textStyle="normal" />
         </LinearLayout>
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -144,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
+            style="@style/CustomFontTextViewStyle.ListView.Small.NoPadding"
             android:id="@+id/nid"
             android:layout_marginTop="3dp"
             android:layout_marginLeft="10dp"
@@ -153,7 +169,7 @@
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
+            style="@style/CustomFontTextViewStyle.ListView.Small.NoPadding"
             android:text="New Text"
             android:id="@+id/brid"
             android:layout_marginLeft="10dp"
@@ -161,9 +177,9 @@
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
+            style="@style/CustomFontTextViewStyle.ListView.Small.NoPadding"
             android:text="New Text"
-            android:id="@+id/bdh"
+            android:id="@+id/hid"
             android:layout_marginLeft="10dp"
             android:textSize="12sp" />
     </LinearLayout>
@@ -173,30 +189,6 @@
             android:layout_height="fill_parent"
             android:src="@color/smart_register_client_divider_color"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.5"
-        android:layout_gravity="center" >
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
-            android:id="@+id/lmp" />
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
-            android:id="@+id/edd" />
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
-            android:id="@+id/ga" />
-    </LinearLayout>
     <ImageView
         android:layout_width="@dimen/smart_register_client_divider_height"
         android:layout_height="fill_parent"
@@ -393,6 +385,21 @@
         android:layout_width="@dimen/smart_register_client_divider_height"
         android:layout_height="fill_parent"
         android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.5"
+        android:layout_gravity="center" >
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.ListView.VerySmall"
+            android:id="@+id/pvf" />
+
+    </LinearLayout>
 
     <ImageView
             android:layout_width="@dimen/smart_register_client_divider_height"

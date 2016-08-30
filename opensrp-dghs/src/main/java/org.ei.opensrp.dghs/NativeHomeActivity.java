@@ -150,7 +150,7 @@ public class NativeHomeActivity extends SecuredActivity {
         hhcountcursor.moveToFirst();
         hhcount= hhcountcursor.getInt(0);
         hhcountcursor.close();
-        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_TT\":\"1\"%' "));
+        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_woman\":\"1\"%' "));
         elcocountcursor.moveToFirst();
         womancount= elcocountcursor.getInt(0);
         elcocountcursor.close();

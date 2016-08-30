@@ -70,17 +70,17 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         ImageView profilepic = (ImageView)itemView.findViewById(R.id.profilepic);
         TextView name = (TextView)itemView.findViewById(R.id.name);
+        TextView father_name = (TextView)itemView.findViewById(R.id.father_name);
+        TextView husband_name = (TextView)itemView.findViewById(R.id.husband_name);
         TextView maritalstatus = (TextView)itemView.findViewById(R.id.maritalstatus);
-        TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
-        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
+        TextView coupleno = (TextView)itemView.findViewById(R.id.coupleno);
+//        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
         TextView village = (TextView)itemView.findViewById(R.id.village);
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView nid = (TextView)itemView.findViewById(R.id.nid);
         TextView brid = (TextView)itemView.findViewById(R.id.brid);
-        TextView hid = (TextView)itemView.findViewById(R.id.bdh);
-        TextView edd = (TextView)itemView.findViewById(R.id.edd);
-        TextView lmp = (TextView)itemView.findViewById(R.id.lmp);
-        TextView ga = (TextView)itemView.findViewById(R.id.ga);
+        TextView hid = (TextView)itemView.findViewById(R.id.hid);
+
 //        TextView psrfdue = (TextView)itemView.findViewById(R.id.psrf_due_date);
 ////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
 //
@@ -92,19 +92,21 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
         name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
-        gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
+        coupleno.setText(" C: "+(pc.getDetails().get("Couple_No")!=null?pc.getDetails().get("Couple_No"):""));
+        father_name.setText("F: " + (pc.getDetails().get("Father_name")!=null?pc.getDetails().get("Father_name"):""));
+        husband_name.setText("H: " + (pc.getDetails().get("Husband_name")!=null?pc.getDetails().get("Husband_name"):""));
         hid.setText("BDH :" + (pc.getDetails().get("HID")!=null?pc.getDetails().get("HID"):""));
 
-        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
-        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
+//        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
+//        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
 
-        String gestationalage = pc.getDetails().get("GA")!=null?pc.getDetails().get("GA"):"";
-        if(!gestationalage.equalsIgnoreCase("")) {
-            ga.setText("GA :" + gestationalage + " weeks");
-        }else{
-            ga.setText("GA : Unavailabe" );
-
-        }
+//        String gestationalage = pc.getDetails().get("GA")!=null?pc.getDetails().get("GA"):"";
+//        if(!gestationalage.equalsIgnoreCase("")) {
+//            ga.setText("GA :" + gestationalage + " weeks");
+//        }else{
+//            ga.setText("GA : Unavailabe" );
+//
+//        }
 
         if(pc.getDetails().get("profilepic")!= null) {
             HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
@@ -112,25 +114,22 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
             profilepic.setImageResource(R.drawable.woman_placeholder);
         }
         if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
-            maritalstatus.setText("Unmarried");
-            pregnancystatus.setText("");
+            maritalstatus.setText("M: Unmarried");
         }
         else if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("2")){
-            maritalstatus.setText("Married");
-            pregnancystatus.setText("");
+            maritalstatus.setText("M: Married");
         }else if ((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("3")){
-            maritalstatus.setText("Divorced/Widow/Widower");
-            pregnancystatus.setText("");
+            maritalstatus.setText("M: Divorced/Widow/Widower");
         }
-
-        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
-            pregnancystatus.setText(",Not Pregnant");
-        }
-        else if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("1")){
-            pregnancystatus.setText(",Pregnant");
-        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
-            pregnancystatus.setText("");
-        }
+//
+//        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
+//            pregnancystatus.setText(",Not Pregnant");
+//        }
+//        else if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("1")){
+//            pregnancystatus.setText(",Pregnant");
+//        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
+//            pregnancystatus.setText("");
+//        }
              village.setText(humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
 
 

@@ -61,12 +61,12 @@ public class WomanDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         Context context = Context.getInstance();
         setContentView(R.layout.woman_detail_activity);
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView brid = (TextView) findViewById(R.id.brid);
-        TextView husbandname = (TextView) findViewById(R.id.husbandname);
-        TextView age = (TextView) findViewById(R.id.age);
-        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
-        TextView village = (TextView) findViewById(R.id.ward);
+        TextView name = (TextView) findViewById(R.id.womandetail_name);
+        TextView brid = (TextView) findViewById(R.id.womandetail_womanid);
+        TextView husbandname = (TextView) findViewById(R.id.womandetail_husbandname);
+//        TextView age = (TextView) findViewById(R.id.age);
+//        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
+//        TextView village = (TextView) findViewById(R.id.ward);
 
         //VACCINES INFORMATION/////////////////////////////////////////////////
         TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
@@ -87,15 +87,15 @@ public class WomanDetailActivity extends Activity {
 
         name.setText(humanize((womanclient.getColumnmaps().get("Member_Fname") != null ? womanclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));
 
-        brid.setText(getString(R.string.BRID) +humanize((womanclient.getDetails().get("BRID") != null ? womanclient.getDetails().get("BRID") : "").replace("+", "_")));
+        brid.setText(humanize((womanclient.getDetails().get("Member_BRID") != null ? womanclient.getDetails().get("Member_BRID") : "").replace("+", "_")));
 
-        husbandname.setText(getString(R.string.elco_details_husband_name_label)+(womanclient.getDetails().get("Guardian_Name_Hus") != null ? womanclient.getDetails().get("Guardian_Name_Hus") : ""));
-        age.setText(getString(R.string.elco_age_label) + (womanclient.getColumnmaps().get("Age") != null ? womanclient.getColumnmaps().get("Age") : ""));
-       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (womanclient.getColumnmaps().get("Member_GOB_HHID") != null ? womanclient.getColumnmaps().get("Member_GOB_HHID") : ""));
+        husbandname.setText((womanclient.getDetails().get("Husband_name") != null ? womanclient.getDetails().get("Husband_name") : ""));
+//        age.setText(getString(R.string.elco_age_label) + (womanclient.getColumnmaps().get("Age") != null ? womanclient.getColumnmaps().get("Age") : ""));
+//       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (womanclient.getColumnmaps().get("Member_GOB_HHID") != null ? womanclient.getColumnmaps().get("Member_GOB_HHID") : ""));
 //        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
 
 
-        village.setText(humanize(womanclient.getDetails().get("Member_WARD") != null ? womanclient.getDetails().get("Member_WARD") : ""));
+//        village.setText(humanize(womanclient.getDetails().get("Member_WARD") != null ? womanclient.getDetails().get("Member_WARD") : ""));
 
 
 
@@ -104,52 +104,52 @@ public class WomanDetailActivity extends Activity {
         if (womanclient.getDetails().get("profilepic") != null) {
             setImagetoHolder(this, womanclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
-        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
-        lmp.setText(womanclient.getDetails().get("LMP")!=null?womanclient.getDetails().get("LMP"):"not available");
+//        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
+//        lmp.setText(womanclient.getDetails().get("LMP")!=null?womanclient.getDetails().get("LMP"):"not available");
 
-        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
-        LinearLayout tt1layout = (LinearLayout)findViewById(R.id.tt1_layout);
-        LinearLayout tt2layout = (LinearLayout)findViewById(R.id.tt2_layout);
-        LinearLayout tt3layout = (LinearLayout)findViewById(R.id.tt3layout);
-        LinearLayout tt4layout = (LinearLayout)findViewById(R.id.tt4layout);
-        LinearLayout tt5layout = (LinearLayout)findViewById(R.id.tt5layout);
-
-        if(!(womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView tt1_text = (TextView)findViewById(R.id.tt1date);
-            tt1_text.setText((womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):""));
-        }else{
-            tt1layout.setVisibility(View.GONE);
-        }
-        if(!(womanclient.getDetails().get("TT2_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView tt2_text = (TextView)findViewById(R.id.tt2date);
-            tt2_text.setText((womanclient.getDetails().get("TT2_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT2_Date_of_Vaccination"):""));
-        }else{
-            tt2layout.setVisibility(View.GONE);
-        }
-        if(!(womanclient.getDetails().get("TT3_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView tt3_text = (TextView)findViewById(R.id.tt3);
-            tt3_text.setText((womanclient.getDetails().get("TT3_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT3_Date_of_Vaccination"):""));
-        }else{
-            tt3layout.setVisibility(View.GONE);
-        }
-        if(!(womanclient.getDetails().get("TT4_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT4_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView tt4_text = (TextView)findViewById(R.id.tt4);
-            tt4_text.setText((womanclient.getDetails().get("TT4_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT4_Date_of_Vaccination"):""));
-        }else{
-            tt4layout.setVisibility(View.GONE);
-        }
-        if(!(womanclient.getDetails().get("TT5_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT5_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView tt5_text = (TextView)findViewById(R.id.tt5);
-            tt5_text.setText((womanclient.getDetails().get("TT5_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT5_Date_of_Vaccination"):""));
-        }else{
-            tt5layout.setVisibility(View.GONE);
-        }
-        if(!(womanclient.getDetails().get("measles_Date_of_Vaccination")!=null?womanclient.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            TextView measles = (TextView)findViewById(R.id.measles_date);
-            measles.setText((womanclient.getDetails().get("measles_Date_of_Vaccination")!=null?womanclient.getDetails().get("measles_Date_of_Vaccination"):""));
-        }else{
-            measleslayout.setVisibility(View.GONE);
-        }
+//        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
+//        LinearLayout tt1layout = (LinearLayout)findViewById(R.id.tt1_layout);
+//        LinearLayout tt2layout = (LinearLayout)findViewById(R.id.tt2_layout);
+//        LinearLayout tt3layout = (LinearLayout)findViewById(R.id.tt3layout);
+//        LinearLayout tt4layout = (LinearLayout)findViewById(R.id.tt4layout);
+//        LinearLayout tt5layout = (LinearLayout)findViewById(R.id.tt5layout);
+//
+//        if(!(womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView tt1_text = (TextView)findViewById(R.id.tt1date);
+//            tt1_text.setText((womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):""));
+//        }else{
+//            tt1layout.setVisibility(View.GONE);
+//        }
+//        if(!(womanclient.getDetails().get("TT2_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView tt2_text = (TextView)findViewById(R.id.tt2date);
+//            tt2_text.setText((womanclient.getDetails().get("TT2_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT2_Date_of_Vaccination"):""));
+//        }else{
+//            tt2layout.setVisibility(View.GONE);
+//        }
+//        if(!(womanclient.getDetails().get("TT3_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView tt3_text = (TextView)findViewById(R.id.tt3);
+//            tt3_text.setText((womanclient.getDetails().get("TT3_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT3_Date_of_Vaccination"):""));
+//        }else{
+//            tt3layout.setVisibility(View.GONE);
+//        }
+//        if(!(womanclient.getDetails().get("TT4_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT4_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView tt4_text = (TextView)findViewById(R.id.tt4);
+//            tt4_text.setText((womanclient.getDetails().get("TT4_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT4_Date_of_Vaccination"):""));
+//        }else{
+//            tt4layout.setVisibility(View.GONE);
+//        }
+//        if(!(womanclient.getDetails().get("TT5_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT5_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView tt5_text = (TextView)findViewById(R.id.tt5);
+//            tt5_text.setText((womanclient.getDetails().get("TT5_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT5_Date_of_Vaccination"):""));
+//        }else{
+//            tt5layout.setVisibility(View.GONE);
+//        }
+//        if(!(womanclient.getDetails().get("measles_Date_of_Vaccination")!=null?womanclient.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
+//            TextView measles = (TextView)findViewById(R.id.measles_date);
+//            measles.setText((womanclient.getDetails().get("measles_Date_of_Vaccination")!=null?womanclient.getDetails().get("measles_Date_of_Vaccination"):""));
+//        }else{
+//            measleslayout.setVisibility(View.GONE);
+//        }
 
 
 
@@ -166,45 +166,24 @@ public class WomanDetailActivity extends Activity {
 
     }
 
-    private void eddlay(CommonPersonObjectClient ancclient) {
-        TextView edd = (TextView)findViewById(R.id.lmp_date);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date edd_date = format.parse(ancclient.getColumnmaps().get("FWPSRLMP")!=null?ancclient.getColumnmaps().get("FWPSRLMP"):"");
-            GregorianCalendar calendar = new GregorianCalendar();
-            calendar.setTime(edd_date);
-            calendar.add(Calendar.DATE, 259);
-            edd_date.setTime(calendar.getTime().getTime());
-            edd.setText(format.format(edd_date));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//    private void eddlay(CommonPersonObjectClient ancclient) {
+//        TextView edd = (TextView)findViewById(R.id.lmp_date);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        try {
+//            Date edd_date = format.parse(ancclient.getColumnmaps().get("FWPSRLMP")!=null?ancclient.getColumnmaps().get("FWPSRLMP"):"");
+//            GregorianCalendar calendar = new GregorianCalendar();
+//            calendar.setTime(edd_date);
+//            calendar.add(Calendar.DATE, 259);
+//            edd_date.setTime(calendar.getTime().getTime());
+//            edd.setText(format.format(edd_date));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
-    }
 
 
-    private void checkAnc1view(CommonPersonObjectClient ecclient) {
-        LinearLayout anc1layout = (LinearLayout)findViewById(R.id.measles_layout);
-        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_1");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWANC1DATE")!=null){
-//            alerttextstatus = setAlertStatus("ANC1",alertlist);
-            for(int i = 0;i<alertlist.size();i++){
-                String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWANC1DATE")!=null?ecclient.getDetails().get("FWANC1DATE"):"";
-                TextView anc1date = (TextView)findViewById(R.id.measles_date);
-                if((ecclient.getDetails().get("anc1_current_formStatus")!=null?ecclient.getDetails().get("anc1_current_formStatus"):"").equalsIgnoreCase("upcoming")){
-                    anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("anc1_current_formStatus")!=null?ecclient.getDetails().get("anc1_current_formStatus"):"").equalsIgnoreCase("urgent")){
-                    anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
-                }
-                anc1date.setText(text);
-
-            }
-        }else{
-            anc1layout.setVisibility(View.GONE);
-        }
-
-    }
 
     String mCurrentPhotoPath;
 
