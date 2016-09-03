@@ -125,7 +125,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
 
 //
-         gobhhid.setText(pc.getDetails().get("GOB_HHID")!=null?pc.getDetails().get("GOB_HHID"):"");
+         gobhhid.setText(pc.getDetails().get("HHID")!=null?pc.getDetails().get("HHID"):"");
          age.setText(pc.getDetails().get("HoH_Age")!=null?pc.getDetails().get("HoH_Age"):"");
          nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
          brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
@@ -133,7 +133,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
          bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-         village.setText((humanize((pc.getDetails().get("existing_Ward")!=null?pc.getDetails().get("existing_Ward"):"").replace("+","_"))));
+         village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_"))));
          headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
         Date lastdate = null;
 
@@ -153,8 +153,8 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
                 }
             });
-//            due_visit_date.setOnClickListener(onClickListener);
-//            due_visit_date.setTag(smartRegisterClient);
+            due_visit_date.setOnClickListener(onClickListener);
+            due_visit_date.setTag(smartRegisterClient);
 
         }
         for(int i = 0;i<alertlist_for_client.size();i++){

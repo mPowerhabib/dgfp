@@ -212,14 +212,14 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         countqueryBUilder.SelectInitiateMainTableCounts("household");
         countqueryBUilder.joinwithALerts("household","FW CENSUS");
         Sortqueries = sortByAlertmethod();
-        countSelect = countqueryBUilder.mainCondition(" HoH_FName is not null ");
+        countSelect = countqueryBUilder.mainCondition(" HoH_Fname is not null ");
         CountExecute();
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("household", new String[]{"relationalid", "details","HoH_FName","HHID"});
         queryBUilder.joinwithALerts("household","FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" HoH_FName is not null ");
+        mainSelect = queryBUilder.mainCondition(" HoH_Fname is not null ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
@@ -287,7 +287,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         return "";
     }
     private String householdSortByName() {
-        return " HoH_FName COLLATE NOCASE ASC";
+        return " HoH_Fname COLLATE NOCASE ASC";
     }
     private String householdSortByGOBHHID(){
         return "CAST(HHID AS INTEGER) ASC";

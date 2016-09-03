@@ -73,6 +73,10 @@
         "bind": "/model/instance/HHMemberReg/WARD"
       },
       {
+        "name": "BLOCK",
+        "bind": "/model/instance/HHMemberReg/BLOCK"
+      },
+      {
         "name": "COUNTRY",
         "bind": "/model/instance/HHMemberReg/COUNTRY"
       },
@@ -242,6 +246,10 @@
           {
             "name": "Member_WARD",
             "bind": "/model/instance/HHMemberReg/HH_Member/Member_WARD"
+          },
+          {
+            "name": "Member_BLOCK",
+            "bind": "/model/instance/HHMemberReg/HH_Member/Member_BLOCK"
           },
           {
             "name": "Member_Address_line",
@@ -860,8 +868,8 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/Is_child"
           },
           {
-            "name": "PVF",
-            "bind": "/model/instance/HHMemberReg/HH_Member/PVF"
+            "name": "Is_preg_outcome",
+            "bind": "/model/instance/HHMemberReg/HH_Member/Is_preg_outcome"
           }
         ]
       }
