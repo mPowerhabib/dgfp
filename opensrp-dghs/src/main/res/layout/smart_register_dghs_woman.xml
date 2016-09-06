@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            style="@style/CustomFontTextViewStyle.noPadding"
             android:text="00"
             android:id="@+id/age"
             android:gravity="right"

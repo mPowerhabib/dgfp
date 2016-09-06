@@ -91,7 +91,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
-            age.setText(pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
+            age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");
             maritalstatus.setVisibility(View.GONE);
             if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.child_boy_infant);
@@ -110,9 +110,9 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             unique_id_string = unique_id_string + " / " + "BDH : "+ (pc.getDetails().get("HID") != null ? pc.getDetails().get("HID") : "");
 
             uniqueid.setText(unique_id_string);
-            age.setText(pc.getColumnmaps().get("Age") != null ? pc.getColumnmaps().get("Age") : "");
+            age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? pc.getColumnmaps().get("calc_age_confirm") : "");
 //            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
-            if ((pc.getDetails().get("Is_TT") != null ? pc.getDetails().get("Is_TT") : "").equalsIgnoreCase("1")) {
+            if ((pc.getDetails().get("Is_woman") != null ? pc.getDetails().get("Is_woman") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.woman_placeholder);
                 newborn_or_fp.setText("Family Planning");
             } else {

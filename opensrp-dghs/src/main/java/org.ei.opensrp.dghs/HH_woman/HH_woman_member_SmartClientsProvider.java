@@ -81,7 +81,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         TextView brid = (TextView)itemView.findViewById(R.id.brid);
         TextView hid = (TextView)itemView.findViewById(R.id.hid);
 
-//        TextView psrfdue = (TextView)itemView.findViewById(R.id.psrf_due_date);
+        TextView pvfdue = (TextView)itemView.findViewById(R.id.pvf);
 ////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
 //
 //        ImageButton follow_up = (ImageButton)itemView.findViewById(R.id.btn_edit);
@@ -113,12 +113,16 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         }else{
             profilepic.setImageResource(R.drawable.woman_placeholder);
         }
-        if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
+        maritalstatus.setText(pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"");
+
+
+        if(((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"")).equalsIgnoreCase("1")){
             maritalstatus.setText("M: Unmarried");
         }
-        else if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("2")){
+        if((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("2")){
             maritalstatus.setText("M: Married");
-        }else if ((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("3")){
+        }
+        if ((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("3")){
             maritalstatus.setText("M: Divorced/Widow/Widower");
         }
 //
@@ -133,9 +137,16 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
              village.setText("W: "+humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
 
 
-        age.setText(pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
+        age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");
         nid.setText("NID :" +(pc.getDetails().get("NID")!=null?pc.getDetails().get("NID"):""));
         brid.setText("BRID :" +(pc.getDetails().get("BRID")!=null?pc.getDetails().get("BRID"):""));
+
+
+
+        List<Alert> BNFalertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_BNF");
+        bnfButton(BNFalertlist_for_client,pvfdue,pc);
+
+
 
 //        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //        try {
@@ -158,6 +169,58 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
         itemView.setLayoutParams(clientViewLayoutParams);
+    }
+
+    private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, CommonPersonObjectClient pc) {
+        if(bnFalertlist_for_client.size() == 0 ){
+            pvfdue.setText("Not Synced to Server");
+            pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            pvfdue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            pvfdue.setOnClickListener(onClickListener);
+            pvfdue.setTag(pc);
+
+        }
+        for(int i = 0;i<bnFalertlist_for_client.size();i++){
+            pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
+            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
+                pvfdue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
+            }
+            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
+                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                pvfdue.setOnClickListener(onClickListener);
+                pvfdue.setTag(pc);
+
+            }
+            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
+                pvfdue.setOnClickListener(onClickListener);
+                pvfdue.setTag(pc);
+                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+            }
+            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
+                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                pvfdue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }
+            if(bnFalertlist_for_client.get(i).isComplete()){
+                pvfdue.setText("visited");
+                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+            }
+        }
     }
 
     private void contstructNextVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {

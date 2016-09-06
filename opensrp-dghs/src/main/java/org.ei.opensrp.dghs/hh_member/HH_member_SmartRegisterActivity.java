@@ -184,7 +184,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
             if (entityId != null || metaData != null){
                 String data = null;
                 //check if there is previously saved data for the form
-                data = getPreviouslySavedDataForForm(formName, metaData, entityId);
+//                data = getPreviouslySavedDataForForm(formName, metaData, entityId);
                 if (data == null){
                     data = FormUtils.getInstance(getApplicationContext()).generateXMLInputForFormWithEntityId(entityId, formName, metaData);
                 }
@@ -222,7 +222,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
                     if (displayFormFragment != null) {
                         displayFormFragment.hideTranslucentProgressDialog();
                         displayFormFragment.setFormData(null);
-                        displayFormFragment.loadFormData();
+//                        displayFormFragment.loadFormData();
                     }
 
                     displayFormFragment.setRecordId(null);

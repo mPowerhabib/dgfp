@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.ListView.Medium.NoPadding"
                 android:text="Medium Text"
                 android:id="@+id/householdheadname"
                 android:textSize="16sp" />
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="Medium Text"
                 android:id="@+id/gobhhid"
                 android:textColor="@color/light_blue"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="Medium Text"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:id="@+id/village"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -66,10 +66,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            style="@style/CustomFontTextViewStyle.noPadding"
             android:text="00"
             android:id="@+id/txt_age"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -100,19 +100,19 @@
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/nid"
-                    style="@style/CustomFontTextViewStyle.ListView.Medium" />
+                    style="@style/CustomFontTextViewStyle.noPadding" />
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/brid"
-                    style="@style/CustomFontTextViewStyle.ListView.Medium" />
+                    style="@style/CustomFontTextViewStyle.noPadding" />
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/bdh"
-                    style="@style/CustomFontTextViewStyle.ListView.Medium" />
+                    style="@style/CustomFontTextViewStyle.noPadding" />
             </LinearLayout>
         </FrameLayout>
 
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:id="@+id/mobile_no"
                 android:layout_marginLeft="5dp" />
         </FrameLayout>
@@ -170,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:id="@+id/last_visit_date"
                 android:layout_marginLeft="5dp" />
         </FrameLayout>
@@ -205,7 +205,7 @@
                     android:text="New Button"
                     android:id="@+id/next_visit_date"
                     android:maxLines="10"
-                    style="@style/CustomFontTextViewStyle.ListView.Medium"
+                    style="@style/CustomFontTextViewStyle.noPadding"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1" />
             </LinearLayout>

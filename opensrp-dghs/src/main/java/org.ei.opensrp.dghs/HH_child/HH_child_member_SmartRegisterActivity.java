@@ -310,7 +310,7 @@ public class HH_child_member_SmartRegisterActivity extends SecuredNativeSmartReg
         if (currentActivityIsShowingForm()){
             DisplayFormFragment formFragment = getDisplayFormFragmentAtIndex(currentPage);
             formFragment.saveCurrentFormData();
-        }
+         }
     }
 
     private boolean currentActivityIsShowingForm(){

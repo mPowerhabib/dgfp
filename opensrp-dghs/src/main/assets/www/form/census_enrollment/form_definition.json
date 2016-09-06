@@ -246,8 +246,8 @@
             "bind": "/model/instance/NewMemberRegistration/HH_Member/epi_card_number"
           },
           {
-            "name": "Marital_Status",
-            "bind": "/model/instance/NewMemberRegistration/HH_Member/Marital_Status"
+            "name": "Marital_status",
+            "bind": "/model/instance/NewMemberRegistration/HH_Member/Marital_status"
           },
           {
             "name": "Couple_No",
