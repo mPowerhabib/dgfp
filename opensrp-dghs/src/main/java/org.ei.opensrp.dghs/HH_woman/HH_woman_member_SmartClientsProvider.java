@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -82,7 +83,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         TextView hid = (TextView)itemView.findViewById(R.id.hid);
 
         TextView pvfdue = (TextView)itemView.findViewById(R.id.pvf);
-////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
+        TextView vaccinebutton = (TextView)itemView.findViewById(R.id.next_vaccine_date);
 //
 //        ImageButton follow_up = (ImageButton)itemView.findViewById(R.id.btn_edit);
         profileinfolayout.setOnClickListener(onClickListener);
@@ -148,6 +149,12 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
 
+
+
+        vaccineButton(pc,vaccinebutton);
+
+
+
 //        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 //        try {
 //            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
@@ -171,16 +178,22 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
+    private void vaccineButton(CommonPersonObjectClient pc, TextView vaccinebutton) {
+        vaccinebutton.setOnClickListener(onClickListener);
+        vaccinebutton.setTag(pc);
+
+    }
+
     private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, CommonPersonObjectClient pc) {
         if(bnFalertlist_for_client.size() == 0 ){
             pvfdue.setText("Not Synced to Server");
             pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            pvfdue.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+//            pvfdue.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
             pvfdue.setOnClickListener(onClickListener);
             pvfdue.setTag(pc);
 

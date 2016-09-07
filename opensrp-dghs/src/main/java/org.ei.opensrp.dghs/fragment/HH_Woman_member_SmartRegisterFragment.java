@@ -229,12 +229,12 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                     startActivity(intent);
                     break;
                 case R.id.next_vaccine_date:
-                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity((String)view.getTag(R.id.formname), ((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId(), null);
+                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("woman_tt_form",((CommonPersonObjectClient) view.getTag()).entityId() , null);
                     break;
                 case R.id.pvf:
                     ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("pregnancy_status_birth_notification", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
-//                    Log.v("do as you will", (String) view.getTag(R.id.textforAncRegister));
+                    Log.v("do as you will", "button was click");
 
                     break;
             }
