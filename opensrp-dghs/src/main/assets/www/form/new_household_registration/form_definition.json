@@ -548,6 +548,26 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt_5_dose_today"
           },
           {
+            "name": "tt1_final",
+            "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt1_final"
+          },
+          {
+            "name": "tt2_final",
+            "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt2_final"
+          },
+          {
+            "name": "tt3_final",
+            "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt3_final"
+          },
+          {
+            "name": "tt4_final",
+            "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt4_final"
+          },
+          {
+            "name": "tt5_final",
+            "bind": "/model/instance/HHMemberReg/HH_Member/WomanInfo/tt5_final"
+          },
+          {
             "name": "Child_birth_date_known",
             "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/Child_birth_date_known"
           },
@@ -858,6 +878,62 @@
           {
             "name": "measles2_dose_today",
             "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/measles2_dose_today"
+          },
+          {
+            "name": "final_bcg",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_bcg"
+          },
+          {
+            "name": "final_opv0",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv0"
+          },
+          {
+            "name": "final_pcv1",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv1"
+          },
+          {
+            "name": "final_opv1",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv1"
+          },
+          {
+            "name": "final_penta1",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta1"
+          },
+          {
+            "name": "final_pcv2",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv2"
+          },
+          {
+            "name": "final_opv2",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv2"
+          },
+          {
+            "name": "final_penta2",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta2"
+          },
+          {
+            "name": "final_pcv3",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv3"
+          },
+          {
+            "name": "final_opv3",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv3"
+          },
+          {
+            "name": "final_penta3",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta3"
+          },
+          {
+            "name": "final_ipv",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_ipv"
+          },
+          {
+            "name": "final_measles1",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_measles1"
+          },
+          {
+            "name": "final_measles2",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_measles2"
           },
           {
             "name": "Is_woman",
