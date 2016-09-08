@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.ei.opensrp.commonregistry.AllCommonsRepository;
+import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
@@ -169,7 +171,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         constructRiskFlagView(pc,itemView);
 //        constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
 //        constructNBNFDueBlock(pc, itemView);
-//        constructvaccineVisitStatusBlock(pc, itemView);
+        constructvaccineVisitStatusBlock(pc, itemView);
 //        contstructNextVaccinedateBlock(pc,itemView);
 
 
@@ -268,54 +270,70 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
     }
 
-    private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, CommonPersonObjectClient pc) {
-        if(bnFalertlist_for_client.size() == 0 ){
-            pvfdue.setText("Not Synced to Server");
-            pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+    private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, final CommonPersonObjectClient pc) {
+        if((pc.getDetails().get("Woman_vital_status")!=null?pc.getDetails().get("Woman_vital_status"):"").equalsIgnoreCase("3")){
+            pvfdue.setText("Launch Birth outcome Form");
+            pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            pvfdue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AllCommonsRepository allchildRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+                    CommonPersonObject childobject = allchildRepository.findByCaseID(pc.entityId());
+                    AllCommonsRepository houserep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
+                    final CommonPersonObject householdObject = houserep.findByCaseID(childobject.getRelationalId());
+                    ((HH_woman_member_SmartRegisterActivity)((Activity)context)).startFormActivity("birthoutcome",householdObject.getCaseId() , null);
+
+                }
+            });
+        }else {
+            if (bnFalertlist_for_client.size() == 0) {
+                pvfdue.setText("Not Synced to Server");
+                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 //            pvfdue.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
 //
 //                }
 //            });
-            pvfdue.setOnClickListener(onClickListener);
-            pvfdue.setTag(pc);
-
-        }
-        for(int i = 0;i<bnFalertlist_for_client.size();i++){
-            pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
-            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                pvfdue.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
-            }
-            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                 pvfdue.setOnClickListener(onClickListener);
                 pvfdue.setTag(pc);
 
             }
-            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                pvfdue.setOnClickListener(onClickListener);
-                pvfdue.setTag(pc);
-                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
-            }
-            if(bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
-                pvfdue.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            for (int i = 0; i < bnFalertlist_for_client.size(); i++) {
+                pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
+                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
+                    pvfdue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                    }
-                });
-            }
-            if(bnFalertlist_for_client.get(i).isComplete()){
-                pvfdue.setText("visited");
-                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                        }
+                    });
+                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
+                }
+                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
+                    pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                    pvfdue.setOnClickListener(onClickListener);
+                    pvfdue.setTag(pc);
+
+                }
+                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
+                    pvfdue.setOnClickListener(onClickListener);
+                    pvfdue.setTag(pc);
+                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+                }
+                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
+                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                    pvfdue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }
+                if (bnFalertlist_for_client.get(i).isComplete()) {
+                    pvfdue.setText("visited");
+                    pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                }
             }
         }
     }
@@ -370,38 +388,16 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     }
 
     private void constructvaccineVisitStatusBlock(CommonPersonObjectClient pc, View itemview) {
-        TextView tt1tick = (TextView)itemview.findViewById(R.id.tt1tick);
-        TextView tt1text = (TextView)itemview.findViewById(R.id.tt1text);
-        TextView tt2tick = (TextView)itemview.findViewById(R.id.tt2tick);
-        TextView tt2text = (TextView)itemview.findViewById(R.id.tt2text);
-        TextView tt3tick = (TextView)itemview.findViewById(R.id.tt3tick);
-        TextView tt3text = (TextView)itemview.findViewById(R.id.tt3text);
-        TextView tt4tick = (TextView)itemview.findViewById(R.id.tt4tick);
-        TextView tt4text = (TextView)itemview.findViewById(R.id.tt4text);
-        TextView tt5tick = (TextView)itemview.findViewById(R.id.tt5tick);
-        TextView tt5text = (TextView)itemview.findViewById(R.id.tt5text);
-        TextView measlestick = (TextView)itemview.findViewById(R.id.measlestick);
-        TextView measlestext = (TextView)itemview.findViewById(R.id.measlestext);
+
+        TextView lastvaccinestick = (TextView)itemview.findViewById(R.id.measlestick);
+        TextView lastvaccinetext = (TextView)itemview.findViewById(R.id.lastvaccinetext);
 
 
 
-        tt1text.setVisibility(View.INVISIBLE);
-        tt1tick.setVisibility(View.INVISIBLE);
 
-        tt2text.setVisibility(View.INVISIBLE);
-        tt2tick.setVisibility(View.INVISIBLE);
 
-        tt3text.setVisibility(View.INVISIBLE);
-        tt3tick.setVisibility(View.INVISIBLE);
-
-        tt4text.setVisibility(View.INVISIBLE);
-        tt4tick.setVisibility(View.INVISIBLE);
-
-        tt5text.setVisibility(View.INVISIBLE);
-        tt5tick.setVisibility(View.INVISIBLE);
-
-        measlestext.setVisibility(View.INVISIBLE);
-        measlestick.setVisibility(View.INVISIBLE);
+        lastvaccinetext.setVisibility(View.INVISIBLE);
+        lastvaccinestick.setVisibility(View.INVISIBLE);
 
 
 
@@ -409,36 +405,32 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
 
-        if(!(pc.getDetails().get("TT5_Date_of_Vaccination")!=null?pc.getDetails().get("TT5_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            tt5tick.setVisibility(View.VISIBLE);
-            tt5text.setVisibility(View.VISIBLE);
-            tt5text.setText("TT5-"+ pc.getDetails().get("TT5_Date_of_Vaccination"));
+        if(!(pc.getDetails().get("tt1_final")!=null?pc.getDetails().get("tt1_final"):"").equalsIgnoreCase("")){
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText("TT1-"+ pc.getDetails().get("tt1_final"));
         }
-        if(!(pc.getDetails().get("TT4_Date_of_Vaccination")!=null?pc.getDetails().get("TT4_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            tt4tick.setVisibility(View.VISIBLE);
-            tt4text.setVisibility(View.VISIBLE);
-            tt4text.setText("TT4-" + pc.getDetails().get("TT4_Date_of_Vaccination"));
+        else if(!(pc.getDetails().get("tt2_final")!=null?pc.getDetails().get("tt2_final"):"").equalsIgnoreCase("")){
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText("TT2-" + pc.getDetails().get("tt2_final"));
         }
-        if(!(pc.getDetails().get("TT3_Date_of_Vaccination")!=null?pc.getDetails().get("TT3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            tt3tick.setVisibility(View.VISIBLE);
-            tt3text.setVisibility(View.VISIBLE);
-            tt3text.setText("TT3-" + pc.getDetails().get("TT3_Date_of_Vaccination"));
+        else if(!(pc.getDetails().get("tt3_final")!=null?pc.getDetails().get("tt3_final"):"").equalsIgnoreCase("")){
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText("TT3-" + pc.getDetails().get("tt3_final"));
         }
-        if(!(pc.getDetails().get("TT2_Date_of_Vaccination")!=null?pc.getDetails().get("TT2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            tt2tick.setVisibility(View.VISIBLE);
-            tt2text.setVisibility(View.VISIBLE);
-            tt2text.setText("TT2-" + pc.getDetails().get("TT2_Date_of_Vaccination"));
+        else if(!(pc.getDetails().get("tt4_final")!=null?pc.getDetails().get("tt4_final"):"").equalsIgnoreCase("")){
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText("TT4-" + pc.getDetails().get("tt4_final"));
         }
-        if(!(pc.getDetails().get("TT1_Date_of_Vaccination")!=null?pc.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            tt1tick.setVisibility(View.VISIBLE);
-            tt1text.setVisibility(View.VISIBLE);
-            tt1text.setText("TT1-" + pc.getDetails().get("TT1_Date_of_Vaccination"));
+        else if(!(pc.getDetails().get("tt5_final")!=null?pc.getDetails().get("tt5_final"):"").equalsIgnoreCase("")){
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText("TT5-" + pc.getDetails().get("tt5_final"));
         }
-        if(!(pc.getDetails().get("measles_Date_of_Vaccination")!=null?pc.getDetails().get("measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            measlestick.setVisibility(View.VISIBLE);
-            measlestext.setVisibility(View.VISIBLE);
-            measlestext.setText("Measles-" + pc.getDetails().get("measles_Date_of_Vaccination"));
-        }
+
 
 
     }

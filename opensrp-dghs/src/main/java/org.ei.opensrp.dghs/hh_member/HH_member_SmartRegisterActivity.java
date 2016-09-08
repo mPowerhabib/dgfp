@@ -178,7 +178,7 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
 
     @Override
     public void startFormActivity(String formName, String entityId, String metaData) {
-        Log.v("fieldoverride", metaData);
+//        Log.v("fieldoverride", metaData);
         try {
             int formIndex = FormUtils.getIndexForFormName(formName, formNames) + ((BaseRegisterActivityPagerAdapter)mPagerAdapter).offset; // add the offset
             if (entityId != null || metaData != null){
@@ -306,7 +306,6 @@ public class HH_member_SmartRegisterActivity extends SecuredNativeSmartRegisterA
         formNames.add("new_household_registration");
         formNames.add("census_enrollment");
         formNames.add("general");
-        formNames.add("new_born_information");
         formNames.add("family_planning");
 
 //        DialogOption[] options = getEditOptions();

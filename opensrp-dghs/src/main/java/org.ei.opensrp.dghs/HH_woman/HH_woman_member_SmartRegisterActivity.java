@@ -290,6 +290,7 @@ public class HH_woman_member_SmartRegisterActivity extends SecuredNativeSmartReg
         formNames.add("woman_vaccination_tt4");
         formNames.add("woman_vaccination_tt5");
         formNames.add("pregnancy_status_birth_notification");
+        formNames.add("birthoutcome");
         formNames.add("woman_tt_form");
 //        DialogOption[] options = getEditOptions();
 //        for (int i = 0; i < options.length; i++){

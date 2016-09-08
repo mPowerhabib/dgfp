@@ -2,7 +2,7 @@
   "form_data_definition_version": "1",
   "form": {
     "default_bind_path": "/model/instance/PregnancyStatusAndBirthNotificationFollowup",
-    "bind_type": "member",
+    "bind_type": "members",
     "fields": [
       {
         "name": "id",
