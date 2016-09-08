@@ -96,7 +96,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         coupleno.setText(" C: "+(pc.getDetails().get("Couple_No")!=null?pc.getDetails().get("Couple_No"):""));
         father_name.setText("F: " + (pc.getDetails().get("Father_name")!=null?pc.getDetails().get("Father_name"):""));
         husband_name.setText("H: " + (pc.getDetails().get("Husband_name")!=null?pc.getDetails().get("Husband_name"):""));
-        hid.setText("BDH :" + (pc.getDetails().get("HID")!=null?pc.getDetails().get("HID"):""));
+        hid.setText("HID: " + (pc.getDetails().get("Member_HID")!=null?pc.getDetails().get("Member_HID"):""));
 
 //        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
 //        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
@@ -139,8 +139,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
         age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");
-        nid.setText("NID :" +(pc.getDetails().get("NID")!=null?pc.getDetails().get("NID"):""));
-        brid.setText("BRID :" +(pc.getDetails().get("BRID")!=null?pc.getDetails().get("BRID"):""));
+        nid.setText("NID: " +(pc.getDetails().get("Member_NID")!=null?pc.getDetails().get("Member_NID"):""));
+        brid.setText("BRID: " +(pc.getDetails().get("Member_BRID")!=null?pc.getDetails().get("Member_BRID"):""));
 
 
 
@@ -148,10 +148,10 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         bnfButton(BNFalertlist_for_client,pvfdue,pc);
 
 
+        List<Alert> Vaccinealertlist_for_client = checkAlertListForVaccine(pc);
 
 
-
-        vaccineButton(pc,vaccinebutton);
+        vaccineButton(Vaccinealertlist_for_client,pc,vaccinebutton);
 
 
 
@@ -169,8 +169,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         constructRiskFlagView(pc,itemView);
 //        constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
 //        constructNBNFDueBlock(pc, itemView);
-        constructvaccineVisitStatusBlock(pc, itemView);
-        contstructNextVaccinedateBlock(pc,itemView);
+//        constructvaccineVisitStatusBlock(pc, itemView);
+//        contstructNextVaccinedateBlock(pc,itemView);
 
 
 
@@ -178,9 +178,93 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
-    private void vaccineButton(CommonPersonObjectClient pc, TextView vaccinebutton) {
-        vaccinebutton.setOnClickListener(onClickListener);
-        vaccinebutton.setTag(pc);
+    private List<Alert> checkAlertListForVaccine(CommonPersonObjectClient pc) {
+        List<Alert> Woman_TT1alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT1");
+        List<Alert> Woman_TT2alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT2");
+        List<Alert> Woman_TT3alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT3");
+        List<Alert> Woman_TT4alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT4");
+        List<Alert> Woman_TT5alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT5");
+        if(Woman_TT5alertlist_for_client.size()>0){
+            return Woman_TT5alertlist_for_client;
+        }else if (Woman_TT4alertlist_for_client.size()>0){
+            return Woman_TT4alertlist_for_client;
+        }else if(Woman_TT3alertlist_for_client.size()>0){
+            return Woman_TT3alertlist_for_client;
+        }else if(Woman_TT2alertlist_for_client.size()>0){
+            return Woman_TT2alertlist_for_client;
+        }else {
+            return Woman_TT1alertlist_for_client;
+        }
+
+    }
+
+
+    private void vaccineButton(List<Alert> vaccinealertlist_for_client, CommonPersonObjectClient pc, TextView vaccinebutton) {
+        if(vaccinealertlist_for_client.size() == 0 ){
+            vaccinebutton.setText("Not Synced to Server");
+            vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+//            pvfdue.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
+            vaccinebutton.setOnClickListener(onClickListener);
+            vaccinebutton.setTag(pc);
+
+        }
+        for(int i = 0;i<vaccinealertlist_for_client.size();i++){
+            String Schedulename = vaccinealertlist_for_client.get(i).scheduleName();
+            if(Schedulename.equalsIgnoreCase("Woman_TT1")){
+                vaccinebutton.setText("TT1 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+            }
+            if(Schedulename.equalsIgnoreCase("Woman_TT2")){
+                vaccinebutton.setText("T2 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+            }
+            if(Schedulename.equalsIgnoreCase("Woman_TT3")){
+                vaccinebutton.setText("TT3 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+            }
+            if(Schedulename.equalsIgnoreCase("Woman_TT4")){
+                vaccinebutton.setText("TT4 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+            } if(Schedulename.equalsIgnoreCase("Woman_TT5")){
+                vaccinebutton.setText("TT5 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+            }
+
+//            vaccinebutton.setText(vaccinealertlist_for_client.get(i).expiryDate());
+            if(vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
+                vaccinebutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
+            }
+            if(vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
+                vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                vaccinebutton.setOnClickListener(onClickListener);
+                vaccinebutton.setTag(pc);
+
+            }
+            if(vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
+                vaccinebutton.setOnClickListener(onClickListener);
+                vaccinebutton.setTag(pc);
+                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+            }
+            if(vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
+                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                vaccinebutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }
+            if(vaccinealertlist_for_client.get(i).isComplete()){
+                vaccinebutton.setText("visited");
+                vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+            }
+        }
 
     }
 
