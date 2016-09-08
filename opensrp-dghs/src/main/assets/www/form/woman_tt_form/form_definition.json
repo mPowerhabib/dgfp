@@ -112,29 +112,24 @@
         "bind": "/model/instance/Woman_TT_Followup_Form/existing_contact_phone_number"
       },
       {
-        "name": "tt1",
-        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt1",
-        "shouldLoadValue": true
+        "name": "e_tt1",
+        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt1"
       },
       {
-        "name": "tt2",
-        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt2",
-        "shouldLoadValue": true
+        "name": "e_tt2",
+        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt2"
       },
       {
-        "name": "tt3",
-        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt3",
-        "shouldLoadValue": true
+        "name": "e_tt3",
+        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt3"
       },
       {
-        "name": "tt4",
-        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt4",
-        "shouldLoadValue": true
+        "name": "e_tt4",
+        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt4"
       },
       {
-        "name": "tt5",
-        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt5",
-        "shouldLoadValue": true
+        "name": "e_tt5",
+        "bind": "/model/instance/Woman_TT_Followup_Form/e_tt5"
       },
       {
         "name": "provider_id",
@@ -408,7 +403,28 @@
       {
         "name": "tt_5_dose_today",
         "bind": "/model/instance/Woman_TT_Followup_Form/tt_5_dose_today"
+      },
+      {
+        "name": "tt1_final",
+        "bind": "/model/instance/Woman_TT_Followup_Form/tt1_final"
+      },
+      {
+        "name": "tt2_final",
+        "bind": "/model/instance/Woman_TT_Followup_Form/tt2_final"
+      },
+      {
+        "name": "tt3_final",
+        "bind": "/model/instance/Woman_TT_Followup_Form/tt3_final"
+      },
+      {
+        "name": "tt4_final",
+        "bind": "/model/instance/Woman_TT_Followup_Form/tt4_final"
+      },
+      {
+        "name": "tt5_final",
+        "bind": "/model/instance/Woman_TT_Followup_Form/tt5_final"
       }
+
     ]
   }
 }
