@@ -25,44 +25,54 @@
         "bind": "/model/instance/BirthOutcome/existing_location"
       },
       {
-        "name": "existing_COUNTRY",
-        "bind": "/model/instance/BirthOutcome/existing_COUNTRY"
+        "name": "existing_Country",
+        "bind": "/model/instance/BirthOutcome/existing_COUNTRY",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_DIVISION",
-        "bind": "/model/instance/BirthOutcome/existing_DIVISION"
+        "name": "existing_Division",
+        "bind": "/model/instance/BirthOutcome/existing_DIVISION",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_DISTRICT",
-        "bind": "/model/instance/BirthOutcome/existing_DISTRICT"
+        "name": "existing_District",
+        "bind": "/model/instance/BirthOutcome/existing_DISTRICT",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_UPAZILLA",
-        "bind": "/model/instance/BirthOutcome/existing_UPAZILLA"
+        "name": "existing_Upazilla",
+        "bind": "/model/instance/BirthOutcome/existing_UPAZILLA",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Paurasava",
-        "bind": "/model/instance/BirthOutcome/existing_Paurasava"
+        "bind": "/model/instance/BirthOutcome/existing_Paurasava",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_UNION",
-        "bind": "/model/instance/BirthOutcome/existing_UNION"
+        "name": "existing_Union",
+        "bind": "/model/instance/BirthOutcome/existing_UNION",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_WARD",
-        "bind": "/model/instance/BirthOutcome/existing_WARD"
+        "name": "WARD",
+        "bind": "/model/instance/BirthOutcome/existing_WARD",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Address_line",
-        "bind": "/model/instance/BirthOutcome/existing_Address_line"
+        "name": "ADDRESS_LINE",
+        "bind": "/model/instance/BirthOutcome/existing_Address_line",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_HIE_facilities",
-        "bind": "/model/instance/BirthOutcome/existing_HIE_facilities"
+        "bind": "/model/instance/BirthOutcome/existing_HIE_facilities",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_gps",
-        "bind": "/model/instance/BirthOutcome/existing_gps"
+        "name": "GPS",
+        "bind": "/model/instance/BirthOutcome/existing_gps",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_doo",

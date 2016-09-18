@@ -19,6 +19,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
+import org.ei.opensrp.domain.form.FieldOverrides;
 import org.ei.opensrp.service.AlertService;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
@@ -27,6 +28,8 @@ import org.ei.opensrp.view.dialog.FilterOption;
 import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -271,7 +274,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     }
 
     private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, final CommonPersonObjectClient pc) {
-        if((pc.getDetails().get("Woman_vital_status")!=null?pc.getDetails().get("Woman_vital_status"):"").equalsIgnoreCase("3")){
+        if((pc.getDetails().get("Visit_status")!=null?pc.getDetails().get("Visit_status"):"").equalsIgnoreCase("3")){
             pvfdue.setText("Launch Birth outcome Form");
             pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
             pvfdue.setOnClickListener(new View.OnClickListener() {
@@ -281,7 +284,18 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                     CommonPersonObject childobject = allchildRepository.findByCaseID(pc.entityId());
                     AllCommonsRepository houserep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
                     final CommonPersonObject householdObject = houserep.findByCaseID(childobject.getRelationalId());
-                    ((HH_woman_member_SmartRegisterActivity)((Activity)context)).startFormActivity("birthoutcome",householdObject.getCaseId() , null);
+                    JSONObject overridejsonobject = new JSONObject();
+                    try {
+                        overridejsonobject.put("existing_doo",((pc.getDetails().get("DOO")!=null?pc.getDetails().get("DOO"):"")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
+
+
+
+                    ((HH_woman_member_SmartRegisterActivity)((Activity)context)).startFormActivity("birthoutcome",householdObject.getCaseId() , fieldOverrides.getJSONString());
 
                 }
             });
