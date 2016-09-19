@@ -106,8 +106,10 @@
         "default_bind_path": "/model/instance/NewMemberRegistration/HH_Member",
         "fields": [
           {
-            "name": "id",
-            "shouldLoadValue": true
+            "name": "id"
+          },
+          {
+            "name": "relationalid"
           },
           {
             "name": "Member_COUNTRY",

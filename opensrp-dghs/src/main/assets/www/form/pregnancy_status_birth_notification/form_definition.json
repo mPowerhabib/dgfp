@@ -9,20 +9,24 @@
         "shouldLoadValue": true
       },
       {
-        "name": "existing_woman_name",
-        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_woman_name"
+        "name": "Member_Fname",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_woman_name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_husband_name",
-        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_husband_name"
+        "name": "Husband_name",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_husband_name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_block_no",
-        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_block_no"
+        "name": "Member_BLOCK",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_block_no",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_lmp",
-        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_lmp"
+        "name": "lmp",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_lmp",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_location",

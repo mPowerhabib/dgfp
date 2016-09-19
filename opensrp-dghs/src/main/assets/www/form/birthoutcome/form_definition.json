@@ -94,8 +94,10 @@
         "default_bind_path": "/model/instance/BirthOutcome/Child_Registration",
         "fields": [
           {
-            "name": "id",
-            "shouldLoadValue": true
+            "name": "id"
+          },
+          {
+            "name": "relationalid"
           },
           {
             "name": "Member_COUNTRY",
@@ -190,7 +192,7 @@
             "bind": "/model/instance/BirthOutcome/Child_Registration/Child_last_name"
           },
           {
-            "name": "Child_name_calc",
+            "name": "Member_Fname",
             "bind": "/model/instance/BirthOutcome/Child_Registration/Child_name_calc"
           },
           {
