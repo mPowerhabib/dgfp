@@ -85,6 +85,10 @@
       {
         "name": "Interview_date",
         "bind": "/model/instance/BirthOutcome/Interview_date"
+      },
+      {
+        "name": "outcome_current_formStatus",
+        "bind": "/model/instance/BirthOutcome/outcome_current_formStatus"
       }
     ],
     "sub_forms": [
@@ -466,10 +470,6 @@
           {
             "name": "Is_child",
             "bind": "/model/instance/BirthOutcome/Child_Registration/Is_child"
-          },
-          {
-            "name": "outcome_current_formStatus",
-            "bind": "/model/instance/BirthOutcome/Child_Registration/outcome_current_formStatus"
           }
         ]
       }

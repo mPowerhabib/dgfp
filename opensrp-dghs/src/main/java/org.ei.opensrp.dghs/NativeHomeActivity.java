@@ -13,6 +13,7 @@ import android.widget.Toast;
 import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
+import org.ei.opensrp.dghs.HH_woman.BirthOutcomeHandler;
 import org.ei.opensrp.event.Listener;
 import org.ei.opensrp.service.PendingFormSubmissionService;
 import org.ei.opensrp.sync.SyncAfterFetchListener;
@@ -89,6 +90,8 @@ public class NativeHomeActivity extends SecuredActivity {
         initialize();
         DisplayFormFragment.formInputErrorMessage = getResources().getString(R.string.forminputerror);
         DisplayFormFragment.okMessage = getResources().getString(R.string.okforminputerror);
+        context.formSubmissionRouter().getHandlerMap().put("birthoutcome",new BirthOutcomeHandler());
+
 
 
     }

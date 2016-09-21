@@ -299,6 +299,17 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                 }
             });
+
+            if(((pc.getDetails().get("outcome_current_formStatus")!=null?pc.getDetails().get("outcome_current_formStatus"):"").equalsIgnoreCase("complete"))){
+                pvfdue.setText("Complete");
+                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                pvfdue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+            }
         }else {
             if (bnFalertlist_for_client.size() == 0) {
                 pvfdue.setText("Not Synced to Server");
