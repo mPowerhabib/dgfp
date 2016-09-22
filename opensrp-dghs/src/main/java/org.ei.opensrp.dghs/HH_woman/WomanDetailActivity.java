@@ -62,11 +62,16 @@ public class WomanDetailActivity extends Activity {
         Context context = Context.getInstance();
         setContentView(R.layout.woman_detail_activity);
         TextView name = (TextView) findViewById(R.id.womandetail_name);
-        TextView brid = (TextView) findViewById(R.id.womandetail_womanid);
+        TextView brid = (TextView) findViewById(R.id.womandetail_womabrid);
+        TextView nid = (TextView) findViewById(R.id.womandetail_womanid);
+        TextView hid = (TextView) findViewById(R.id.womandetail_womahid);
         TextView husbandname = (TextView) findViewById(R.id.womandetail_husbandname);
-//        TextView age = (TextView) findViewById(R.id.age);
-//        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
-//        TextView village = (TextView) findViewById(R.id.ward);
+        TextView pregnancystatus = (TextView) findViewById(R.id.womandetail_pregnancystatus);
+        TextView fathersname = (TextView) findViewById(R.id.womandetail_fathers_name);
+        TextView epicardno = (TextView) findViewById(R.id.womandetail_epicardno);
+        TextView womandob = (TextView) findViewById(R.id.womandetail_womandob);
+        TextView address = (TextView) findViewById(R.id.womandetail_address);
+        TextView maritalstatus = (TextView) findViewById(R.id.womandetail_marital_status);
 
         //VACCINES INFORMATION/////////////////////////////////////////////////
         TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
@@ -74,6 +79,13 @@ public class WomanDetailActivity extends Activity {
         TextView tt3TextView =(TextView) findViewById(R.id.womandetail_tt3);
         TextView tt4TextView =(TextView) findViewById(R.id.womandetail_tt4);
         TextView tt5TextView =(TextView) findViewById(R.id.womandetail_tt5);
+        ///////////////////////////////////////////////////////////////////////
+
+        //PREGNANCY INFORMATION/////////////////////////////////////////////////
+        TextView pregnant =(TextView) findViewById(R.id.pregnanctdetail);
+        TextView lmp =(TextView) findViewById(R.id.womandetail_lmp);
+        TextView edd =(TextView) findViewById(R.id.womandetail_edd);
+        TextView ga =(TextView) findViewById(R.id.womandetail_ga);
         ///////////////////////////////////////////////////////////////////////
 
 
@@ -89,7 +101,31 @@ public class WomanDetailActivity extends Activity {
 
         brid.setText(humanize((womanclient.getDetails().get("Member_BRID") != null ? womanclient.getDetails().get("Member_BRID") : "").replace("+", "_")));
 
+        nid.setText(humanize((womanclient.getDetails().get("Member_NID") != null ? womanclient.getDetails().get("Member_NID") : "").replace("+", "_")));
+
+        hid.setText(humanize((womanclient.getDetails().get("Member_HID") != null ? womanclient.getDetails().get("Member_HID") : "").replace("+", "_")));
+
         husbandname.setText((womanclient.getDetails().get("Husband_name") != null ? womanclient.getDetails().get("Husband_name") : ""));
+
+        fathersname.setText((womanclient.getDetails().get("Father_name") != null ? womanclient.getDetails().get("Father_name") : ""));
+
+        epicardno.setText((womanclient.getDetails().get("epi_card_number") != null ? womanclient.getDetails().get("epi_card_number") : ""));
+
+        womandob.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
+
+        address.setText((womanclient.getDetails().get("HH_Address") != null ? womanclient.getDetails().get("HH_Address") : ""));
+
+        if(((womanclient.getColumnmaps().get("Marital_status")!=null?womanclient.getColumnmaps().get("Marital_status"):"")).equalsIgnoreCase("1")){
+            maritalstatus.setText("Unmarried");
+        }
+        if((womanclient.getColumnmaps().get("Marital_status")!=null?womanclient.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("2")){
+            maritalstatus.setText("Married");
+        }
+        if ((womanclient.getColumnmaps().get("Marital_status")!=null?womanclient.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("3")){
+            maritalstatus.setText("Divorced/Widow/Widower");
+        }
+//        number_of_child.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
+
 //        age.setText(getString(R.string.elco_age_label) + (womanclient.getColumnmaps().get("Age") != null ? womanclient.getColumnmaps().get("Age") : ""));
 //       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (womanclient.getColumnmaps().get("Member_GOB_HHID") != null ? womanclient.getColumnmaps().get("Member_GOB_HHID") : ""));
 //        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
@@ -105,7 +141,11 @@ public class WomanDetailActivity extends Activity {
             setImagetoHolder(this, womanclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
 //        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
-//        lmp.setText(womanclient.getDetails().get("LMP")!=null?womanclient.getDetails().get("LMP"):"not available");
+        lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"not available");
+        edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"not available");
+        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga"):"not available");
+
+
 
 //        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
 //        LinearLayout tt1layout = (LinearLayout)findViewById(R.id.tt1_layout);
@@ -116,7 +156,11 @@ public class WomanDetailActivity extends Activity {
 //
 //        if(!(womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
 //            TextView tt1_text = (TextView)findViewById(R.id.tt1date);
-//            tt1_text.setText((womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):""));
+        tt1TextView.setText((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"N/A"));
+        tt2TextView.setText((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"N/A"));
+        tt3TextView.setText((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"N/A"));
+        tt4TextView.setText((womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"N/A"));
+        tt5TextView.setText((womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"N/A"));
 //        }else{
 //            tt1layout.setVisibility(View.GONE);
 //        }

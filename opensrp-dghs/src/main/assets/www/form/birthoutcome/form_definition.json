@@ -89,6 +89,10 @@
       {
         "name": "outcome_current_formStatus",
         "bind": "/model/instance/BirthOutcome/outcome_current_formStatus"
+      },
+      {
+        "name": "current_woman_id",
+        "bind": "/model/instance/BirthOutcome/current_woman_id"
       }
     ],
     "sub_forms": [
@@ -462,6 +466,62 @@
           {
             "name": "measles2_dose_today",
             "bind": "/model/instance/BirthOutcome/Child_Registration/measles2_dose_today"
+          },
+          {
+            "name": "final_bcg",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_bcg"
+          },
+          {
+            "name": "final_opv0",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_opv0"
+          },
+          {
+            "name": "final_pcv1",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_pcv1"
+          },
+          {
+            "name": "final_opv1",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_opv1"
+          },
+          {
+            "name": "final_penta1",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_penta1"
+          },
+          {
+            "name": "final_pcv2",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_pcv2"
+          },
+          {
+            "name": "final_opv2",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_opv2"
+          },
+          {
+            "name": "final_penta2",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_penta2"
+          },
+          {
+            "name": "final_pcv3",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_pcv3"
+          },
+          {
+            "name": "final_opv3",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_opv3"
+          },
+          {
+            "name": "final_penta3",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_penta3"
+          },
+          {
+            "name": "final_ipv",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_ipv"
+          },
+          {
+            "name": "final_measles1",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_measles1"
+          },
+          {
+            "name": "final_measles2",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/final_measles2"
           },
           {
             "name": "add_child",

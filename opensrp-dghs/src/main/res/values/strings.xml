@@ -387,6 +387,7 @@
     <string name="woman_details_title">Woman Details</string>
     <string name="vaccination_summary">Vaccination Summary</string>
     <string name="pvf">PVF</string>
+    <string name="pregnancy_summary">Pregnancy Information</string>
 
 
 </resources>

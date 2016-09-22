@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <BirthOutcome encounter_type="Birth Outcome" id="BirthOutcome" version="201609181226">
+    <BirthOutcome encounter_type="Birth Outcome" id="BirthOutcome" version="201609221048">
       <formhub>
         <uuid/>
       </formhub>
@@ -114,10 +114,25 @@
         <measles1_dose_today openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="ccc5e59d-acba-488c-ae13-f7bfef2a93a1"/>
         <measles2 openmrs_entity_id="6ea323d5-3138-4755-b545-b1f097711507" openmrs_entity_parent="ccc5e59d-acba-488c-ae13-f7bfef2a93a1"/>
         <measles2_dose_today openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="ccc5e59d-acba-488c-ae13-f7bfef2a93a1"/>
+        <final_bcg/>
+        <final_opv0/>
+        <final_pcv1/>
+        <final_opv1/>
+        <final_penta1/>
+        <final_pcv2/>
+        <final_opv2/>
+        <final_penta2/>
+        <final_pcv3/>
+        <final_opv3/>
+        <final_penta3/>
+        <final_ipv/>
+        <final_measles1/>
+        <final_measles2/>
         <add_child/>
         <Is_child/>
       </Child_Registration>
       <outcome_current_formStatus/>
+      <current_woman_id/>
       <meta>
         <instanceID/>
       </meta>

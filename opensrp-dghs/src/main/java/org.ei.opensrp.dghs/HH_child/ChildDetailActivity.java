@@ -74,6 +74,26 @@ public class ChildDetailActivity extends Activity {
         TextView contactno = (TextView) findViewById(R.id.child_detail_contactno_field);
         TextView address = (TextView) findViewById(R.id.child_detail_address_field);
 
+        TextView childdetail_bcg = (TextView) findViewById(R.id.childdetail_bcg);
+        TextView childdetail_opv0 = (TextView) findViewById(R.id.childdetail_opv0);
+        TextView childdetail_pcv1 = (TextView) findViewById(R.id.childdetail_pcv1);
+        TextView childdetail_opv1 = (TextView) findViewById(R.id.childdetail_opv1);
+        TextView childdetail_penta1 = (TextView) findViewById(R.id.childdetail_penta1);
+        TextView childdetail_pcv2 = (TextView) findViewById(R.id.childdetail_pcv2);
+        TextView childdetail_opv2 = (TextView) findViewById(R.id.childdetail_opv2);
+        TextView childdetail_penta2 = (TextView) findViewById(R.id.childdetail_penta2);
+        TextView childdetail_pcv3 = (TextView) findViewById(R.id.childdetail_pcv3);
+        TextView childdetail_opv3 = (TextView) findViewById(R.id.childdetail_opv3);
+        TextView childdetail_penta3 = (TextView) findViewById(R.id.childdetail_penta3);
+        TextView childdetail_ipv= (TextView) findViewById(R.id.childdetail_ipv);
+        TextView childdetail_measles1 = (TextView) findViewById(R.id.childdetail_measles1);
+        TextView childdetail_measles2 = (TextView) findViewById(R.id.childdetail_measles2);
+
+
+
+
+
+
 
 
 //        TextView age = (TextView) findViewById(R.id.age);
@@ -97,10 +117,20 @@ public class ChildDetailActivity extends Activity {
         contactno.setText((childclient.getDetails().get("contact_phone_number") != null ? childclient.getDetails().get("contact_phone_number") : ""));
         address.setText((childclient.getDetails().get("HH_Address") != null ? childclient.getDetails().get("HH_Address") : ""));
 
-
-
-
-
+        childdetail_bcg.setText((childclient.getDetails().get("final_bcg") != null ? childclient.getDetails().get("final_bcg") : ""));
+        childdetail_opv0.setText((childclient.getDetails().get("final_opv0") != null ? childclient.getDetails().get("final_opv0") : ""));
+        childdetail_pcv1.setText((childclient.getDetails().get("final_pcv1") != null ? childclient.getDetails().get("final_pcv1") : ""));
+        childdetail_opv1.setText((childclient.getDetails().get("final_opv1") != null ? childclient.getDetails().get("final_opv1") : ""));
+        childdetail_penta1.setText((childclient.getDetails().get("final_penta1") != null ? childclient.getDetails().get("final_penta1") : ""));
+        childdetail_pcv2.setText((childclient.getDetails().get("final_pcv2") != null ? childclient.getDetails().get("final_pcv2") : ""));
+        childdetail_opv2.setText((childclient.getDetails().get("final_opv2") != null ? childclient.getDetails().get("final_opv2") : ""));
+        childdetail_penta2.setText((childclient.getDetails().get("final_penta2") != null ? childclient.getDetails().get("final_penta2") : ""));
+        childdetail_pcv3.setText((childclient.getDetails().get("final_pcv3") != null ? childclient.getDetails().get("final_pcv3") : ""));
+        childdetail_opv3.setText((childclient.getDetails().get("final_opv3") != null ? childclient.getDetails().get("final_opv3") : ""));
+        childdetail_penta3.setText((childclient.getDetails().get("final_penta3") != null ? childclient.getDetails().get("final_penta3") : ""));
+        childdetail_ipv.setText((childclient.getDetails().get("final_ipv") != null ? childclient.getDetails().get("final_ipv") : ""));
+        childdetail_measles1.setText((childclient.getDetails().get("final_measles1") != null ? childclient.getDetails().get("final_measles1") : ""));
+        childdetail_measles2.setText((childclient.getDetails().get("final_measles2") != null ? childclient.getDetails().get("final_measles2") : ""));
 
     }
     public LinearLayout makevaccinerow (String vaccinename,String vaccinedate){
@@ -110,29 +140,7 @@ public class ChildDetailActivity extends Activity {
 
         return vaccinerow;
     }
-    public vaccineInfo[] dummyChildView1(){
-        vaccineInfo [] vaccineinfos = new vaccineInfo[8];
-        vaccineinfos[0] = new vaccineInfo("BCG","upcoming","28/06/16");
-        vaccineinfos[1] = new vaccineInfo("Penta-1","upcoming","28/06/16");
-        vaccineinfos[2] = new vaccineInfo("Penta-2","upcoming","30/06/16");
-        vaccineinfos[3] = new vaccineInfo("Penta-3","expired","Expired");
-        vaccineinfos[4] = new vaccineInfo("OPV-0","upcoming","28/06/16");
-        vaccineinfos[5] = new vaccineInfo("OPV-1","upcoming","28/06/16");
-        vaccineinfos[6] = new vaccineInfo("OPV-2","upcoming","30/06/16");
-        vaccineinfos[7] = new vaccineInfo("OPV-3","expired","Expired");
-        return vaccineinfos;
-    }
 
-    public vaccineInfo[] dummyChildView2(){
-        vaccineInfo [] vaccineinfos = new vaccineInfo[8];
-        vaccineinfos[0] = new vaccineInfo("IPV","urgent","25/07/16");
-        vaccineinfos[1] = new vaccineInfo("PCV-1","upcoming","25/07/16");
-        vaccineinfos[2] = new vaccineInfo("PCV-2","upcoming","29/06/16");
-        vaccineinfos[3] = new vaccineInfo("PCV-3","urgent","29/06/2016");
-        vaccineinfos[5] = new vaccineInfo("Measles-1","upcoming","25/07/16");
-        vaccineinfos[6] = new vaccineInfo("Measles-2","not yet due","Due : 22/08/16");
-        return vaccineinfos;
-    }
 
     String mCurrentPhotoPath;
 

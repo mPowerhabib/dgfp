@@ -86,9 +86,23 @@
             android:id="@+id/womandetail_vaccination_summary"
             style="@style/CustomFontTextViewStyle.ListView.Medium"
             android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:textColor="@color/text_black"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_weight="1" />
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pregnancy_summary"
+            android:id="@+id/womandetail_pregnancy_summary"
+            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="@color/text_black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

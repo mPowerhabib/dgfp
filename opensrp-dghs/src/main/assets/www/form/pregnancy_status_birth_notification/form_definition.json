@@ -83,6 +83,10 @@
       {
         "name": "pregsts_bnf_current_formStatus",
         "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/pregsts_bnf_current_formStatus"
+      },
+      {
+        "name": "outcome_active",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/outcome_active"
       }
     ]
   }

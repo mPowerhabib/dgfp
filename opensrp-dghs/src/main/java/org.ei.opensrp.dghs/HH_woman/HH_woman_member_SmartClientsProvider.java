@@ -287,6 +287,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                     JSONObject overridejsonobject = new JSONObject();
                     try {
                         overridejsonobject.put("existing_doo",((pc.getDetails().get("DOO")!=null?pc.getDetails().get("DOO"):"")));
+                        overridejsonobject.put("current_woman_id",((pc.getCaseId())));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -300,7 +302,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 }
             });
 
-            if(((pc.getDetails().get("outcome_current_formStatus")!=null?pc.getDetails().get("outcome_current_formStatus"):"").equalsIgnoreCase("complete"))){
+            if(((pc.getDetails().get("outcome_active")!=null?pc.getDetails().get("outcome_active"):"").equalsIgnoreCase("1"))){
                 pvfdue.setText("Complete");
                 pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
                 pvfdue.setOnClickListener(new View.OnClickListener() {

@@ -88,7 +88,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         profilepic.setTag(smartRegisterClient);
 
 
-        if((pc.getDetails().get("Is_NewBorn")!=null?pc.getDetails().get("Is_NewBorn"):"").equalsIgnoreCase("1")){
+        if((pc.getDetails().get("Is_child")!=null?pc.getDetails().get("Is_child"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");

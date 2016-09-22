@@ -21,12 +21,12 @@ public class BirthOutcomeHandler implements FormSubmissionHandler {
     @Override
     public void handle(FormSubmission submission) {
         String entityID = submission.entityId();
-        CommonPersonObject householdobject = Context.getInstance().allCommonsRepositoryobjects("household").findByCaseID(entityID);
-        AllCommonsRepository householdrep = Context.getInstance().allCommonsRepositoryobjects("household");
-        Map<String, String> householdDetails = new HashMap<String, String>();
-        householdDetails.put("outcome_current_formStatus","complete");
+        CommonPersonObject memberobject = Context.getInstance().allCommonsRepositoryobjects("members").findByCaseID(submission.getFieldValue("current_woman_id"));
+        AllCommonsRepository memberrep = Context.getInstance().allCommonsRepositoryobjects("members");
+        Map<String, String> memberDetails = new HashMap<String, String>();
+        memberDetails.put("outcome_active","1");
 //        ElcoDetails.put("FWELIGIBLE",submission.getFieldValue("FWELIGIBLE"));
-        householdrep.mergeDetails(householdobject.getCaseId(),householdDetails);
+        memberrep.mergeDetails(memberobject.getCaseId(),memberDetails);
 //        submission.getFieldValue("ELCO");
     }
 }
