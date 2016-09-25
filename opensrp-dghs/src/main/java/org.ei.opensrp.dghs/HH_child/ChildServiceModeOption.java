@@ -33,7 +33,7 @@ public class ChildServiceModeOption extends ServiceModeOption {
         return new ClientsHeaderProvider() {
             @Override
             public int count() {
-                return 4;
+                return 5;
             }
 
             @Override
@@ -43,13 +43,13 @@ public class ChildServiceModeOption extends ServiceModeOption {
 
             @Override
             public int[] weights() {
-                return new int[]{8,4,5,3};
+                return new int[]{6,3,3,5,3};
             }
 
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.child_dob, R.string.last_vaccine,
+                        R.string.hh_profile, R.string.child_dob,R.string.epi_cardnumber, R.string.last_vaccine,
                         R.string.next_vaccine
                         };
             }

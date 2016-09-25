@@ -25,6 +25,7 @@ import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -209,7 +210,111 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         }
 
     }
+//    "child_bcg";
+//    "child_ipv";
+//    "child_measles";
+//    "child_mr";
+//    "child_opv0";
+//    "child_opv1";
+//    "child_opv2";
+//    "child_opv3";
+//    "child_pcv1";
+//    "child_pcv2";
+//    "child_pcv3";
+//    "child_penta1";
+//    "child_penta2";
+//    "child_penta3";
+    private List<Alert> checkAlertListForVaccine(CommonPersonObjectClient pc) {
+        List<Alert> alerts_to_return = new ArrayList<Alert>();
+        List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg");
+        List<Alert> child_ipv_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_ipv");
+        List<Alert> child_opv0_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_opv0");
+        List<Alert> child_opv1_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_opv1");
+        List<Alert> child_opv2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_opv2");
+        List<Alert> child_opv3_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_opv3");
+        List<Alert> child_pcv1_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_pcv1");
+        List<Alert> child_pcv2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_pcv2");
+        List<Alert> child_pcv3_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_pcv3");
+        List<Alert> child_penta1_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta1");
+        List<Alert> child_penta2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta2");
+        List<Alert> child_penta3_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta3");
+        List<Alert> child_measles_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_measles");
+        List<Alert> child_measles2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_measles2");
 
+        if(child_bcg_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_bcg") != null ? pc.getDetails().get("final_bcg") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_bcg_alertlist_for_client.get(0));
+            }
+        }
+        if(child_ipv_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_ipv") != null ? pc.getDetails().get("final_ipv") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_ipv_alertlist_for_client.get(0));
+            }
+        }
+        if(child_opv0_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_opv0") != null ? pc.getDetails().get("final_opv0") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_opv0_alertlist_for_client.get(0));
+            }
+        }
+        if(child_opv1_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_opv1") != null ? pc.getDetails().get("final_opv1") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_opv1_alertlist_for_client.get(0));
+            }
+        }
+        if(child_opv2_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_opv2_alertlist_for_client.get(0));
+            }
+        }
+        if(child_opv3_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_opv3") != null ? pc.getDetails().get("final_opv3") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_opv3_alertlist_for_client.get(0));
+            }
+        }
+        if(child_pcv1_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_pcv1") != null ? pc.getDetails().get("final_pcv1") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_pcv1_alertlist_for_client.get(0));
+            }
+        }
+        if(child_pcv2_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_pcv2") != null ? pc.getDetails().get("final_pcv2") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_pcv2_alertlist_for_client.get(0));
+            }
+        }
+        if(child_pcv3_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_pcv3") != null ? pc.getDetails().get("final_pcv3") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_pcv3_alertlist_for_client.get(0));
+            }
+        }
+        if(child_penta1_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_penta1") != null ? pc.getDetails().get("final_penta1") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_penta1_alertlist_for_client.get(0));
+            }
+        }
+        if(child_penta2_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_penta2") != null ? pc.getDetails().get("final_penta2") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_penta2_alertlist_for_client.get(0));
+            }
+        }
+        if(child_penta3_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_penta3") != null ? pc.getDetails().get("final_penta3") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_penta3_alertlist_for_client.get(0));
+            }
+        }
+        if(child_measles_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_measles1") != null ? pc.getDetails().get("final_measles1") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_measles_alertlist_for_client.get(0));
+            }
+        }
+        if(child_measles2_alertlist_for_client.size()>0){
+            if((pc.getDetails().get("final_measles2") != null ? pc.getDetails().get("final_measles2") : "").equalsIgnoreCase("")) {
+                alerts_to_return.add(child_measles2_alertlist_for_client.get(0));
+            }
+        }
+
+        return alerts_to_return;
+
+    }
 
 
     private void constructRiskFlagView(CommonPersonObjectClient pc,  View itemView) {
