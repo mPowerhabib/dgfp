@@ -33,6 +33,7 @@ import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.dghs.hh_member.HouseholdCensusDueDateSort;
+import org.ei.opensrp.domain.form.FieldOverrides;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.util.StringUtil;
 import org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity;
@@ -48,6 +49,8 @@ import org.ei.opensrp.view.dialog.EditOption;
 import org.ei.opensrp.view.dialog.FilterOption;
 import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.opensrp.api.domain.Location;
 import org.opensrp.api.util.EntityUtils;
 import org.opensrp.api.util.LocationTree;
@@ -228,7 +231,31 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                     startActivity(intent);
                     break;
                 case R.id.next_vaccine:
-                    ((HH_child_member_SmartRegisterActivity)getActivity()).startFormActivity((String) view.getTag(R.id.formname), ((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId(), null);
+                    CommonPersonObjectClient pc = (CommonPersonObjectClient) view.getTag();
+                    JSONObject overridejsonobject = new JSONObject();
+                    try {
+                        overridejsonobject.put("e_bcg",((pc.getDetails().get("final_bcg")!=null?pc.getDetails().get("tt1_final"):"")));
+                        overridejsonobject.put("e_opv0",((pc.getDetails().get("final_opv0")!=null?pc.getDetails().get("tt2_final"):"")));
+                        overridejsonobject.put("e_penta2",((pc.getDetails().get("final_penta2")!=null?pc.getDetails().get("tt3_final"):"")));
+                        overridejsonobject.put("e_penta1",((pc.getDetails().get("final_penta1")!=null?pc.getDetails().get("tt4_final"):"")));
+                        overridejsonobject.put("e_penta3",((pc.getDetails().get("final_penta3")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_opv1",((pc.getDetails().get("final_opv1")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_opv2",((pc.getDetails().get("final_opv2")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_opv3",((pc.getDetails().get("final_opv3")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_pcv1",((pc.getDetails().get("final_pcv1")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_pcv2",((pc.getDetails().get("final_pcv2")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_pcv3",((pc.getDetails().get("final_pcv3")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_ipv",((pc.getDetails().get("final_ipv")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_measles1",((pc.getDetails().get("final_measles1")!=null?pc.getDetails().get("tt5_final"):"")));
+                        overridejsonobject.put("e_measles2",((pc.getDetails().get("final_measles2")!=null?pc.getDetails().get("tt5_final"):"")));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
+
+                    ((HH_child_member_SmartRegisterActivity)getActivity()).startFormActivity("child_vaccine_followup", ((CommonPersonObjectClient) view.getTag()).entityId(), fieldOverrides.getJSONString());
                     break;
 //                case R.id.anc_reminder_due_date:
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);

@@ -26,6 +26,9 @@ import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -116,116 +119,16 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
+  public boolean isSYnced(CommonPersonObjectClient pc){
+      List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles","child_measles2");
+      if(child_bcg_alertlist_for_client.size()>0){
+          return true;
+      }
+      return false;
+  }
 
-    private void contstructNextVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
-        TextView nextVaccineDate = (TextView)itemView.findViewById(R.id.next_vaccine);
-        nextVaccineDate.setOnClickListener(onClickListener);
-        nextVaccineDate.setTag(pc);
-        if(!(pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
-            nextVaccineDate.setText("Completed");
-            nextVaccineDate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }else if(!(pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("Measles-"+ (pc.getDetails().get("Date_of_Measles")!=null?pc.getDetails().get("Date_of_Measles"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_measles");
-        }else if(!(pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("MR-"+ (pc.getDetails().get("Date_of_MR")!=null?pc.getDetails().get("Date_of_MR"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_mr");
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("IPV-"+ (pc.getDetails().get("Date_of_OPV_Penta_3_IPV")!=null?pc.getDetails().get("Date_of_OPV_Penta_3_IPV"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_ipv");
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("OPV3-"+ (pc.getDetails().get("Date_of_OPV_Penta_3_IPV")!=null?pc.getDetails().get("Date_of_OPV_Penta_3_IPV"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_opv3");
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("OPV2-"+ (pc.getDetails().get("Date_of_OPV_Penta_PCV_2")!=null?pc.getDetails().get("Date_of_OPV_Penta_PCV_2"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_opv2");
-        }else if(!(pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("OPV1-"+ (pc.getDetails().get("Date_of_OPV_Penta_PCV_1")!=null?pc.getDetails().get("Date_of_OPV_Penta_PCV_1"):""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_opv1");
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("PCV1-" + (pc.getDetails().get("Date_of_OPV_Penta_PCV_1") != null ? pc.getDetails().get("Date_of_OPV_Penta_PCV_1") : ""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname,"child_vaccination_pcv1");
-        }else if(!(pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("OPV0-" + (pc.getDetails().get("Date_of_BCG_OPV_0") != null ? pc.getDetails().get("Date_of_BCG_OPV_0") : ""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-            nextVaccineDate.setTag(R.id.formname,"child_vaccination_opv0");
-        }else{
-            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            nextVaccineDate.setText("BCG-" + (pc.getDetails().get("Date_of_BCG_OPV_0") != null ? pc.getDetails().get("Date_of_BCG_OPV_0") : ""));
-            nextVaccineDate.setTag(R.id.clientobject, pc);
-
-            nextVaccineDate.setTag(R.id.formname, "child_vaccination_bcg");
-        }
-
-    }
-
-    private void contstructLastVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
-        TextView nlastVaccineDate = (TextView)itemView.findViewById(R.id.vaccinetext);
-        TextView nlastVaccintick = (TextView)itemView.findViewById(R.id.vaccinetick);
-
-        nlastVaccintick.setVisibility(View.VISIBLE);
-
-        if(!(pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("Measles-" + (pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_Measles_Date_of_Vaccination"):""));
-        }else if(!(pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("MR-" + (pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_MR_Date_of_Vaccination") : ""));
-        }else if(!(pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-           nlastVaccineDate.setText("IPV-" + (pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_IPV_Date_of_Vaccination") : ""));
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("OPV3-" + (pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV3_Date_of_Vaccination") : ""));
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("OPV2-" + (pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV2_Date_of_Vaccination") : ""));
-       }else if(!(pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("OPV1-" + (pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV1_Date_of_Vaccination") : ""));
-        }else if(!(pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("PCV1-" + (pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_PCV1_Date_of_Vaccination") : ""));
-        }else if(!(pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("OPV0-" + (pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_OPV0_Date_of_Vaccination") : ""));
-       }else if(!(pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination")!=null?pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination"):"").equalsIgnoreCase("")){
-            nlastVaccineDate.setText("BCG-" + (pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination") != null ? pc.getDetails().get("ChildVaccination_BCG_Date_of_Vaccination") : ""));
-       }else{
-            nlastVaccineDate.setText("");
-            nlastVaccintick.setVisibility(View.INVISIBLE);
-        }
-
-    }
-//    "child_bcg";
-//    "child_ipv";
-//    "child_measles";
-//    "child_mr";
-//    "child_opv0";
-//    "child_opv1";
-//    "child_opv2";
-//    "child_opv3";
-//    "child_pcv1";
-//    "child_pcv2";
-//    "child_pcv3";
-//    "child_penta1";
-//    "child_penta2";
-//    "child_penta3";
-    private List<Alert> checkAlertListForVaccine(CommonPersonObjectClient pc) {
-        List<Alert> alerts_to_return = new ArrayList<Alert>();
+  private ArrayList<Alert> checkAlertListForVaccine(CommonPersonObjectClient pc) {
+      ArrayList<Alert> alerts_to_return = new ArrayList<Alert>();
         List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg");
         List<Alert> child_ipv_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_ipv");
         List<Alert> child_opv0_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_opv0");
@@ -317,6 +220,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
     }
 
 
+
     private void constructRiskFlagView(CommonPersonObjectClient pc,  View itemView) {
 //        AllCommonsRepository allancRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
 //        CommonPersonObject ancobject = allancRepository.findByCaseID(pc.entityId());
@@ -370,6 +274,152 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
     @Override
     public View inflatelayoutForCursorAdapter() {
         return (ViewGroup) inflater().inflate(R.layout.smart_register_dghs_child_client, null);
+    }
+    private void contstructNextVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
+        TextView nextVaccineDate = (TextView)itemView.findViewById(R.id.next_vaccine);
+        boolean issynced = isSYnced(pc);
+        if(!issynced){
+            nextVaccineDate.setText("Not Synced");
+            nextVaccineDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
+            nextVaccineDate.setOnClickListener(onClickListener);
+            nextVaccineDate.setTag(pc);
+        }else{
+          ArrayList<Alert> alertlist = checkAlertListForVaccine(pc);
+            Collections.sort(alertlist,new Comparator<Alert>() {
+
+                public int compare(Alert alert1, Alert alert2) {
+                    if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
+                        return 0;
+                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("normal")){
+                        return 0;
+                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("upcoming")){
+                        return 0;
+                    }else if(alert1.status().value().equalsIgnoreCase("expired") && alert2.status().value().equalsIgnoreCase("expired")){
+                        return 0;
+                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("normal")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("upcoming")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("expired")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("normal")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("expired")){
+                        return -1;
+                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("expired")){
+                        return -1;
+                    }else{
+                        return 1;
+                    }
+
+
+                }
+            });
+            if(alertlist.size()>0) {
+                String vaccineName = getVaccineName(alertlist);
+                nextVaccineDate.setText(vaccineName);
+                if(alertlist.get(0).status().value().equalsIgnoreCase("upcoming")){
+                    nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                    nextVaccineDate.setOnClickListener(onClickListener);
+                    nextVaccineDate.setTag(pc);
+                }else  if(alertlist.get(0).status().value().equalsIgnoreCase("urgent")){
+                    nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_urgent_red));
+                    nextVaccineDate.setOnClickListener(onClickListener);
+                    nextVaccineDate.setTag(pc);
+                }else  if(alertlist.get(0).status().value().equalsIgnoreCase("normal")){
+                    nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_light_blue));
+                    nextVaccineDate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }else if (alertlist.get(0).status().value().equalsIgnoreCase("expired")){
+                    nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.client_list_header_dark_grey));
+                    nextVaccineDate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+                }
+            }
+
+
+        }
+
+
+
+    }
+
+    private String getVaccineName(ArrayList<Alert> alertlist) {
+       if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_bcg")) {
+            return "BCG";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_ipv")) {
+            return "IPV";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv0")) {
+            return "OPV 0";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv1")) {
+            return "OPV 1";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv2")) {
+            return "OPV 2";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv3")) {
+            return "OPV 3";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv1")) {
+            return "PCV 1";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv2")) {
+            return "PCV 2";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv3")) {
+            return "PCV 3";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta1")) {
+            return "PENTA 1";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta2")) {
+            return "PENTA 2";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta3")) {
+            return "PENTA 3";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles")) {
+            return "MEASLES 1";
+        }
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles2")) {
+            return "MEASLES 2";
+        }
+
+        return "";
+    }
+
+    private void contstructLastVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
+        TextView nlastVaccineDate = (TextView)itemView.findViewById(R.id.vaccinetext);
+        TextView nlastVaccintick = (TextView)itemView.findViewById(R.id.vaccinetick);
+
+        nlastVaccintick.setVisibility(View.VISIBLE);
+        if((pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : "").equalsIgnoreCase("")){
+            nlastVaccineDate.setVisibility(View.INVISIBLE);
+            nlastVaccintick.setVisibility(View.INVISIBLE);
+        }else {
+
+            nlastVaccineDate.setText((pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : ""));
+        }
+
     }
 
     class alertTextandStatus{

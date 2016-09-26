@@ -186,7 +186,8 @@
                 style="@style/CustomFontTextViewStyle.ListView.Small"
                 android:text="pnc1text"
                 android:id="@+id/vaccinetext"
-                android:layout_margin="1dp" />
+                android:layout_margin="1dp"
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>

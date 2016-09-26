@@ -283,15 +283,8 @@ public class HH_child_member_SmartRegisterActivity extends SecuredNativeSmartReg
 
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-        formNames.add("child_vaccination_bcg");
-        formNames.add("child_vaccination_ipv");
-        formNames.add("child_vaccination_measles");
-        formNames.add("child_vaccination_mr");
-        formNames.add("child_vaccination_opv0");
-        formNames.add("child_vaccination_opv1");
-        formNames.add("child_vaccination_opv2");
-        formNames.add("child_vaccination_opv3");
-        formNames.add("child_vaccination_pcv1");
+        formNames.add("child_vaccine_followup");
+
 //        formNames.add("census_enrollment_form");
 //        DialogOption[] options = getEditOptions();
 //        for (int i = 0; i < options.length; i++){

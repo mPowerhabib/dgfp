@@ -140,7 +140,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
 //            pregnancystatus.setText("");
 //        }
-             village.setText("W: "+humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
+             village.setText("W: "+humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")) + ", "+ "B: "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 
 
         age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");
@@ -224,7 +224,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 vaccinebutton.setText("TT1 \n"+vaccinealertlist_for_client.get(i).expiryDate());
             }
             if(Schedulename.equalsIgnoreCase("Woman_TT2")){
-                vaccinebutton.setText("T2 \n"+vaccinealertlist_for_client.get(i).expiryDate());
+                vaccinebutton.setText("TT2 \n"+vaccinealertlist_for_client.get(i).expiryDate());
             }
             if(Schedulename.equalsIgnoreCase("Woman_TT3")){
                 vaccinebutton.setText("TT3 \n"+vaccinealertlist_for_client.get(i).expiryDate());
@@ -437,22 +437,22 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
             lastvaccinetext.setVisibility(View.VISIBLE);
             lastvaccinetext.setText("TT1-"+ pc.getDetails().get("tt1_final"));
         }
-        else if(!(pc.getDetails().get("tt2_final")!=null?pc.getDetails().get("tt2_final"):"").equalsIgnoreCase("")){
+        if(!(pc.getDetails().get("tt2_final")!=null?pc.getDetails().get("tt2_final"):"").equalsIgnoreCase("")){
             lastvaccinestick.setVisibility(View.VISIBLE);
             lastvaccinetext.setVisibility(View.VISIBLE);
             lastvaccinetext.setText("TT2-" + pc.getDetails().get("tt2_final"));
         }
-        else if(!(pc.getDetails().get("tt3_final")!=null?pc.getDetails().get("tt3_final"):"").equalsIgnoreCase("")){
+        if(!(pc.getDetails().get("tt3_final")!=null?pc.getDetails().get("tt3_final"):"").equalsIgnoreCase("")){
             lastvaccinestick.setVisibility(View.VISIBLE);
             lastvaccinetext.setVisibility(View.VISIBLE);
             lastvaccinetext.setText("TT3-" + pc.getDetails().get("tt3_final"));
         }
-        else if(!(pc.getDetails().get("tt4_final")!=null?pc.getDetails().get("tt4_final"):"").equalsIgnoreCase("")){
+        if(!(pc.getDetails().get("tt4_final")!=null?pc.getDetails().get("tt4_final"):"").equalsIgnoreCase("")){
             lastvaccinestick.setVisibility(View.VISIBLE);
             lastvaccinetext.setVisibility(View.VISIBLE);
             lastvaccinetext.setText("TT4-" + pc.getDetails().get("tt4_final"));
         }
-        else if(!(pc.getDetails().get("tt5_final")!=null?pc.getDetails().get("tt5_final"):"").equalsIgnoreCase("")){
+        if(!(pc.getDetails().get("tt5_final")!=null?pc.getDetails().get("tt5_final"):"").equalsIgnoreCase("")){
             lastvaccinestick.setVisibility(View.VISIBLE);
             lastvaccinetext.setVisibility(View.VISIBLE);
             lastvaccinetext.setText("TT5-" + pc.getDetails().get("tt5_final"));

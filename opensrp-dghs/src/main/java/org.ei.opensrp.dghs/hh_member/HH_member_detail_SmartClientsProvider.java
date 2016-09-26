@@ -91,30 +91,33 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         if((pc.getDetails().get("Is_child")!=null?pc.getDetails().get("Is_child"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
-            age.setText(pc.getColumnmaps().get("calc_age_confirm")!=null?pc.getColumnmaps().get("calc_age_confirm"):"");
+            age.setText(pc.getColumnmaps().get("Child_calc_age")!=null?pc.getColumnmaps().get("Child_calc_age"):"");
             maritalstatus.setVisibility(View.GONE);
             if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.child_boy_infant);
 //                newborn_or_fp.setText("Family Planning");
+                newborn_or_fp.setVisibility(View.INVISIBLE);
             } else {
                 profilepic.setImageResource(R.drawable.child_girl_infant);
 //                newborn_or_fp.setVisibility(View.INVISIBLE);
+                newborn_or_fp.setVisibility(View.INVISIBLE);
             }
 //
 
         }else {
             name.setText(pc.getColumnmaps().get("Member_Fname") != null ? pc.getColumnmaps().get("Member_Fname") : "");
 
-            String unique_id_string = "NID : "+ (pc.getDetails().get("NID") != null ? pc.getDetails().get("NID") : "");
-            unique_id_string = unique_id_string + " / " + "BRID : "+ (pc.getDetails().get("BRID") != null ? pc.getDetails().get("BRID") : "");
-            unique_id_string = unique_id_string + " / " + "BDH : "+ (pc.getDetails().get("HID") != null ? pc.getDetails().get("HID") : "");
+            String unique_id_string = "NID : "+ (pc.getDetails().get("Member_NID") != null ? pc.getDetails().get("Member_NID") : "");
+            unique_id_string = unique_id_string + " / " + "BRID : "+ (pc.getDetails().get("Member_BRID") != null ? pc.getDetails().get("Member_BRID") : "");
+            unique_id_string = unique_id_string + " / " + "BDH : "+ (pc.getDetails().get("Member_HID") != null ? pc.getDetails().get("Member_HID") : "");
 
             uniqueid.setText(unique_id_string);
             age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? pc.getColumnmaps().get("calc_age_confirm") : "");
 //            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
             if ((pc.getDetails().get("Is_woman") != null ? pc.getDetails().get("Is_woman") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.woman_placeholder);
-                newborn_or_fp.setText("Family Planning");
+//                newborn_or_fp.setText("Family Planning");
+                newborn_or_fp.setVisibility(View.INVISIBLE);
             } else {
                 profilepic.setImageResource(R.mipmap.household_profile_thumb);
                 newborn_or_fp.setVisibility(View.INVISIBLE);
@@ -126,12 +129,12 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             }
 
 
-            if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("1")){
+            if((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("1")){
                 maritalstatus.setText("Unmarried");
             }
-            else if((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("2")){
+            else if((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("2")){
                 maritalstatus.setText("Married");
-            }else if ((pc.getColumnmaps().get("Marital_Status")!=null?pc.getColumnmaps().get("Marital_Status"):"").equalsIgnoreCase("3")){
+            }else if ((pc.getColumnmaps().get("Marital_status")!=null?pc.getColumnmaps().get("Marital_status"):"").equalsIgnoreCase("3")){
                 maritalstatus.setText("Divorced/Widow/Widower");
             }
         }
