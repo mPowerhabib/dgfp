@@ -60,6 +60,11 @@
         "shouldLoadValue": true
       },
       {
+        "name": "BLOCK",
+        "bind": "/model/instance/BirthOutcome/existing_BLOCK",
+        "shouldLoadValue": true
+      },
+      {
         "name": "ADDRESS_LINE",
         "bind": "/model/instance/BirthOutcome/existing_Address_line",
         "shouldLoadValue": true

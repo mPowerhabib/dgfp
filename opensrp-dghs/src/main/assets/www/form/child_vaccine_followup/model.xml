@@ -1,6 +1,6 @@
 <model>
     <instance>
-        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201609081204">
+        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201609270635">
             <formhub>
                 <uuid/>
             </formhub>
@@ -45,7 +45,7 @@
             <start openmrs_entity="encounter" openmrs_entity_id="encounter_start"/>
             <end openmrs_entity="Concept" openmrs_entity_id="cdec172a-9535-4d21-98a5-72a668b9b22c"/>
             <today openmrs_entity="Concept" openmrs_entity_id="98240c65-7f4e-4099-b4ac-d63e68fd955d"/>
-            <existing_client_reg_date_note openmrs_entity="Concept" openmrs_entity_id="a56af3d8-eb0b-46a0-9a03-504d22fb613d"/>
+            <client_reg_date openmrs_entity="Concept" openmrs_entity_id="a56af3d8-eb0b-46a0-9a03-504d22fb613d"/>
             <epi_card_number_note openmrs_entity="person_attribute" openmrs_entity_id="EPI Card Number"/>
             <first_name_note openmrs_entity="person" openmrs_entity_id="first_name"/>
             <child_age openmrs_entity="Concept" openmrs_entity_id="a04427c9-c616-48c9-8588-5bb96173f56a"/>
@@ -60,11 +60,6 @@
             <child_was_suffering_from_a_disease_at_birth_note openmrs_entity="concept" openmrs_entity_id="081061f8-c5c1-48a7-93f2-88b61a560529"/>
             <side_effects/>
             <contact_phone_number openmrs_entity="person_attribute" openmrs_entity_id="phoneNumber"/>
-            <six_weeks/>
-            <ten_weeks/>
-            <forteen_weeks/>
-            <nine_months/>
-            <fifteen_months/>
             <bcg_note/>
             <opv0_note/>
             <opv1_note/>
@@ -109,7 +104,6 @@
                 <measles2_dose openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="ccc5e59d-acba-488c-ae13-f7bfef2a93a1"/>
             </vaccines_group>
             <vaccines_2 openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="d74f7428-63ec-4d5e-9124-3992e2877df6"/>
-            <vaccination_date openmrs_entity="concept" openmrs_entity_id="e4a96a86-72fb-44df-836f-96ffacb3b5dd" openmrs_entity_parent="4dde7c2a-8a6b-4f7a-a20e-c20df50747ca"/>
             <bcg openmrs_entity="concept" openmrs_entity_id="47e39fbb-03aa-4336-b5e4-14dbfeaa8990" openmrs_entity_parent="c7c769ec-c17f-451f-8d9f-26f09bf22547"/>
             <opv0 openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="c7c769ec-c17f-451f-8d9f-26f09bf22547"/>
             <opv0_dose_today openmrs_entity="concept" openmrs_entity_id="348096f0-9b2b-41be-a49a-cbab27526b1d" openmrs_entity_parent="e0912af7-b820-4008-a6e8-5403c1887835"/>

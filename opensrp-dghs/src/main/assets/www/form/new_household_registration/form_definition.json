@@ -776,164 +776,168 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_group/measles2_dose"
           },
           {
+            "name": "child_vaccines_2",
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2"
+          },
+          {
             "name": "bcg",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/bcg"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/bcg"
           },
           {
             "name": "opv0",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv0"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv0"
           },
           {
             "name": "opv0_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv0_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv0_dose_today"
           },
           {
             "name": "pcv1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv1"
           },
           {
             "name": "pcv1_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv1_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv1_dose_today"
           },
           {
             "name": "opv1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv1"
           },
           {
             "name": "opv1_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv1_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv1_dose_today"
           },
           {
             "name": "penta1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta1"
           },
           {
             "name": "penta1_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta1_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta1_dose_today"
           },
           {
             "name": "pcv2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv2"
           },
           {
             "name": "pcv2_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv2_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv2_dose_today"
           },
           {
             "name": "opv2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv2"
           },
           {
             "name": "opv2_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv2_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv2_dose_today"
           },
           {
             "name": "penta2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta2"
           },
           {
             "name": "penta2_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta2_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta2_dose_today"
           },
           {
             "name": "pcv3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv3"
           },
           {
             "name": "pcv3_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/pcv3_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/pcv3_dose_today"
           },
           {
             "name": "opv3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv3"
           },
           {
             "name": "opv3_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/opv3_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/opv3_dose_today"
           },
           {
             "name": "penta3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta3"
           },
           {
             "name": "penta3_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/penta3_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/penta3_dose_today"
           },
           {
             "name": "ipv",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/ipv"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/ipv"
           },
           {
             "name": "measles1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/measles1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/measles1"
           },
           {
             "name": "measles1_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/measles1_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/measles1_dose_today"
           },
           {
             "name": "measles2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/measles2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/measles2"
           },
           {
             "name": "measles2_dose_today",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/measles2_dose_today"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/measles2_dose_today"
           },
           {
             "name": "final_bcg",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_bcg"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_bcg"
           },
           {
             "name": "final_opv0",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv0"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_opv0"
           },
           {
             "name": "final_pcv1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_pcv1"
           },
           {
             "name": "final_opv1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_opv1"
           },
           {
             "name": "final_penta1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_penta1"
           },
           {
             "name": "final_pcv2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_pcv2"
           },
           {
             "name": "final_opv2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_opv2"
           },
           {
             "name": "final_penta2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_penta2"
           },
           {
             "name": "final_pcv3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_pcv3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_pcv3"
           },
           {
             "name": "final_opv3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_opv3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_opv3"
           },
           {
             "name": "final_penta3",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_penta3"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_penta3"
           },
           {
             "name": "final_ipv",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_ipv"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_ipv"
           },
           {
             "name": "final_measles1",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_measles1"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_measles1"
           },
           {
             "name": "final_measles2",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/child_vaccines_2/final_measles2"
+            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/final_measles2"
           },
           {
             "name": "Is_woman",
