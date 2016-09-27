@@ -73,6 +73,8 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
         TextView village = (TextView)itemView.findViewById(R.id.village);
         TextView dateofbirth = (TextView)itemView.findViewById(R.id.dob_age);
+        TextView epi_card_number = (TextView)itemView.findViewById(R.id.epi_cardnumber);
+
 
 
 
@@ -88,6 +90,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
         childname.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
+        epi_card_number.setText(pc.getDetails().get("epi_card_number")!=null?pc.getDetails().get("epi_card_number"):"");
         parentname.setText(pc.getDetails().get("Guardian_Name_Father")!=null?pc.getDetails().get("C_Guardian_Name_Father"):"");
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
         village.setText(humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
