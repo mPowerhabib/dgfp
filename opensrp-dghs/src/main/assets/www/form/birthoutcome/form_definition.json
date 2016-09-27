@@ -153,6 +153,10 @@
             "bind": "/model/instance/BirthOutcome/Child_Registration/Member_HIE_facilities"
           },
           {
+            "name": "Interview_date",
+            "bind": "/model/instance/BirthOutcome/Child_Registration/Interview_date"
+          },
+          {
             "name": "HH_Address",
             "bind": "/model/instance/BirthOutcome/Child_Registration/HH_Address"
           },

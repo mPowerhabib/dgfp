@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <BirthOutcome encounter_type="Birth Outcome" id="BirthOutcome" version="201609221048">
+    <BirthOutcome encounter_type="Birth Outcome" id="BirthOutcome" version="201609271146">
       <formhub>
         <uuid/>
       </formhub>
@@ -20,7 +20,6 @@
       <existing_HIE_facilities/>
       <existing_gps/>
       <existing_doo/>
-      <Interview_date openmrs_entity="Concept" openmrs_entity_id="a56af3d8-eb0b-46a0-9a03-504d22fb613d"/>
       <Child_Registration template="" openmrs_entity="person" openmrs_entity_id="Child Vital Status">
         <Member_COUNTRY openmrs_entity="person_address" openmrs_entity_id="country"/>
         <Member_DIVISION openmrs_entity="person_address" openmrs_entity_id="stateProvince"/>
@@ -32,6 +31,7 @@
         <Member_BLOCK openmrs_entity="person_address" openmrs_entity_id="address2"/>
         <Member_Address_line openmrs_entity="person_address" openmrs_entity_id="address1"/>
         <Member_HIE_facilities openmrs_entity="person_address" openmrs_entity_id="address6"/>
+        <Interview_date openmrs_entity="Concept" openmrs_entity_id="a56af3d8-eb0b-46a0-9a03-504d22fb613d"/>
         <HH_Address/>
         <Reg_No openmrs_entity="person_attribute" openmrs_entity_id="HOH registration number"/>
         <existing_Unique_ID openmrs_entity="concept" openmrs_entity_id="368ce583-bb94-4b24-aaed-54abf0471c35"/>
