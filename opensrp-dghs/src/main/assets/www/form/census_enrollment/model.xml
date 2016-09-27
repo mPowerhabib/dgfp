@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201609081049">
+    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201609271127">
       <formhub>
         <uuid/>
       </formhub>
@@ -23,7 +23,6 @@
       <subscriberid openmrs_entity="Concept" openmrs_entity_id="2bd5dab3-ac21-4561-ac51-f0e54a0332c7"/>
       <simserial openmrs_entity="Concept" openmrs_entity_id="6d1902a2-4f6c-4a7a-a1ae-496ff748c2e1"/>
       <phonenumber openmrs_entity="Concept" openmrs_entity_id="2b5eda71-8272-45ec-8d42-0b844c81e9da"/>
-      <Date_Of_Reg/>
       <HH_Address/>
       <HH_Member template="" openmrs_entity="person" openmrs_entity_id="New Member Registration">
         <Member_COUNTRY openmrs_entity="person_address" openmrs_entity_id="country"/>
@@ -36,6 +35,7 @@
         <Member_BLOCK openmrs_entity="person_address" openmrs_entity_id="address2"/>
         <Member_Address_line openmrs_entity="person_address" openmrs_entity_id="address1"/>
         <Member_HIE_facilities openmrs_entity="person_address" openmrs_entity_id="address6"/>
+        <Member_Reg_Date/>
         <Member_GPS openmrs_entity="person_address" openmrs_entity_id="geopoint"/>
         <Member_type openmrs_entity="concept" openmrs_entity_id="7110abb0-93af-4078-b7a6-baafa729c76a"/>
         <Reg_No openmrs_entity="person_attribute" openmrs_entity_id="HOH registration number"/>
