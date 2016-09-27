@@ -260,6 +260,10 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/Member_HIE_facilities"
           },
           {
+            "name": "Member_Reg_Date",
+            "bind": "/model/instance/HHMemberReg/HH_Member/Member_Reg_Date"
+          },
+          {
             "name": "Member_GPS",
             "bind": "/model/instance/HHMemberReg/HH_Member/Member_GPS"
           },

@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201609080641">
+    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201609261440">
       <formhub>
         <uuid/>
       </formhub>
@@ -65,6 +65,7 @@
         <Member_BLOCK openmrs_entity="person_address" openmrs_entity_id="address2"/>
         <Member_Address_line openmrs_entity="person_address" openmrs_entity_id="address1"/>
         <Member_HIE_facilities openmrs_entity="person_address" openmrs_entity_id="address6"/>
+        <Member_Reg_Date/>
         <Member_GPS openmrs_entity="person_address" openmrs_entity_id="geopoint"/>
         <HH_Address/>
         <Member_type openmrs_entity="concept" openmrs_entity_id="7110abb0-93af-4078-b7a6-baafa729c76a"/>
