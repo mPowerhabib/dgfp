@@ -91,12 +91,13 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
         childname.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
         epi_card_number.setText(pc.getDetails().get("epi_card_number")!=null?pc.getDetails().get("epi_card_number"):"");
-        parentname.setText(pc.getDetails().get("Guardian_Name_Father")!=null?pc.getDetails().get("C_Guardian_Name_Father"):"");
+        parentname.setText(pc.getDetails().get("Child_mother_name")!=null?pc.getDetails().get("Child_mother_name"):"");
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
-        village.setText(humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")));
+        gobhhid.setVisibility(View.INVISIBLE);
+        village.setText((humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")))+", "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
-        String dataofbirth = (pc.getDetails().get("DoB")!=null?pc.getDetails().get("DoB"):"") + "\n";
-        dataofbirth = dataofbirth + "age : " + (pc.getColumnmaps().get("Age")!=null?pc.getColumnmaps().get("Age"):"");
+        String dataofbirth = (pc.getDetails().get("Child_dob")!=null?pc.getDetails().get("Child_dob"):"") + "\n";
+        dataofbirth = dataofbirth + "age : " + ((pc.getDetails().get("Child_age_days")!=null?pc.getDetails().get("Child_age_days"):"") + "days");
         dateofbirth.setText(dataofbirth);
 
         if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
@@ -415,6 +416,8 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView nlastVaccintick = (TextView)itemView.findViewById(R.id.vaccinetick);
 
         nlastVaccintick.setVisibility(View.VISIBLE);
+        nlastVaccineDate.setVisibility(View.VISIBLE);
+
         if((pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : "").equalsIgnoreCase("")){
             nlastVaccineDate.setVisibility(View.INVISIBLE);
             nlastVaccintick.setVisibility(View.INVISIBLE);

@@ -25,7 +25,7 @@ public class WomanServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.search_register);
+       return Context.getInstance().getStringResource(R.string.woman_register_label);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class WomanServiceModeOption extends ServiceModeOption {
             public int[] headerTextResourceIds() {
                 return new int[]{
                         R.string.hh_profile, R.string.elco_unique_id, R.string.last_vaccine,
-                        R.string.next_vaccine,R.string.pvf
+                        R.string.next_vaccine,R.string.bnf
                         };
             }
         };

@@ -115,8 +115,8 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbymarried),filterStringFormarried()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbyUnmarried),filterStringForunmarried()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbywidowed),filterStringForwidow()));
-                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbypregnant),filterStringForpregnant()));
-                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbynotpregnant),filterStringFornotpregnant()));
+//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbypregnant),filterStringForpregnant()));
+//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbynotpregnant),filterStringFornotpregnant()));
 
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc2),filterStringForANCRV2()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc3),filterStringForANCRV3()));
@@ -148,10 +148,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 //                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.elco_alphabetical_sort),sortByFWWOMFNAME()),
-                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_marital_status),sortByMaritalStatus()),
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_edd_label),sortByEDD()),
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_pregnancy_status),sortByPregnancyStatus())
+                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_marital_status),sortByMaritalStatus())
 //
 //
 //                        new CommonObjectSort(true,false,true,"age")
@@ -387,16 +384,16 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
     }
     private String sortByage(){
-        return " Age ASC";
+        return " calc_age_confirm ASC";
     }
     private String sortByFWWOMFNAME(){
         return " Member_Fname COLLATE NOCASE ASC";
     }
     private String sortByMaritalStatus(){
-        return " CASE WHEN Marital_Status = '2' THEN '1'"
+        return " CASE WHEN Marital_status = '2' THEN '1'"
                 +
-                "WHEN Marital_Status = '1' THEN '2'\n" +
-                "WHEN Marital_Status = '3' THEN '3'\n" +
+                "WHEN Marital_status = '1' THEN '2'\n" +
+                "WHEN Marital_status = '3' THEN '3'\n" +
                 "Else '10' END ASC";
     }
     private String sortByPregnancyStatus(){
@@ -410,10 +407,10 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return " EDD ASC";
     }
     private String filterStringFormarried(){
-        return "and Marital_Status = '2'";
+        return "and Marital_status = '2'";
     }
     private String filterStringForunmarried(){
-        return "and Marital_Status = '1'";
+        return "and Marital_status = '1'";
     }
     private String filterStringForwidow(){
         return "and Marital_Status = '3'";

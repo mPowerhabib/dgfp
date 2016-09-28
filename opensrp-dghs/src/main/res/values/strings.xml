@@ -389,6 +389,7 @@
     <string name="pvf">PVF</string>
     <string name="pregnancy_summary">Pregnancy Information</string>
     <string name="epi_cardnumber">EPI Card No</string>
+    <string name="bnf">BNF</string>
 
 
 </resources>

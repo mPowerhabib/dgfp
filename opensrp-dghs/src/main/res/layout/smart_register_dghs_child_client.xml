@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="Medium Text"
                 android:id="@+id/child_name" />
 
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="Medium Text"
                 android:textSize="12sp"
                 android:id="@+id/parent_name" />
@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    style="@style/CustomFontTextViewStyle.ListView.Small"
+                    style="@style/CustomFontTextViewStyle.noPadding"
                     android:text="Medium Text"
                     android:textColor="@color/light_blue"
                     android:textSize="12sp"
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="Medium Text"
                 android:textSize="14sp"
                 android:id="@+id/village" />
@@ -116,18 +116,18 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:layout_gravity="center">
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            style="@style/CustomFontTextViewStyle.ListView.Medium.TwoLine"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
             android:id="@+id/dob_age"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginLeft="2dp" />
 
     </LinearLayout>
 
@@ -145,11 +145,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Text"
-            style="@style/CustomFontTextViewStyle.ListView.Medium.TwoLine"
+            style="@style/CustomFontTextViewStyle.noPadding"
             android:id="@+id/epi_cardnumber"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginLeft="2dp" />
     </LinearLayout>
 
     <ImageView
@@ -161,7 +161,7 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="2.5"
+        android:layout_weight="2"
         android:layout_gravity="center" >
 
         <LinearLayout
