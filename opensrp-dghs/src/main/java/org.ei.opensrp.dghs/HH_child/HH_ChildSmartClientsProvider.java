@@ -283,6 +283,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView nextVaccineDate = (TextView)itemView.findViewById(R.id.next_vaccine);
         boolean issynced = isSYnced(pc);
         if(!issynced){
+            nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.client_list_header_dark_grey));
             nextVaccineDate.setText("Not Synced");
             nextVaccineDate.setOnClickListener(new View.OnClickListener() {
                 @Override
