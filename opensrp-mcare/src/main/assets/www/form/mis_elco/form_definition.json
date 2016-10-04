@@ -17,6 +17,56 @@
         "bind": "/model/instance/MIS_ELCO/changes"
       },
       {
+        "name": "FWWOMMAUZA_PARA",
+        "bind": "/model/instance/MIS_ELCO/existing_mauzapara",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "GOBHHID",
+        "bind": "/model/instance/MIS_ELCO/existing_gobhhid",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "JiVitAHHID",
+        "bind": "/model/instance/MIS_ELCO/existing_jivhhid",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWWOMFNAME",
+        "bind": "/model/instance/MIS_ELCO/existing_first_name",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWHUSNAME",
+        "bind": "/model/instance/MIS_ELCO/existing_husname",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWWOMNID",
+        "bind": "/model/instance/MIS_ELCO/existing_wom_nid",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWWOMBID",
+        "bind": "/model/instance/MIS_ELCO/existing_wom_bid",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWWOMAGE",
+        "bind": "/model/instance/MIS_ELCO/existing_wom_age",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "ELCO",
+        "bind": "/model/instance/MIS_ELCO/existing_ELCO",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "existing_location",
+        "bind": "/model/instance/MIS_ELCO/existing_location",
+        "shouldLoadValue": true
+      },
+      {
         "name": "today",
         "bind": "/model/instance/MIS_ELCO/today"
       },
@@ -35,6 +85,46 @@
       {
         "name": "FWPMISBIRTHCTRL",
         "bind": "/model/instance/MIS_ELCO/FWPMISBIRTHCTRL"
+      },
+      {
+        "name": "FWMISINJGIVENDATE",
+        "bind": "/model/instance/MIS_ELCO/FWMISINJGIVENDATE"
+      },
+      {
+        "name": "FWMISINJNEXTDATECALC",
+        "bind": "/model/instance/MIS_ELCO/FWMISINJNEXTDATECALC"
+      },
+      {
+        "name": "FWMISINJNEXTDATE",
+        "bind": "/model/instance/MIS_ELCO/FWMISINJNEXTDATE"
+      },
+      {
+        "name": "FWMISPMDATE",
+        "bind": "/model/instance/MIS_ELCO/FWMISPMDATE"
+      },
+      {
+        "name": "FWMISPILLGIVENNO",
+        "bind": "/model/instance/MIS_ELCO/FWMISPILLGIVENNO"
+      },
+      {
+        "name": "FWMISPILLGIVENDATE",
+        "bind": "/model/instance/MIS_ELCO/FWMISPILLGIVENDATE"
+      },
+      {
+        "name": "FWMISCONDGIVENNO",
+        "bind": "/model/instance/MIS_ELCO/FWMISCONDGIVENNO"
+      },
+      {
+        "name": "FWMISCONDGIVENDATE",
+        "bind": "/model/instance/MIS_ELCO/FWMISCONDGIVENDATE"
+      },
+      {
+        "name": "FWMISOPT",
+        "bind": "/model/instance/MIS_ELCO/FWMISOPT"
+      },
+      {
+        "name": "FWMISIMPT",
+        "bind": "/model/instance/MIS_ELCO/FWMISIMPT"
       },
       {
         "name": "FWMISBCSOURCE",
