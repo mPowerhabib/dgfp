@@ -34,6 +34,66 @@
         "bind": "/model/instance/MIS_Census/end"
       },
       {
+        "name": "ELCO",
+        "bind": "/model/instance/MIS_Census/existing_ELCO",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "GOBHHID",
+        "bind": "/model/instance/MIS_Census/existing_GOBHHID",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "JiVitAHHID",
+        "bind": "/model/instance/MIS_Census/existing_JiVitAHHID",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWCOUNTRY",
+        "bind": "/model/instance/MIS_Census/FWCOUNTRY",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWDIVISION",
+        "bind": "/model/instance/MIS_Census/existing_FWDIVISION",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWDISTRICT",
+        "bind": "/model/instance/MIS_Census/existing_FWDISTRICT",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWUPAZILLA",
+        "bind": "/model/instance/MIS_Census/existing_FWUPAZILLA",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWUNION",
+        "bind": "/model/instance/MIS_Census/existing_FWUNION",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWWARD",
+        "bind": "/model/instance/MIS_Census/existing_FWWARD",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWSUBUNIT",
+        "bind": "/model/instance/MIS_Census/existing_FWSUBUNIT",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWMAUZA_PARA",
+        "bind": "/model/instance/MIS_Census/existing_FWMAUZA_PARA",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "FWNHHHGPS",
+        "bind": "/model/instance/MIS_Census/existing_FWNHHHGPS",
+        "shouldLoadValue": true
+      },
+      {
         "name": "FWMISCENSUSDATE",
         "bind": "/model/instance/MIS_Census/FWMISCENDATE"
       },
@@ -44,6 +104,10 @@
       {
         "name": "FWTETSTAT",
         "bind": "/model/instance/MIS_Census/FWTETSTAT"
+      },
+      {
+        "name": "FWMISCENTTDOSE",
+        "bind": "/model/instance/MIS_Census/FWMISCENTTDOSE"
       },
       {
         "name": "FWMARRYDATE",
