@@ -552,10 +552,6 @@
             "bind": "/model/instance/NewMemberRegistration/HH_Member/ChildInfo/Child_Other_Guardian_BRID"
           },
           {
-            "name": "epi_card_number",
-            "bind": "/model/instance/NewMemberRegistration/HH_Member/ChildInfo/epi_card_number"
-          },
-          {
             "name": "child_was_suffering_from_a_disease_at_birth",
             "bind": "/model/instance/NewMemberRegistration/HH_Member/ChildInfo/child_was_suffering_from_a_disease_at_birth"
           },
