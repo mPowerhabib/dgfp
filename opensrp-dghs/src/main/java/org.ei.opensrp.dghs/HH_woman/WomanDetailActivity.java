@@ -19,6 +19,7 @@ import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,6 +73,7 @@ public class WomanDetailActivity extends Activity {
         TextView womandob = (TextView) findViewById(R.id.womandetail_womandob);
         TextView address = (TextView) findViewById(R.id.womandetail_address);
         TextView maritalstatus = (TextView) findViewById(R.id.womandetail_marital_status);
+        TextView contactno = (TextView) findViewById(R.id.womandetail_phone_number);
 
         //VACCINES INFORMATION/////////////////////////////////////////////////
         TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
@@ -112,6 +114,15 @@ public class WomanDetailActivity extends Activity {
         epicardno.setText((womanclient.getDetails().get("epi_card_number") != null ? womanclient.getDetails().get("epi_card_number") : ""));
 
         womandob.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
+
+        contactno.setText((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""));
+        contactno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""))));
+                startActivity(intent);
+            }
+        });
 
         address.setText((womanclient.getDetails().get("HH_Address") != null ? womanclient.getDetails().get("HH_Address") : ""));
 

@@ -360,6 +360,10 @@
             "bind": "/model/instance/HHMemberReg/HH_Member/epi_card_number"
           },
           {
+            "name": "contact_phone_number",
+            "bind": "/model/instance/HHMemberReg/HH_Member/contact_phone_number"
+          },
+          {
             "name": "Marital_status",
             "bind": "/model/instance/HHMemberReg/HH_Member/Marital_status"
           },
@@ -666,10 +670,6 @@
           {
             "name": "reminders_approval",
             "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/reminders_approval"
-          },
-          {
-            "name": "contact_phone_number",
-            "bind": "/model/instance/HHMemberReg/HH_Member/ChildInfo/contact_phone_number"
           },
           {
             "name": "child_vaccines",
