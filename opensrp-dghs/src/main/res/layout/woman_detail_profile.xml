@@ -9,22 +9,23 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1">
+        android:weightSum="4">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/womandetailprofileview"
             android:src="@drawable/woman_placeholder"
             android:layout_margin="5dp"
             android:gravity="center_vertical"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.20">
+            android:layout_weight="1">
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -97,7 +98,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_weight="0.20"
+            android:layout_weight="1"
             android:layout_height="match_parent">
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -170,7 +171,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.20">
+            android:layout_weight="1">
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
@@ -244,8 +245,8 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:layout_height="132dp"
-            android:layout_weight="0.20">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"

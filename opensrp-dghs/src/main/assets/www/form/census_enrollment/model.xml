@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201610041400">
+    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201610050834">
       <formhub>
         <uuid/>
       </formhub>

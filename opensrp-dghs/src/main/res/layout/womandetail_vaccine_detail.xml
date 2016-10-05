@@ -3,7 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="2"
-    >
+    android:background="#ffffff">
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -15,18 +15,19 @@
             android:layout_gravity="center_horizontal"
             >
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
                 android:text="TT 1 : "
                 android:layout_margin="5dp"
                 android:id="@+id/womandetail_tt1_text"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -34,7 +35,8 @@
                 android:layout_margin="5dp"
                 android:id="@+id/womandetail_tt1"
                 android:textSize="16sp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
         </TableRow>
@@ -43,7 +45,7 @@
             android:layout_gravity="center_horizontal"
             >
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -51,9 +53,10 @@
                 android:id="@+id/womandetail_tt2_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -61,7 +64,8 @@
                 android:id="@+id/womandetail_tt2"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
         <TableRow
@@ -70,7 +74,7 @@
             >
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -78,10 +82,11 @@
                 android:id="@+id/womandetail_tt3_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -89,7 +94,8 @@
                 android:id="@+id/womandetail_tt3"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -100,7 +106,7 @@
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -108,11 +114,12 @@
                 android:id="@+id/womandetail_tt4_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -120,7 +127,8 @@
                 android:id="@+id/womandetail_tt4"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -132,7 +140,7 @@
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -140,11 +148,12 @@
                 android:id="@+id/womandetail_tt5_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -152,7 +161,8 @@
                 android:id="@+id/womandetail_tt5"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -163,33 +173,36 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@drawable/listview_background_rounded">
 
         <TableRow
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             >
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text=" Pregnant: "
+                android:text="Pregnant: "
                 android:layout_margin="5dp"
                 android:id="@+id/pregnancy_text"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
                 android:text="N/A "
                 android:layout_margin="5dp"
                 android:id="@+id/pregnanctdetail"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
         </TableRow>
@@ -198,7 +211,7 @@
             android:layout_gravity="center_horizontal"
             >
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -206,9 +219,10 @@
                 android:id="@+id/womandetail_lmp_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -216,7 +230,8 @@
                 android:id="@+id/womandetail_lmp"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
         <TableRow
@@ -225,7 +240,7 @@
             >
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -233,10 +248,11 @@
                 android:id="@+id/womandetail_edd_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -244,7 +260,8 @@
                 android:id="@+id/womandetail_edd"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -255,7 +272,7 @@
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -263,11 +280,12 @@
                 android:id="@+id/womandetail_ga_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -275,7 +293,8 @@
                 android:id="@+id/womandetail_ga"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
     </TableLayout>
