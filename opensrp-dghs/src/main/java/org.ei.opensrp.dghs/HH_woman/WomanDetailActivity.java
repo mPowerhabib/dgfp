@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -75,7 +77,7 @@ public class WomanDetailActivity extends Activity {
         TextView address = (TextView) findViewById(R.id.womandetail_address);
         TextView maritalstatus = (TextView) findViewById(R.id.womandetail_marital_status);
         TextView contactno = (TextView) findViewById(R.id.womandetail_phone_number);
-
+        TextView today = (TextView)findViewById(R.id.woman_detail_today);
         //VACCINES INFORMATION/////////////////////////////////////////////////
         TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
         TextView tt2TextView =(TextView) findViewById(R.id.womandetail_tt2);
@@ -85,7 +87,7 @@ public class WomanDetailActivity extends Activity {
         ///////////////////////////////////////////////////////////////////////
 
         //PREGNANCY INFORMATION/////////////////////////////////////////////////
-        TextView pregnant =(TextView) findViewById(R.id.pregnanctdetail);
+//        TextView pregnant =(TextView) findViewById(R.id.pregnanctdetail);
         TextView lmp =(TextView) findViewById(R.id.womandetail_lmp);
         TextView edd =(TextView) findViewById(R.id.womandetail_edd);
         TextView ga =(TextView) findViewById(R.id.womandetail_ga);
@@ -115,8 +117,9 @@ public class WomanDetailActivity extends Activity {
         epicardno.setText((womanclient.getDetails().get("epi_card_number") != null ? womanclient.getDetails().get("epi_card_number") : ""));
 
         womandob.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
-
-        contactno.setText((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""));
+        SpannableString content = new SpannableString((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""));
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        contactno.setText(content);
         contactno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,7 +141,7 @@ public class WomanDetailActivity extends Activity {
         }
 //        number_of_child.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
 
-//        age.setText(getString(R.string.elco_age_label) + (womanclient.getColumnmaps().get("Age") != null ? womanclient.getColumnmaps().get("Age") : ""));
+        pregnancystatus.setText((womanclient.getDetails().get("pregnant") != null ? womanclient.getDetails().get("pregnant") : ""));
 //       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (womanclient.getColumnmaps().get("Member_GOB_HHID") != null ? womanclient.getColumnmaps().get("Member_GOB_HHID") : ""));
 //        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
 
@@ -155,8 +158,16 @@ public class WomanDetailActivity extends Activity {
 //        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
         lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"not available");
         edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"not available");
-        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga"):"not available");
+        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga")+" weeks":"not available");
 
+
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = df.format(c.getTime());
+        today.setText("Today: " +formattedDate+" ");
 
 
 //        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
@@ -169,11 +180,11 @@ public class WomanDetailActivity extends Activity {
 //        if(!(womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
 //            TextView tt1_text = (TextView)findViewById(R.id.tt1date);
         //"██"+
-        tt1check(womanclient,tt1TextView);
-        tt2check(womanclient,tt2TextView);
-        tt3check(womanclient,tt3TextView);
-        tt4check(womanclient,tt4TextView);
-        tt5check(womanclient,tt5TextView);
+        ttcheck(womanclient,tt1TextView,"tt1_final","Woman_TT1");
+        ttcheck(womanclient,tt2TextView,"tt2_final","Woman_TT2");
+        ttcheck(womanclient,tt3TextView,"tt3_final","Woman_TT3");
+        ttcheck(womanclient,tt4TextView,"tt4_final","Woman_TT4");
+        ttcheck(womanclient,tt5TextView,"tt5_final","Woman_TT5");
 //        tt1TextView.setText((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"N/A"));
 //        tt2TextView.setText((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"N/A"));
 //        tt3TextView.setText((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"N/A"));
@@ -244,137 +255,40 @@ public class WomanDetailActivity extends Activity {
 //
 //    }
 //
-    public void tt1check(CommonPersonObjectClient womanclient, TextView tt1TextView){
-        if(!(womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+">██</font> "+(womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"");
+    public void ttcheck(CommonPersonObjectClient womanclient, TextView tt1TextView,String ttfinalKey,String ttschedulename){
+        if(!(womanclient.getDetails().get(ttfinalKey)!=null?womanclient.getDetails().get(ttfinalKey):"").equalsIgnoreCase("")){
+            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+"> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;"+(womanclient.getDetails().get(ttfinalKey)!=null?womanclient.getDetails().get(ttfinalKey):"");
             tt1TextView.setText(Html.fromHtml(text));
         }else{
 
-            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), "Woman_TT1");
-            for(int i = 0;i<Woman_TT1alertlist_for_client.size();i++){
-               if(Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                   String text = "<font color="+getResources().getColor(R.color.alert_upcoming_yellow)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                   tt1TextView.setText(Html.fromHtml(text));
-               }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                   String text = "<font color="+getResources().getColor(R.color.alert_urgent_red)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                   tt1TextView.setText(Html.fromHtml(text));
-               }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                   String text = "<font color="+getResources().getColor(R.color.client_list_header_dark_grey)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                   tt1TextView.setText(Html.fromHtml(text));
-               }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_light_blue)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }
+            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), ttschedulename);
+            if(Woman_TT1alertlist_for_client.size()>0) {
+                for (int i = 0; i < Woman_TT1alertlist_for_client.size(); i++) {
+                    if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
+                        String text = "<font color=" + getResources().getColor(R.color.alert_upcoming_yellow) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(Html.fromHtml(text));
+                    } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
+                        String text = "<font color=" + getResources().getColor(R.color.alert_urgent_red) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(Html.fromHtml(text));
+                    } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
+                        String text = "<font color=" + getResources().getColor(R.color.client_list_header_dark_grey) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(Html.fromHtml(text));
+                    } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
+                        String text = "<font color=" + getResources().getColor(R.color.alert_upcoming_light_blue) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(Html.fromHtml(text));
+                    }
 
-               }
+                }
+            }else{
+                String text = "<font color=" + getResources().getColor(R.color.status_bar_text_almost_white) + "> ██ </font> ";
+                tt1TextView.setText(Html.fromHtml(text));
+
+            }
+
             }
 
     }
 
-    public void tt2check(CommonPersonObjectClient womanclient, TextView tt1TextView){
-        if(!(womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+">██</font> "+(womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"");
-            tt1TextView.setText(Html.fromHtml(text));
-        }else{
-
-            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), "Woman_TT2");
-            for(int i = 0;i<Woman_TT1alertlist_for_client.size();i++){
-                if(Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_yellow)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_urgent_red)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                    String text = "<font color="+getResources().getColor(R.color.client_list_header_dark_grey)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_light_blue)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }
-
-            }
-        }
-
-    }
-    public void tt3check(CommonPersonObjectClient womanclient, TextView tt1TextView){
-        if(!(womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+">██</font> "+(womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"");
-            tt1TextView.setText(Html.fromHtml(text));
-        }else{
-
-            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), "Woman_TT3");
-            for(int i = 0;i<Woman_TT1alertlist_for_client.size();i++){
-                if(Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_yellow)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_urgent_red)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                    String text = "<font color="+getResources().getColor(R.color.client_list_header_dark_grey)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_light_blue)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }
-
-            }
-        }
-
-    }
-    public void tt4check(CommonPersonObjectClient womanclient, TextView tt1TextView){
-        if(!(womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+">██</font> "+(womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"");
-            tt1TextView.setText(Html.fromHtml(text));
-        }else{
-
-            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), "Woman_TT4");
-            for(int i = 0;i<Woman_TT1alertlist_for_client.size();i++){
-                if(Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_yellow)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_urgent_red)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                    String text = "<font color="+getResources().getColor(R.color.client_list_header_dark_grey)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_light_blue)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }
-
-            }
-        }
-
-    }
-    public void tt5check(CommonPersonObjectClient womanclient, TextView tt1TextView){
-        if(!(womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+">██</font> "+(womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"");
-            tt1TextView.setText(Html.fromHtml(text));
-        }else{
-
-            List<Alert> Woman_TT1alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(womanclient.entityId(), "Woman_TT5");
-            for(int i = 0;i<Woman_TT1alertlist_for_client.size();i++){
-                if(Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_yellow)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_urgent_red)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                    String text = "<font color="+getResources().getColor(R.color.client_list_header_dark_grey)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                    String text = "<font color="+getResources().getColor(R.color.alert_upcoming_light_blue)+">██</font> "+(Woman_TT1alertlist_for_client.get(i).expiryDate());
-                    tt1TextView.setText(Html.fromHtml(text));
-                }
-
-            }
-        }
-
-    }
 
 
 
