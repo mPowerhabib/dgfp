@@ -28,6 +28,7 @@ import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -135,7 +136,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
          village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("BLOCK")!=null?pc.getDetails().get("BLOCK"):"").replace("+","_"))));
          headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
-        Date lastdate = null;
+        Date lastdate = converdatefromString((pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):""));
 
 
 
@@ -158,9 +159,10 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
         }
         for(int i = 0;i<alertlist_for_client.size();i++){
-             due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
-                 due_visit_date.setOnClickListener(new View.OnClickListener() {
+//                due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
+
+                due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -169,12 +171,14 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
                  due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
+//                due_visit_date.setText(alertlist_for_client.get(i).startDate());
                  due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                  due_visit_date.setOnClickListener(onClickListener);
                  due_visit_date.setTag(smartRegisterClient);
 
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
+//                due_visit_date.setText((alertlist_for_client.get(i).startDate()));
                  due_visit_date.setOnClickListener(onClickListener);
                  due_visit_date.setTag(smartRegisterClient);
                  due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
@@ -209,7 +213,35 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
         convertView.setLayoutParams(clientViewLayoutParams);
 //        return convertView;
     }
-//    CommonPersonObjectController householdelcocontroller;
+
+    private String calculatedate(String dateString) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(convertedDate);
+            calendar.add(Calendar.DATE, -28);//8 weeks
+            convertedDate.setTime(calendar.getTime().getTime());
+            return dateFormat.format(convertedDate);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public Date converdatefromString(String dateString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        }catch (Exception e){
+            return null;
+        }
+        return convertedDate;
+    }
+
+    //    CommonPersonObjectController householdelcocontroller;
     private boolean getIfHouseholdHasElcoWithoutNationalID(CommonPersonObjectClient pc) {
         boolean toreturn = true;
 

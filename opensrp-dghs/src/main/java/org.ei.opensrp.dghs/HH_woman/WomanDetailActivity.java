@@ -78,6 +78,8 @@ public class WomanDetailActivity extends Activity {
         TextView maritalstatus = (TextView) findViewById(R.id.womandetail_marital_status);
         TextView contactno = (TextView) findViewById(R.id.womandetail_phone_number);
         TextView today = (TextView)findViewById(R.id.woman_detail_today);
+        TextView vaccination =(TextView) findViewById(R.id.womandetail_vaccinationstatus);
+
         //VACCINES INFORMATION/////////////////////////////////////////////////
         TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
         TextView tt2TextView =(TextView) findViewById(R.id.womandetail_tt2);
@@ -168,6 +170,7 @@ public class WomanDetailActivity extends Activity {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = df.format(c.getTime());
         today.setText("Today: " +formattedDate+" ");
+        vaccination.setText(immunizationStatus(womanclient));
 
 
 //        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
@@ -289,6 +292,24 @@ public class WomanDetailActivity extends Activity {
 
     }
 
+
+    public String immunizationStatus(CommonPersonObjectClient womanclient){
+        boolean tt1 = ((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"")).equalsIgnoreCase("");
+        boolean tt2 = ((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"")).equalsIgnoreCase("");
+        boolean tt3 = ((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"")).equalsIgnoreCase("");
+        boolean tt4 = ((womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"")).equalsIgnoreCase("");
+        boolean tt5 = ((womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"")).equalsIgnoreCase("");
+        String immunization_status = "";
+        if(tt1||tt2||tt3||tt4||tt5){
+            immunization_status = "Partially Immunized";
+        }else{
+            immunization_status = "Not Immunized";
+        }
+        if(tt1&&tt2&&tt3&&tt4&&tt5){
+            immunization_status = "Fully Immunized";
+        }
+        return immunization_status;
+    }
 
 
 
