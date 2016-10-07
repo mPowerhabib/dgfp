@@ -164,7 +164,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String searchHint() {
-                return getString(org.ei.opensrp.dghs.R.string.str_woman_search_hint);
+                return getString(R.string.search_register);
             }
         };
     }

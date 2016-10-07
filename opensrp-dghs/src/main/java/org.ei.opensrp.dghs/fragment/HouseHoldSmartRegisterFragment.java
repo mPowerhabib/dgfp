@@ -165,7 +165,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 
             @Override
             public String searchHint() {
-                return getResources().getString(R.string.hh_search_hint);
+                return getResources().getString(R.string.search_register);
             }
         };
     }

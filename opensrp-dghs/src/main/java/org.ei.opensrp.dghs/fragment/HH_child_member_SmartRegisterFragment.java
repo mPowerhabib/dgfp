@@ -166,7 +166,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String searchHint() {
-                return getString(org.ei.opensrp.R.string.str_anc_search_hint);
+                return getString(R.string.search_register);
             }
         };
     }
