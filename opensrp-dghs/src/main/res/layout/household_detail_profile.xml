@@ -10,8 +10,8 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="@dimen/client_profile_pic_width"
-            android:layout_height="@dimen/client_profile_pic_height"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/householdprofileview"
             android:src="@mipmap/household_profile"
             android:layout_margin="5dp"
@@ -21,15 +21,17 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp">
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
                 android:text="Large Text"
-                android:layout_margin="5dp"
                 android:id="@+id/name_household_head"
                 android:textSize="20sp"
                 android:textColor="@color/text_black" />
@@ -38,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="Nid"
                 android:id="@+id/nid"
                 android:textSize="16sp"
@@ -48,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="@string/BRID"
                 android:id="@+id/brid"
                 android:textSize="16sp"
@@ -58,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="HID"
                 android:id="@+id/healthid"
                 android:textSize="16sp"
@@ -68,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="age"
                 android:id="@+id/age"
                 android:textSize="16sp"

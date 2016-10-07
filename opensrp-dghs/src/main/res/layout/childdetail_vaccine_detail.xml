@@ -13,103 +13,29 @@ android:layout_width="match_parent" android:layout_height="match_parent"
 
         <TableRow>
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
                 android:text="BCG : "
                 android:layout_margin="5dp"
                 android:id="@+id/childdetail_bcg_text"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
                 android:text="N/A "
                 android:layout_margin="5dp"
                 android:id="@+id/childdetail_bcg"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
-
-
-        </TableRow>
-        <TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="OPV 0 : "
-                android:id="@+id/childdetail_opv0_text"
                 android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_opv0"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
-        </TableRow>
-        <TableRow>
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="PCV 1  : "
-                android:id="@+id/childdetail_pcv1_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_pcv1"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-        </TableRow>
-
-        <TableRow>
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="OPV 1  : "
-                android:id="@+id/childdetail_opv1_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_opv1"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
 
         </TableRow>
 
@@ -118,7 +44,7 @@ android:layout_width="match_parent" android:layout_height="match_parent"
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -126,11 +52,12 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_penta1_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -138,37 +65,128 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_penta1"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
         <TableRow>
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="PCV 2  : "
-                android:id="@+id/childdetail_pcv2_text"
+                android:text="Penta 2 : "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_penta2_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_penta2"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="Penta 3  : "
+                android:id="@+id/childdetail_penta3_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
                 android:text="N/A"
-                android:id="@+id/childdetail_pcv2"
+                android:id="@+id/childdetail_penta3"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
         <TableRow>
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="OPV 0 : "
+                android:id="@+id/childdetail_opv0_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv0"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="OPV 1  : "
+                android:id="@+id/childdetail_opv1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -176,9 +194,10 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_opv2_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -186,7 +205,36 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_opv2"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="OPV 3  : "
+                android:id="@+id/childdetail_opv3_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv3"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -199,114 +247,12 @@ android:layout_width="match_parent" android:layout_height="match_parent"
         >
 
 
-
-        <TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="Penta 2 : "
-                android:layout_margin="5dp"
-                android:id="@+id/childdetail_penta2_text"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A "
-                android:layout_margin="5dp"
-                android:id="@+id/childdetail_penta2"
-                android:textSize="16sp"
-                android:textColor="@color/text_black" />
-
-
-        </TableRow>
-        <TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="PCV 3 : "
-                android:id="@+id/childdetail_pcv3_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_pcv3"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-        </TableRow>
-        <TableRow>
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="OPV 3  : "
-                android:id="@+id/childdetail_opv3_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_opv3"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-        </TableRow>
-
-        <TableRow>
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="Penta 3  : "
-                android:id="@+id/childdetail_penta3_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Medium"
-                android:text="N/A"
-                android:id="@+id/childdetail_penta3"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
-
-        </TableRow>
         <TableRow>
 
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -314,11 +260,12 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_ipv_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -326,7 +273,88 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_ipv"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="PCV 1  : "
+                android:id="@+id/childdetail_pcv1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="PCV 2  : "
+                android:id="@+id/childdetail_pcv2_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv2"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="PCV 3 : "
+                android:id="@+id/childdetail_pcv3_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.ListView.Medium"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv3"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
@@ -336,7 +364,7 @@ android:layout_width="match_parent" android:layout_height="match_parent"
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -344,11 +372,12 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_measles1_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -356,13 +385,14 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_measles1"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 
         <TableRow>
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -370,9 +400,10 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_measles2_text"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
             <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.ListView.Medium"
@@ -380,7 +411,8 @@ android:layout_width="match_parent" android:layout_height="match_parent"
                 android:id="@+id/childdetail_measles2"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
-                android:textColor="@color/text_black" />
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
 
         </TableRow>
 

@@ -22,5 +22,9 @@
         android:id="@+id/switchLanguageMenuItem"
         android:title="@string/str_switch_language"
         android:icon="@drawable/ic_menu_edit"/>
+    <item
+        android:id="@+id/anouncementMenuItem"
+        android:title="@string/str_anouncement"
+        android:icon="@drawable/ic_menu_edit"/>
 
 </menu>

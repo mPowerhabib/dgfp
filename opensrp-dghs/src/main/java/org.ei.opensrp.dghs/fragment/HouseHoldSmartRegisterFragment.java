@@ -119,13 +119,24 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_all_label),filterStringForAll()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_male),filterStringForMale()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.hh_female),filterStringForFemale()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward1),filterStringForWard("Ward-1")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward2),filterStringForWard("Ward-2")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward3),filterStringForWard("Ward-3")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block1ka),filterStringForBlock("1-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block1kha),filterStringForBlock("1-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block2ka),filterStringForBlock("2-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block2kha),filterStringForBlock("2-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block3ka),filterStringForBlock("3-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block3kha),filterStringForBlock("3-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4ka),filterStringForBlock("4-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4kha),filterStringForBlock("4-KHA")));
 
-                String locationjson = context.anmLocationController().get();
-                LocationTree locationTree = EntityUtils.fromJson(locationjson, LocationTree.class);
-
-                Map<String,TreeNode<String, Location>> locationMap =
-                        locationTree.getLocationsHierarchy();
-                addChildToList(dialogOptionslist,locationMap);
+//                String locationjson = context.anmLocationController().get();
+//                LocationTree locationTree = EntityUtils.fromJson(locationjson, LocationTree.class);
+//
+//                Map<String,TreeNode<String, Location>> locationMap =
+//                        locationTree.getLocationsHierarchy();
+//                addChildToList(dialogOptionslist,locationMap);
                 DialogOption[] dialogOptions = new DialogOption[dialogOptionslist.size()];
                 for (int i = 0;i < dialogOptionslist.size();i++){
                     dialogOptions[i] = dialogOptionslist.get(i);
@@ -190,6 +201,8 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 
         super.setupViews(view);
         view.findViewById(R.id.btn_report_month).setVisibility(INVISIBLE);
+        view.findViewById(R.id.service_mode_selection).setVisibility(INVISIBLE);
+
         clientsView.setVisibility(View.VISIBLE);
         clientsProgressView.setVisibility(View.INVISIBLE);
 //        list.setBackgroundColor(Color.RED);
@@ -285,6 +298,12 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
     }
     private String filterStringForAll(){
         return "";
+    }
+    private String filterStringForWard(String ward){
+        return filters +"and  details like '%\"WARD\":\""+ward+"\"%' ";
+    }
+    private String filterStringForBlock(String block){
+        return filters +"and  details like '%\"BLOCK\":\""+block+"\"%' ";
     }
     private String householdSortByName() {
         return " HoH_Fname COLLATE NOCASE ASC";

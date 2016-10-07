@@ -115,19 +115,26 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbymarried),filterStringFormarried()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbyUnmarried),filterStringForunmarried()));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbywidowed),filterStringForwidow()));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbypregnant),filterStringForpregnant()));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filterbynotpregnant),filterStringFornotpregnant()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward1),filterStringForWard("Ward-1")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward2),filterStringForWard("Ward-2")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.ward3),filterStringForWard("Ward-3")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block1ka),filterStringForBlock("1-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block1kha),filterStringForBlock("1-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block2ka),filterStringForBlock("2-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block2kha),filterStringForBlock("2-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block3ka),filterStringForBlock("3-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block3kha),filterStringForBlock("3-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4ka),filterStringForBlock("4-KA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4kha),filterStringForBlock("4-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.todayssession),filterStringForBlock("4-KHA")));
 
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc2),filterStringForANCRV2()));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc3),filterStringForANCRV3()));
-//                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc4),filterStringForANCRV4()));
 
-                String locationjson = context.anmLocationController().get();
-                LocationTree locationTree = EntityUtils.fromJson(locationjson, LocationTree.class);
+//                String locationjson = context.anmLocationController().get();
+//                LocationTree locationTree = EntityUtils.fromJson(locationjson, LocationTree.class);
 
-                Map<String,TreeNode<String, Location>> locationMap =
-                        locationTree.getLocationsHierarchy();
-                addChildToList(dialogOptionslist,locationMap);
+//                Map<String,TreeNode<String, Location>> locationMap =
+//                        locationTree.getLocationsHierarchy();
+//                addChildToList(dialogOptionslist,locationMap);
                 DialogOption[] dialogOptions = new DialogOption[dialogOptionslist.size()];
                 for (int i = 0;i < dialogOptionslist.size();i++){
                     dialogOptions[i] = dialogOptionslist.get(i);
@@ -206,6 +213,8 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         startregister.setVisibility(View.GONE);
         clientsView.setVisibility(View.VISIBLE);
         clientsProgressView.setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.service_mode_selection).setVisibility(INVISIBLE);
+
 //        list.setBackgroundColor(Color.RED);
         initializeQueries();
     }
@@ -407,19 +416,25 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         return " EDD ASC";
     }
     private String filterStringFormarried(){
-        return "and Marital_status = '2'";
+        return filters +"and Marital_status = '2'";
     }
     private String filterStringForunmarried(){
-        return "and Marital_status = '1'";
+        return filters +"and Marital_status = '1'";
     }
     private String filterStringForwidow(){
-        return "and Marital_Status = '3'";
+        return filters +"and Marital_Status = '3'";
     }
     private String filterStringForpregnant(){
         return "and Pregnancy_Status = '1'";
     }
     private String filterStringFornotpregnant(){
         return "and Pregnancy_Status = '0'";
+    }
+    private String filterStringForWard(String ward){
+        return filters +"and  details like '%\"Member_WARD\":\""+ward+"\"%' ";
+    }
+    private String filterStringForBlock(String block){
+        return filters +"and  details like '%\"Member_BLOCK\":\""+block+"\"%' ";
     }
     private String filterStringForANCRV2(){
         return "and alerts.visitCode LIKE '%ancrv_2%'";

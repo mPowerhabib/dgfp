@@ -390,6 +390,19 @@
     <string name="pregnancy_summary">Pregnancy Information</string>
     <string name="epi_cardnumber">EPI Card No</string>
     <string name="bnf">BNF</string>
+    <string name="ward1">Ward-1</string>
+    <string name="ward2">Ward-2</string>
+    <string name="ward3">Ward-3</string>
+    <string name="block1ka">1-KA</string>
+    <string name="block1kha">1-KHA</string>
+    <string name="block2ka">2-KA</string>
+    <string name="block2kha">2-KHA</string>
+    <string name="block3ka">3-KA</string>
+    <string name="block3kha">3-KHA</string>
+    <string name="block4ka">4-KA</string>
+    <string name="block4kha">4-KHA</string>
+    <string name="str_anouncement">Announcement</string>
+    <string name="todayssession">Today\'s Session</string>
 
 
 </resources>
