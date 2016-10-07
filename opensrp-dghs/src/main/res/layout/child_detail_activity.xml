@@ -26,13 +26,13 @@
             android:layout_height="wrap_content"
             android:text="Basic Info"
             android:id="@+id/header"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"
-            android:textSize="22sp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -56,9 +56,8 @@
     <LinearLayout
             android:id="@+id/clients_header_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/list_header_height"
-            android:layout_marginLeft="@dimen/list_view_margin_left_and_right"
-            android:layout_marginRight="@dimen/list_view_margin_left_and_right"
+            android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/list_view_margin_left_and_right"
             android:orientation="horizontal">
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -66,11 +65,12 @@
             android:layout_height="wrap_content"
             android:text="@string/vaccination_history"
             android:id="@+id/vaccination_history"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
             android:layout_gravity="center_vertical"
             android:textColor="@color/text_black"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="16sp"
+            android:layout_margin="5dp" />
 
     </LinearLayout>
 

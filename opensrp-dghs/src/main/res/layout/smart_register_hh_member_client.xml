@@ -69,7 +69,8 @@
             style="@style/CustomFontTextViewStyle.noPadding"
             android:text="00"
             android:id="@+id/txt_age"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginRight="2dp" />
 
     </LinearLayout>
 
@@ -100,19 +101,22 @@
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/nid"
-                    style="@style/CustomFontTextViewStyle.noPadding" />
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:layout_marginLeft="3dp" />
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/brid"
-                    style="@style/CustomFontTextViewStyle.noPadding" />
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:layout_marginLeft="3dp" />
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
                     android:id="@+id/bdh"
-                    style="@style/CustomFontTextViewStyle.noPadding" />
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:layout_marginLeft="3dp" />
             </LinearLayout>
         </FrameLayout>
 

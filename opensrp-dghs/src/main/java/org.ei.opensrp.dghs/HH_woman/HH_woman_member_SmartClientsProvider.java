@@ -99,9 +99,9 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
         name.setText(pc.getColumnmaps().get("Member_Fname") != null ? pc.getColumnmaps().get("Member_Fname") : "");
-        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+//        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
         father_name.setText("F: " + (pc.getDetails().get("Father_name") != null ? pc.getDetails().get("Father_name") : ""));
-        husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
+
         hid.setText("HID: " + (pc.getDetails().get("Member_HID") != null ? pc.getDetails().get("Member_HID") : ""));
 
 //        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
@@ -125,12 +125,21 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         if (((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "")).equalsIgnoreCase("1")) {
             maritalstatus.setText("M: Unmarried");
+            coupleno.setVisibility(View.INVISIBLE);
+            husband_name.setVisibility(View.INVISIBLE);
         }
         if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("2")) {
             maritalstatus.setText("M: Married");
+            coupleno.setVisibility(View.VISIBLE);
+            husband_name.setVisibility(View.VISIBLE);
+            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
+
         }
         if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("3")) {
             maritalstatus.setText("M: Divorced/Widow/Widower");
+            coupleno.setVisibility(View.INVISIBLE);
+            husband_name.setVisibility(View.INVISIBLE);
         }
 //
 //        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
@@ -144,7 +153,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         village.setText("W: " + humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")) + ", " + "B: " + humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 
 
-        age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? pc.getColumnmaps().get("calc_age_confirm") : "");
+        age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? "("+pc.getColumnmaps().get("calc_age_confirm")+")" : "");
         nid.setText("NID: " + (pc.getDetails().get("Member_NID") != null ? pc.getDetails().get("Member_NID") : ""));
         brid.setText("BRID: " + (pc.getDetails().get("Member_BRID") != null ? pc.getDetails().get("Member_BRID") : ""));
 
