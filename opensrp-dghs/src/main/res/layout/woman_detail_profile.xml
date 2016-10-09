@@ -14,14 +14,14 @@
         android:paddingBottom="3dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/womandetailprofileview"
-            android:src="@drawable/woman_placeholder"
             android:layout_margin="5dp"
             android:gravity="center_vertical"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center_vertical" />
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/woman_placeholder" />
 
         <LinearLayout
             android:orientation="vertical"

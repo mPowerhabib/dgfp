@@ -1,5 +1,6 @@
 package org.ei.opensrp.dghs.HH_child;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
 
 import org.ei.opensrp.service.AlertService;
@@ -108,7 +110,9 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 //                newborn_or_fp.setVisibility(View.INVISIBLE);
         }
 
-
+        if (pc.getDetails().get("profilepic") != null) {
+            HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.drawable.child_boy_infant);
+        }
 
         constructRiskFlagView(pc, itemView);
         contstructNextVaccinedateBlock(pc, itemView);
@@ -423,8 +427,10 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
             nlastVaccineDate.setVisibility(View.INVISIBLE);
             nlastVaccintick.setVisibility(View.INVISIBLE);
         }else {
-
-            nlastVaccineDate.setText((pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : ""));
+            String childVaccines = (pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : "");
+            childVaccines = childVaccines.trim();
+            childVaccines = childVaccines.replace(" ",",");
+            nlastVaccineDate.setText(childVaccines);
         }
 
     }

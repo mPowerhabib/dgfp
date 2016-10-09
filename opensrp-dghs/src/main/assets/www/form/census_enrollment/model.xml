@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201610050834">
+    <NewMemberRegistration encounter_type="New Member Registration" id="NewMemberRegistartion" version="201610091244">
       <formhub>
         <uuid/>
       </formhub>
@@ -24,6 +24,7 @@
       <simserial openmrs_entity="Concept" openmrs_entity_id="6d1902a2-4f6c-4a7a-a1ae-496ff748c2e1"/>
       <phonenumber openmrs_entity="Concept" openmrs_entity_id="2b5eda71-8272-45ec-8d42-0b844c81e9da"/>
       <HH_Address/>
+      <Date_Of_Reg/>
       <HH_Member template="" openmrs_entity="person" openmrs_entity_id="New Member Registration">
         <Member_COUNTRY openmrs_entity="person_address" openmrs_entity_id="country"/>
         <Member_DIVISION openmrs_entity="person_address" openmrs_entity_id="stateProvince"/>
@@ -89,25 +90,25 @@
           <final_ga openmrs_entity="concept" openmrs_entity_id="290bb2b1-6a64-455e-800b-8ddaac9755fb"/>
           <final_ga_note/>
           <vaccines openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="4c0d9630-c489-4c80-9030-af86aa834598"/>
-          <tt1_retro openmrs_entity="concept" openmrs_entity_id="1b22b6ec-f22f-40da-a7b0-609d974768e1" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_1_dose openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt2_retro openmrs_entity="concept" openmrs_entity_id="0cf54044-fff2-424b-87ef-aa971c0ae07f" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_2_dose openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt3_retro openmrs_entity="concept" openmrs_entity_id="d160843a-42a8-4772-98b4-4514909b61f7" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_3_dose openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt4_retro openmrs_entity="concept" openmrs_entity_id="5e1b1de6-dee2-4d02-8c93-9985f159824f" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_4_dose openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt1_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_1_dose openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt2_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_2_dose openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt3_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_3_dose openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt4_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_4_dose openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
           <vaccines_2 openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="d74f7428-63ec-4d5e-9124-3992e2877df6"/>
-          <tt1 openmrs_entity="concept" openmrs_entity_id="1b22b6ec-f22f-40da-a7b0-609d974768e1" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_1_dose_today openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt2 openmrs_entity="concept" openmrs_entity_id="0cf54044-fff2-424b-87ef-aa971c0ae07f" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_2_dose_today openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt3 openmrs_entity="concept" openmrs_entity_id="d160843a-42a8-4772-98b4-4514909b61f7" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_3_dose_today openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt4 openmrs_entity="concept" openmrs_entity_id="5e1b1de6-dee2-4d02-8c93-9985f159824f" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_4_dose_today openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt5 openmrs_entity="concept" openmrs_entity_id="e54c3644-901b-4449-994d-0a16f4c84e21" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
-          <tt_5_dose_today openmrs_entity="concept" openmrs_entity_id="1ac4ba2f-9475-4e60-81bf-98633ea777b4" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt1 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_1_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt2 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_2_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt3 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_3_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt4 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_4_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt5 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
+          <tt_5_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="0a9e0ff9-a6bd-4e95-bb6d-31e6340fc2cc"/>
           <tt1_final/>
           <tt2_final/>
           <tt3_final/>

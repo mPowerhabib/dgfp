@@ -23,6 +23,7 @@ import android.widget.TextView;
 import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.dghs.R;
+import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
 
 import java.io.File;
@@ -35,6 +36,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import util.ImageCache;
 import util.ImageFetcher;
@@ -74,6 +76,8 @@ public class ChildDetailActivity extends Activity {
         TextView birthdate = (TextView) findViewById(R.id.child_detail_birthdate_field);
         TextView contactno = (TextView) findViewById(R.id.child_detail_contactno_field);
         TextView address = (TextView) findViewById(R.id.child_detail_address_field);
+        ImageView profilepic = (ImageView) findViewById(R.id.childdetailprofileview);
+
 
         TextView childdetail_bcg = (TextView) findViewById(R.id.childdetail_bcg);
         TextView childdetail_opv0 = (TextView) findViewById(R.id.childdetail_opv0);
@@ -92,9 +96,20 @@ public class ChildDetailActivity extends Activity {
 
 
 
+        if ((childclient.getDetails().get("Gender") != null ? childclient.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
+            profilepic.setImageResource(R.drawable.child_boy_infant);
+//                newborn_or_fp.setText("Family Planning");
+        } else {
+            profilepic.setImageResource(R.drawable.child_girl_infant);
+//                newborn_or_fp.setVisibility(View.INVISIBLE);
+        }
+        try {
+            if (childclient.getDetails().get("profilepic") != null) {
+                HouseHoldDetailActivity.setImagetoHolder(this, childclient.getDetails().get("profilepic"), profilepic, R.drawable.child_boy_infant);
+            }
+        }catch (Exception e){
 
-
-
+        }
 
 
 //        TextView age = (TextView) findViewById(R.id.age);
@@ -118,20 +133,20 @@ public class ChildDetailActivity extends Activity {
         contactno.setText((childclient.getDetails().get("contact_phone_number") != null ? childclient.getDetails().get("contact_phone_number") : ""));
         address.setText((childclient.getDetails().get("HH_Address") != null ? childclient.getDetails().get("HH_Address") : ""));
 
-        ChildVaccinecheck(childclient,childdetail_bcg,"final_bcg","child_bcg");
-        ChildVaccinecheck(childclient,childdetail_opv0,"final_opv0","child_opv0");
-        ChildVaccinecheck(childclient,childdetail_pcv1,"final_pcv1","child_pcv1");
-        ChildVaccinecheck(childclient,childdetail_opv1,"final_opv1","child_opv1");
-        ChildVaccinecheck(childclient,childdetail_penta1,"final_penta1","child_penta1");
-        ChildVaccinecheck(childclient,childdetail_pcv2,"final_pcv2","child_pcv2");
-        ChildVaccinecheck(childclient,childdetail_opv2,"final_opv2","child_opv2");
-        ChildVaccinecheck(childclient,childdetail_penta2,"final_penta2","child_penta2");
-        ChildVaccinecheck(childclient,childdetail_pcv3,"final_pcv3","child_pcv3");
-        ChildVaccinecheck(childclient,childdetail_opv3,"final_opv3","child_opv3");
-        ChildVaccinecheck(childclient,childdetail_penta3,"final_penta3","child_penta3");
-        ChildVaccinecheck(childclient,childdetail_ipv,"final_ipv","child_ipv");
-        ChildVaccinecheck(childclient,childdetail_measles1,"final_measles1","child_measles");
-        ChildVaccinecheck(childclient,childdetail_measles2,"final_measles2","child_measles2");
+        ChildVaccinecheck(childclient,childdetail_bcg,findViewById(R.id.child_block1),"final_bcg","child_bcg");
+        ChildVaccinecheck(childclient,childdetail_opv0,findViewById(R.id.child_block2),"final_opv0","child_opv0");
+        ChildVaccinecheck(childclient,childdetail_pcv1,findViewById(R.id.child_block3),"final_pcv1","child_pcv1");
+        ChildVaccinecheck(childclient,childdetail_opv1,findViewById(R.id.child_block4),"final_opv1","child_opv1");
+        ChildVaccinecheck(childclient,childdetail_penta1,findViewById(R.id.child_block5),"final_penta1","child_penta1");
+        ChildVaccinecheck(childclient,childdetail_pcv2,findViewById(R.id.child_block6),"final_pcv2","child_pcv2");
+        ChildVaccinecheck(childclient,childdetail_opv2,findViewById(R.id.child_block7),"final_opv2","child_opv2");
+        ChildVaccinecheck(childclient,childdetail_penta2,findViewById(R.id.child_block8),"final_penta2","child_penta2");
+        ChildVaccinecheck(childclient,childdetail_pcv3,findViewById(R.id.child_block9),"final_pcv3","child_pcv3");
+        ChildVaccinecheck(childclient,childdetail_opv3,findViewById(R.id.child_block10),"final_opv3","child_opv3");
+        ChildVaccinecheck(childclient,childdetail_penta3,findViewById(R.id.child_block11),"final_penta3","child_penta3");
+        ChildVaccinecheck(childclient,childdetail_ipv,findViewById(R.id.child_block12),"final_ipv","child_ipv");
+        ChildVaccinecheck(childclient,childdetail_measles1,findViewById(R.id.child_block13),"final_measles1","child_measles");
+        ChildVaccinecheck(childclient,childdetail_measles2,findViewById(R.id.child_block14),"final_measles2","child_measles2");
 
 
     }
@@ -236,33 +251,38 @@ public class ChildDetailActivity extends Activity {
 //        Bitmap bitmap = BitmapFactory.decodeFile(file, options);
 //        view.setImageBitmap(bitmap);
     }
-    public void ChildVaccinecheck(CommonPersonObjectClient childClient, TextView tt1TextView,String ttfinalKey,String ttschedulename){
+    public void ChildVaccinecheck(CommonPersonObjectClient childClient, TextView tt1TextView,View block,String ttfinalKey,String ttschedulename){
         if(!(childClient.getDetails().get(ttfinalKey)!=null?childClient.getDetails().get(ttfinalKey):"").equalsIgnoreCase("")){
-            String text = "<font color="+getResources().getColor(R.color.alert_complete_green)+"> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;"+(childClient.getDetails().get(ttfinalKey)!=null?childClient.getDetails().get(ttfinalKey):"");
-            tt1TextView.setText(Html.fromHtml(text));
+            block.setBackgroundColor(getResources().getColor(R.color.alert_complete_green));
+            String text = (childClient.getDetails().get(ttfinalKey)!=null?childClient.getDetails().get(ttfinalKey):"");
+            tt1TextView.setText(text);
         }else{
 
             List<Alert> child_alertlist_for_client = Context.getInstance().alertService().findByEntityIdAndAlertNames(childClient.entityId(), ttschedulename);
             if(child_alertlist_for_client.size()>0) {
                 for (int i = 0; i < child_alertlist_for_client.size(); i++) {
                     if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
-                        String text = "<font color=" + getResources().getColor(R.color.alert_upcoming_yellow) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (child_alertlist_for_client.get(i).expiryDate());
-                        tt1TextView.setText(Html.fromHtml(text));
+                        block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_yellow));
+                        String text =  (child_alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
-                        String text = "<font color=" + getResources().getColor(R.color.alert_urgent_red) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (child_alertlist_for_client.get(i).expiryDate());
-                        tt1TextView.setText(Html.fromHtml(text));
+                        block.setBackgroundColor(getResources().getColor(R.color.alert_urgent_red));
+                        String text = (child_alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
-                        String text = "<font color=" + getResources().getColor(R.color.client_list_header_dark_grey) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (child_alertlist_for_client.get(i).expiryDate());
-                        tt1TextView.setText(Html.fromHtml(text));
+                        block.setBackgroundColor(getResources().getColor(R.color.client_list_header_dark_grey));
+                        String text = (child_alertlist_for_client.get(i).expiryDate());
+                        tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
-                        String text = "<font color=" + getResources().getColor(R.color.alert_upcoming_light_blue) + "> ██ </font> &nbsp; &nbsp; &nbsp; &nbsp;" + (child_alertlist_for_client.get(i).expiryDate());
+                        block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_light_blue));
+                        String text = (child_alertlist_for_client.get(i).expiryDate());
                         tt1TextView.setText(Html.fromHtml(text));
                     }
 
                 }
             }else{
-                String text = "<font color=" + getResources().getColor(R.color.status_bar_text_almost_white) + "> ██ </font> ";
-                tt1TextView.setText(Html.fromHtml(text));
+                String text = " ";
+                tt1TextView.setText(text);
 
             }
 

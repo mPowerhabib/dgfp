@@ -102,6 +102,9 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 //                newborn_or_fp.setVisibility(View.INVISIBLE);
                 newborn_or_fp.setVisibility(View.INVISIBLE);
             }
+            if (pc.getDetails().get("profilepic") != null) {
+                HH_member_SmartRegisterActivity.setImagetoHolderFromUri((Activity)context, pc.getDetails().get("profilepic"), profilepic, R.drawable.child_boy_infant);
+            }
 //
 
         }else {

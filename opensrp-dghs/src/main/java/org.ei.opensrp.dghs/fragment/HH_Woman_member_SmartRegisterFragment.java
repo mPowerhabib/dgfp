@@ -302,7 +302,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         if(cs.toString().equalsIgnoreCase("")){
                             filters = "";
                         }else {
-                            filters = "and Member_Fname Like '%" + cs.toString() + "%' or Member_GOB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%' ";
+                            filters = "and (Member_Fname Like '%" + cs.toString() + "%' or Member_GOB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%') ";
                         }
                         return null;
                     }

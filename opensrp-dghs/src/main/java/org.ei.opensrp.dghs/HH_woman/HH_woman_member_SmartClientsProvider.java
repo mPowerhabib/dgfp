@@ -123,6 +123,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         maritalstatus.setText(pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "");
 
 
+        coupleno.setVisibility(View.INVISIBLE);
+        husband_name.setVisibility(View.INVISIBLE);
         if (((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "")).equalsIgnoreCase("1")) {
             maritalstatus.setText("M: Unmarried");
             coupleno.setVisibility(View.INVISIBLE);
@@ -421,40 +423,48 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     }
 
     private void constructvaccineVisitStatusBlock(CommonPersonObjectClient pc, View itemview) {
-
+//        vaccines_2
         TextView lastvaccinestick = (TextView) itemview.findViewById(R.id.measlestick);
         TextView lastvaccinetext = (TextView) itemview.findViewById(R.id.lastvaccinetext);
 
 
         lastvaccinetext.setVisibility(View.INVISIBLE);
         lastvaccinestick.setVisibility(View.INVISIBLE);
+        if (!(pc.getDetails().get("vaccines_2") != null ? pc.getDetails().get("vaccines_2") : "").equalsIgnoreCase("")) {
+            String lastvaccine = (pc.getDetails().get("vaccines_2") != null ? pc.getDetails().get("vaccines_2") : "");
+            lastvaccine = lastvaccine.trim();
+            lastvaccine = lastvaccine.replace(" ",",");
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText(lastvaccine);
+        }
 
 
-        if (!(pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : "").equalsIgnoreCase("")) {
-            lastvaccinestick.setVisibility(View.VISIBLE);
-            lastvaccinetext.setVisibility(View.VISIBLE);
-            lastvaccinetext.setText("TT1-" + pc.getDetails().get("tt1_final"));
-        }
-        if (!(pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : "").equalsIgnoreCase("")) {
-            lastvaccinestick.setVisibility(View.VISIBLE);
-            lastvaccinetext.setVisibility(View.VISIBLE);
-            lastvaccinetext.setText("TT2-" + pc.getDetails().get("tt2_final"));
-        }
-        if (!(pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : "").equalsIgnoreCase("")) {
-            lastvaccinestick.setVisibility(View.VISIBLE);
-            lastvaccinetext.setVisibility(View.VISIBLE);
-            lastvaccinetext.setText("TT3-" + pc.getDetails().get("tt3_final"));
-        }
-        if (!(pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : "").equalsIgnoreCase("")) {
-            lastvaccinestick.setVisibility(View.VISIBLE);
-            lastvaccinetext.setVisibility(View.VISIBLE);
-            lastvaccinetext.setText("TT4-" + pc.getDetails().get("tt4_final"));
-        }
-        if (!(pc.getDetails().get("tt5_final") != null ? pc.getDetails().get("tt5_final") : "").equalsIgnoreCase("")) {
-            lastvaccinestick.setVisibility(View.VISIBLE);
-            lastvaccinetext.setVisibility(View.VISIBLE);
-            lastvaccinetext.setText("TT5-" + pc.getDetails().get("tt5_final"));
-        }
+//        if (!(pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : "").equalsIgnoreCase("")) {
+//            lastvaccinestick.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setText("TT1-" + pc.getDetails().get("tt1_final"));
+//        }
+//        if (!(pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : "").equalsIgnoreCase("")) {
+//            lastvaccinestick.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setText("TT2-" + pc.getDetails().get("tt2_final"));
+//        }
+//        if (!(pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : "").equalsIgnoreCase("")) {
+//            lastvaccinestick.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setText("TT3-" + pc.getDetails().get("tt3_final"));
+//        }
+//        if (!(pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : "").equalsIgnoreCase("")) {
+//            lastvaccinestick.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setText("TT4-" + pc.getDetails().get("tt4_final"));
+//        }
+//        if (!(pc.getDetails().get("tt5_final") != null ? pc.getDetails().get("tt5_final") : "").equalsIgnoreCase("")) {
+//            lastvaccinestick.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setVisibility(View.VISIBLE);
+//            lastvaccinetext.setText("TT5-" + pc.getDetails().get("tt5_final"));
+//        }
 
 
     }
