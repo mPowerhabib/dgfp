@@ -1,6 +1,6 @@
 <model>
     <instance>
-        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610031346">
+        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610091245">
             <formhub>
                 <uuid/>
             </formhub>

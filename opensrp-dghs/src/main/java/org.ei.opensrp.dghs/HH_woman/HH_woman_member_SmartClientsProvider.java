@@ -424,7 +424,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
     private void constructvaccineVisitStatusBlock(CommonPersonObjectClient pc, View itemview) {
 //        vaccines_2
-        TextView lastvaccinestick = (TextView) itemview.findViewById(R.id.measlestick);
+        ImageView lastvaccinestick = (ImageView) itemview.findViewById(R.id.measlestick);
         TextView lastvaccinetext = (TextView) itemview.findViewById(R.id.lastvaccinetext);
 
 

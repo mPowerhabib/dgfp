@@ -169,15 +169,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="✔"
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
                 android:id="@+id/vaccinetick"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
-                android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green" />
+                android:src="@mipmap/doneintime"
+                style="@style/CustomFontTextViewStyle.ListView.Small" />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"

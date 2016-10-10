@@ -207,15 +207,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="✔"
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
                 android:id="@+id/measlestick"
                 android:layout_margin="1dp"
-                android:textColor="@color/alert_complete_green"
-                android:textSize="12sp"
-                style="@style/CustomFontTextViewStyle.noPadding" />
+                android:src="@mipmap/doneintime"
+                />
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
@@ -224,7 +222,8 @@
                 android:id="@+id/lastvaccinetext"
                 android:textSize="12sp"
                 android:textColor="#000000"
-                style="@style/CustomFontTextViewStyle.noPadding" />
+                style="@style/CustomFontTextViewStyle.ListView.Small"
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
 

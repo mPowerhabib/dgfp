@@ -418,7 +418,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
     private void contstructLastVaccinedateBlock(CommonPersonObjectClient pc, View itemView) {
         TextView nlastVaccineDate = (TextView)itemView.findViewById(R.id.vaccinetext);
-        TextView nlastVaccintick = (TextView)itemView.findViewById(R.id.vaccinetick);
+        ImageView nlastVaccintick = (ImageView)itemView.findViewById(R.id.vaccinetick);
 
         nlastVaccintick.setVisibility(View.VISIBLE);
         nlastVaccineDate.setVisibility(View.VISIBLE);
