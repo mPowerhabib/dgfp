@@ -2,6 +2,7 @@ package org.ei.opensrp.dghs.HH_child;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
 import org.ei.opensrp.commonregistry.CommonPersonObject;
@@ -26,12 +28,24 @@ import org.ei.opensrp.view.dialog.FilterOption;
 import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static org.ei.opensrp.util.StringUtil.humanize;
@@ -99,15 +113,16 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         village.setText((humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")))+", "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
         String dataofbirth = (pc.getDetails().get("Child_dob")!=null?pc.getDetails().get("Child_dob"):"") + "\n";
-        dataofbirth = dataofbirth + "age : " + ((pc.getDetails().get("Child_age_days")!=null?pc.getDetails().get("Child_age_days"):"") + "days");
+        dataofbirth = dataofbirth + "age : " + calculateage(Integer.parseInt(""+getageindays(getdate(pc.getDetails().get("Child_dob")!=null?pc.getDetails().get("Child_dob"):"")))) ;
         dateofbirth.setText(dataofbirth);
+//        calculateage(40);
 
         if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
             profilepic.setImageResource(R.drawable.child_boy_infant);
 //                newborn_or_fp.setText("Family Planning");
         } else {
             profilepic.setImageResource(R.drawable.child_girl_infant);
-//                newborn_or_fp.setVisibility(View.INVISIBLE);
+//                newborn_wor_fp.setVisibility(View.INVISIBLE);
         }
 
         if (pc.getDetails().get("profilepic") != null) {
@@ -127,7 +142,62 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
-  public boolean isSYnced(CommonPersonObjectClient pc){
+    private String calculateage(int i) {
+        if(i <= 15){
+            return (i + " days");
+        }
+        if(i <= 141){
+            return (i/7 + " weeks");
+        }
+        if(i <= 719){
+            return (i/30 + " months");
+        }
+        if(i >719){
+            String years = 719/365 + " years ";
+            String months = "";
+            if((719%365)!=0) {
+                months = (719 % 365)/30 + " months";
+            }
+
+            return years + months;
+        }
+      return "";
+    }
+    public int getageindays(DateTime date){
+        DateTime now = new DateTime();
+        DateTimeZone dtz = DateTimeZone.getDefault();
+        LocalDate today = now.toLocalDate();
+        DateTime bday = date;
+        DateTime startOfToday = today.toDateTimeAtStartOfDay(now.getZone());
+        DateTimeFormatter dtfOut = DateTimeFormat.forPattern("yyyy-MM-dd");
+        try {
+            Log.v("today's date-birthdate", bday.toString(dtfOut));
+
+            Log.v("today's date", startOfToday.toString(dtfOut));
+        }catch (Exception e){
+
+        }
+//        LocalDate bday = new LocalDate(date);
+//        LocalDate now = new LocalDate();
+        Days days = Days.daysBetween(bday, startOfToday);
+        return days.getDays();
+    }
+    public DateTime getdate(String date) {
+
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+            DateTime dt = formatter.parseDateTime(date+ " 00:00:00");
+            return dt;
+//            Date returndate = format.parse(date);
+//            return returndate;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public boolean isSYnced(CommonPersonObjectClient pc){
       List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles","child_measles2");
       if(child_bcg_alertlist_for_client.size()>0){
           return true;
