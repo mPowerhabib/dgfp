@@ -14,6 +14,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
+import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
 import org.ei.opensrp.view.customControls.CustomFontTextView;
@@ -92,6 +93,13 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
             name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("Child_calc_age")!=null?pc.getColumnmaps().get("Child_calc_age"):"");
+            try {
+                int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("Child_dob") != null ?  pc.getDetails().get("Child_dob")  : "")), DateUtil.today());
+                int calc_age = days / 365;
+                age.setText(calculateage(days));
+            }catch (Exception e){
+
+            }
             maritalstatus.setVisibility(View.GONE);
             if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.child_boy_infant);
@@ -116,6 +124,13 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
             uniqueid.setText(unique_id_string);
             age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? pc.getColumnmaps().get("calc_age_confirm") : "");
+            try {
+                int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_dob_confirm") != null ?  pc.getDetails().get("calc_dob_confirm")  : "")), DateUtil.today());
+                int calc_age = days / 365;
+                age.setText(calc_age);
+            }catch (Exception e){
+
+            }
 //            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
             if ((pc.getDetails().get("Is_woman") != null ? pc.getDetails().get("Is_woman") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.woman_placeholder);
@@ -158,7 +173,27 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         itemView.setLayoutParams(clientViewLayoutParams);
     }
 
+    private String calculateage(int i) {
+        if(i <= 15){
+            return (i + " days");
+        }
+        if(i <= 141){
+            return (i/7 + " weeks");
+        }
+        if(i <= 719){
+            return (i/30 + " months");
+        }
+        if(i >719){
+            String years = 719/365 + " years ";
+            String months = "";
+            if((719%365)!=0) {
+                months = (719 % 365)/30 + " months";
+            }
 
+            return years + months;
+        }
+        return "";
+    }
 
 
     private void checkEncc1StatusAndform(TextView anc1tick, TextView anc1text, CommonPersonObjectClient pc) {

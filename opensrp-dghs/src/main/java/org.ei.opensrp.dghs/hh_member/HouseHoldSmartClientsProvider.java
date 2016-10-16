@@ -21,6 +21,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
+import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
 import org.ei.opensrp.view.dialog.FilterOption;
@@ -128,6 +129,13 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 //
          gobhhid.setText(pc.getColumnmaps().get("HHID")!=null?pc.getColumnmaps().get("HHID"):"");
          age.setText("("+(pc.getDetails().get("calc_HoH_age_confirm")!=null?pc.getDetails().get("calc_HoH_age_confirm"):"")+") ");
+        try {
+            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_HoH_dob_confirm") != null ?  pc.getDetails().get("calc_HoH_dob_confirm")  : "")), DateUtil.today());
+            int calc_age = days / 365;
+            age.setText(calc_age);
+        }catch (Exception e){
+
+        }
          nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
          brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
          mobileno.setText(pc.getDetails().get("HoH_Mobile_No")!=null?pc.getDetails().get("HoH_Mobile_No"):"");

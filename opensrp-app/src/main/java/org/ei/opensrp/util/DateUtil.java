@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-    private static String DEFAULT_DATE_FORMAT = "dd/MM/yyyy";
+    private static String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
     private static String DATE_FORMAT_FOR_TIMELINE_EVENT = "dd-MM-yyyy";
 
     private static DateUtility dateUtility = new RealDate();

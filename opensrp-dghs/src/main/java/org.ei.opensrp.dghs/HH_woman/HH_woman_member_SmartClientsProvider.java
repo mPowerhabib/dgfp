@@ -21,6 +21,7 @@ import org.ei.opensrp.dghs.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.domain.form.FieldOverrides;
 import org.ei.opensrp.service.AlertService;
+import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
 import org.ei.opensrp.view.customControls.CustomFontTextView;
@@ -37,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static org.ei.opensrp.util.StringUtil.humanize;
@@ -156,6 +158,14 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
         age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? "("+pc.getColumnmaps().get("calc_age_confirm")+")" : "");
+//        calc_HoH_dob_confirm
+        try {
+            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_dob_confirm") != null ?  pc.getDetails().get("calc_dob_confirm")  : "")), DateUtil.today());
+            int calc_age = days / 365;
+            age.setText(calc_age);
+        }catch (Exception e){
+
+        }
         nid.setText("NID: " + (pc.getDetails().get("Member_NID") != null ? pc.getDetails().get("Member_NID") : ""));
         brid.setText("BRID: " + (pc.getDetails().get("Member_BRID") != null ? pc.getDetails().get("Member_BRID") : ""));
 
