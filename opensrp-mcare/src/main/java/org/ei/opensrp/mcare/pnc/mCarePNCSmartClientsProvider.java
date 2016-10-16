@@ -121,7 +121,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
             Log.v("days",""+days);
             int calc_age = days / 365;
-            age.setText("("+calc_age+")");
+            age.setText("("+calc_age+") ");
         }catch (Exception e){
             e.printStackTrace();
         }

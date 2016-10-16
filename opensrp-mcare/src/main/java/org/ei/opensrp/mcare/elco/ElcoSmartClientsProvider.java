@@ -113,7 +113,7 @@ public class ElcoSmartClientsProvider implements SmartRegisterCLientsProviderFor
         try {
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("FWBIRTHDATE") != null ?  pc.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
             int calc_age = days / 365;
-            age.setText("("+calc_age+")");
+            age.setText("("+calc_age+") ");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -442,12 +442,15 @@ public class ElcoSmartClientsProvider implements SmartRegisterCLientsProviderFor
                 mis_elco_due.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                 mis_elco_due.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 mis_elco_due.setOnClickListener(onClickListener);
-                mis_elco_due.setTag(smartRegisterClient);
+                mis_elco_due.setTag(R.id.clientobject,smartRegisterClient);
+                mis_elco_due.setTag(R.id.AlertStatustextforMIS_ELCO,"upcoming");
+
 
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
                 mis_elco_due.setOnClickListener(onClickListener);
-                mis_elco_due.setTag(smartRegisterClient);
+                mis_elco_due.setTag(R.id.clientobject,smartRegisterClient);
+                mis_elco_due.setTag(R.id.AlertStatustextforMIS_ELCO,"urgent");
                 mis_elco_due.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
                 mis_elco_due.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 

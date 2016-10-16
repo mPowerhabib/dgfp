@@ -162,11 +162,14 @@ public class ElcoSmartRegisterActivity extends SecuredNativeSmartRegisterActivit
                 new OpenFormOption(getResources().getString(R.string.psrfform), "psrf_form", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)
         };
     }
-    public DialogOption[] getEditOptionsForMISELCO(CommonPersonObjectClient elco) {
+    public DialogOption[] getEditOptionsForMISELCO(CommonPersonObjectClient elco,String alertstatus) {
+        String alertstate = alertstatus;
+        HashMap<String,String> overridemap = new HashMap<String,String>();
+        overridemap.put("mis_elco_current_formStatus", alertstate);
 
         return new DialogOption[]{
 
-                new OpenFormOption(getResources().getString(R.string.mis_elco), "mis_elco", formController)
+                new OpenFormOption(getResources().getString(R.string.mis_elco), "mis_elco", formController,overridemap,OpenFormOption.ByColumnAndByDetails.bydefault)
         };
     }
 
