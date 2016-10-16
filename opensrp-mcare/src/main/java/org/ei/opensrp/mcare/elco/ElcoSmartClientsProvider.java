@@ -109,6 +109,15 @@ public class ElcoSmartClientsProvider implements SmartRegisterCLientsProviderFor
         village.setText((humanize((pc.getDetails().get("FWWOMMAUZA_PARA") != null ? pc.getDetails().get("FWWOMMAUZA_PARA") : "").replace("+", "_"))));
         age.setText("("+(pc.getDetails().get("FWWOMAGE")!=null?pc.getDetails().get("FWWOMAGE"):"")+") ");
 
+        DateUtil.setDefaultDateFormat("yyyy-MM-dd");
+        try {
+            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("FWBIRTHDATE") != null ?  pc.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+            int calc_age = days / 365;
+            age.setText("("+calc_age+")");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         if((pc.getDetails().get("FWWOMNID")!=null?pc.getDetails().get("FWWOMNID"):"").length()>0) {
             String NIDSourcestring = "NID: " +  (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") ;
             nid.setText(Html.fromHtml(NIDSourcestring));

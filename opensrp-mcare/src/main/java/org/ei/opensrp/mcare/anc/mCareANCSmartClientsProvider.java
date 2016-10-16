@@ -113,6 +113,18 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         village.setText(humanize((pc.getDetails().get("mauza") != null ? pc.getDetails().get("mauza") : "").replace("+", "_")));
         age.setText("("+(pc.getDetails().get("FWWOMAGE")!=null?pc.getDetails().get("FWWOMAGE"):"")+") ");
 
+        DateUtil.setDefaultDateFormat("yyyy-MM-dd");
+        AllCommonsRepository allmotherRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+        CommonPersonObject childobject = allmotherRepository.findByCaseID(smartRegisterClient.entityId());
+        AllCommonsRepository elcorep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("elco");
+        final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
+        try {
+            int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+            int calc_age = days / 365;
+            age.setText("("+calc_age+")");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         if(pc.getDetails().get("FWWOMNID").length()>0) {
             String NIDSourcestring = "NID: " +  (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") + " ";

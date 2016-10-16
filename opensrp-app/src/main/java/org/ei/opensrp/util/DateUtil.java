@@ -18,6 +18,10 @@ public class DateUtil {
         dateUtility = new MockDate(fakeDayAsToday);
     }
 
+    public static void setDefaultDateFormat(String defaultDateFormat) {
+        DEFAULT_DATE_FORMAT = defaultDateFormat;
+    }
+
     public static LocalDate today() {
         return dateUtility.today();
     }

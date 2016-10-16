@@ -28,6 +28,7 @@ import org.ei.opensrp.mcare.child.mCareChildSmartRegisterActivity;
 import org.ei.opensrp.mcare.elco.ElcoSmartRegisterActivity;
 import org.ei.opensrp.mcare.pnc.mCarePNCSmartRegisterActivity;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
+import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.activity.ANCSmartRegisterActivity;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
@@ -181,6 +182,14 @@ public class HouseholdDetailsSmartClientsProvider implements SmartRegisterClient
 
                     name.setText(humanize(pc.getColumnmaps().get("FWWOMFNAME") != null ? pc.getColumnmaps().get("FWWOMFNAME") : ""));
                     age.setText("("+(pc.getDetails().get("FWWOMAGE") != null ? pc.getDetails().get("FWWOMAGE") : "")+")");
+                    DateUtil.setDefaultDateFormat("yyyy-MM-dd");
+                    try {
+                        int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("FWBIRTHDATE") != null ?  pc.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+                        int calc_age = days / 365;
+                        age.setText("("+calc_age+")");
+                    }catch (Exception e){
+
+                    }
                     LinearLayout child_parent_carrier = (LinearLayout)itemView.findViewById(R.id.child_parent_holder);
                     addchildrenifany(child_parent_carrier,mcaremother);
                 }else {
@@ -205,6 +214,14 @@ public class HouseholdDetailsSmartClientsProvider implements SmartRegisterClient
 
                     name.setText(humanize(pc.getColumnmaps().get("FWWOMFNAME") != null ? pc.getColumnmaps().get("FWWOMFNAME") : ""));
                     age.setText("("+(pc.getDetails().get("FWWOMAGE") != null ? pc.getDetails().get("FWWOMAGE") : "")+")");
+                    DateUtil.setDefaultDateFormat("yyyy-MM-dd");
+                    try {
+                        int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("FWBIRTHDATE") != null ?  pc.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+                        int calc_age = days / 365;
+                        age.setText("("+calc_age+")");
+                    }catch (Exception e){
+
+                    }
                 }
             }else {
 
@@ -228,6 +245,15 @@ public class HouseholdDetailsSmartClientsProvider implements SmartRegisterClient
 
                 name.setText(humanize(pc.getColumnmaps().get("FWWOMFNAME") != null ? pc.getColumnmaps().get("FWWOMFNAME") : ""));
                 age.setText("("+(pc.getDetails().get("FWWOMAGE") != null ? pc.getDetails().get("FWWOMAGE") : "")+")");
+
+                DateUtil.setDefaultDateFormat("yyyy-MM-dd");
+                try {
+                    int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("FWBIRTHDATE") != null ?  pc.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+                    int calc_age = days / 365;
+                    age.setText("("+calc_age+")");
+                }catch (Exception e){
+
+                }
             }
         }
 //        itemView.setLayoutParams(clientViewLayoutParams);
