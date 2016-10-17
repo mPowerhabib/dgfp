@@ -112,9 +112,13 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         gobhhid.setVisibility(View.INVISIBLE);
         village.setText((humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")))+", "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
-        String dataofbirth = (pc.getDetails().get("Child_dob")!=null?pc.getDetails().get("Child_dob"):"") + "\n";
-        dataofbirth = dataofbirth + "age : " + calculateage(Integer.parseInt(""+getageindays(getdate(pc.getDetails().get("Child_dob")!=null?pc.getDetails().get("Child_dob"):"")))) ;
-        dateofbirth.setText(dataofbirth);
+        try {
+            String dataofbirth = (pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : "") + "\n";
+            dataofbirth = dataofbirth + "age : " + calculateage(Integer.parseInt("" + getageindays(getdate(pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""))));
+            dateofbirth.setText(dataofbirth);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 //        calculateage(40);
 
         if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
@@ -370,38 +374,38 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
             nextVaccineDate.setTag(pc);
         }else{
           ArrayList<Alert> alertlist = checkAlertListForVaccine(pc);
-            Collections.sort(alertlist,new Comparator<Alert>() {
+//            Collections.sort(alertlist,new Comparator<Alert>() {
+//
+//                public int compare(Alert alert1, Alert alert2) {
+//                    if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
+//                        return 0;
+//                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("normal")){
+//                        return 0;
+//                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("upcoming")){
+//                        return 0;
+//                    }else if(alert1.status().value().equalsIgnoreCase("expired") && alert2.status().value().equalsIgnoreCase("expired")){
+//                        return 0;
+//                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("normal")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("upcoming")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("expired")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("normal")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("expired")){
+//                        return -1;
+//                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("expired")){
+//                        return -1;
+//                    }else{
+//                        return 1;
+//                    }
 
-                public int compare(Alert alert1, Alert alert2) {
-                    if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
-                        return 0;
-                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("normal")){
-                        return 0;
-                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("upcoming")){
-                        return 0;
-                    }else if(alert1.status().value().equalsIgnoreCase("expired") && alert2.status().value().equalsIgnoreCase("expired")){
-                        return 0;
-                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("urgent")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("normal")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("upcoming")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("urgent") && alert2.status().value().equalsIgnoreCase("expired")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("normal")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("upcoming") && alert2.status().value().equalsIgnoreCase("expired")){
-                        return -1;
-                    }else if(alert1.status().value().equalsIgnoreCase("normal") && alert2.status().value().equalsIgnoreCase("expired")){
-                        return -1;
-                    }else{
-                        return 1;
-                    }
 
-
-                }
-            });
+//                }
+//            });
             if(alertlist.size()>0) {
                 String vaccineName = getVaccineName(alertlist);
                 nextVaccineDate.setText(vaccineName);
@@ -430,6 +434,21 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
                         }
                     });
                 }
+            }else{
+                nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                nextVaccineDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles","child_measles2");
+                if(checkcompletedVaccinecount(pc)==14){
+                    nextVaccineDate.setText("Fully Immunized");
+                }else{
+                    nextVaccineDate.setText("Partially Immunized");
+                }
+
             }
 
 
@@ -500,7 +519,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
             String childVaccines = (pc.getDetails().get("child_vaccines_2") != null ? pc.getDetails().get("child_vaccines_2") : "");
             childVaccines = childVaccines.trim();
             childVaccines = childVaccines.replace(" ",",");
-            nlastVaccineDate.setText(childVaccines);
+            nlastVaccineDate.setText(childVaccines.toUpperCase());
         }
 
     }
@@ -528,5 +547,55 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         public void setAlertstatus(String alertstatus) {
             this.alertstatus = alertstatus;
         }
+    }
+    private int checkcompletedVaccinecount(CommonPersonObjectClient pc) {
+        int count = 0;
+
+        if(!(pc.getDetails().get("final_bcg") != null ? pc.getDetails().get("final_bcg") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_ipv") != null ? pc.getDetails().get("final_ipv") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_opv0") != null ? pc.getDetails().get("final_opv0") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_opv1") != null ? pc.getDetails().get("final_opv1") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_opv3") != null ? pc.getDetails().get("final_opv3") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_pcv1") != null ? pc.getDetails().get("final_pcv1") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_pcv2") != null ? pc.getDetails().get("final_pcv2") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_pcv3") != null ? pc.getDetails().get("final_pcv3") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_penta1") != null ? pc.getDetails().get("final_penta1") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_penta2") != null ? pc.getDetails().get("final_penta2") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_penta3") != null ? pc.getDetails().get("final_penta3") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+        if(!(pc.getDetails().get("final_measles1") != null ? pc.getDetails().get("final_measles1") : "").equalsIgnoreCase("")) {
+            count++;
+        }
+
+        if(!(pc.getDetails().get("final_measles2") != null ? pc.getDetails().get("final_measles2") : "").equalsIgnoreCase("")) {
+            count++;
+       }
+
+        return count;
+
     }
 }

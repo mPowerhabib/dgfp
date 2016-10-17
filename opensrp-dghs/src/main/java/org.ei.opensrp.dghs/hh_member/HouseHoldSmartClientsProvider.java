@@ -132,7 +132,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
         try {
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_HoH_dob_confirm") != null ?  pc.getDetails().get("calc_HoH_dob_confirm")  : "")), DateUtil.today());
             int calc_age = days / 365;
-            age.setText(calc_age);
+            age.setText("("+calc_age+") ");
         }catch (Exception e){
 
         }

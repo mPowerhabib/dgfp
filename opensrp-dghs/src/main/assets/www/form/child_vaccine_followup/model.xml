@@ -1,6 +1,6 @@
 <model>
     <instance>
-        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610091245">
+        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610170851">
             <formhub>
                 <uuid/>
             </formhub>
@@ -49,6 +49,7 @@
             <epi_card_number_note openmrs_entity="person_attribute" openmrs_entity_id="EPI Card Number"/>
             <first_name_note openmrs_entity="person" openmrs_entity_id="first_name"/>
             <child_age openmrs_entity="Concept" openmrs_entity_id="a04427c9-c616-48c9-8588-5bb96173f56a"/>
+            <child_age_days/>
             <calc_dob_note openmrs_entity="person" openmrs_entity_id="birthdate"/>
             <gender_note openmrs_entity="person" openmrs_entity_id="gender"/>
             <mother_name_note openmrs_entity="person_attribute" openmrs_entity_id="motherName"/>

@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                style="@style/CustomFontTextViewStyle.ListView.Small"
+                style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                 android:text="pnc1text"
                 android:id="@+id/vaccinetext"
                 android:layout_margin="1dp"

@@ -29,7 +29,7 @@
         "shouldLoadValue": true
       },
       {
-        "name": "Date_Of_Reg",
+        "name": "Member_Reg_Date",
         "bind": "/model/instance/Child_Vaccination_Followup/existing_client_reg_date",
         "shouldLoadValue": true
       },
@@ -207,6 +207,10 @@
       {
         "name": "child_age",
         "bind": "/model/instance/Child_Vaccination_Followup/child_age"
+      },
+      {
+        "name": "child_age_days",
+        "bind": "/model/instance/Child_Vaccination_Followup/child_age_days"
       },
       {
         "name": "calc_dob_note",
