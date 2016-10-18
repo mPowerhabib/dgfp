@@ -202,7 +202,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
     }
 
     public boolean isSYnced(CommonPersonObjectClient pc){
-      List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles","child_measles2");
+      List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles1","child_measles2");
       if(child_bcg_alertlist_for_client.size()>0){
           return true;
       }
@@ -223,7 +223,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         List<Alert> child_penta1_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta1");
         List<Alert> child_penta2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta2");
         List<Alert> child_penta3_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_penta3");
-        List<Alert> child_measles_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_measles");
+        List<Alert> child_measles_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_measles1");
         List<Alert> child_measles2_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_measles2");
 
         if(child_bcg_alertlist_for_client.size()>0){
@@ -442,7 +442,6 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
                     }
                 });
-                List<Alert> child_bcg_alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "child_bcg","child_ipv","child_opv0","child_opv1","child_opv2","child_opv3","child_pcv1","child_pcv2","child_pcv3","child_penta1","child_penta2","child_penta3","child_measles","child_measles2");
                 if(checkcompletedVaccinecount(pc)==14){
                     nextVaccineDate.setText("Fully Immunized");
                 }else{
@@ -495,7 +494,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta3")) {
             return "PENTA 3";
         }
-        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles")) {
+        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles1")) {
             return "MEASLES 1";
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles2")) {
