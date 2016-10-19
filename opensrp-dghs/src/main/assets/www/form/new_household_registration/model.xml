@@ -1,6 +1,6 @@
 <model>
   <instance>
-    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201610091242">
+    <HHMemberReg encounter_type="HH And Member Registration" id="HHMemberReg" version="201610190410">
       <formhub>
         <uuid/>
       </formhub>

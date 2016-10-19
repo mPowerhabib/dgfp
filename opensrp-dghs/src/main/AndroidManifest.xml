@@ -5,6 +5,7 @@
 
 
     <application android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:label="@string/app_name"
         tools:replace="android:name"
         android:name=".application.dghsApplication"

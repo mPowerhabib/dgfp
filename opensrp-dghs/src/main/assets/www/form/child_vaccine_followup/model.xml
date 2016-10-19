@@ -1,6 +1,6 @@
 <model>
     <instance>
-        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610170851">
+        <Child_Vaccination_Followup encounter_type="Child Vaccination Followup" id="child_vaccination_followup" version="201610181350">
             <formhub>
                 <uuid/>
             </formhub>
@@ -75,7 +75,7 @@
             <ipv_note/>
             <measles1_note/>
             <measles2_note/>
-            <vaccines openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="4c0d9630-c489-4c80-9030-af86aa834598"/>
+            <child_vaccines openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="4c0d9630-c489-4c80-9030-af86aa834598"/>
             <vaccines_group>
                 <bcg_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="4dde7c2a-8a6b-4f7a-a20e-c20df50747ca"/>
                 <opv0_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="804e09d5-01ce-471b-a69e-76442e32e96a"/>
@@ -104,7 +104,7 @@
                 <measles2_retro openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="509c8c4e-af86-47dc-87f8-72aac76d29bf"/>
                 <measles2_dose openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="509c8c4e-af86-47dc-87f8-72aac76d29bf"/>
             </vaccines_group>
-            <vaccines_2 openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="d74f7428-63ec-4d5e-9124-3992e2877df6"/>
+            <child_vaccines_2 openmrs_entity="concept" openmrs_entity_id="54621f39-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="d74f7428-63ec-4d5e-9124-3992e2877df6"/>
             <bcg openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="4dde7c2a-8a6b-4f7a-a20e-c20df50747ca"/>
             <opv0 openmrs_entity="concept" openmrs_entity_id="5463239a-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="804e09d5-01ce-471b-a69e-76442e32e96a"/>
             <opv0_dose_today openmrs_entity="concept" openmrs_entity_id="54644d41-885f-11e5-ade6-005056b07f03" openmrs_entity_parent="804e09d5-01ce-471b-a69e-76442e32e96a"/>
