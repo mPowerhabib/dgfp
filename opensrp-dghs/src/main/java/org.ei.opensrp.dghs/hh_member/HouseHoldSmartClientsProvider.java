@@ -155,7 +155,8 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
         if(alertlist_for_client.size() == 0 ){
              due_visit_date.setText("Not Synced to Server");
-             due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+            due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
              due_visit_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -176,23 +177,31 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
                     }
                 });
-                 due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+
+                due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
 //                due_visit_date.setText(alertlist_for_client.get(i).startDate());
                  due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-                 due_visit_date.setOnClickListener(onClickListener);
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+
+                due_visit_date.setOnClickListener(onClickListener);
                  due_visit_date.setTag(smartRegisterClient);
 
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
 //                due_visit_date.setText((alertlist_for_client.get(i).startDate()));
                  due_visit_date.setOnClickListener(onClickListener);
-                 due_visit_date.setTag(smartRegisterClient);
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+
+                due_visit_date.setTag(smartRegisterClient);
                  due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
-                 due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+
+                due_date_holder.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
                  due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -202,7 +211,9 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
             }
             if(alertlist_for_client.get(i).isComplete()){
                  due_visit_date.setText("visited");
-                 due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+
+                due_date_holder.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
             }
         }
         if(lastdate!= null){

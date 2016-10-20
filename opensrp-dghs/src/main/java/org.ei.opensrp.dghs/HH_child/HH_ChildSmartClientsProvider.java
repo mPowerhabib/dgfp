@@ -362,6 +362,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         boolean issynced = isSYnced(pc);
         if(!issynced){
             nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.client_list_header_dark_grey));
+            nextVaccineDate.setTextColor(context.getResources().getColor(R.color.text_black));
             nextVaccineDate.setText("Not Synced");
             nextVaccineDate.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -407,18 +408,22 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 //                }
 //            });
             if(alertlist.size()>0) {
-                String vaccineName = getVaccineName(alertlist);
+                String vaccineName = getVaccineName(alertlist,pc);
+
                 nextVaccineDate.setText(vaccineName);
                 if(alertlist.get(0).status().value().equalsIgnoreCase("upcoming")){
                     nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                    nextVaccineDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     nextVaccineDate.setOnClickListener(onClickListener);
                     nextVaccineDate.setTag(pc);
                 }else  if(alertlist.get(0).status().value().equalsIgnoreCase("urgent")){
                     nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_urgent_red));
+                    nextVaccineDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     nextVaccineDate.setOnClickListener(onClickListener);
                     nextVaccineDate.setTag(pc);
                 }else  if(alertlist.get(0).status().value().equalsIgnoreCase("normal")){
                     nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_light_blue));
+                    nextVaccineDate.setTextColor(context.getResources().getColor(R.color.text_black));
                     nextVaccineDate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -427,6 +432,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
                     });
                 }else if (alertlist.get(0).status().value().equalsIgnoreCase("expired")){
                     nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.client_list_header_dark_grey));
+                    nextVaccineDate.setTextColor(context.getResources().getColor(R.color.text_black));
                     nextVaccineDate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -436,6 +442,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
                 }
             }else{
                 nextVaccineDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                nextVaccineDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 nextVaccineDate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -457,48 +464,48 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
     }
 
-    private String getVaccineName(ArrayList<Alert> alertlist) {
+    private String getVaccineName(ArrayList<Alert> alertlist,CommonPersonObjectClient pc) {
        if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_bcg")) {
-            return "BCG";
+            return "BCG"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_ipv")) {
-            return "IPV";
+            return "IPV"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv0")) {
-            return "OPV 0";
+            return "OPV 0"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv1")) {
-            return "OPV 1";
+            return "OPV 1"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv2")) {
-            return "OPV 2";
+            return "OPV 2"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_opv3")) {
-            return "OPV 3";
+            return "OPV 3"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv1")) {
-            return "PCV 1";
+            return "PCV 1"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv2")) {
-            return "PCV 2";
+            return "PCV 2"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_pcv3")) {
-            return "PCV 3";
+            return "PCV 3"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta1")) {
-            return "PENTA 1";
+            return "PENTA 1"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta2")) {
-            return "PENTA 2";
+            return "PENTA 2"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_penta3")) {
-            return "PENTA 3";
+            return "PENTA 3"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles1")) {
-            return "MEASLES 1";
+            return "MEASLES 1"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
         if(alertlist.get(0).scheduleName().equalsIgnoreCase("child_measles2")) {
-            return "MEASLES 2";
+            return "MEASLES 2"+ "\n"+ getVaccineDateText(alertlist.get(0).scheduleName(),pc);
         }
 
         return "";
@@ -596,5 +603,79 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
         return count;
 
+    }
+
+    private String getVaccineDateText(String Schedulename, CommonPersonObjectClient pc) {
+        if (Schedulename.equalsIgnoreCase("child_bcg")) {
+            return ((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv0")) {
+            return ((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv1")) {
+            return ( setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv1")) {
+            return (setDate((pc.getDetails().get("final_opv0") != null ? pc.getDetails().get("final_opv0") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta1")) {
+            return (setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv2")) {
+            return (setDate((pc.getDetails().get("final_pcv1") != null ? pc.getDetails().get("final_pcv1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv2")) {
+            return (setDate((pc.getDetails().get("final_opv1") != null ? pc.getDetails().get("final_opv1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta2")) {
+            return (setDate((pc.getDetails().get("final_penta1") != null ? pc.getDetails().get("final_penta1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv3")) {
+            return (setDate((pc.getDetails().get("final_pcv2") != null ? pc.getDetails().get("final_pcv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv3")) {
+            return (setDate((pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta3")) {
+            return (setDate((pc.getDetails().get("final_penta2") != null ? pc.getDetails().get("final_penta2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_ipv")) {
+            return (setDate((pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_measles1")) {
+            return (setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),266));
+        }
+        if (Schedulename.equalsIgnoreCase("child_measles2")) {
+            return (setDate((pc.getDetails().get("final_measles1") != null ? pc.getDetails().get("final_measles1") : ""),175));
+        }
+        return "";
+    }
+    public String setDate(String date, int daystoadd) {
+
+        Date lastdate = converdatefromString(date);
+
+        if(lastdate!=null){
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(lastdate);
+            calendar.add(Calendar.DATE, daystoadd);//8 weeks
+            lastdate.setTime(calendar.getTime().getTime());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            //            String result = String.format(Locale.ENGLISH, format.format(lastdate) );
+            return (format.format(lastdate));
+            //             due_visit_date.append(format.format(lastdate));
+
+        }else{
+            return "";
+        }
+    }
+    public Date converdatefromString(String dateString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        }catch (Exception e){
+            return null;
+        }
+        return convertedDate;
     }
 }

@@ -24,7 +24,7 @@
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Basic Info"
+            android:text="Basic Information"
             android:id="@+id/header"
             style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
             android:layout_gravity="center_vertical"
@@ -67,10 +67,11 @@
             android:id="@+id/vaccination_history"
             style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
             android:layout_gravity="center_vertical"
-            android:textColor="@color/text_black"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_margin="5dp" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 

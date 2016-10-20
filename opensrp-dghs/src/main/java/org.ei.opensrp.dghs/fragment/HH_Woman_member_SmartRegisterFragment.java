@@ -21,10 +21,16 @@ import org.ei.opensrp.cursoradapter.CursorCommonObjectSort;
 import org.ei.opensrp.cursoradapter.SecuredNativeSmartRegisterCursorAdapterFragment;
 import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
+import org.ei.opensrp.dghs.HH_woman.BirthOutcomeHandler;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartClientsProvider;
 import org.ei.opensrp.dghs.HH_woman.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanDetailActivity;
 import org.ei.opensrp.dghs.HH_woman.WomanServiceModeOption;
+import org.ei.opensrp.dghs.HH_woman.tt1handler;
+import org.ei.opensrp.dghs.HH_woman.tt2handler;
+import org.ei.opensrp.dghs.HH_woman.tt3handler;
+import org.ei.opensrp.dghs.HH_woman.tt4handler;
+import org.ei.opensrp.dghs.HH_woman.tt5handler;
 import org.ei.opensrp.dghs.LoginActivity;
 import org.ei.opensrp.dghs.R;
 import org.ei.opensrp.dghs.hh_member.HHWardCommonObjectFilterOption;
@@ -238,7 +244,9 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                     startActivity(intent);
                     break;
                 case R.id.next_vaccine_date:
-                    CommonPersonObjectClient pc = (CommonPersonObjectClient) view.getTag();
+                    CommonPersonObjectClient pc = (CommonPersonObjectClient) view.getTag(R.id.clientobject);
+                    String Schedulename = (String)view.getTag(R.id.clientTTSchedulename);
+                    assignHandler(Schedulename);
                     JSONObject overridejsonobject = new JSONObject();
                     try {
                         overridejsonobject.put("e_tt1",((pc.getDetails().get("tt1_final")!=null?pc.getDetails().get("tt1_final"):"")));
@@ -251,7 +259,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                     }
 
                     FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
-                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("woman_tt_form",((CommonPersonObjectClient) view.getTag()).entityId() ,  fieldOverrides.getJSONString());
+                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("woman_tt_form",((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId() ,  fieldOverrides.getJSONString());
                     break;
                 case R.id.pvf:
                     ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("pregnancy_status_birth_notification", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
@@ -266,6 +274,26 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
             navigationController.startEC(client.entityId());
         }
     }
+
+    private void assignHandler(String Schedulename) {
+        if (Schedulename.equalsIgnoreCase("Woman_TT1")) {
+            context.formSubmissionRouter().getHandlerMap().put("woman_tt_form",new tt1handler());
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT2")) {
+            context.formSubmissionRouter().getHandlerMap().put("woman_tt_form",new tt2handler());
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT3")) {
+            context.formSubmissionRouter().getHandlerMap().put("woman_tt_form",new tt3handler());
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
+            context.formSubmissionRouter().getHandlerMap().put("woman_tt_form",new tt4handler());
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
+            context.formSubmissionRouter().getHandlerMap().put("woman_tt_form",new tt5handler());
+        }
+
+    }
+
     private class EditDialogOptionModelforwoman implements DialogOptionModel {
         @Override
         public DialogOption[] getDialogOptions() {

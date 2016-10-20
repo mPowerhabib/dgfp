@@ -231,6 +231,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     private void vaccineButton(List<Alert> vaccinealertlist_for_client, CommonPersonObjectClient pc, TextView vaccinebutton) {
         if (vaccinealertlist_for_client.size() == 0) {
             vaccinebutton.setText("Not Synced to Server");
+            vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
             vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 //            pvfdue.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -239,7 +240,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //                }
 //            });
             vaccinebutton.setOnClickListener(onClickListener);
-            vaccinebutton.setTag(pc);
+            vaccinebutton.setTag(R.id.clientobject,pc);
 
         }
         for (int i = 0; i < vaccinealertlist_for_client.size(); i++) {
@@ -268,20 +269,25 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                     }
                 });
+                vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
                 vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
             }
             if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
+                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                 vaccinebutton.setOnClickListener(onClickListener);
-                vaccinebutton.setTag(pc);
-
+                vaccinebutton.setTag(R.id.clientobject,pc);
+                vaccinebutton.setTag(R.id.clientTTSchedulename,Schedulename);
             }
             if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
+                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 vaccinebutton.setOnClickListener(onClickListener);
-                vaccinebutton.setTag(pc);
+                vaccinebutton.setTag(R.id.clientobject,pc);
+                vaccinebutton.setTag(R.id.clientTTSchedulename,Schedulename);
                 vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
             }
             if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
+                vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
                 vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
                 vaccinebutton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -291,7 +297,23 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 });
             }
             if (vaccinealertlist_for_client.get(i).isComplete()) {
-                vaccinebutton.setText("visited");
+//                vaccinebutton.setText("visited");
+                if (Schedulename.equalsIgnoreCase("Woman_TT1")) {
+                    vaccinebutton.setText("TT1 \n" + (pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : ""));
+                }
+                if (Schedulename.equalsIgnoreCase("Woman_TT2")) {
+                    vaccinebutton.setText("TT2 \n" + (pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : ""));
+                }
+                if (Schedulename.equalsIgnoreCase("Woman_TT3")) {
+                    vaccinebutton.setText("TT3 \n" + (pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : ""));
+                }
+                if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
+                    vaccinebutton.setText("TT4 \n" + (pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : ""));
+                }
+                if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
+                    vaccinebutton.setText("TT5 \n" + (pc.getDetails().get("tt5_final") != null ? pc.getDetails().get("tt5_final") : ""));
+                }
+                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
             }
         }
@@ -301,6 +323,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, final CommonPersonObjectClient pc) {
         if ((pc.getDetails().get("Visit_status") != null ? pc.getDetails().get("Visit_status") : "").equalsIgnoreCase("3")) {
             pvfdue.setText("Launch Birth outcome Form");
+            pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
             pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
             pvfdue.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -328,6 +351,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
             if (((pc.getDetails().get("outcome_active") != null ? pc.getDetails().get("outcome_active") : "").equalsIgnoreCase("1"))) {
                 pvfdue.setText("Complete");
+                pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
                 pvfdue.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -339,6 +363,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         } else {
             if (bnFalertlist_for_client.size() == 0) {
                 pvfdue.setText("Not Synced to Server");
+                pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
                 pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 //            pvfdue.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -359,9 +384,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                         }
                     });
+                    pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
                     pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
                 }
                 if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
+                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                     pvfdue.setOnClickListener(onClickListener);
                     pvfdue.setTag(pc);
@@ -370,9 +397,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
                     pvfdue.setOnClickListener(onClickListener);
                     pvfdue.setTag(pc);
+                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
                 }
                 if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
+                    pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
                     pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
                     pvfdue.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -383,6 +412,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 }
                 if (bnFalertlist_for_client.get(i).isComplete()) {
                     pvfdue.setText("visited");
+                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
                 }
             }

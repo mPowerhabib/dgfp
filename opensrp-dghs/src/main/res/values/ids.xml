@@ -2,4 +2,5 @@
 <resources>
     <item name="clientobject" type="id">clientobject</item>
     <item name="formname" type="id">formname</item>
+    <item name="clientTTSchedulename" type="id">tt_schedule_name</item>
 </resources>

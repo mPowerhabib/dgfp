@@ -116,36 +116,36 @@ public class ChildDetailActivity extends Activity {
 //        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
 //        TextView village = (TextView) findViewById(R.id.ward);
 //
-//        ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        ImageButton back = (ImageButton) findViewById(R.id.btn_back_to_home);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //
         name.setText(humanize((childclient.getColumnmaps().get("Member_Fname") != null ? childclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));//
         brid.setText((childclient.getDetails().get("Member_BRID") != null ? childclient.getDetails().get("Member_BRID") : "").replace("+", "_"));//
         fathername.setText((childclient.getDetails().get("Child_father_name") != null ? childclient.getDetails().get("Child_father_name") : ""));
         mothername.setText((childclient.getDetails().get("Child_mother_name") != null ? childclient.getDetails().get("Child_mother_name") : ""));
         epicarno.setText((childclient.getDetails().get("epi_card_number") != null ? childclient.getDetails().get("epi_card_number") : ""));
-        birthdate.setText((childclient.getDetails().get("Child_birth_date") != null ? childclient.getDetails().get("Child_birth_date") : ""));
+        birthdate.setText((childclient.getDetails().get("Child_dob") != null ? childclient.getDetails().get("Child_dob") : ""));
         contactno.setText((childclient.getDetails().get("contact_phone_number") != null ? childclient.getDetails().get("contact_phone_number") : ""));
         address.setText((childclient.getDetails().get("HH_Address") != null ? childclient.getDetails().get("HH_Address") : ""));
 
         ChildVaccinecheck(childclient,childdetail_bcg,findViewById(R.id.child_block1),"final_bcg","child_bcg");
-        ChildVaccinecheck(childclient,childdetail_opv0,findViewById(R.id.child_block2),"final_opv0","child_opv0");
-        ChildVaccinecheck(childclient,childdetail_pcv1,findViewById(R.id.child_block3),"final_pcv1","child_pcv1");
-        ChildVaccinecheck(childclient,childdetail_opv1,findViewById(R.id.child_block4),"final_opv1","child_opv1");
-        ChildVaccinecheck(childclient,childdetail_penta1,findViewById(R.id.child_block5),"final_penta1","child_penta1");
-        ChildVaccinecheck(childclient,childdetail_pcv2,findViewById(R.id.child_block6),"final_pcv2","child_pcv2");
+        ChildVaccinecheck(childclient,childdetail_opv0,findViewById(R.id.child_block5),"final_opv0","child_opv0");
+        ChildVaccinecheck(childclient,childdetail_pcv1,findViewById(R.id.child_block10),"final_pcv1","child_pcv1");
+        ChildVaccinecheck(childclient,childdetail_opv1,findViewById(R.id.child_block6),"final_opv1","child_opv1");
+        ChildVaccinecheck(childclient,childdetail_penta1,findViewById(R.id.child_block2),"final_penta1","child_penta1");
+        ChildVaccinecheck(childclient,childdetail_pcv2,findViewById(R.id.child_block11),"final_pcv2","child_pcv2");
         ChildVaccinecheck(childclient,childdetail_opv2,findViewById(R.id.child_block7),"final_opv2","child_opv2");
-        ChildVaccinecheck(childclient,childdetail_penta2,findViewById(R.id.child_block8),"final_penta2","child_penta2");
-        ChildVaccinecheck(childclient,childdetail_pcv3,findViewById(R.id.child_block9),"final_pcv3","child_pcv3");
-        ChildVaccinecheck(childclient,childdetail_opv3,findViewById(R.id.child_block10),"final_opv3","child_opv3");
-        ChildVaccinecheck(childclient,childdetail_penta3,findViewById(R.id.child_block11),"final_penta3","child_penta3");
-        ChildVaccinecheck(childclient,childdetail_ipv,findViewById(R.id.child_block12),"final_ipv","child_ipv");
-        ChildVaccinecheck(childclient,childdetail_measles1,findViewById(R.id.child_block13),"final_measles1","child_measles");
+        ChildVaccinecheck(childclient,childdetail_penta2,findViewById(R.id.child_block3),"final_penta2","child_penta2");
+        ChildVaccinecheck(childclient,childdetail_pcv3,findViewById(R.id.child_block12),"final_pcv3","child_pcv3");
+        ChildVaccinecheck(childclient,childdetail_opv3,findViewById(R.id.child_block8),"final_opv3","child_opv3");
+        ChildVaccinecheck(childclient,childdetail_penta3,findViewById(R.id.child_block4),"final_penta3","child_penta3");
+        ChildVaccinecheck(childclient,childdetail_ipv,findViewById(R.id.child_block9),"final_ipv","child_ipv");
+        ChildVaccinecheck(childclient,childdetail_measles1,findViewById(R.id.child_block13),"final_measles1","child_measles1");
         ChildVaccinecheck(childclient,childdetail_measles2,findViewById(R.id.child_block14),"final_measles2","child_measles2");
 
 
@@ -263,19 +263,23 @@ public class ChildDetailActivity extends Activity {
                 for (int i = 0; i < child_alertlist_for_client.size(); i++) {
                     if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_yellow));
-                        String text =  (child_alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,childClient);
                         tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_urgent_red));
-                        String text = (child_alertlist_for_client.get(i).startDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,childClient);
                         tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
                         block.setBackgroundColor(getResources().getColor(R.color.client_list_header_dark_grey));
-                        String text = (child_alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,childClient);
                         tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_light_blue));
-                        String text = (child_alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,childClient);
                         tt1TextView.setText(Html.fromHtml(text));
                     }
 
@@ -288,6 +292,80 @@ public class ChildDetailActivity extends Activity {
 
         }
 
+    }
+
+    private String getVaccineDateText(String Schedulename, CommonPersonObjectClient pc) {
+        if (Schedulename.equalsIgnoreCase("child_bcg")) {
+            return ((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv0")) {
+            return ((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv1")) {
+            return ( setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv1")) {
+            return (setDate((pc.getDetails().get("final_opv0") != null ? pc.getDetails().get("final_opv0") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta1")) {
+            return (setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),35));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv2")) {
+            return (setDate((pc.getDetails().get("final_pcv1") != null ? pc.getDetails().get("final_pcv1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv2")) {
+            return (setDate((pc.getDetails().get("final_opv1") != null ? pc.getDetails().get("final_opv1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta2")) {
+            return (setDate((pc.getDetails().get("final_penta1") != null ? pc.getDetails().get("final_penta1") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_pcv3")) {
+            return (setDate((pc.getDetails().get("final_pcv2") != null ? pc.getDetails().get("final_pcv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_opv3")) {
+            return (setDate((pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_penta3")) {
+            return (setDate((pc.getDetails().get("final_penta2") != null ? pc.getDetails().get("final_penta2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_ipv")) {
+            return (setDate((pc.getDetails().get("final_opv2") != null ? pc.getDetails().get("final_opv2") : ""),21));
+        }
+        if (Schedulename.equalsIgnoreCase("child_measles1")) {
+            return (setDate((pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""),266));
+        }
+        if (Schedulename.equalsIgnoreCase("child_measles2")) {
+            return (setDate((pc.getDetails().get("final_measles1") != null ? pc.getDetails().get("final_measles1") : ""),175));
+        }
+        return "";
+    }
+    public String setDate(String date, int daystoadd) {
+
+        Date lastdate = converdatefromString(date);
+
+        if(lastdate!=null){
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(lastdate);
+            calendar.add(Calendar.DATE, daystoadd);//8 weeks
+            lastdate.setTime(calendar.getTime().getTime());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            //            String result = String.format(Locale.ENGLISH, format.format(lastdate) );
+            return (format.format(lastdate));
+            //             due_visit_date.append(format.format(lastdate));
+
+        }else{
+            return "";
+        }
+    }
+    public Date converdatefromString(String dateString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        }catch (Exception e){
+            return null;
+        }
+        return convertedDate;
     }
 
 
