@@ -267,7 +267,7 @@ public class ChildDetailActivity extends Activity {
                         tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_urgent_red));
-                        String text = (child_alertlist_for_client.get(i).expiryDate());
+                        String text = (child_alertlist_for_client.get(i).startDate());
                         tt1TextView.setText(text);
                     } else if (child_alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
                         block.setBackgroundColor(getResources().getColor(R.color.client_list_header_dark_grey));

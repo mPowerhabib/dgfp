@@ -415,16 +415,6 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
     }
 
 
-    private String sortBySortValue(){
-        return " FWSORTVALUE ASC";
-    }
-
-    private String sortByJiVitAHHID(){
-        return " JiVitAHHID ASC";
-    }
-    private String sortByLmp(){
-        return " FWPSRLMP ASC";
-    }
 
     private String filterStringForFemale(){
         return "and details LIKE '%\"Gender\":\"2\"%'";

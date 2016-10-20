@@ -129,8 +129,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         husband_name.setVisibility(View.INVISIBLE);
         if (((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "")).equalsIgnoreCase("1")) {
             maritalstatus.setText("M: Unmarried");
-            coupleno.setVisibility(View.INVISIBLE);
-            husband_name.setVisibility(View.INVISIBLE);
+            coupleno.setVisibility(View.VISIBLE);
+            husband_name.setVisibility(View.VISIBLE);
+            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
+
         }
         if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("2")) {
             maritalstatus.setText("M: Married");
@@ -142,8 +145,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         }
         if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("3")) {
             maritalstatus.setText("M: Divorced/Widow/Widower");
-            coupleno.setVisibility(View.INVISIBLE);
-            husband_name.setVisibility(View.INVISIBLE);
+            coupleno.setVisibility(View.VISIBLE);
+            husband_name.setVisibility(View.VISIBLE);
+            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
+
         }
 //
 //        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
@@ -248,7 +254,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                 vaccinebutton.setText("TT3 \n" + setDate((pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : ""),182));
             }
             if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
-                vaccinebutton.setText("TT4 \n" + setDate((pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt3_final") : ""),364));
+                vaccinebutton.setText("TT4 \n" + setDate((pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : ""),364));
             }
             if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
                 vaccinebutton.setText("TT5 \n" + setDate((pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : ""),364));

@@ -159,9 +159,9 @@ public class WomanDetailActivity extends Activity {
             HouseHoldDetailActivity.setImagetoHolder(this, womanclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
 //        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
-        lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"not available");
-        edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"not available");
-        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga")+" weeks":"not available");
+        lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"N/A");
+        edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"N/A");
+        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga")+" weeks":"N/A");
 
 
 
@@ -270,19 +270,23 @@ public class WomanDetailActivity extends Activity {
                 for (int i = 0; i < Woman_TT1alertlist_for_client.size(); i++) {
                     if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_yellow));
-                        String text = (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,womanclient);
                         tt1TextView.setText(text);
                     } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_urgent_red));
-                        String text =  (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,womanclient);
                         tt1TextView.setText(text);
                     } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
                         block.setBackgroundColor(getResources().getColor(R.color.client_list_header_dark_grey));
-                        String text =  (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,womanclient);
                         tt1TextView.setText(text);
                     } else if (Woman_TT1alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
                         block.setBackgroundColor(getResources().getColor(R.color.alert_upcoming_light_blue));
-                        String text =  (Woman_TT1alertlist_for_client.get(i).expiryDate());
+                        String text = "";
+                        text = getVaccineDateText(ttschedulename,womanclient);
                         tt1TextView.setText(text);
                     }
 
@@ -298,13 +302,60 @@ public class WomanDetailActivity extends Activity {
 
     }
 
+    private String getVaccineDateText(String Schedulename, CommonPersonObjectClient pc) {
+        if (Schedulename.equalsIgnoreCase("Woman_TT1")) {
+            return ((pc.getDetails().get("final_lmp") != null ? pc.getDetails().get("final_lmp") : ""));
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT2")) {
+            return ( setDate((pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : ""),28));
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT3")) {
+            return ( setDate((pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : ""),182));
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
+            return (setDate((pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : ""),364));
+        }
+        if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
+            return (setDate((pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : ""),364));
+        }
+        return "";
+    }
+    public String setDate(String date, int daystoadd) {
+
+        Date lastdate = converdatefromString(date);
+
+        if(lastdate!=null){
+            GregorianCalendar calendar = new GregorianCalendar();
+            calendar.setTime(lastdate);
+            calendar.add(Calendar.DATE, daystoadd);//8 weeks
+            lastdate.setTime(calendar.getTime().getTime());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            //            String result = String.format(Locale.ENGLISH, format.format(lastdate) );
+            return (format.format(lastdate));
+            //             due_visit_date.append(format.format(lastdate));
+
+        }else{
+            return "";
+        }
+    }
+    public Date converdatefromString(String dateString){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        }catch (Exception e){
+            return null;
+        }
+        return convertedDate;
+    }
+
 
     public String immunizationStatus(CommonPersonObjectClient womanclient){
-        boolean tt1 = ((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"")).equalsIgnoreCase("");
-        boolean tt2 = ((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"")).equalsIgnoreCase("");
-        boolean tt3 = ((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"")).equalsIgnoreCase("");
-        boolean tt4 = ((womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"")).equalsIgnoreCase("");
-        boolean tt5 = ((womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"")).equalsIgnoreCase("");
+        boolean tt1 = !((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"")).equalsIgnoreCase("");
+        boolean tt2 = !((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"")).equalsIgnoreCase("");
+        boolean tt3 = !((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"")).equalsIgnoreCase("");
+        boolean tt4 = !((womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"")).equalsIgnoreCase("");
+        boolean tt5 = !((womanclient.getDetails().get("tt5_final")!=null?womanclient.getDetails().get("tt5_final"):"")).equalsIgnoreCase("");
         String immunization_status = "";
         if(tt1||tt2||tt3||tt4||tt5){
             immunization_status = "Partially Immunized";
