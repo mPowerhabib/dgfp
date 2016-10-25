@@ -127,7 +127,7 @@ public class ChildDetailActivity extends Activity {
         name.setText(humanize((childclient.getColumnmaps().get("Member_Fname") != null ? childclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));//
         brid.setText((childclient.getDetails().get("Member_BRID") != null ? childclient.getDetails().get("Member_BRID") : "").replace("+", "_"));//
         fathername.setText((childclient.getDetails().get("Child_father_name") != null ? childclient.getDetails().get("Child_father_name") : ""));
-        mothername.setText((childclient.getDetails().get("Child_mother_name") != null ? childclient.getDetails().get("Child_mother_name") : ""));
+        mothername.setText((childclient.getColumnmaps().get("Child_mother_name") != null ? childclient.getColumnmaps().get("Child_mother_name") : ""));
         epicarno.setText((childclient.getDetails().get("epi_card_number") != null ? childclient.getDetails().get("epi_card_number") : ""));
         birthdate.setText((childclient.getDetails().get("Child_dob") != null ? childclient.getDetails().get("Child_dob") : ""));
         contactno.setText((childclient.getDetails().get("contact_phone_number") != null ? childclient.getDetails().get("contact_phone_number") : ""));

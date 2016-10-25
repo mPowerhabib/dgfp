@@ -4,3 +4,5 @@ include ':opensrp-app', ':opensrp-drishti', ':opensrp-mcare', ':opensrp-dghs', '
 
 project(':opensrp-app').projectDir = "$rootDir/opensrp-app" as File
 include ':xwalk_core_library'
+include ':crosswalkwebview21515467arm'
+include ':crosswalkwebview23535870arm'

@@ -403,6 +403,7 @@
     <string name="block4kha">4-KHA</string>
     <string name="str_anouncement">Announcement</string>
     <string name="todayssession">Today\'s Session</string>
+    <string name="sort_by_mother_name">Mother\'s Name</string>
 
 
 </resources>

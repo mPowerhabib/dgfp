@@ -15,15 +15,13 @@ Moved Files:
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => xwalk_core_library/src/main/AndroidManifest.xml
-* libs/armeabi-v7a/libxwalkcore.so => xwalk_core_library/src/main/jniLibs/armeabi-v7a/libxwalkcore.so
-* libs/armeabi-v7a/libxwalkdummy.so => xwalk_core_library/src/main/jniLibs/armeabi-v7a/libxwalkdummy.so
-* libs/x86/libxwalkcore.so => xwalk_core_library/src/main/jniLibs/x86/libxwalkcore.so
-* libs/x86/libxwalkdummy.so => xwalk_core_library/src/main/jniLibs/x86/libxwalkdummy.so
-* libs/xwalk_core_library_java.jar => xwalk_core_library/libs/xwalk_core_library_java.jar
-* res/ => xwalk_core_library/src/main/res/
-* src/ => xwalk_core_library/src/main/java
-* src/README.md => xwalk_core_library/src/main/resources/README.md
+* AndroidManifest.xml => crosswalkwebview23535870arm/src/main/AndroidManifest.xml
+* libs/armeabi-v7a/libxwalkcore.so => crosswalkwebview23535870arm/src/main/jniLibs/armeabi-v7a/libxwalkcore.so
+* libs/armeabi-v7a/libxwalkdummy.so => crosswalkwebview23535870arm/src/main/jniLibs/armeabi-v7a/libxwalkdummy.so
+* libs/xwalk_core_library.jar => crosswalkwebview23535870arm/libs/xwalk_core_library.jar
+* res/ => crosswalkwebview23535870arm/src/main/res/
+* src/ => crosswalkwebview23535870arm/src/main/java
+* src/.empty => crosswalkwebview23535870arm/src/main/resources/.empty
 
 Next Steps:
 -----------

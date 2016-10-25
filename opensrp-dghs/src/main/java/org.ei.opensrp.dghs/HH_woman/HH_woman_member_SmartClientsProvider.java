@@ -376,8 +376,9 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
             }
             for (int i = 0; i < bnFalertlist_for_client.size(); i++) {
-                pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
                 if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
+                    pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
+
                     pvfdue.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -388,6 +389,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
                     pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
                 }
                 if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
+                    pvfdue.setText(bnFalertlist_for_client.get(i).startDate());
                     pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                     pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
                     pvfdue.setOnClickListener(onClickListener);

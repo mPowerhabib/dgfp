@@ -107,7 +107,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
 
         childname.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
         epi_card_number.setText(pc.getDetails().get("epi_card_number")!=null?pc.getDetails().get("epi_card_number"):"");
-        parentname.setText(pc.getDetails().get("Child_mother_name")!=null?pc.getDetails().get("Child_mother_name"):"");
+        parentname.setText(pc.getColumnmaps().get("Child_mother_name")!=null?pc.getColumnmaps().get("Child_mother_name"):"");
         gobhhid.setText(pc.getColumnmaps().get("Member_GOB_HHID")!=null?pc.getColumnmaps().get("Member_GOB_HHID"):"");
         gobhhid.setVisibility(View.INVISIBLE);
         village.setText((humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")))+", "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));

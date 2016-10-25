@@ -154,7 +154,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
 //                        new ElcoPSRFDueDateSort(),
 //                        new CursorCommonObjectSort(getString(R.string.due_status),sortByAlertmethod()),
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.child_alphabetical_sort),sortByFWWOMFNAME()),
-                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.hh_fwGobhhid_sort),sortByGOBHHID()),
+                        new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.sort_by_mother_name),sortByChild_mother_name()),
                         new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
 
                         new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_birth),sortByage())
@@ -390,7 +390,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "calc_age_confirm", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
         mainSelect = queryBUilder.mainCondition(" details like '%\"Is_child\":\"1\"%' ");
         queryBUilder.addCondition(filters);
@@ -398,7 +398,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HH_ChildSmartClientsProvider hhscp = new HH_ChildSmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","calc_age_confirm","Member_GOB_HHID","Marital_status","Pregnancy_Status"}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();
         refresh();
@@ -410,6 +410,10 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
     private String sortByFWWOMFNAME(){
         return " Member_Fname COLLATE NOCASE ASC";
     }
+    private String sortByChild_mother_name(){
+        return " Child_mother_name COLLATE NOCASE ASC";
+    }
+
     private String sortByGOBHHID(){
         return " CAST(Member_GOB_HHID AS INTEGER) ASC";
     }
