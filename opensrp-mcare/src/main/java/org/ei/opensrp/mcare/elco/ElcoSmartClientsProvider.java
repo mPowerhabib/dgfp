@@ -96,7 +96,7 @@ public class ElcoSmartClientsProvider implements SmartRegisterCLientsProviderFor
         elcodetails.setTag(smartRegisterClient);
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
-
+        profilepic.setImageResource(org.ei.opensrp.R.drawable.woman_placeholder);
         if(pc.getDetails().get("profilepic")!=null){
             HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.womanimageload);
         }
