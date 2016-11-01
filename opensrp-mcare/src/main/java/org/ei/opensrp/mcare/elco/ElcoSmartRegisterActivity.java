@@ -175,7 +175,7 @@ public class ElcoSmartRegisterActivity extends SecuredNativeSmartRegisterActivit
 
     private String getalertstateofelco(CommonPersonObjectClient elco) {
         List<Alert> alertlist_for_client = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(elco.entityId(), "ELCO PSRF");
-        String alertstate = "";
+        String alertstate = "upcoming";
         if(alertlist_for_client.size() == 0 ){
 
         }else {
