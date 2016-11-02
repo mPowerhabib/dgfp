@@ -157,7 +157,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         new CursorCommonObjectSort(Context.getInstance().applicationContext().getString(R.string.sort_by_mother_name),sortByChild_mother_name()),
                         new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_age),sortByage()),
 
-                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_birth),sortByage())
+//                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sort_by_child_birth),sortByage())
 //                        new CursorCommonObjectSort( Context.getInstance().applicationContext().getString(R.string.sortbyLmp),sortByLmp())
 
 //                        new CommonObjectSort(true,false,true,"age")
@@ -314,7 +314,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                         if(cs.toString().equalsIgnoreCase("")){
                             filters = "";
                         }else {
-                            filters = "and Member_Fname Like '%" + cs.toString() + "%' or details Like '%" + cs.toString() + "%'   ";
+                            filters = "and (Member_Fname Like '%" + cs.toString() + "%' or details Like '%" + cs.toString() + "%')   ";
                         }
                         return null;
                     }
@@ -405,7 +405,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
     }
     private String sortByage(){
-        return " Age ASC";
+        return " Child_calc_age ASC";
     }
     private String sortByFWWOMFNAME(){
         return " Member_Fname COLLATE NOCASE ASC";

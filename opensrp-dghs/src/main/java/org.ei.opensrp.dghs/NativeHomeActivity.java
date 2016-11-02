@@ -146,6 +146,9 @@ public class NativeHomeActivity extends SecuredActivity {
             }
         });
     }
+    public void getMissingVaccineCounts(){
+
+    }
 
     private void updateRegisterCounts(HomeContext homeContext) {
         SmartRegisterQueryBuilder sqb = new SmartRegisterQueryBuilder();
