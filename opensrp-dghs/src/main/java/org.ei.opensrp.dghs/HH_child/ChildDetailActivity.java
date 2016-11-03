@@ -96,7 +96,7 @@ public class ChildDetailActivity extends Activity {
 
 
 
-        if ((childclient.getDetails().get("Gender") != null ? childclient.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
+        if ((childclient.getDetails().get("Child_gender") != null ? childclient.getDetails().get("Child_gender") : "").equalsIgnoreCase("1")) {
             profilepic.setImageResource(R.drawable.child_boy_infant);
 //                newborn_or_fp.setText("Family Planning");
         } else {

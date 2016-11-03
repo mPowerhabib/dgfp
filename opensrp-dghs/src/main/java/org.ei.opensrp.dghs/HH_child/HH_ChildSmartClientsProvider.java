@@ -121,7 +121,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         }
 //        calculateage(40);
 
-        if ((pc.getDetails().get("Gender") != null ? pc.getDetails().get("Gender") : "").equalsIgnoreCase("1")) {
+        if ((pc.getDetails().get("Child_gender") != null ? pc.getDetails().get("Child_gender") : "").equalsIgnoreCase("1")) {
             profilepic.setImageResource(R.drawable.child_boy_infant);
 //                newborn_or_fp.setText("Family Planning");
         } else {

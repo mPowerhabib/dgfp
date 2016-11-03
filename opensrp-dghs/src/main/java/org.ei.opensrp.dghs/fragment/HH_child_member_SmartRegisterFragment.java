@@ -421,10 +421,10 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
 
     private String filterStringForFemale(){
-        return "and details LIKE '%\"Gender\":\"2\"%'";
+        return "and details LIKE '%\"Child_gender\":\"2\"%'";
     }
     private String filterStringForMale(){
-        return " and details LIKE '%\"Gender\":\"1\"%'";
+        return " and details LIKE '%\"Child_gender\":\"1\"%'";
     }
     private String filterStringForWard(String ward){
         return filters +"and  details like '%\"Member_WARD\":\""+ward+"\"%' ";
