@@ -1,7 +1,5 @@
 package org.ei.opensrp.dghs;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,10 +9,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.ei.opensrp.Context;
-import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dghs.HH_woman.BirthOutcomeHandler;
+import org.ei.opensrp.dghs.vaccineTasks.Last_vaccine_missedCount_task;
+import org.ei.opensrp.dghs.vaccineTasks.Today_vaccine_task;
 import org.ei.opensrp.event.Listener;
+import org.ei.opensrp.service.HTTPAgent;
 import org.ei.opensrp.service.PendingFormSubmissionService;
 import org.ei.opensrp.sync.SyncAfterFetchListener;
 import org.ei.opensrp.sync.SyncProgressIndicator;
@@ -31,7 +31,6 @@ import static org.ei.opensrp.event.Event.ACTION_HANDLED;
 import static org.ei.opensrp.event.Event.FORM_SUBMITTED;
 import static org.ei.opensrp.event.Event.SYNC_COMPLETED;
 import static org.ei.opensrp.event.Event.SYNC_STARTED;
-import org.ei.opensrp.dghs.R;
 
 public class NativeHomeActivity extends SecuredActivity {
     private MenuItem updateMenuItem;
@@ -209,6 +208,10 @@ public class NativeHomeActivity extends SecuredActivity {
                 this, context.actionService(), context.formSubmissionSyncService(),
                 new SyncProgressIndicator(), context.allFormVersionSyncService());
         updateActionsTask.updateFromServer(new SyncAfterFetchListener());
+        Last_vaccine_missedCount_task tdv = new Last_vaccine_missedCount_task(context,new HTTPAgent(context.applicationContext(),context.allSettings(),context.allSharedPreferences(),context.configuration()),context.configuration(),context.allSettings(),context.allSharedPreferences());
+        tdv.execute();
+        Today_vaccine_task tvt = new Today_vaccine_task(context,new HTTPAgent(context.applicationContext(),context.allSettings(),context.allSharedPreferences(),context.configuration()),context.configuration(),context.allSettings(),context.allSharedPreferences());
+        tvt.execute();
     }
 
     @Override

@@ -128,7 +128,7 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block3kha),filterStringForBlock("3-KHA")));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4ka),filterStringForBlock("4-KA")));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4kha),filterStringForBlock("4-KHA")));
-                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.todayssession),filterStringForBlock("4-KHA")));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.todayssession),filterStringForTodaySession()));
 
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc2),filterStringForANCRV2()));
 //                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.filter_by_anc3),filterStringForANCRV3()));
@@ -441,5 +441,10 @@ public class HH_child_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 "WHEN alerts.status = 'expired' THEN '4'\n" +
                 "WHEN alerts.status is Null THEN '5'\n" +
                 "Else alerts.status END ASC";
+    }
+    private String filterStringForTodaySession() {
+        String todays_vaccine_list = context.applicationContext().getSharedPreferences("vaccine", android.content.Context.MODE_PRIVATE).getString("todays_vaccine_list","");
+
+        return "and WHERE _id IN ("+todays_vaccine_list+")";
     }
 }

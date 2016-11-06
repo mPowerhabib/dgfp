@@ -1,5 +1,7 @@
 package org.ei.opensrp.client;
 
+import android.util.Log;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.HttpGet;
