@@ -9,6 +9,7 @@ import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
@@ -89,6 +90,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         TextView nid = (TextView) itemView.findViewById(R.id.nid);
         TextView brid = (TextView) itemView.findViewById(R.id.brid);
         TextView hid = (TextView) itemView.findViewById(R.id.hid);
+        RatingBar vaccinebar = (RatingBar)itemView.findViewById(R.id.ratingBar);
 
         TextView pvfdue = (TextView) itemView.findViewById(R.id.pvf);
         TextView vaccinebutton = (TextView) itemView.findViewById(R.id.next_vaccine_date);
@@ -105,6 +107,20 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         father_name.setText("F: " + (pc.getDetails().get("Father_name") != null ? pc.getDetails().get("Father_name") : ""));
 
         hid.setText("HID: " + (pc.getDetails().get("Member_HID") != null ? pc.getDetails().get("Member_HID") : ""));
+        if(!(pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : "").equalsIgnoreCase("")){
+            int rating = Integer.parseInt((pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : ""));
+            if(rating == 1){
+                vaccinebar.setRating(1.0f);
+            }else if (rating == 2){
+                vaccinebar.setRating(2.0f);
+            }else if (rating >= 3){
+                vaccinebar.setRating(3.0f);
+            }else if (rating == 0){
+                vaccinebar.setRating(0.0f);
+            }
+        }else {
+            vaccinebar.setRating(0.0f);
+        }
 
 //        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
 //        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));

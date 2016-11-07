@@ -3,13 +3,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="fill_parent"
-              android:layout_height="@dimen/list_item_height"
+              android:layout_height="wrap_content"
     android:weightSum="10">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="0dp"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="3"
         android:id="@+id/profile_info_layout">
 
@@ -49,12 +49,13 @@
                     android:id="@+id/vg"
                     android:src="@mipmap/flag_vg" />
             </LinearLayout>
+
         </FrameLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1">
 
@@ -123,25 +124,51 @@
                     android:textStyle="normal" />
             </LinearLayout>
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:textSize="12sp"
+                    android:id="@+id/village"
+                    android:textStyle="normal"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="48dp"
+            android:layout_height="fill_parent">
+
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:textSize="12sp"
-                android:id="@+id/village"
-                android:textStyle="normal" />
-        </LinearLayout>
+                android:text="00"
+                android:id="@+id/age"
+                android:gravity="right"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1" />
 
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            style="@style/CustomFontTextViewStyle.noPadding"
-            android:text="00"
-            android:id="@+id/age"
-            android:gravity="right"
-            android:layout_marginRight="2dp" />
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="3"
+                android:rating="2"
+                android:max="3"
+                android:stepSize="0.1"
+                style="@style/CustomRatingBar" />
+        </LinearLayout>
 
     </LinearLayout>
 

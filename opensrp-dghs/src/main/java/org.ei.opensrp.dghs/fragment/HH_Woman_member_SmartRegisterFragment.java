@@ -408,7 +408,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
         mainSelect = queryBUilder.mainCondition(" details like '%\"Is_woman\":\"1\"%' ");
         queryBUilder.addCondition(filters);
@@ -416,7 +416,7 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HH_woman_member_SmartClientsProvider hhscp = new HH_woman_member_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status"}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();
         refresh();
@@ -478,6 +478,10 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
     private String sortByGOBHHID(){
         return " CAST(Member_GOB_HHID AS INTEGER) ASC";
     }
+    private String sortByMissedCount(){
+        return " missedCount ASC";
+    }
+
     private String sortByAlertmethod() {
         return " CASE WHEN alerts.status = 'urgent' THEN '1'"
                 +
@@ -488,8 +492,9 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 "Else alerts.status END ASC";
     }
     private String filterStringForTodaySession() {
+        Sortqueries = sortByMissedCount();
         String todays_vaccine_list = context.applicationContext().getSharedPreferences("vaccine", android.content.Context.MODE_PRIVATE).getString("todays_vaccine_list","");
 
-        return "and WHERE _id IN ("+todays_vaccine_list+")";
+        return "and members.id IN ("+todays_vaccine_list+")";
     }
 }

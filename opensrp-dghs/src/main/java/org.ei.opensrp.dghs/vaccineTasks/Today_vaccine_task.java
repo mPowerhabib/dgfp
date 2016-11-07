@@ -64,9 +64,9 @@ public class Today_vaccine_task extends AsyncTask {
                 String entityId = vaccineClient.getString("entityId");
                 String missedCount = vaccineClient.getString("missedCount");
                 if(i!=0){
-                    todays_vaccine_list = todays_vaccine_list+" "+","+entityId;
+                    todays_vaccine_list = todays_vaccine_list+",'"+entityId+"'";
                 }else{
-                    todays_vaccine_list = entityId;
+                    todays_vaccine_list = "'"+entityId+"'";
                 }
             }
         } catch (JSONException e) {

@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
@@ -90,7 +92,7 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView village = (TextView)itemView.findViewById(R.id.village);
         TextView dateofbirth = (TextView)itemView.findViewById(R.id.dob_age);
         TextView epi_card_number = (TextView)itemView.findViewById(R.id.epi_cardnumber);
-
+        RatingBar vaccinebar = (RatingBar)itemView.findViewById(R.id.ratingBar);
 
 
 
@@ -112,6 +114,26 @@ public class HH_ChildSmartClientsProvider implements SmartRegisterCLientsProvide
         gobhhid.setVisibility(View.INVISIBLE);
         village.setText((humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")))+", "+humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 //        dateofbirth.setText(mcaremotherObject.getColumnmaps().get("FWBNFDTOO")!=null?mcaremotherObject.getColumnmaps().get("FWBNFDTOO"):"");
+        Log.v("rating log",(pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : ""));
+        if(!(pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : "").equalsIgnoreCase("")){
+
+            int rating = Integer.parseInt((pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : ""));
+//            rating = 2;
+            if(rating == 1){
+                vaccinebar.setRating(1.0f);
+            }else if (rating == 2){
+                vaccinebar.setRating(2.0f);
+            }else if (rating >= 3){
+                vaccinebar.setRating(3.0f);
+            }else if (rating == 0){
+                vaccinebar.setRating(0.0f);
+            }
+        }else {
+            vaccinebar.setRating(0.0f);
+        }
+
+
+
         try {
             String dataofbirth = (pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : "") + "\n";
             dataofbirth = dataofbirth + "age : " + calculateage(Integer.parseInt("" + getageindays(getdate(pc.getDetails().get("Child_dob") != null ? pc.getDetails().get("Child_dob") : ""))));

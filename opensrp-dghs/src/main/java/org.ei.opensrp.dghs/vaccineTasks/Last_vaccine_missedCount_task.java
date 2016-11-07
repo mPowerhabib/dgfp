@@ -104,7 +104,7 @@ public class Last_vaccine_missedCount_task extends AsyncTask {
                     baseURL,
                     client_list,
                     anmId,
-                    Lasttimestamp);
+                    ""+Lasttimestamp);
             Log.v("pull-uri",uri);
             Response<String> response = httpAgent.fetch(uri);
 //            return response.payload();
