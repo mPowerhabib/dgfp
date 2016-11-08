@@ -3,19 +3,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--<org.ei.opensrp.view.customControls.OpenSRPWebView-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--android:windowSoftInputMode="adjustResize"-->
-        <!--android:id="@+id/webview">-->
-    <!--</org.ei.opensrp.view.customControls.OpenSRPWebView>-->
-    <org.xwalk.core.XWalkView
-        android:id="@+id/xwalkWebView"
-        android:orientation="vertical"
+    <org.ei.opensrp.view.customControls.OpenSRPWebView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#000000"
-        />
+        android:windowSoftInputMode="adjustResize"
+        android:id="@+id/webview">
+    </org.ei.opensrp.view.customControls.OpenSRPWebView>
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"

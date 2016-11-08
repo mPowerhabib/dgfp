@@ -210,7 +210,7 @@ public class HH_woman_member_SmartRegisterActivity extends SecuredNativeSmartReg
                 if (displayFormFragment != null) {
                     displayFormFragment.hideTranslucentProgressDialog();
                     displayFormFragment.setFormData(null);
-                    displayFormFragment.loadFormData();
+//                    displayFormFragment.loadFormData();
                 }
 
                 displayFormFragment.setRecordId(null);
