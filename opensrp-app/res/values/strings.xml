@@ -50,7 +50,7 @@
     <string name="header_edit"></string>
 
     <string name="couple_selection">All Eligible Couples</string>
-    <string name="str_ec_search_hint">Search EC Register</string>
+    <string name="str_ec_search_hint">Search</string>
     <string name="str_fp_search_hint">Search FP Register</string>
     <string name="str_pnc_search_hint">Search PNC Register</string>
     <string name="str_child_search_hint">Search Child Register</string>
@@ -79,6 +79,7 @@
     <string name="str_out_of_area">(O/A)</string>
 
     <string name="sort_by_name_label">Name (A to Z)</string>
+    <string name="sort_by_name_label_reverse">Name (Z to A)</string>
     <string name="sort_by_ec_number_label">EC Number</string>
     <string name="sort_by_date_of_delivery_label">Date of Delivery</string>
     <string name="sort_by_sc_label">SC</string>
