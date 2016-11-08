@@ -133,6 +133,9 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4ka),filterStringForBlock("4-KA")));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.block4kha),filterStringForBlock("4-KHA")));
                 dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.todayssession),filterStringForTodaySession()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.single_vaccine_miss),filterStringForSingleVaccineMiss()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.double_vaccine_miss),filterStringForDoubleVaccineMiss()));
+                dialogOptionslist.add(new CursorCommonObjectFilterOption(getString(R.string.triple_vaccine_miss),filterStringForMoreThanVaccineMiss()));
 
 
 //                String locationjson = context.anmLocationController().get();
@@ -496,5 +499,14 @@ public class HH_Woman_member_SmartRegisterFragment extends SecuredNativeSmartReg
         String todays_vaccine_list = context.applicationContext().getSharedPreferences("vaccine", android.content.Context.MODE_PRIVATE).getString("todays_vaccine_list","");
 
         return "and members.id IN ("+todays_vaccine_list+")";
+    }
+    private String filterStringForSingleVaccineMiss(){
+        return "and missedCount = '1'";
+    }
+    private String filterStringForDoubleVaccineMiss(){
+        return "and missedCount = '2'";
+    }
+    private String filterStringForMoreThanVaccineMiss(){
+        return "and missedCount IS NOT NULL and missedCount NOT IN ('1','2')";
     }
 }

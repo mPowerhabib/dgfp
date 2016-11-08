@@ -12,6 +12,7 @@ import org.ei.opensrp.Context;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dghs.HH_woman.BirthOutcomeHandler;
 import org.ei.opensrp.dghs.vaccineTasks.Last_vaccine_missedCount_task;
+import org.ei.opensrp.dghs.vaccineTasks.Today_anouncement_task;
 import org.ei.opensrp.dghs.vaccineTasks.Today_vaccine_task;
 import org.ei.opensrp.event.Listener;
 import org.ei.opensrp.service.HTTPAgent;
@@ -198,9 +199,17 @@ public class NativeHomeActivity extends SecuredActivity {
                 Toast.makeText(this, "Language preference set to " + newLanguagePreference + ". Please restart the application.", LENGTH_SHORT).show();
                 this.recreate();
                 return true;
+            case R.id.anouncementMenuItem:
+                anouncementTask();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void anouncementTask() {
+        Today_anouncement_task tvt = new Today_anouncement_task(this,context,new HTTPAgent(context.applicationContext(),context.allSettings(),context.allSharedPreferences(),context.configuration()),context.configuration(),context.allSettings(),context.allSharedPreferences());
+        tvt.execute();
     }
 
     public void updateFromServer() {

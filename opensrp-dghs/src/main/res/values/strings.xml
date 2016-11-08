@@ -404,6 +404,9 @@
     <string name="str_anouncement">Announcement</string>
     <string name="todayssession">Today\'s Session</string>
     <string name="sort_by_mother_name">Mother\'s Name</string>
+    <string name="single_vaccine_miss">Vaccine Missed : 1</string>
+    <string name="double_vaccine_miss">Vaccine Missed : 2</string>
+    <string name="triple_vaccine_miss">Vaccine Missed : 3 or more</string>
 
 
 </resources>
