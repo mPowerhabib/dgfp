@@ -5,8 +5,7 @@
     "bind_type": "household",
     "fields": [
       {
-        "name": "id",
-        "shouldLoadValue": true
+        "name": "id"
       },
       {
         "name": "existing_location",
@@ -156,12 +155,10 @@
         "default_bind_path": "/model/instance/FWNewHH/woman",
         "fields": [
           {
-            "name": "id",
-            "shouldLoadValue": true
+            "name": "id"
           },
           {
-            "name": "relationalid",
-            "shouldLoadValue": true
+            "name": "relationalid"
           },
           {
             "name": "WomanREGDATE",
