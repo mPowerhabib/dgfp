@@ -4,6 +4,4 @@ include ':opensrp-app', ':opensrp-drishti', ':opensrp-mcare', ':opensrp-indonesi
 include ':opensrp-app', ':opensrp-drishti', ':opensrp-mcare', ':opensrp-dghs', 'opensrp-indonesia', ':opensrp-vaccinator', ':android-support-multidex'
 
 project(':opensrp-app').projectDir = "$rootDir/opensrp-app" as File
-include ':xwalk_core_library'
-include ':crosswalkwebview21515467arm'
-include ':crosswalkwebview23535870arm'
+
