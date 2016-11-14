@@ -218,7 +218,6 @@ public class ChildRepository extends DrishtiRepository {
                 .withPhotoPath(getColumnValueByAlias(cursor, CHILD_TABLE_NAME, PHOTO_PATH_COLUMN));
     }
 
-
     private String getColumnValueByAlias(Cursor cursor, String table, String column) {
         return cursor.getString(cursor.getColumnIndex(table + column));
     }

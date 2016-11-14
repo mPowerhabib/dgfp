@@ -86,10 +86,8 @@ public class HTTPAgent {
         try {
             setCredentials(allSharedPreferences.fetchRegisteredANM(), settings.fetchANMPassword());
             String responseContent = IOUtils.toString(httpClient.fetchContent(new HttpGet(requestURLPath)));
-            Log.v("responsecontent",responseContent);
             return new Response<String>(ResponseStatus.success, responseContent);
         } catch (Exception e) {
-            Log.v("response-exception",e.toString());
             logWarn(e.toString());
             return new Response<String>(ResponseStatus.failure, null);
         }
