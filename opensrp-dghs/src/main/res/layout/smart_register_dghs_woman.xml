@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:id="@+id/profile_info_layout">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/profilepic"
+                android:src="@drawable/woman_placeholder"
+                android:scaleType="fitXY"
+                android:layout_marginLeft="5dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hrp"
+                    android:src="@mipmap/flag_hrp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hr"
+                    android:src="@drawable/flag_hr" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/vg"
+                    android:src="@mipmap/flag_vg" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                style="@style/CustomFontTextViewStyle.ListView.Small.NoHeight"
+                android:id="@+id/name"
+                android:textColor="@color/pnc_circle_red"
+                android:singleLine="false"
+                android:textSize="13sp"
+                android:textStyle="bold|italic" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="Medium Text"
+                    android:textSize="12sp"
+                    android:id="@+id/father_name"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="Medium Text"
+                    android:textSize="12sp"
+                    android:id="@+id/husband_name"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:textSize="12sp"
+                    android:id="@+id/maritalstatus"
+                    android:textStyle="normal" />
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:textSize="12sp"
+                    android:id="@+id/coupleno"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:textSize="12sp"
+                    android:id="@+id/village"
+                    android:textStyle="normal"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="48dp"
+            android:layout_height="fill_parent">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="00"
+                android:id="@+id/age"
+                android:gravity="right"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="3"
+                android:rating="2"
+                android:max="3"
+                android:stepSize="0.1"
+                style="@style/CustomRatingBar" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="@dimen/smart_register_client_divider_height"
+            android:layout_height="fill_parent"
+            android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="2.5"
+        android:layout_gravity="center">
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.noPadding"
+            android:id="@+id/nid"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="12sp" />
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomFontTextViewStyle.noPadding"
+            android:text="New Text"
+            android:id="@+id/brid"
+            android:layout_marginLeft="10dp"
+            android:textSize="12sp" />
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomFontTextViewStyle.noPadding"
+            android:text="New Text"
+            android:id="@+id/hid"
+            android:layout_marginLeft="10dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="@dimen/smart_register_client_divider_height"
+            android:layout_height="fill_parent"
+            android:src="@color/smart_register_client_divider_color"/>
+
+    <ImageView
+        android:layout_width="@dimen/smart_register_client_divider_height"
+        android:layout_height="fill_parent"
+        android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.5"
+        android:layout_gravity="center" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:id="@+id/measlestick"
+                android:layout_margin="1dp"
+                android:src="@mipmap/doneintime"
+                />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="measles"
+                android:id="@+id/lastvaccinetext"
+                android:textSize="12sp"
+                android:textColor="#000000"
+                style="@style/CustomFontTextViewStyle.ListView.Small"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="@dimen/smart_register_client_divider_height"
+            android:layout_height="fill_parent"
+            android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.5"
+        >
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="New Button"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:id="@+id/next_vaccine_date" />
+    </LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/smart_register_client_divider_height"
+        android:layout_height="fill_parent"
+        android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.5"
+        android:layout_gravity="center" >
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:id="@+id/pvf" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="@dimen/smart_register_client_divider_height"
+            android:layout_height="fill_parent"
+            android:src="@color/smart_register_client_divider_color"/>
+
+    <ImageButton
+            android:id="@+id/btn_edit"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0"
+            android:scaleType="center"
+            android:gravity="center"
+        android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/edit_button_background"
+        android:src="@drawable/ic_pencil"
+        android:visibility="gone" />
+</LinearLayout>

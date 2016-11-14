@@ -1,0 +1,40 @@
+<model>
+  <instance>
+    <PregnancyStatusAndBirthNotificationFollowup encounter_type="Pregnancy Status And Birth Notification Followup" id="PregnancyStatusAndBirthNotificationFollowup" version="201609210806">
+      <formhub>
+        <uuid/>
+      </formhub>
+      <today openmrs_entity="encounter" openmrs_entity_id="encounter_start"/>
+      <start openmrs_entity="Concept" openmrs_entity_id="cdec172a-9535-4d21-98a5-72a668b9b22c"/>
+      <end openmrs_entity="Concept" openmrs_entity_id="98240c65-7f4e-4099-b4ac-d63e68fd955d"/>
+      <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id"/>
+      <existing_Country/>
+      <existing_Division/>
+      <existing_District/>
+      <existing_Upazilla/>
+      <existing_Paurasava/>
+      <existing_Union/>
+      <existing_HIE_facilities/>
+      <existing_woman_name/>
+      <existing_husband_name/>
+      <existing_block_no/>
+      <existing_lmp/>
+      <Date_of_interview/>
+      <Confirm_info/>
+      <Visit_status/>
+      <Display_text/>
+      <Gestational_age/>
+      <EDD/>
+      <outcome_occured>
+        <Woman_vital_status/>
+        <DOO/>
+        <Number_live_birth/>
+      </outcome_occured>
+      <pregsts_bnf_current_formStatus/>
+      <outcome_active>"0"</outcome_active>
+      <meta>
+        <instanceID/>
+      </meta>
+    </PregnancyStatusAndBirthNotificationFollowup>
+  </instance>
+</model>

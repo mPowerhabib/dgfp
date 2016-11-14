@@ -1,0 +1,62 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.ei.opensrp.dghs">
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+
+    <application android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:label="@string/app_name"
+        tools:replace="android:name"
+        android:name=".application.dghsApplication"
+        >
+
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@android:style/Theme.Holo"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NativeHomeActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".hh_member.HH_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <!--<activity android:name=".household.tutorial.tutorialCircleViewFlow"-->
+            <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
+            <!--android:windowSoftInputMode="adjustResize"-->
+            <!--android:screenOrientation="landscape"/>-->
+        <activity android:name=".HH_woman.WomanDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".HH_woman.HH_woman_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <!--<activity android:name=".elco.ElcoDetailActivity"-->
+            <!--android:theme="@style/AppThemeNoActionBarAndTitle"-->
+            <!--android:screenOrientation="landscape"/>-->
+        <activity android:name=".HH_child.HH_child_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".HH_child.ChildDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"/>
+
+    </application>
+
+</manifest>

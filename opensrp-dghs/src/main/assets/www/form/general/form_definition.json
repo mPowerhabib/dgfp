@@ -1,0 +1,41 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/GeneralPatient",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/GeneralPatient/start"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/GeneralPatient/today"
+      },
+      {
+        "name": "general_Date_Of_Reg",
+        "bind": "/model/instance/GeneralPatient/Date_Of_Reg"
+      },
+      {
+        "name": "Patient_Diagnosis",
+        "bind": "/model/instance/GeneralPatient/Patient_Diagnosis"
+      },
+      {
+        "name": "Comment",
+        "bind": "/model/instance/GeneralPatient/Comment"
+      },
+      {
+        "name": "Treatment",
+        "bind": "/model/instance/GeneralPatient/Treatment"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/GeneralPatient/end"
+      }
+    ]
+  }
+}

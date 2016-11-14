@@ -1,0 +1,93 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/PregnancyStatusAndBirthNotificationFollowup",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "Member_Fname",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_woman_name",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "Husband_name",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_husband_name",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "Member_BLOCK",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_block_no",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "lmp",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_lmp",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "existing_location",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/existing_location"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/today"
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/start"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/end"
+      },
+      {
+        "name": "Date_of_interview",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/Date_of_interview"
+      },
+      {
+        "name": "Confirm_info",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/Confirm_info"
+      },
+      {
+        "name": "Visit_status",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/Visit_status"
+      },
+      {
+        "name": "Display_text",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/Display_text"
+      },
+      {
+        "name": "Gestational_age",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/Gestational_age"
+      },
+      {
+        "name": "EDD",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/EDD"
+      },
+      {
+        "name": "Woman_vital_status",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/outcome_occured/Woman_vital_status"
+      },
+      {
+        "name": "DOO",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/outcome_occured/DOO"
+      },
+      {
+        "name": "Number_live_birth",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/outcome_occured/Number_live_birth"
+      },
+      {
+        "name": "pregsts_bnf_current_formStatus",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/pregsts_bnf_current_formStatus"
+      },
+      {
+        "name": "outcome_active",
+        "bind": "/model/instance/PregnancyStatusAndBirthNotificationFollowup/outcome_active"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "form_data_definition_version": "1",
+  "form": {
+    "default_bind_path": "/model/instance/ChildVaccination_Measles",
+    "bind_type": "members",
+    "fields": [
+      {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
+        "name": "start",
+        "bind": "/model/instance/ChildVaccination_Measles/start"
+      },
+      {
+        "name": "today",
+        "bind": "/model/instance/ChildVaccination_Measles/today"
+      },
+      {
+        "name": "Has_Vaccinated",
+        "bind": "/model/instance/ChildVaccination_Measles/Has_Vaccinated"
+      },
+      {
+        "name": "ChildVaccination_Measles_Date_of_Vaccination",
+        "bind": "/model/instance/ChildVaccination_Measles/Date_of_Vaccination"
+      },
+      {
+        "name": "end",
+        "bind": "/model/instance/ChildVaccination_Measles/end"
+      }
+    ]
+  }
+}

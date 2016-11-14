@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:paddingTop="3dp"
+    android:background="@drawable/listview_background_rounded"
+    style="@style/CustomFontTextViewStyle.noPadding">
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/listview_background_rounded">
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="BCG : "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_bcg_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block1"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_bcg"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Penta 1  : "
+                android:id="@+id/childdetail_penta1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block2"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_penta1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Penta 2 : "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_penta2_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block3"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A "
+                android:layout_margin="5dp"
+                android:id="@+id/childdetail_penta2"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Penta 3  : "
+                android:id="@+id/childdetail_penta3_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block4"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_penta3"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="OPV 0 : "
+                android:id="@+id/childdetail_opv0_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block5"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv0"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="OPV 1  : "
+                android:id="@+id/childdetail_opv1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block6"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="OPV 2  : "
+                android:id="@+id/childdetail_opv2_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block7"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv2"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="OPV 3  : "
+                android:id="@+id/childdetail_opv3_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block8"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_opv3"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+    </TableLayout>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/listview_background_rounded"
+        >
+
+
+        <TableRow>
+
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="IPV  : "
+                android:id="@+id/childdetail_ipv_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block9"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_ipv"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="PCV 1  : "
+                android:id="@+id/childdetail_pcv1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block10"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="PCV 2  : "
+                android:id="@+id/childdetail_pcv2_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block11"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv2"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="PCV 3 : "
+                android:id="@+id/childdetail_pcv3_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block12"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_pcv3"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+
+        <TableRow>
+
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Measles 1  : "
+                android:id="@+id/childdetail_measles1_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block13"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_measles1"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Measles 2  : "
+                android:id="@+id/childdetail_measles2_text"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/child_block14"
+                    android:background="@color/client_list_header_dark_grey"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp" />
+            </TableRow>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/childdetail_measles2"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1" />
+
+        </TableRow>
+
+        <TableRow>
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+
+</LinearLayout>

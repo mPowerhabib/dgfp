@@ -1,0 +1,17 @@
+<model>
+    <instance>
+        <ChildVaccination_BCG encounter_type="Child Vaccination BCG" id="ChildVaccination_BCG" version="201604130950">
+            <formhub>
+                <uuid/>
+            </formhub>
+            <start/>
+            <today/>
+            <Has_Vaccinated/>
+            <Date_of_Vaccination/>
+            <end/>
+            <meta>
+                <instanceID/>
+            </meta>
+        </ChildVaccination_BCG>
+    </instance>
+</model>

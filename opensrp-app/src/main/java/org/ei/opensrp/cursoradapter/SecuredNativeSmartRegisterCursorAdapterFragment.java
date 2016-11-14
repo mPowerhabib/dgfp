@@ -67,7 +67,7 @@ public abstract class SecuredNativeSmartRegisterCursorAdapterFragment extends Se
     public String filters = "";
     public String mainCondition = "";
     public String Sortqueries;
-    private String currentquery;
+    public String currentquery;
     public String tablename;
     public String countSelect;
     public String joinTable="";

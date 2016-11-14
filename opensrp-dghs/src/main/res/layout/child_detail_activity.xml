@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/client_list_header_dark_grey">
+
+    <include layout="@layout/child_detail_nav_bar"
+         />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smart_register_client_divider_height"
+        android:src="@color/smart_register_client_divider_color"
+        android:id="@+id/imageView5" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Basic Information"
+            android:id="@+id/header"
+            style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smart_register_client_divider_height"
+        android:src="@color/smart_register_client_divider_color"
+        android:id="@+id/imageView4" />
+
+    <include
+        layout="@layout/child_detail_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smart_register_client_divider_height"
+        android:src="@color/smart_register_client_divider_color"
+        android:id="@+id/imageView3" />
+
+    <LinearLayout
+            android:id="@+id/clients_header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/list_view_margin_left_and_right"
+            android:orientation="horizontal">
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/vaccination_history"
+            android:id="@+id/vaccination_history"
+            style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/smart_register_client_divider_height"
+            android:src="@color/smart_register_client_divider_color"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/smart_register_client_divider_height"
+            android:src="@color/smart_register_client_divider_color"
+            android:id="@+id/imageView" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff">
+
+            <include
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                layout="@layout/childdetail_vaccine_detail" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

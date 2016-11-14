@@ -1,0 +1,17 @@
+<model>
+    <instance>
+        <WomanVaccination_TT3 encounter_type="Woman Vaccination TT3" id="WomanVaccination_TT3" version="201604200749">
+            <formhub>
+                <uuid/>
+            </formhub>
+            <start/>
+            <today/>
+            <Has_Vaccinated/>
+            <Date_of_Vaccination/>
+            <end/>
+            <meta>
+                <instanceID/>
+            </meta>
+        </WomanVaccination_TT3>
+    </instance>
+</model>
