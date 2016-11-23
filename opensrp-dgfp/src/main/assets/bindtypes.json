@@ -1,0 +1,16 @@
+{
+  "bindobjects": [
+    {
+      "name": "household",
+      "columns": [
+        {"name":"HoH_Fname"},{"name":"HHID"}
+      ]
+    },
+    {
+      "name": "members",
+      "columns": [
+        {"name":"Member_Fname"},{"name":"EDD"},{"name":"Child_calc_age"},{"name":"calc_age_confirm"},{"name":"Child_mother_name"},{"name":"Member_GOB_HHID"},{"name":"Marital_status"},{"name":"Pregnancy_Status"},{"name":"missedCount"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:1.2.3"
+        classpath 'org.apache.commons:commons-lang3:3.3.2'
+        classpath 'org.robolectric:robolectric-gradle-plugin:1.1.0'
+    }
+}
+apply plugin: 'com.android.application'
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':opensrp-app')
+}
+android {
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
+
+    defaultConfig {
+        applicationId "org.ei.opensrp.dgfp"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 21
+        versionName "21.0"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    productFlavors {
+//        armv7 {
+//            versionCode defaultConfig.versionCode + 2
+//            ndk {
+//                abiFilters "armeabi", ""
+//            }
+//        }
+//        x86 {
+//            versionCode defaultConfig.versionCode + 4
+//            ndk {
+//                abiFilters "x86", ""
+//            }
+//        }
+//    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        disable 'MissingTranslation'
+        abortOnError false
+    }
+}
+
+
