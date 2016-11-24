@@ -407,6 +407,11 @@
     <string name="single_vaccine_miss">Vaccine Missed : 1</string>
     <string name="double_vaccine_miss">Vaccine Missed : 2</string>
     <string name="triple_vaccine_miss">Vaccine Missed : 3 or more</string>
+    <string name="elco_register">ELCO</string>
+    <string name="home_nutrition_label">Nutrition</string>
+    <string name="adolescent_register_label">Adolescent</string>
+    <string name="home_injectable_label">Injectable</string>
+    <string name="home_death_label">Death</string>
 
 
 </resources>
