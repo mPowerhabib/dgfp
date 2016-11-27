@@ -143,7 +143,6 @@ public class DisplayFormFragment extends Fragment {
     public void loadHtml(){
         showProgressDialog();
         String header = readFileAssets(headerTemplate);
-
         String script = readFileAssets(scriptFile);
         String modelString = readFileAssets("www/form/" + formName + "/model.xml").replaceAll("\"", "\\\\\"").replaceAll("\n", "").replaceAll("\r", "").replaceAll("/","\\\\/");
         String form = readFileAssets("www/form/" + formName + "/form.xml");

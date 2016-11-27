@@ -82,7 +82,7 @@ public class NativeHomeActivity extends SecuredActivity {
     protected void onCreation() {
         setContentView(R.layout.smart_registers_home);
         navigationController = new DGFPNavigationController(this,anmController);
-//        setupViews();
+        setupViews();
         initialize();
         DisplayFormFragment.formInputErrorMessage = getResources().getString(R.string.forminputerror);
         DisplayFormFragment.okMessage = getResources().getString(R.string.okforminputerror);
@@ -93,7 +93,7 @@ public class NativeHomeActivity extends SecuredActivity {
     }
 
     private void setupViews() {
-//        findViewById(R.id.btn_ec_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.household_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_stock_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_anc_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_fp_register).setOnClickListener(onRegisterStartListener);
@@ -148,7 +148,7 @@ public class NativeHomeActivity extends SecuredActivity {
 
     private void updateRegisterCounts(HomeContext homeContext) {
         SmartRegisterQueryBuilder sqb = new SmartRegisterQueryBuilder();
-        Cursor hhcountcursor = context.commonrepository("household").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("household", " HoH_Fname is not null "));
+        Cursor hhcountcursor = context.commonrepository("household").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("household", " HoH_F_Name is not null "));
         hhcountcursor.moveToFirst();
         hhcount= hhcountcursor.getInt(0);
         hhcountcursor.close();
@@ -257,9 +257,9 @@ public class NativeHomeActivity extends SecuredActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-//                case R.id.btn_ec_register:
-//                    navigationController.startECSmartRegistry();
-//                    break;
+                case R.id.household_register:
+                    ((DGFPNavigationController)navigationController).startHHSmartRegistry();
+                    break;
 //
 //                case R.id.btn_anc_register:
 //                    navigationController.startANCSmartRegistry();
