@@ -92,7 +92,7 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
         });
 
 
-        householdhead_name.setText(householdclient.getColumnmaps().get("HoH_FName"));
+        householdhead_name.setText(householdclient.getColumnmaps().get("HoH_F_Name"));
         ward.setText("Ward - "+humanize((householdclient.getDetails().get("WARD") != null ? householdclient.getDetails().get("WARD") : "").replace("+", "_")));
         gobhhid.setText(getResources().getString(R.string.hhid_gob) + (householdclient.getColumnmaps().get("HHID")!=null?householdclient.getColumnmaps().get("HHID"):""));
         age.setText("Age : " + (householdclient.getDetails().get("calc_HoH_age_confirm")!=null?householdclient.getDetails().get("calc_HoH_age_confirm"):""));

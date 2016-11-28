@@ -60,6 +60,16 @@
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:id="@+id/upazilla"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
 
         </LinearLayout>
         <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -110,13 +120,15 @@
                     android:id="@+id/brid"
                     style="@style/CustomFontTextViewStyle.noPadding"
                     android:layout_marginLeft="3dp" />
+
                 <org.ei.opensrp.view.customControls.CustomFontTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
-                    android:id="@+id/bdh"
                     style="@style/CustomFontTextViewStyle.noPadding"
-                    android:layout_marginLeft="3dp" />
+                    android:id="@+id/mobile_no"
+                    android:layout_marginLeft="5dp" />
+
             </LinearLayout>
         </FrameLayout>
 
@@ -134,21 +146,42 @@
         android:layout_weight="1.5"
         android:layout_gravity="center" >
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_margin="2dp"
             android:background="@color/status_bar_text_almost_white"
-            android:layout_weight="1.5">
-
+            android:layout_weight="1.5"
+            android:orientation="vertical">
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:id="@+id/mobile_no"
+                android:id="@+id/elco_no"
                 android:layout_marginLeft="5dp" />
-        </FrameLayout>
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:id="@+id/pw_no"
+                android:layout_marginLeft="5dp" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:id="@+id/child_no"
+                android:layout_marginLeft="5dp" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:id="@+id/adolescent_no"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
 
     </LinearLayout>
 

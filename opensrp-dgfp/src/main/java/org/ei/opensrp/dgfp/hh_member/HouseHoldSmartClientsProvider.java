@@ -93,7 +93,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
              gobhhid = (TextView)convertView.findViewById(R.id.gobhhid);
          nid = (TextView)convertView.findViewById(R.id.nid);
          brid = (TextView)convertView.findViewById(R.id.brid);
-         bdh = (TextView)convertView.findViewById(R.id.bdh);
+//         bdh = (TextView)convertView.findViewById(R.id.bdh);
              village = (TextView)convertView.findViewById(R.id.village);
              profilepic =(ImageView)convertView.findViewById(R.id.profilepic);
               age = (TextView)convertView.findViewById(R.id.txt_age);
@@ -127,7 +127,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 
 
 //
-         gobhhid.setText(pc.getColumnmaps().get("HHID")!=null?pc.getColumnmaps().get("HHID"):"");
+         gobhhid.setText(pc.getColumnmaps().get("GoB_HHID")!=null?pc.getColumnmaps().get("GoB_HHID"):"");
          age.setText("("+(pc.getDetails().get("calc_HoH_age_confirm")!=null?pc.getDetails().get("calc_HoH_age_confirm"):"")+") ");
         try {
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_HoH_dob_confirm") != null ?  pc.getDetails().get("calc_HoH_dob_confirm")  : "")), DateUtil.today());
@@ -138,17 +138,14 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
         }
          nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
          brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
-         mobileno.setText(pc.getDetails().get("HoH_Mobile_No")!=null?pc.getDetails().get("HoH_Mobile_No"):"");
-         bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
+         mobileno.setText(pc.getDetails().get("HoH_Mobile_number")!=null?pc.getDetails().get("HoH_Mobile_number"):"");
+//         bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-         village.setText((humanize((pc.getDetails().get("WARD")!=null?pc.getDetails().get("WARD"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("BLOCK")!=null?pc.getDetails().get("BLOCK"):"").replace("+","_"))));
-         headofhouseholdname.setText(pc.getColumnmaps().get("HoH_FName")!=null?pc.getColumnmaps().get("HoH_FName"):"");
+         village.setText((humanize((pc.getDetails().get("Village_Name")!=null?pc.getDetails().get("Village_Name"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("BLOCK")!=null?pc.getDetails().get("BLOCK"):"").replace("+","_"))));
+         headofhouseholdname.setText(pc.getColumnmaps().get("HoH_F_Name")!=null?pc.getColumnmaps().get("HoH_F_Name"):"");
         Date lastdate = converdatefromString((pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):""));
-
-
-
-                     last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
+         last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
 
 
 

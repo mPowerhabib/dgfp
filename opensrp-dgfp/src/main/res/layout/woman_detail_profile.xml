@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_weight="1"
+        android:paddingBottom="3dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/womandetailprofileview"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/woman_placeholder" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Woman Name :"
+                android:id="@+id/womandetail_womanname_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="BRID :"
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womabrid_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="NID :"
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womanid_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="HID :"
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womahid_text"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Husband's Name :"
+                android:id="@+id/womandetail_husbandname_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Vaccination Status :"
+                android:id="@+id/womandetail_vaccination_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_name"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womabrid"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womanid"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:layout_margin="3dp"
+                android:id="@+id/womandetail_womahid"
+                android:textSize="14sp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_husbandname"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_vaccinationstatus"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="3dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Father's name :"
+                android:id="@+id/womandetail_father_name_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="EPI Card No :"
+                android:id="@+id/womandetail_epicardno_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Birthdate (age) :"
+                android:id="@+id/womandetail_womandob_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Address :"
+                android:id="@+id/womandetail_address_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Marital Status :"
+                android:id="@+id/womandetail_marital_status_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Contact Number :"
+                android:id="@+id/womandetail_phone_number_text"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_fathers_name"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_epicardno"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_womandob"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_address"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_marital_status"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text=""
+                android:id="@+id/womandetail_phone_number"
+                android:textSize="14sp"
+                android:layout_margin="3dp"
+                android:textColor="@color/text_black" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

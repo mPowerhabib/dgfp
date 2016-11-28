@@ -27,6 +27,11 @@
             android:theme="@style/AppThemeNoActionBarAndTitle"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape"/>
+        <activity android:name=".elco.HH_woman_member_SmartRegisterActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

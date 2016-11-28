@@ -131,7 +131,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
             }
 //            maritalstatus.setText(pc.getColumnmaps().get("Marital_Status") != null ? pc.getColumnmaps().get("Marital_Status") : "null");
-            if ((pc.getDetails().get("Is_woman") != null ? pc.getDetails().get("Is_woman") : "").equalsIgnoreCase("1")) {
+            if ((pc.getDetails().get("Member_Gender") != null ? pc.getDetails().get("Member_Gender") : "").equalsIgnoreCase("2")) {
                 profilepic.setImageResource(R.drawable.woman_placeholder);
 //                newborn_or_fp.setText("Family Planning");
                 newborn_or_fp.setVisibility(View.INVISIBLE);

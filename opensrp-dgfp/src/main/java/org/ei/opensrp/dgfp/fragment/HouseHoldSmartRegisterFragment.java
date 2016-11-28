@@ -223,7 +223,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("household", new String[]{"relationalid", "details","HoH_F_Name","HHID"});
+        queryBUilder.SelectInitiateMainTable("household", new String[]{"relationalid", "details","HoH_F_Name","GoB_HHID"});
         queryBUilder.joinwithALerts("household","FW CENSUS");
         mainSelect = queryBUilder.mainCondition(" HoH_F_Name is not null ");
         queryBUilder.addCondition(filters);
@@ -235,7 +235,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //        Cursor c = commonRepository.CustomQueryForAdapter(new String[]{"id as _id","relationalid","details"},"household",""+currentlimit,""+currentoffset);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HouseHoldSmartClientsProvider hhscp = new HouseHoldSmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("household",new String []{"HoH_FName","HHID"}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("household",new String []{"HoH_F_Name","GoB_HHID"}));
         clientsView.setAdapter(clientAdapter);
 //        setServiceModeViewDrawableRight(null);
         updateSearchView();
@@ -302,7 +302,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
         return " HoH_F_Name COLLATE NOCASE ASC";
     }
     private String householdSortByGOBHHID(){
-        return "CAST(HHID AS INTEGER) ASC";
+        return "CAST(GoB_HHID AS INTEGER) ASC";
     }
 
     private class EditDialogOptionModel implements DialogOptionModel {
@@ -354,7 +354,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and (HoH_F_Name Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' ))";
+                        filters = "and (HoH_F_Name Like '%" + cs.toString() + "%' or GoB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' ))";
                         return null;
                     }
 
@@ -400,7 +400,7 @@ public class HouseHoldSmartRegisterFragment extends SecuredNativeSmartRegisterCu
 //                                .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
 //                                        getCurrentSearchFilter(), getCurrentSortOption());
 //
-                        filters = "and HoH_F_Name Like '%" + cs.toString() + "%' or HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' )";
+                        filters = "and HoH_F_Name Like '%" + cs.toString() + "%' or GoB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%'" +"or household.id in (Select members.relationalid from members where Member_Fname Like '%"+cs.toString()+"%' )";
                         return null;
                     }
 
