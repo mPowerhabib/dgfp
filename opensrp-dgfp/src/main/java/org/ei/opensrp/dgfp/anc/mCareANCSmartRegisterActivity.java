@@ -13,13 +13,11 @@ import android.util.Log;
 import org.ei.opensrp.Context;
 import org.ei.opensrp.adapter.SmartRegisterPaginatedAdapter;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
+import org.ei.opensrp.dgfp.LoginActivity;
+import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.fragment.dgfpANCSmartRegisterFragment;
+import org.ei.opensrp.dgfp.pageradapter.BaseRegisterActivityPagerAdapter;
 import org.ei.opensrp.domain.form.FormSubmission;
-import org.ei.opensrp.mcare.LoginActivity;
-import org.ei.opensrp.mcare.R;
-import org.ei.opensrp.mcare.elco.ElcoMauzaCommonObjectFilterOption;
-import org.ei.opensrp.mcare.elco.ElcoSearchOption;
-import org.ei.opensrp.mcare.fragment.mCareANCSmartRegisterFragment;
-import org.ei.opensrp.mcare.pageradapter.BaseRegisterActivityPagerAdapter;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.repository.AllSharedPreferences;
 import org.ei.opensrp.service.FormSubmissionService;
@@ -80,7 +78,7 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         formNames = this.buildFormNameList();
-        mBaseFragment = new mCareANCSmartRegisterFragment();
+        mBaseFragment = new dgfpANCSmartRegisterFragment();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPagerAdapter = new BaseRegisterActivityPagerAdapter(getSupportFragmentManager(), formNames, mBaseFragment);
@@ -254,7 +252,7 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
                     @Override
                     protected Object doInBackground(Object[] params) {
 //                        currentSearchFilter = new ElcoSearchOption(cs.toString());
-                        setCurrentSearchFilter(new ElcoSearchOption(cs.toString()));
+//                        setCurrentSearchFilter(new ElcoSearchOption(cs.toString()));
                         filteredClients = getClientsAdapter().getListItemProvider()
                                 .updateClients(getCurrentVillageFilter(), getCurrentServiceModeOption(),
                                         getCurrentSearchFilter(), getCurrentSortOption());
@@ -412,7 +410,7 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
             }else{
                 StringUtil.humanize(entry.getValue().getLabel());
                 String name = StringUtil.humanize(entry.getValue().getLabel());
-                dialogOptionslist.add(new ElcoMauzaCommonObjectFilterOption(name.replace(" ","_"),"existing_Mauzapara",name));
+//                dialogOptionslist.add(new ElcoMauzaCommonObjectFilterOption(name.replace(" ","_"),"existing_Mauzapara",name));
 
             }
         }

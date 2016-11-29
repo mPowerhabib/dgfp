@@ -3,4 +3,15 @@
     <item name="clientobject" type="id">clientobject</item>
     <item name="formname" type="id">formname</item>
     <item name="clientTTSchedulename" type="id">tt_schedule_name</item>
+    <item name="node_header" type="id" />
+    <item name="node_items" type="id" />
+    <item name="tree_items" type="id" />
+    <item name="textforAncRegister" type="id">textforAncRegister</item>
+    <item name="AlertStatustextforAncRegister" type="id">idforalertstatus</item>
+    <item name="textforPncRegister" type="id">textforPncRegister</item>
+    <item name="AlertStatustextforPncRegister" type="id">AlertStatustextforPncRegister</item>
+    <item name="AlertStatustextforEnccRegister" type="id">AlertStatustextforEnccRegister</item>
+    <item name="textforEnccRegister" type="id">textforEnccRegister</item>
+    <item name="warnid" type="id">warnid</item>
+    <item name="AlertStatustextforMIS_ELCO" type="id">id_mis_elco</item>
 </resources>

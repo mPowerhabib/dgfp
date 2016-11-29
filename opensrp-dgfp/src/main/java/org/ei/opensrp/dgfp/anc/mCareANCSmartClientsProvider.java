@@ -15,9 +15,9 @@ import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
+import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.application.dgfpApplication;
 import org.ei.opensrp.domain.Alert;
-import org.ei.opensrp.mcare.R;
-import org.ei.opensrp.mcare.application.McareApplication;
 import org.ei.opensrp.service.AlertService;
 import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
@@ -467,7 +467,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 
         CustomFontTextView NBNFDueDate = (CustomFontTextView)itemView.findViewById(R.id.nbnf_due_date);
         setalerttextandColorInView(NBNFDueDate, alerttextstatus, pc);
-        NBNFDueDate.setText(McareApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
+        NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
 
     }
 
@@ -497,7 +497,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
         CustomFontTextView ancreminderDueDate = (CustomFontTextView)itemView.findViewById(R.id.anc_reminder_due_date);
         setalerttextandColorInView(ancreminderDueDate, alerttextstatus,pc);
-        ancreminderDueDate.setText(McareApplication.convertToEnglishDigits(ancreminderDueDate.getText().toString()));
+        ancreminderDueDate.setText(dgfpApplication.convertToEnglishDigits(ancreminderDueDate.getText().toString()));
 
 
     }
@@ -612,7 +612,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
     }
     @Override
     public View inflatelayoutForCursorAdapter() {
-        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_mcare_anc_client, null);
+        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_dgfp_anc_client, null);
         return View;
     }
 

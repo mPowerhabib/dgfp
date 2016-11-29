@@ -20,8 +20,8 @@ import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
 import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
+import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.domain.Alert;
-import org.ei.opensrp.mcare.R;
 import org.ei.opensrp.util.DateUtil;
 
 import java.io.File;
@@ -98,7 +98,7 @@ public class mCareAncDetailActivity extends Activity {
             brid.setVisibility(View.GONE);
         }
         if((ancclient.getDetails().get("FWWOMNID") != null ? ancclient.getDetails().get("FWWOMNID") : "").length()>0) {
-            nid.setText(Html.fromHtml(getString(R.string.NID) + " " + humanize((ancclient.getDetails().get("FWWOMNID") != null ? ancclient.getDetails().get("FWWOMNID") : "").replace("+", "_"))));
+//            nid.setText(Html.fromHtml(getString(R.string.NID) + " " + humanize((ancclient.getDetails().get("FWWOMNID") != null ? ancclient.getDetails().get("FWWOMNID") : "").replace("+", "_"))));
             nid.setVisibility(View.VISIBLE);
         }else{
             nid.setVisibility(View.GONE);
