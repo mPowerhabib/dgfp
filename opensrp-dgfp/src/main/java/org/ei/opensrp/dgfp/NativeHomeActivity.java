@@ -77,6 +77,8 @@ public class NativeHomeActivity extends SecuredActivity {
     private int hhcount;
     private int childcount;
     private int womancount;
+    private TextView AncRegisterClientCountView;
+    private int anccount;
 
     @Override
     protected void onCreation() {
@@ -102,7 +104,7 @@ public class NativeHomeActivity extends SecuredActivity {
 //        findViewById(R.id.btn_reporting).setOnClickListener(onButtonsClickListener);
 //        findViewById(R.id.btn_videos).setOnClickListener(onButtonsClickListener);
 //
-//        ecRegisterClientCountView = (TextView) findViewById(R.id.txt_ec_register_client_count);
+        AncRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
 //        pncRegisterClientCountView = (TextView) findViewById(R.id.txt_pnc_register_client_count);
 //        ancRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
 //        fpRegisterClientCountView = (TextView) findViewById(R.id.txt_fp_register_client_count);
@@ -160,9 +162,15 @@ public class NativeHomeActivity extends SecuredActivity {
         childcountcursor.moveToFirst();
         childcount = childcountcursor.getInt(0);
         childcountcursor.close();
+
+
 //        ecRegisterClientCountView.setText(valueOf(hhcount));
 //        fpRegisterClientCountView.setText(valueOf(womancount));
-//        childRegisterClientCountView.setText(valueOf(childcount));
+        Cursor anccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"PW\":\"1\"%' "));
+        anccountcursor.moveToFirst();
+        anccount = anccountcursor.getInt(0);
+        anccountcursor.close();
+        AncRegisterClientCountView.setText(valueOf(anccount));
     }
 
     @Override

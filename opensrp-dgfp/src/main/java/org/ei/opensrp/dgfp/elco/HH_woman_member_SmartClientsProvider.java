@@ -76,20 +76,20 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         ImageView profilepic = (ImageView) itemView.findViewById(R.id.profilepic);
         TextView name = (TextView) itemView.findViewById(R.id.name);
-        TextView father_name = (TextView) itemView.findViewById(R.id.father_name);
         TextView husband_name = (TextView) itemView.findViewById(R.id.husband_name);
-        TextView maritalstatus = (TextView) itemView.findViewById(R.id.maritalstatus);
+        TextView gob_hhid = (TextView) itemView.findViewById(R.id.gob_hhid);
         TextView coupleno = (TextView) itemView.findViewById(R.id.coupleno);
 //        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
         TextView village = (TextView) itemView.findViewById(R.id.village);
         TextView age = (TextView) itemView.findViewById(R.id.age);
         TextView nid = (TextView) itemView.findViewById(R.id.nid);
         TextView brid = (TextView) itemView.findViewById(R.id.brid);
-        TextView hid = (TextView) itemView.findViewById(R.id.hid);
-        RatingBar vaccinebar = (RatingBar)itemView.findViewById(R.id.ratingBar);
-
+        TextView lmp = (TextView) itemView.findViewById(R.id.lmp);
+        TextView mobile_number = (TextView) itemView.findViewById(R.id.mobile_number);
+        TextView fp_status = (TextView) itemView.findViewById(R.id.fp_status);
+        TextView tt_dose_given = (TextView) itemView.findViewById(R.id.tt_dose_given);
+        TextView last_vstatus = (TextView) itemView.findViewById(R.id.last_vstatus);
         TextView pvfdue = (TextView) itemView.findViewById(R.id.pvf);
-        TextView vaccinebutton = (TextView) itemView.findViewById(R.id.next_vaccine_date);
 //
 //        ImageButton follow_up = (ImageButton)itemView.findViewById(R.id.btn_edit);
         profileinfolayout.setOnClickListener(onClickListener);
@@ -98,25 +98,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
 
-        name.setText(pc.getColumnmaps().get("Member_Fname") != null ? pc.getColumnmaps().get("Member_Fname") : "");
+        name.setText(pc.getColumnmaps().get("Mem_F_Name") != null ? pc.getColumnmaps().get("Mem_F_Name") : "");
 //        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-        father_name.setText("F: " + (pc.getDetails().get("Father_name") != null ? pc.getDetails().get("Father_name") : ""));
 
-        hid.setText("HID: " + (pc.getDetails().get("Member_HID") != null ? pc.getDetails().get("Member_HID") : ""));
-        if(!(pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : "").equalsIgnoreCase("")){
-            int rating = Integer.parseInt((pc.getColumnmaps().get("missedCount") != null ? pc.getColumnmaps().get("missedCount") : ""));
-            if(rating == 1){
-                vaccinebar.setRating(1.0f);
-            }else if (rating == 2){
-                vaccinebar.setRating(2.0f);
-            }else if (rating >= 3){
-                vaccinebar.setRating(3.0f);
-            }else if (rating == 0){
-                vaccinebar.setRating(0.0f);
-            }
-        }else {
-            vaccinebar.setRating(0.0f);
-        }
+        mobile_number.setText("Mobile No: " + (pc.getDetails().get("ELCO_Mobile_Number") != null ? pc.getDetails().get("ELCO_Mobile_Number") : ""));
+
 
 //        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
 //        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
@@ -134,36 +120,11 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         } else {
             profilepic.setImageResource(R.drawable.woman_placeholder);
         }
-        maritalstatus.setText(pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "");
 
+        husband_name.setText(" H: " + (pc.getDetails().get("Spouse_Name") != null ? pc.getDetails().get("Spouse_Name") : ""));
 
-        coupleno.setVisibility(View.INVISIBLE);
-        husband_name.setVisibility(View.INVISIBLE);
-        if (((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "")).equalsIgnoreCase("1")) {
-            maritalstatus.setText("M: Unmarried");
-            coupleno.setVisibility(View.VISIBLE);
-            husband_name.setVisibility(View.VISIBLE);
-            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
+        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
 
-        }
-        if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("2")) {
-            maritalstatus.setText("M: Married");
-            coupleno.setVisibility(View.VISIBLE);
-            husband_name.setVisibility(View.VISIBLE);
-            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
-
-        }
-        if ((pc.getColumnmaps().get("Marital_status") != null ? pc.getColumnmaps().get("Marital_status") : "").equalsIgnoreCase("3")) {
-            maritalstatus.setText("M: Divorced/Widow/Widower");
-            coupleno.setVisibility(View.VISIBLE);
-            husband_name.setVisibility(View.VISIBLE);
-            coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-            husband_name.setText("H: " + (pc.getDetails().get("Husband_name") != null ? pc.getDetails().get("Husband_name") : ""));
-
-        }
-//
 //        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
 //            pregnancystatus.setText(",Not Pregnant");
 //        }
@@ -172,30 +133,39 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
 //            pregnancystatus.setText("");
 //        }
-        village.setText("W: " + humanize((pc.getDetails().get("Member_WARD") != null ? pc.getDetails().get("Member_WARD") : "").replace("+", "_")) + ", " + "B: " + humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
+        village.setText("v: " + humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")) + ", " + "M: " + humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
 
+        lmp.setText(pc.getDetails().get("LMP") != null ? pc.getDetails().get("LMP") : "");
 
-        age.setText(pc.getColumnmaps().get("calc_age_confirm") != null ? "("+pc.getColumnmaps().get("calc_age_confirm")+")" : "");
+        age.setText(pc.getDetails().get("Calc_Age_Confirm") != null ? "("+pc.getDetails().get("Calc_Age_Confirm")+")" : "");
 //        calc_HoH_dob_confirm
-        try {
-            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_dob_confirm") != null ?  pc.getDetails().get("calc_dob_confirm")  : "")), DateUtil.today());
-            int calc_age = days / 365;
-            age.setText(calc_age);
-        }catch (Exception e){
-
-        }
-        nid.setText("NID: " + (pc.getDetails().get("Member_NID") != null ? pc.getDetails().get("Member_NID") : ""));
-        brid.setText("BRID: " + (pc.getDetails().get("Member_BRID") != null ? pc.getDetails().get("Member_BRID") : ""));
+//        try {
+//            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_dob_confirm") != null ?  pc.getDetails().get("calc_dob_confirm")  : "")), DateUtil.today());
+//            int calc_age = days / 365;
+//            age.setText(calc_age);
+//        }catch (Exception e){
+//
+//        }
+        nid.setText("NID: " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : ""));
+        brid.setText("BRID: " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : ""));
+        fp_status.setText("Fp Status: " + (pc.getDetails().get("Birth_Control") != null ? pc.getDetails().get("Birth_Control") : ""));
+        tt_dose_given.setText("TT Dose Given: " + (pc.getDetails().get("TT_Count") != null ? pc.getDetails().get("TT_Count") : ""));
+        last_vstatus.setText("Last VStatus: " + (pc.getDetails().get("ELCO_Status") != null ? pc.getDetails().get("ELCO_Status") : ""));
 
 
         List<Alert> BNFalertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_BNF");
         bnfButton(BNFalertlist_for_client, pvfdue, pc);
+        pvfdue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((HH_woman_member_SmartRegisterActivity) ((Activity) context)).startFormActivity("elco_register", pc.getCaseId(),null);
 
+            }
+
+        });
 
         List<Alert> Vaccinealertlist_for_client = checkAlertListForVaccine(pc);
 
-
-        vaccineButton(Vaccinealertlist_for_client, pc, vaccinebutton);
 
 
 //        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

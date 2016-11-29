@@ -282,8 +282,8 @@ public class HH_woman_member_SmartRegisterActivity extends SecuredNativeSmartReg
 
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-//        formNames.add("woman_vaccination_measles");
-//        formNames.add("woman_vaccination_tt1");
+        formNames.add("elco_followup");
+        formNames.add("elco_register");
 //        formNames.add("woman_vaccination_tt2");
 //        formNames.add("woman_vaccination_tt3");
 //        formNames.add("woman_vaccination_tt4");

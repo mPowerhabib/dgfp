@@ -244,24 +244,6 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.next_vaccine_date:
-                    CommonPersonObjectClient pc = (CommonPersonObjectClient) view.getTag(R.id.clientobject);
-                    String Schedulename = (String)view.getTag(R.id.clientTTSchedulename);
-                    assignHandler(Schedulename);
-                    JSONObject overridejsonobject = new JSONObject();
-                    try {
-                        overridejsonobject.put("e_tt1",((pc.getDetails().get("tt1_final")!=null?pc.getDetails().get("tt1_final"):"")));
-                        overridejsonobject.put("e_tt2",((pc.getDetails().get("tt2_final")!=null?pc.getDetails().get("tt2_final"):"")));
-                        overridejsonobject.put("e_tt3",((pc.getDetails().get("tt3_final")!=null?pc.getDetails().get("tt3_final"):"")));
-                        overridejsonobject.put("e_tt4",((pc.getDetails().get("tt4_final")!=null?pc.getDetails().get("tt4_final"):"")));
-                        overridejsonobject.put("e_tt5",((pc.getDetails().get("tt5_final")!=null?pc.getDetails().get("tt5_final"):"")));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
-                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("woman_tt_form",((CommonPersonObjectClient) view.getTag(R.id.clientobject)).entityId() ,  fieldOverrides.getJSONString());
-                    break;
                 case R.id.pvf:
                     ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("pregnancy_status_birth_notification", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
@@ -331,7 +313,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
                         if(cs.toString().equalsIgnoreCase("")){
                             filters = "";
                         }else {
-                            filters = "and (Member_Fname Like '%" + cs.toString() + "%' or Member_GOB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%') ";
+                            filters = "and (Mem_F_Name Like '%" + cs.toString() + "%' or Member_GOB_HHID Like '%" + cs.toString() + "%'  or details Like '%" + cs.toString() + "%') ";
                         }
                         return null;
                     }
@@ -407,7 +389,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
 
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
         mainSelect = queryBUilder.mainCondition(" details like '%\"Eligible\":\"1\"%' ");
         queryBUilder.addCondition(filters);
@@ -415,7 +397,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
         HH_woman_member_SmartClientsProvider hhscp = new HH_woman_member_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Member_Fname","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();
         refresh();
@@ -425,7 +407,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
         return " calc_age_confirm ASC";
     }
     private String sortByFWWOMFNAME(){
-        return " Member_Fname COLLATE NOCASE ASC";
+        return " Mem_F_Name COLLATE NOCASE ASC";
     }
     private String sortByMaritalStatus(){
         return " CASE WHEN Marital_status = '2' THEN '1'"
