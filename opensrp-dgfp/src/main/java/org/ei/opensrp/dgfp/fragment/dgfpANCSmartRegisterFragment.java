@@ -25,6 +25,7 @@ import org.ei.opensrp.dgfp.anc.mCareANCServiceModeOption;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartClientsProvider;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
 import org.ei.opensrp.dgfp.anc.mCareAncDetailActivity;
+import org.ei.opensrp.dgfp.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
 import org.ei.opensrp.util.StringUtil;
 import org.ei.opensrp.view.activity.SecuredNativeSmartRegisterActivity;
@@ -88,8 +89,8 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
 
             @Override
             public SortOption sortOption() {
-                return null;
-//                return new ElcoPSRFDueDateSort();
+//                return null;
+                return new HouseholdCensusDueDateSort();
 
             }
 
@@ -357,31 +358,27 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
         }
     }
     public String ancMainSelectWithJoins(){
-        return "Select id as _id,relationalid,details,FWWOMFNAME,FWPSRLMP,FWSORTVALUE,JiVitAHHID,GOBHHID,Is_PNC,FWBNFSTS,FWBNFDTOO \n" +
-                "from mcaremother\n" +
-                "Left Join alerts on alerts.caseID = mcaremother.id and alerts.scheduleName = 'Ante Natal Care Reminder Visit'\n" +
-                "Left Join alerts as alerts2 on alerts2.caseID = mcaremother.id and alerts2.scheduleName = 'BirthNotificationPregnancyStatusFollowUp'";
+        return "Select id as _id,relationalid,details,Mem_F_Name,EDD,Child_calc_age,calc_age_confirm,Child_mother_name,Member_GOB_HHID,Marital_status,Pregnancy_Status,missedCount \n" +
+                "from members " ;
     }
     public String ancMainCountWithJoins(){
         return "Select Count(*) \n" +
-                "from mcaremother\n" +
-                "Left Join alerts on alerts.caseID = mcaremother.id and alerts.scheduleName = 'Ante Natal Care Reminder Visit'\n" +
-                "Left Join alerts as alerts2 on alerts2.caseID = mcaremother.id and alerts2.scheduleName = 'BirthNotificationPregnancyStatusFollowUp'";
+                "from members ";
     }
     public void initializeQueries(){
         mCareANCSmartClientsProvider hhscp = new mCareANCSmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
-        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), null, hhscp, new CommonRepository("mcaremother",new String []{"FWWOMFNAME","FWPSRLMP","FWSORTVALUE","JiVitAHHID","GOBHHID","Is_PNC","FWBNFSTS","FWBNFDTOO"}));
+        clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), null, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","Child_calc_age","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
 
-        setTablename("mcaremother");
+        setTablename("members");
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder(ancMainCountWithJoins());
-        countSelect = countqueryBUilder.mainCondition("(mcaremother.Is_PNC is null or mcaremother.Is_PNC = '0') and mcaremother.FWWOMFNAME not null and mcaremother.FWWOMFNAME != \"\"   AND mcaremother.details  LIKE '%\"FWWOMVALID\":\"1\"%'");
-        mainCondition = "(Is_PNC is null or Is_PNC = '0') and FWWOMFNAME not null and FWWOMFNAME != \"\"   AND details  LIKE '%\"FWWOMVALID\":\"1\"%'";
+        countSelect = countqueryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'");
+        mainCondition = "(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'";
         super.CountExecute();
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder(ancMainSelectWithJoins());
-        mainSelect = queryBUilder.mainCondition("(mcaremother.Is_PNC is null or mcaremother.Is_PNC = '0') and mcaremother.FWWOMFNAME not null and mcaremother.FWWOMFNAME != \"\"   AND mcaremother.details  LIKE '%\"FWWOMVALID\":\"1\"%'");
-        Sortqueries = sortBySortValue();
+        mainSelect = queryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'");
+        Sortqueries = sortByFWWOMFNAME();
 
         currentlimit = 20;
         currentoffset = 0;
@@ -396,7 +393,7 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
         return " FWSORTVALUE ASC";
     }
     private String sortByFWWOMFNAME(){
-        return " FWWOMFNAME ASC";
+        return " Mem_F_Name ASC";
     }
     private String sortByJiVitAHHID(){
         return " JiVitAHHID ASC";

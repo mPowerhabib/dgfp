@@ -100,36 +100,35 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 //        }
 //
 //        id.setText(pc.getDetails().get("case_id")!=null?pc.getCaseId():"");
-        name.setText(humanize(pc.getColumnmaps().get("FWWOMFNAME")!=null?pc.getColumnmaps().get("FWWOMFNAME"):""));
-        spousename.setText(humanize(pc.getDetails().get("FWHUSNAME")!=null?pc.getDetails().get("FWHUSNAME"):""));
-        gobhhid.setText(" "+(pc.getColumnmaps().get("GOBHHID")!=null?pc.getColumnmaps().get("GOBHHID"):""));
-        jivitahhid.setText((pc.getColumnmaps().get("JiVitAHHID")!=null?pc.getColumnmaps().get("JiVitAHHID"):""));
-        village.setText(humanize((pc.getDetails().get("mauza") != null ? pc.getDetails().get("mauza") : "").replace("+", "_")));
-        age.setText("("+(pc.getDetails().get("FWWOMAGE")!=null?pc.getDetails().get("FWWOMAGE"):"")+") ");
+        name.setText(humanize(pc.getColumnmaps().get("Mem_F_Name")!=null?pc.getColumnmaps().get("Mem_F_Name"):""));
+        spousename.setText(humanize(pc.getDetails().get("Spouse_Name")!=null?pc.getDetails().get("Spouse_Name"):""));
+        gobhhid.setText(" "+(pc.getDetails().get("Member_GoB_HHID")!=null?pc.getDetails().get("Member_GoB_HHID"):""));
+        village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")));
+        age.setText("("+(pc.getDetails().get("Calc_Age_Confirm")!=null?pc.getDetails().get("Calc_Age_Confirm"):"")+") ");
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
-        AllCommonsRepository allmotherRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
-        CommonPersonObject childobject = allmotherRepository.findByCaseID(smartRegisterClient.entityId());
-        AllCommonsRepository elcorep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("elco");
-        final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
-        try {
-            int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
-            int calc_age = days / 365;
-            age.setText("("+calc_age+") ");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+//        AllCommonsRepository allmotherRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+//        CommonPersonObject childobject = allmotherRepository.findByCaseID(smartRegisterClient.entityId());
+//        AllCommonsRepository elcorep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("elco");
+//        final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
+//        try {
+//            int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
+//            int calc_age = days / 365;
+//            age.setText("("+calc_age+") ");
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
 
-        if(pc.getDetails().get("FWWOMNID").length()>0) {
-            String NIDSourcestring = "NID: " +  (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") + " ";
-            nid.setText(Html.fromHtml(NIDSourcestring));
-            nid.setVisibility(View.VISIBLE);
-        }
-        if(pc.getDetails().get("FWWOMBID").length()>0) {
-            String BRIDSourcestring = "BRID: " +  (pc.getDetails().get("FWWOMBID") != null ? pc.getDetails().get("FWWOMBID") : "") + " ";
-            brid.setText(Html.fromHtml(BRIDSourcestring));
-            brid.setVisibility(View.VISIBLE);
-        }
+//        if(pc.getDetails().get("FWWOMNID").length()>0) {
+//            String NIDSourcestring = "NID: " +  (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") + " ";
+//            nid.setText(Html.fromHtml(NIDSourcestring));
+//            nid.setVisibility(View.VISIBLE);
+//        }
+//        if(pc.getDetails().get("FWWOMBID").length()>0) {
+//            String BRIDSourcestring = "BRID: " +  (pc.getDetails().get("FWWOMBID") != null ? pc.getDetails().get("FWWOMBID") : "") + " ";
+//            brid.setText(Html.fromHtml(BRIDSourcestring));
+//            brid.setVisibility(View.VISIBLE);
+//        }
 
 //        Log.v("brid tag",pc.getDetails().get("FWWOMBID"));
 

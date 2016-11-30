@@ -3,6 +3,7 @@ package org.ei.opensrp.dgfp;
 import android.app.Activity;
 import android.content.Intent;
 
+import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.view.controller.ANMController;
@@ -41,6 +42,11 @@ public class DGFPNavigationController extends org.ei.opensrp.view.controller.Nav
 
     public void startHHElcoSmartRegistry() {
         activity.startActivity(new Intent(activity, HH_woman_member_SmartRegisterActivity.class));
+
+    }
+    @Override
+    public void startANCSmartRegistry() {
+        activity.startActivity(new Intent(activity, mCareANCSmartRegisterActivity.class));
 
     }
 }
