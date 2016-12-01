@@ -168,7 +168,7 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
     protected SmartRegisterPaginatedCursorAdapter adapter(String relationalid) {
         CommonRepository commonRepository = context.commonrepository("members");
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Member_Fname", "EDD", "Child_calc_age","calc_age_confirm", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "Child_calc_age","calc_age_confirm", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
         String mainSelect = queryBUilder.mainCondition(" relationalid = '"+relationalid+"' ");
         queryBUilder.addCondition("");

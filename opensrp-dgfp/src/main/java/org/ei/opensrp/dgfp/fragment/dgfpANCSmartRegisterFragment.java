@@ -223,9 +223,6 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
                     Intent intent = new Intent(getActivity(),mCareAncDetailActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.nbnf_due_date:
-                    showFragmentDialog(new EditDialogOptionModelfornbnf(), view.getTag(R.id.clientobject));
-                    break;
                 case R.id.anc_reminder_due_date:
                     CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
                     Log.v("do as you will", (String) view.getTag(R.id.textforAncRegister));

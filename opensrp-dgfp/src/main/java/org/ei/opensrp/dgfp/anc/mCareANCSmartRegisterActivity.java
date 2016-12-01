@@ -94,8 +94,8 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
     }
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-//        formNames.add("anc_reminder_visit_1");
-//        formNames.add("anc_reminder_visit_2");
+        formNames.add("birth_notification");
+        formNames.add("childregistration");
 //        formNames.add("anc_reminder_visit_3");
 //        formNames.add("anc_reminder_visit_4");
 //        formNames.add("birthnotificationpregnancystatusfollowup");

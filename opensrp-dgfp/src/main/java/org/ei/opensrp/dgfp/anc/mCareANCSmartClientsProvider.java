@@ -1,5 +1,6 @@
 package org.ei.opensrp.dgfp.anc;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -134,25 +135,25 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 
 
 
-        if(pc.getDetails().get("FWGESTATIONALAGE")!=null){
-            String GASourcestring = "GA: " + pc.getDetails().get("FWGESTATIONALAGE")+ " weeks" + " ";
-
-            ga.setText(Html.fromHtml(GASourcestring));
-        }
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
-            GregorianCalendar calendar = new GregorianCalendar();
-                calendar.setTime(edd_date);
-                calendar.add(Calendar.DATE, 259);
-                edd_date.setTime(calendar.getTime().getTime());
-            String EDDSourcestring = "EDD: " +  format.format(edd_date)+ " ";
-
-            edd.setText(Html.fromHtml(EDDSourcestring));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        if(pc.getDetails().get("FWGESTATIONALAGE")!=null){
+//            String GASourcestring = "GA: " + pc.getDetails().get("FWGESTATIONALAGE")+ " weeks" + " ";
+//
+//            ga.setText(Html.fromHtml(GASourcestring));
+//        }
+//
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        try {
+//            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
+//            GregorianCalendar calendar = new GregorianCalendar();
+//                calendar.setTime(edd_date);
+//                calendar.add(Calendar.DATE, 259);
+//                edd_date.setTime(calendar.getTime().getTime());
+//            String EDDSourcestring = "EDD: " +  format.format(edd_date)+ " ";
+//
+//            edd.setText(Html.fromHtml(EDDSourcestring));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         constructRiskFlagView(pc,itemView);
         constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
         constructNBNFDueBlock(pc, itemView);
@@ -450,7 +451,8 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
     }
 
-    private void constructNBNFDueBlock(CommonPersonObjectClient pc, View itemView) {
+    private void constructNBNFDueBlock(final CommonPersonObjectClient pc, View itemView) {
+
         alertTextandStatus alerttextstatus = null;
         List <Alert>alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(),"BirthNotificationPregnancyStatusFollowUp");
         if(alertlist.size() != 0){
@@ -465,6 +467,21 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
 
         CustomFontTextView NBNFDueDate = (CustomFontTextView)itemView.findViewById(R.id.nbnf_due_date);
+        NBNFDueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pc.getDetails().get("Visit_Status") == null){
+                    ((mCareANCSmartRegisterActivity) ((Activity) context)).startFormActivity("birth_notification", pc.entityId(),null);
+                }else {
+                    if (pc.getDetails().get("Visit_Status").equalsIgnoreCase("3")) {
+                        AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+                        CommonPersonObject childobject = allmemberRepository.findByCaseID(pc.entityId());
+                        ((mCareANCSmartRegisterActivity) ((Activity) context)).startFormActivity("childregistration", childobject.getRelationalId(), null);
+
+                    }
+                }
+            }
+        });
         setalerttextandColorInView(NBNFDueDate, alerttextstatus, pc);
         NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
 

@@ -89,7 +89,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
 
         if((pc.getDetails().get("Is_child")!=null?pc.getDetails().get("Is_child"):"").equalsIgnoreCase("1")){
-            name.setText(pc.getColumnmaps().get("Member_Fname")!=null?pc.getColumnmaps().get("Member_Fname"):"");
+            name.setText(pc.getColumnmaps().get("Mem_F_Name")!=null?pc.getColumnmaps().get("Mem_F_Name"):"");
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("Child_calc_age")!=null?pc.getColumnmaps().get("Child_calc_age"):"");
             try {
@@ -115,7 +115,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 //
 
         }else {
-            name.setText(pc.getColumnmaps().get("Member_Fname") != null ? pc.getColumnmaps().get("Member_Fname") : "");
+            name.setText(pc.getColumnmaps().get("Mem_F_Name") != null ? pc.getColumnmaps().get("Mem_F_Name") : "");
 
             String unique_id_string = "NID : "+ (pc.getDetails().get("Member_NID") != null ? pc.getDetails().get("Member_NID") : "");
             unique_id_string = unique_id_string + " / " + "BRID : "+ (pc.getDetails().get("Member_BRID") != null ? pc.getDetails().get("Member_BRID") : "");
