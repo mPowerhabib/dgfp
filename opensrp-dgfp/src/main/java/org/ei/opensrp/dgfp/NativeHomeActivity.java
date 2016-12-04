@@ -101,7 +101,7 @@ public class NativeHomeActivity extends SecuredActivity {
         findViewById(R.id.household_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.elco_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_anc_register).setOnClickListener(onRegisterStartListener);
-//        findViewById(R.id.btn_fp_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.btn_pnc_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
 //
 //        findViewById(R.id.btn_reporting).setOnClickListener(onButtonsClickListener);
@@ -287,6 +287,9 @@ public class NativeHomeActivity extends SecuredActivity {
 //
                 case R.id.btn_anc_register:
                     navigationController.startANCSmartRegistry();
+                    break;
+                case R.id.btn_pnc_register:
+                    navigationController.startPNCSmartRegistry();
                     break;
 //
 //                case R.id.btn_child_register:
