@@ -1,55 +1,59 @@
 <model>
-    <instance>
-        <BirthNotification encounter_type="Birth Notification Form" id="BirthNotification" version="201612010509">
-          <formhub>
-            <uuid/>
-          </formhub>
-          <version/>
-          <changes/>
-          <existing_Country/>
-          <existing_Division/>
-          <existing_District/>
-          <existing_Upazilla/>
-          <existing_Union/>
-          <existing_Ward/>
-          <existing_Subunit/>
-          <existing_Mauzapara/>
-          <existing_Final_Vill/>
-          <existing_GPS/>
-          <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id"/>
-          <existing_Mem_F_Name/>
-          <existing_GoB_HHID/>
-          <existing_HoH_F_Name/>
-          <existing_Spouse_Name/>
-          <existing_Couple_No/>
-          <existing_TT_Count/>
-          <existing_ELCO_Mobile_Number/>
-          <existing_EDD/>
-          <existing_Height/>
-          <Today openmrs_entity="encounter" openmrs_entity_id="encounter_date"/>
-          <start openmrs_entity="concept" openmrs_entity_id="163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-          <end openmrs_entity="concept" openmrs_entity_id="163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-          <Visit_Date openmrs_entity="concept" openmrs_entity_id="160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-          <Confirm_Info/>
-          <Visit_Status openmrs_entity="concept" openmrs_entity_id="161641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-          <Mother_Status/>
-          <note/>
-          <Outcome_Occured>
-            <Where_Delivered/>
-            <Who_Delivered/>
-            <Delivery_Type/>
-            <Misoprostol_Given/>
-            <Misoprostol_Received/>
-            <Count_Misorpostol/>
-            <DOO openmrs_entity="concept" openmrs_entity_id="5599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-            <Num_Live_Birth openmrs_entity="concept" openmrs_entity_id="160601AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-          </Outcome_Occured>
-          <Is_PNC/>
-          <relationalid/>
-          <bnf_current_formStatus/>
-          <meta>
-            <instanceID/>
-          </meta>
-        </BirthNotification>
-      </instance>
-  </model>
+  <instance>
+    <BirthNotification encounter_type="Birth Notification Form" id="BirthNotification" version="201612260605">
+      <formhub>
+        <uuid/>
+      </formhub>
+      <version/>
+      <changes/>
+      <existing_Country/>
+      <existing_Division/>
+      <existing_District/>
+      <existing_Upazilla/>
+      <existing_Union/>
+      <existing_Ward/>
+      <existing_Subunit/>
+      <existing_Mauzapara/>
+      <existing_Final_Vill/>
+      <existing_GPS/>
+      <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id"/>
+      <existing_Mem_F_Name/>
+      <existing_GoB_HHID/>
+      <existing_HoH_F_Name/>
+      <existing_Spouse_Name/>
+      <existing_Couple_No/>
+      <existing_TT_Count/>
+      <existing_ELCO_Mobile_Number/>
+      <existing_EDD/>
+      <existing_Height/>
+      <Today openmrs_entity="encounter" openmrs_entity_id="encounter_date"/>
+      <start openmrs_entity="concept" openmrs_entity_id="163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+      <end openmrs_entity="concept" openmrs_entity_id="163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+      <Visit_Date openmrs_entity="concept" openmrs_entity_id="160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+      <Confirm_Info/>
+      <Visit_Status openmrs_entity="concept" openmrs_entity_id="161641AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+      <Mother_Status/>
+      <note/>
+      <Outcome_Occured>
+        <Where_Delivered/>
+        <Who_Delivered/>
+        <Delivery_Type/>
+        <Misoprostol_Given/>
+        <Misoprostol_Received/>
+        <Count_Misorpostol/>
+        <DOO openmrs_entity="concept" openmrs_entity_id="5599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+        <Num_Live_Birth openmrs_entity="concept" openmrs_entity_id="160601AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+      </Outcome_Occured>
+      <Is_PNC/>
+      <Eligible/>
+      <Calc_Age_Newmom/>
+      <Nutrition/>
+      <Preg_Status/>
+      <relationalid/>
+      <bnf_current_formStatus/>
+      <meta>
+        <instanceID/>
+      </meta>
+    </BirthNotification>
+  </instance>
+</model>

@@ -169,6 +169,22 @@
         "bind": "/model/instance/BirthNotification/Is_PNC"
       },
       {
+        "name": "Eligible",
+        "bind": "/model/instance/BirthNotification/Eligible"
+      },
+      {
+        "name": "Calc_Age_Newmom",
+        "bind": "/model/instance/BirthNotification/Calc_Age_Newmom"
+      },
+      {
+        "name": "Nutrition",
+        "bind": "/model/instance/BirthNotification/Nutrition"
+      },
+      {
+        "name": "Preg_Status",
+        "bind": "/model/instance/BirthNotification/Preg_Status"
+      },
+      {
         "name": "child_relationalid",
         "bind": "/model/instance/BirthNotification/relationalid"
       },
