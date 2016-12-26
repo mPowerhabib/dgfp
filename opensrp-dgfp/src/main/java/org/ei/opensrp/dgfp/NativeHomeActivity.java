@@ -82,6 +82,9 @@ public class NativeHomeActivity extends SecuredActivity {
     private TextView PncRegisterClientCountView;
     private int pnccount;
     private TextView ChildRegisterClientCountView;
+    private int nutritioncount;
+    private TextView nutritionClientCountView;
+
 
     @Override
     protected void onCreation() {
@@ -111,6 +114,7 @@ public class NativeHomeActivity extends SecuredActivity {
 //
         AncRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
         PncRegisterClientCountView = (TextView) findViewById(R.id.txt_pnc_register_client_count);
+        nutritionClientCountView = (TextView) findViewById(R.id.txt_nutrition_register_client_count);
 //        pncRegisterClientCountView = (TextView) findViewById(R.id.txt_pnc_register_client_count);
 //        ancRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
 //        fpRegisterClientCountView = (TextView) findViewById(R.id.txt_fp_register_client_count);
@@ -179,6 +183,12 @@ public class NativeHomeActivity extends SecuredActivity {
         pnccount = pnccountcursor.getInt(0);
         pnccountcursor.close();
         PncRegisterClientCountView.setText(valueOf(pnccount));
+
+        Cursor nutritioncursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Nutrition\":\"1\"%' "));
+        nutritioncursor.moveToFirst();
+        nutritioncount = nutritioncursor.getInt(0);
+        nutritioncursor.close();
+        nutritionClientCountView.setText(valueOf(nutritioncount));
 
 //        Cursor childcountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_PNC\":\"1\"%' "));
 //        childcountcursor.moveToFirst();
