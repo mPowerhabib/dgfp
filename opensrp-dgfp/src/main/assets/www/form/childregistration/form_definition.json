@@ -236,6 +236,14 @@
           {
             "name": "add_child",
             "bind": "/model/instance/ChildRegistraton/Reg_Newborn/add_child"
+          },
+          {
+            "name": "Child",
+            "bind": "/model/instance/ChildRegistraton/Reg_Newborn/Child"
+          },
+          {
+            "name": "Nutrition",
+            "bind": "/model/instance/ChildRegistraton/Reg_Newborn/Nutrition"
           }
         ]
       }

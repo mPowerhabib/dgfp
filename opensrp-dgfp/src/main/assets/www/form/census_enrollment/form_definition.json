@@ -93,20 +93,8 @@
         "bind": "/model/instance/CensusNewMemberRegistration/Visit_Status"
       },
       {
-        "name": "new_ELCO",
-        "bind": "/model/instance/CensusNewMemberRegistration/new_ELCO"
-      },
-      {
         "name": "ELCO",
         "bind": "/model/instance/CensusNewMemberRegistration/ELCO"
-      },
-      {
-        "name": "Child",
-        "bind": "/model/instance/CensusNewMemberRegistration/Child"
-      },
-      {
-        "name": "Adolescent",
-        "bind": "/model/instance/CensusNewMemberRegistration/Adolescent"
       },
       {
         "name": "HH_Status",
@@ -384,6 +372,22 @@
           {
             "name": "Occupation",
             "bind": "/model/instance/CensusNewMemberRegistration/HH_Member/Member_Detail/Occupation"
+          },
+          {
+            "name": "new_ELCO",
+            "bind": "/model/instance/CensusNewMemberRegistration/HH_Member/new_ELCO"
+          },
+          {
+            "name": "Child",
+            "bind": "/model/instance/CensusNewMemberRegistration/HH_Member/Child"
+          },
+          {
+            "name": "Adolescent",
+            "bind": "/model/instance/CensusNewMemberRegistration/HH_Member/Adolescent"
+          },
+          {
+            "name": "Nutrition",
+            "bind": "/model/instance/CensusNewMemberRegistration/HH_Member/Nutrition"
           },
           {
             "name": "add_member",
