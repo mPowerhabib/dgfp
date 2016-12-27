@@ -5,6 +5,10 @@
     "bind_type": "members",
     "fields": [
       {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
         "name": "version",
         "bind": "/model/instance/Nutrition/version"
       },
@@ -89,8 +93,9 @@
         "bind": "/model/instance/Nutrition/existing_Injection_Date"
       },
       {
-        "name": "existing_Calc_Dob_Confirm",
-        "bind": "/model/instance/Nutrition/existing_Calc_Dob_Confirm"
+        "name": "Calc_Dob_Confirm",
+        "bind": "/model/instance/Nutrition/existing_Calc_Dob_Confirm",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Child_Mother",
@@ -101,8 +106,9 @@
         "bind": "/model/instance/Nutrition/existing_Child_Father"
       },
       {
-        "name": "existing_DOO",
-        "bind": "/model/instance/Nutrition/existing_DOO"
+        "name": "DOO",
+        "bind": "/model/instance/Nutrition/existing_DOO",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Child",
@@ -125,7 +131,7 @@
         "bind": "/model/instance/Nutrition/end"
       },
       {
-        "name": "Visit_Date",
+        "name": "nutrition_Visit_Date",
         "bind": "/model/instance/Nutrition/Visit_Date"
       },
       {
@@ -133,7 +139,7 @@
         "bind": "/model/instance/Nutrition/Visit_Status"
       },
       {
-        "name": "Calc_Dob_Confirm",
+        "name": "display_Calc_Dob_Confirm",
         "bind": "/model/instance/Nutrition/Calc_Dob_Confirm"
       },
       {

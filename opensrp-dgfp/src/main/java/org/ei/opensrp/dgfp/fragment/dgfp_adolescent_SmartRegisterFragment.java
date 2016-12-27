@@ -23,10 +23,9 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
-import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartClientsProvider;
+import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.WomanDetailActivity;
-import org.ei.opensrp.dgfp.elco.WomanServiceModeOption;
 import org.ei.opensrp.dgfp.elco.tt1handler;
 import org.ei.opensrp.dgfp.elco.tt2handler;
 import org.ei.opensrp.dgfp.elco.tt3handler;
@@ -65,7 +64,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 /**
  * Created by koros on 11/2/15.
  */
-public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
+public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
 
     private SmartRegisterClientsProvider clientProvider = null;
     private CommonPersonObjectController controller;
@@ -244,12 +243,10 @@ public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegi
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.nutrition_form:
-                    CommonPersonObjectClient pc = ((CommonPersonObjectClient) view.getTag());
-                    ((dgfp_nutrition_SmartRegisterActivity)getActivity()).startFormActivity("nutrition", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
+                case R.id.adolescent_form:
+                    ((dgfp_adolescent_SmartRegisterActivity)getActivity()).startFormActivity("adolescent_health", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
                     Log.v("do as you will", "button was click");
-
                     break;
             }
         }
@@ -383,7 +380,7 @@ public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegi
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
         countqueryBUilder.joinwithALerts("members", "FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details like '%\"Nutrition\":\"1\"%' ");
+        countSelect = countqueryBUilder.mainCondition(" details like '%\"Adolescent\":\"1\"%' ");
         Sortqueries = sortByAlertmethod();
 
         CountExecute();
@@ -392,7 +389,7 @@ public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegi
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details like '%\"Nutrition\":\"1\"%' ");
+        mainSelect = queryBUilder.mainCondition(" details like '%\"Adolescent\":\"1\"%' ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);

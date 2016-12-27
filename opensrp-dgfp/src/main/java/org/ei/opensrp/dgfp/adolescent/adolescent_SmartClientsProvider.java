@@ -1,4 +1,4 @@
-package org.ei.opensrp.dgfp.nutrition;
+package org.ei.opensrp.dgfp.adolescent;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,7 +42,7 @@ import static org.ei.opensrp.util.StringUtil.humanize;
 /**
  * Created by user on 2/12/15.
  */
-public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProviderForCursorAdapter {
+public class adolescent_SmartClientsProvider implements SmartRegisterCLientsProviderForCursorAdapter {
 
     private final LayoutInflater inflater;
     private final Context context;
@@ -55,8 +54,8 @@ public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProvi
     protected CommonPersonObjectController controller;
     AlertService alertService;
 
-    public nutrition_SmartClientsProvider(Context context,
-                                          View.OnClickListener onClickListener, AlertService alertService) {
+    public adolescent_SmartClientsProvider(Context context,
+                                           View.OnClickListener onClickListener, AlertService alertService) {
         this.onClickListener = onClickListener;
         this.alertService = alertService;
         this.context = context;
@@ -76,17 +75,18 @@ public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProvi
 
         ImageView profilepic = (ImageView) itemView.findViewById(R.id.profilepic);
         TextView name = (TextView) itemView.findViewById(R.id.name);
-        TextView husband_name_or_mothersname = (TextView) itemView.findViewById(R.id.husband_name_or_mothers_name);
+        TextView hoh_name = (TextView) itemView.findViewById(R.id.hoh_name);
         TextView gob_hhid = (TextView) itemView.findViewById(R.id.gob_hhid);
-        TextView coupleno_or_fathersname = (TextView) itemView.findViewById(R.id.coupleno_or_fathers_name);
+//        TextView coupleno_or_fathersname = (TextView) itemView.findViewById(R.id.coupleno_or_fathers_name);
 //        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
         TextView village = (TextView) itemView.findViewById(R.id.village_mauzapara);
         TextView age = (TextView) itemView.findViewById(R.id.age);
         TextView nid = (TextView) itemView.findViewById(R.id.nid);
         TextView brid = (TextView) itemView.findViewById(R.id.brid);
         TextView date_of_last_visit = (TextView) itemView.findViewById(R.id.date_of_last_visit);
-        TextView nutrition_taken = (TextView) itemView.findViewById(R.id.nutrition_taken);
-        TextView follow_up = (TextView)itemView.findViewById(R.id.nutrition_form);
+        TextView councelling_taken = (TextView) itemView.findViewById(R.id.councelling_taken);
+        TextView follow_up = (TextView)itemView.findViewById(R.id.adolescent_form);
+
         profileinfolayout.setOnClickListener(onClickListener);
         profileinfolayout.setTag(smartRegisterClient);
 
@@ -101,41 +101,26 @@ public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProvi
 
 
 
-//        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
-//        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
+        AllCommonsRepository allmembersRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
 
-//        String gestationalage = pc.getDetails().get("GA")!=null?pc.getDetails().get("GA"):"";
-//        if(!gestationalage.equalsIgnoreCase("")) {
-//            ga.setText("GA :" + gestationalage + " weeks");
-//        }else{
-//            ga.setText("GA : Unavailabe" );
-//
-//        }
+        CommonPersonObject memberobject = allmembersRepository.findByCaseID(pc.entityId());
+
+        AllCommonsRepository householdrep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
+        final CommonPersonObject householdparent = householdrep.findByCaseID(memberobject.getRelationalId());
 
 
 
-        if((pc.getDetails().get("Child") != null ? pc.getDetails().get("Child") : "").equalsIgnoreCase("1")){
-            if (pc.getDetails().get("profilepic") != null) {
-                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
-            } else {
-                profilepic.setImageResource(R.drawable.child_boy_infant);
-            }
-
-            husband_name_or_mothersname.setText((pc.getDetails().get("Child_Mother") != null ? pc.getDetails().get("Child_Mother") : ""));
-            coupleno_or_fathersname.setText((pc.getDetails().get("Child_Father") != null ? pc.getDetails().get("Child_Father") : ""));
-            nutrition_taken.setText((pc.getDetails().get("Child_Nutrition") != null ? pc.getDetails().get("Child_Nutrition") : ""));
-
-        }else {
-            if (pc.getDetails().get("profilepic") != null) {
-                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
-            } else {
-                profilepic.setImageResource(R.drawable.woman_placeholder);
-            }
-            husband_name_or_mothersname.setText((pc.getDetails().get("Spouse_Name") != null ? pc.getDetails().get("Spouse_Name") : ""));
-            coupleno_or_fathersname.setText((pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-
-            nutrition_taken.setText((pc.getDetails().get("Mother_Nutrition") != null ? pc.getDetails().get("Mother_Nutrition") : ""));
+        if (pc.getDetails().get("profilepic") != null) {
+           HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
+        } else {
+           profilepic.setImageResource(R.drawable.woman_placeholder);
         }
+        hoh_name.setText((householdparent.getDetails().get("HoH_F_Name") != null ? householdparent.getDetails().get("HoH_F_Name") : ""));
+
+//        coupleno_or_fathersname.setText((pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+
+        councelling_taken.setText((pc.getDetails().get("Councelling") != null ? pc.getDetails().get("Councelling") : ""));
+
 //        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
 //            pregnancystatus.setText(",Not Pregnant");
 //        }
@@ -146,7 +131,7 @@ public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProvi
 //        }
         village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? (pc.getDetails().get("Mem_Village_Name")+",") : "").replace("+", "_")) + humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")));
 
-        date_of_last_visit.setText(pc.getDetails().get("nutrition_Visit_Date") != null ? pc.getDetails().get("nutrition_Visit_Date") : "");
+        date_of_last_visit.setText(pc.getDetails().get("adolescent_Visit_Date") != null ? pc.getDetails().get("adolescent_Visit_Date") : "");
 
         age.setText(pc.getDetails().get("Calc_Age_Confirm") != null ? "("+pc.getDetails().get("Calc_Age_Confirm")+")" : "");
 //        calc_HoH_dob_confirm
@@ -421,7 +406,7 @@ public class nutrition_SmartClientsProvider implements SmartRegisterCLientsProvi
 
     @Override
     public View inflatelayoutForCursorAdapter() {
-        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_dgfp_nutrition, null);
+        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_dgfp_adolescent, null);
         return View;
     }
 

@@ -1,4 +1,4 @@
-package org.ei.opensrp.dgfp.nutrition;
+package org.ei.opensrp.dgfp.adolescent;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,7 +12,7 @@ import org.ei.opensrp.Context;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
-import org.ei.opensrp.dgfp.fragment.HH_elco_member_SmartRegisterFragment;
+import org.ei.opensrp.dgfp.fragment.dgfp_adolescent_SmartRegisterFragment;
 import org.ei.opensrp.dgfp.fragment.dgfp_nutrition_SmartRegisterFragment;
 import org.ei.opensrp.dgfp.pageradapter.BaseRegisterActivityPagerAdapter;
 import org.ei.opensrp.domain.Alert;
@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
 
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 
-public class dgfp_nutrition_SmartRegisterActivity extends SecuredNativeSmartRegisterActivity {
+public class dgfp_adolescent_SmartRegisterActivity extends SecuredNativeSmartRegisterActivity {
 
     public static final String TAG = "HouseHoldActivity";
     @Bind(R.id.view_pager)
@@ -61,7 +61,7 @@ public class dgfp_nutrition_SmartRegisterActivity extends SecuredNativeSmartRegi
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         formNames = this.buildFormNameList();
-        mBaseFragment = new dgfp_nutrition_SmartRegisterFragment();
+        mBaseFragment = new dgfp_adolescent_SmartRegisterFragment();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPagerAdapter = new BaseRegisterActivityPagerAdapter(getSupportFragmentManager(), formNames, mBaseFragment);
@@ -166,7 +166,7 @@ public class dgfp_nutrition_SmartRegisterActivity extends SecuredNativeSmartRegi
 
     @Override
     public void startFormActivity(String formName, String entityId, String metaData) {
-//        Log.v("fieldoverride", metaData);
+        Log.v("formname", formName+"---formIndex----"+FormUtils.getIndexForFormName(formName, formNames) + 1);
         try {
             int formIndex = FormUtils.getIndexForFormName(formName, formNames) + 1; // add the offset
             if (entityId != null || metaData != null){
@@ -283,7 +283,7 @@ public class dgfp_nutrition_SmartRegisterActivity extends SecuredNativeSmartRegi
 
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-        formNames.add("nutrition");
+        formNames.add("adolescent_health");
 //        formNames.add("woman_vaccination_tt2");
 //        formNames.add("woman_vaccination_tt3");
 //        formNames.add("woman_vaccination_tt4");

@@ -5,6 +5,10 @@
     "bind_type": "members",
     "fields": [
       {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
         "name": "version",
         "bind": "/model/instance/AdolescentHealth/version"
       },
@@ -81,7 +85,7 @@
         "bind": "/model/instance/AdolescentHealth/end"
       },
       {
-        "name": "Visit_Date",
+        "name": "adolescent_Visit_Date",
         "bind": "/model/instance/AdolescentHealth/Visit_Date"
       },
       {

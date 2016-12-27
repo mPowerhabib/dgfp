@@ -73,7 +73,6 @@ public class NativeHomeActivity extends SecuredActivity {
     private TextView ancRegisterClientCountView;
     private TextView pncRegisterClientCountView;
     private TextView fpRegisterClientCountView;
-    private TextView childRegisterClientCountView;
     private int hhcount;
     private int childcount;
     private int womancount;
@@ -82,10 +81,16 @@ public class NativeHomeActivity extends SecuredActivity {
     private TextView PncRegisterClientCountView;
     private int pnccount;
     private TextView ChildRegisterClientCountView;
+    private TextView HouseholdRegisterClientCountView;
     private int nutritioncount;
     private TextView nutritionClientCountView;
     private int adolescentcount;
     private TextView adolescentClientCountView;
+    private int injectablecount;
+    private TextView injectableClientCountView;
+    private int deathcount;
+    private TextView deathClientCountView;
+
 
     @Override
     protected void onCreation() {
@@ -107,19 +112,24 @@ public class NativeHomeActivity extends SecuredActivity {
         findViewById(R.id.btn_anc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_pnc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_nutrition_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.btn_adolescent_register).setOnClickListener(onRegisterStartListener);
 
 //        findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
 //
 //        findViewById(R.id.btn_reporting).setOnClickListener(onButtonsClickListener);
 //        findViewById(R.id.btn_videos).setOnClickListener(onButtonsClickListener);
-//
+        HouseholdRegisterClientCountView = (TextView) findViewById(R.id.home_register_client_count);
+        fpRegisterClientCountView = (TextView) findViewById(R.id.elco_register_client_count);
+
         AncRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
         PncRegisterClientCountView = (TextView) findViewById(R.id.txt_pnc_register_client_count);
         nutritionClientCountView = (TextView) findViewById(R.id.txt_nutrition_register_client_count);
 //        pncRegisterClientCountView = (TextView) findViewById(R.id.txt_pnc_register_client_count);
 //        ancRegisterClientCountView = (TextView) findViewById(R.id.txt_anc_register_client_count);
         adolescentClientCountView = (TextView) findViewById(R.id.txt_adolescent_register_client_count);
+        injectableClientCountView = (TextView) findViewById(R.id.txt_injectable_register_client_count);
         ChildRegisterClientCountView = (TextView) findViewById(R.id.txt_child_register_client_count);
+        deathClientCountView = (TextView) findViewById(R.id.txt_death_register_client_count);
     }
 
     private void initialize() {
@@ -165,10 +175,14 @@ public class NativeHomeActivity extends SecuredActivity {
         hhcountcursor.moveToFirst();
         hhcount= hhcountcursor.getInt(0);
         hhcountcursor.close();
+        HouseholdRegisterClientCountView.setText(valueOf(hhcount));
+
         Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_woman\":\"1\"%' "));
         elcocountcursor.moveToFirst();
         womancount= elcocountcursor.getInt(0);
         elcocountcursor.close();
+        fpRegisterClientCountView.setText(valueOf(hhcount));
+
 
 
 //        ecRegisterClientCountView.setText(valueOf(hhcount));
@@ -185,11 +199,32 @@ public class NativeHomeActivity extends SecuredActivity {
         pnccountcursor.close();
         PncRegisterClientCountView.setText(valueOf(pnccount));
 
+        Cursor childcountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Child\":\"1\"%' "));
+        childcountcursor.moveToFirst();
+        childcount = childcountcursor.getInt(0);
+        childcountcursor.close();
+        ChildRegisterClientCountView.setText(valueOf(childcount));
+
         Cursor nutritioncursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Nutrition\":\"1\"%' "));
         nutritioncursor.moveToFirst();
         nutritioncount = nutritioncursor.getInt(0);
         nutritioncursor.close();
         nutritionClientCountView.setText(valueOf(nutritioncount));
+
+        Cursor injectablecursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_Eligible_Injectables\":\"1\"%' "));
+        injectablecursor.moveToFirst();
+        injectablecount = injectablecursor.getInt(0);
+        injectablecursor.close();
+        injectableClientCountView.setText(valueOf(injectablecount));
+
+        Cursor deathcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_Eligible_Injectables\":\"1\"%' "));
+        deathcursor.moveToFirst();
+        deathcount = deathcursor.getInt(0);
+        deathcursor.close();
+        deathClientCountView.setText(valueOf(deathcount));
+
+
+
 
         Cursor adolescentcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Adolescent\":\"1\"%' "));
         adolescentcursor.moveToFirst();
@@ -311,9 +346,9 @@ public class NativeHomeActivity extends SecuredActivity {
                     navigationController.startPNCSmartRegistry();
                     break;
 //
-//                case R.id.btn_child_register:
-//                    navigationController.startChildSmartRegistry();
-//                    break;
+                case R.id.btn_adolescent_register:
+                    ((DGFPNavigationController)navigationController).startadolescentSmartRegistry();
+                    break;
 //
                 case R.id.btn_nutrition_register:
                     ((DGFPNavigationController)navigationController).startnutritionSmartRegistry();

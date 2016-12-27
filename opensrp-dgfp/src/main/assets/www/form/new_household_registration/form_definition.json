@@ -329,6 +329,14 @@
             "bind": "/model/instance/NewHH/HH_Member/Spouse_Name"
           },
           {
+            "name": "Child_Father",
+            "bind": "/model/instance/NewHH/HH_Member/Child_Father"
+          },
+          {
+            "name": "Child_Mother",
+            "bind": "/model/instance/NewHH/HH_Member/Child_Mother"
+          },
+          {
             "name": "Wom_Menstruating",
             "bind": "/model/instance/NewHH/HH_Member/Wom_Menstruating"
           },
