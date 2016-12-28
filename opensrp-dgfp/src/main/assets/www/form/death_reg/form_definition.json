@@ -5,6 +5,10 @@
     "bind_type": "members",
     "fields": [
       {
+        "name": "id",
+        "shouldLoadValue": true
+      },
+      {
         "name": "version",
         "bind": "/model/instance/DeathReg/version"
       },

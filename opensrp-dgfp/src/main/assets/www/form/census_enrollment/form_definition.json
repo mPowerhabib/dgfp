@@ -37,8 +37,9 @@
         "bind": "/model/instance/CensusNewMemberRegistration/existing_ELCO"
       },
       {
-        "name": "existing_GoB_HHID",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_GoB_HHID"
+        "name": "GoB_HHID",
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_GoB_HHID",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Country",

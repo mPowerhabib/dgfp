@@ -112,8 +112,10 @@ public class NativeHomeActivity extends SecuredActivity {
         findViewById(R.id.btn_anc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_pnc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_nutrition_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_adolescent_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_injectable_register).setOnClickListener(onRegisterStartListener);
+        findViewById(R.id.btn_death_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
 //
 //        findViewById(R.id.btn_reporting).setOnClickListener(onButtonsClickListener);
@@ -177,11 +179,11 @@ public class NativeHomeActivity extends SecuredActivity {
         hhcountcursor.close();
         HouseholdRegisterClientCountView.setText(valueOf(hhcount));
 
-        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_woman\":\"1\"%' "));
+        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Eligible\":\"1\"%' "));
         elcocountcursor.moveToFirst();
         womancount= elcocountcursor.getInt(0);
         elcocountcursor.close();
-        fpRegisterClientCountView.setText(valueOf(hhcount));
+        fpRegisterClientCountView.setText(valueOf(womancount));
 
 
 
@@ -345,7 +347,9 @@ public class NativeHomeActivity extends SecuredActivity {
                 case R.id.btn_pnc_register:
                     navigationController.startPNCSmartRegistry();
                     break;
-//
+                case R.id.btn_child_register:
+                    ((DGFPNavigationController)navigationController).startChildSmartRegistry();
+                    break;
                 case R.id.btn_adolescent_register:
                     ((DGFPNavigationController)navigationController).startadolescentSmartRegistry();
                     break;
@@ -356,6 +360,10 @@ public class NativeHomeActivity extends SecuredActivity {
 //
                 case R.id.btn_nutrition_register:
                     ((DGFPNavigationController)navigationController).startnutritionSmartRegistry();
+                    break;
+
+                case R.id.btn_death_register:
+                    ((DGFPNavigationController)navigationController).startdeathSmartRegistry();
                     break;
             }
         }

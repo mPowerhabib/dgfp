@@ -23,7 +23,8 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
-import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
+import org.ei.opensrp.dgfp.death.death_SmartClientsProvider;
+import org.ei.opensrp.dgfp.death.dgfp_death_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.WomanDetailActivity;
 import org.ei.opensrp.dgfp.elco.tt1handler;
@@ -33,8 +34,7 @@ import org.ei.opensrp.dgfp.elco.tt4handler;
 import org.ei.opensrp.dgfp.elco.tt5handler;
 import org.ei.opensrp.dgfp.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dgfp.hh_member.HouseholdCensusDueDateSort;
-import org.ei.opensrp.dgfp.injectables.dgfp_injectable_SmartRegisterActivity;
-import org.ei.opensrp.dgfp.injectables.injectable_SmartClientsProvider;
+import org.ei.opensrp.dgfp.nutrition.dgfp_nutrition_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.nutrition.nutritionServiceModeOption;
 import org.ei.opensrp.dgfp.nutrition.nutrition_SmartClientsProvider;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
@@ -65,7 +65,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 /**
  * Created by koros on 11/2/15.
  */
-public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
+public class dgfp_death_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
 
     private SmartRegisterClientsProvider clientProvider = null;
     private CommonPersonObjectController controller;
@@ -244,10 +244,12 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.next_injectable_dose:
-                    ((dgfp_injectable_SmartRegisterActivity)getActivity()).startFormActivity("injectable", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
+                case R.id.death_record_form:
+                    CommonPersonObjectClient pc = ((CommonPersonObjectClient) view.getTag());
+                    ((dgfp_death_SmartRegisterActivity)getActivity()).startFormActivity("death_reg", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
                     Log.v("do as you will", "button was click");
+
                     break;
             }
         }
@@ -381,7 +383,7 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
         countqueryBUilder.joinwithALerts("members", "FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details like '%\"Is_Eligible_Injectables\":\"1\"%' ");
+        countSelect = countqueryBUilder.mainCondition("(details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')");
         Sortqueries = sortByAlertmethod();
 
         CountExecute();
@@ -390,12 +392,12 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details like '%\"Is_Eligible_Injectables\":\"1\"%' ");
+        mainSelect = queryBUilder.mainCondition(" (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
-        injectable_SmartClientsProvider hhscp = new injectable_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
+        death_SmartClientsProvider hhscp = new death_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
         clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();

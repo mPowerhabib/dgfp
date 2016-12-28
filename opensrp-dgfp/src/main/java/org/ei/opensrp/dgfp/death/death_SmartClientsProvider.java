@@ -1,4 +1,4 @@
-package org.ei.opensrp.dgfp.elco;
+package org.ei.opensrp.dgfp.death;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
@@ -17,11 +16,11 @@ import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.domain.form.FieldOverrides;
 import org.ei.opensrp.service.AlertService;
-import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
 import org.ei.opensrp.view.contract.SmartRegisterClients;
 import org.ei.opensrp.view.dialog.FilterOption;
@@ -43,7 +42,7 @@ import static org.ei.opensrp.util.StringUtil.humanize;
 /**
  * Created by user on 2/12/15.
  */
-public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLientsProviderForCursorAdapter {
+public class death_SmartClientsProvider implements SmartRegisterCLientsProviderForCursorAdapter {
 
     private final LayoutInflater inflater;
     private final Context context;
@@ -55,8 +54,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
     protected CommonPersonObjectController controller;
     AlertService alertService;
 
-    public HH_woman_member_SmartClientsProvider(Context context,
-                                                View.OnClickListener onClickListener, AlertService alertService) {
+    public death_SmartClientsProvider(Context context,
+                                      View.OnClickListener onClickListener, AlertService alertService) {
         this.onClickListener = onClickListener;
         this.alertService = alertService;
         this.context = context;
@@ -76,35 +75,32 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         ImageView profilepic = (ImageView) itemView.findViewById(R.id.profilepic);
         TextView name = (TextView) itemView.findViewById(R.id.name);
-        TextView husband_name = (TextView) itemView.findViewById(R.id.husband_name);
+        TextView husband_name_or_mothersname = (TextView) itemView.findViewById(R.id.hoh_name_or_mother_name);
         TextView gob_hhid = (TextView) itemView.findViewById(R.id.gob_hhid);
-        TextView coupleno = (TextView) itemView.findViewById(R.id.coupleno);
+//        TextView coupleno_or_fathersname = (TextView) itemView.findViewById(R.id.coupleno_or_fathers_name);
 //        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
-        TextView village = (TextView) itemView.findViewById(R.id.village);
+        TextView village = (TextView) itemView.findViewById(R.id.village_mauzapara);
         TextView age = (TextView) itemView.findViewById(R.id.age);
         TextView nid = (TextView) itemView.findViewById(R.id.nid);
         TextView brid = (TextView) itemView.findViewById(R.id.brid);
-        TextView lmp = (TextView) itemView.findViewById(R.id.lmp);
-        TextView mobile_number = (TextView) itemView.findViewById(R.id.mobile_number);
-        TextView fp_status = (TextView) itemView.findViewById(R.id.fp_status);
-        TextView tt_dose_given = (TextView) itemView.findViewById(R.id.tt_dose_given);
-        TextView last_vstatus = (TextView) itemView.findViewById(R.id.last_vstatus);
-        TextView pvfdue = (TextView) itemView.findViewById(R.id.pvf);
-//
-//        ImageButton follow_up = (ImageButton)itemView.findViewById(R.id.btn_edit);
+        TextView date_of_death = (TextView) itemView.findViewById(R.id.date_of_death);
+        TextView cause_of_death = (TextView) itemView.findViewById(R.id.cause_of_death);
+        TextView follow_up = (TextView)itemView.findViewById(R.id.death_record_form);
         profileinfolayout.setOnClickListener(onClickListener);
         profileinfolayout.setTag(smartRegisterClient);
+
+        follow_up.setOnClickListener(onClickListener);
+        follow_up.setTag(smartRegisterClient);
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
 
         name.setText(pc.getColumnmaps().get("Mem_F_Name") != null ? pc.getColumnmaps().get("Mem_F_Name") : "");
-//        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-
-        mobile_number.setText("Mobile No: " + (pc.getDetails().get("ELCO_Mobile_Number") != null ? pc.getDetails().get("ELCO_Mobile_Number") : ""));
+        gob_hhid.setText((pc.getDetails().get("Member_GoB_HHID") != null ? pc.getDetails().get("Member_GoB_HHID") : ""));
 
 
-        gob_hhid.setText((pc.getDetails().get("Member_GoB_HHID")!=null?pc.getDetails().get("Member_GoB_HHID"):""));
+
+//        edd.setText("EDD :" +(pc.getColumnmaps().get("EDD")!=null?pc.getColumnmaps().get("EDD"):""));
 //        lmp.setText("LMP :" +(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):""));
 
 //        String gestationalage = pc.getDetails().get("GA")!=null?pc.getDetails().get("GA"):"";
@@ -115,16 +111,30 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //
 //        }
 
-        if (pc.getDetails().get("profilepic") != null) {
-            HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
-        } else {
-            profilepic.setImageResource(R.drawable.woman_placeholder);
+
+
+        if((pc.getDetails().get("Child") != null ? pc.getDetails().get("Child") : "").equalsIgnoreCase("1")){
+            if (pc.getDetails().get("profilepic") != null) {
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
+            } else {
+                profilepic.setImageResource(R.drawable.child_boy_infant);
+            }
+
+            husband_name_or_mothersname.setText((pc.getDetails().get("Child_Mother") != null ? pc.getDetails().get("Child_Mother") : ""));
+//            coupleno_or_fathersname.setText((pc.getDetails().get("Child_Father") != null ? pc.getDetails().get("Child_Father") : ""));
+            cause_of_death.setText((pc.getDetails().get("Reason_Death") != null ? pc.getDetails().get("Reason_Death") : ""));
+
+        }else {
+            if (pc.getDetails().get("profilepic") != null) {
+                HouseHoldDetailActivity.setImagetoHolder((Activity) context, pc.getDetails().get("profilepic"), profilepic, R.mipmap.householdload);
+            } else {
+                profilepic.setImageResource(R.drawable.woman_placeholder);
+            }
+            husband_name_or_mothersname.setText((pc.getDetails().get("Spouse_Name") != null ? pc.getDetails().get("Spouse_Name") : ""));
+//            coupleno_or_fathersname.setText((pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
+
+            cause_of_death.setText((pc.getDetails().get("Reason_Death") != null ? pc.getDetails().get("Reason_Death") : ""));
         }
-
-        husband_name.setText(" H: " + (pc.getDetails().get("Spouse_Name") != null ? pc.getDetails().get("Spouse_Name") : ""));
-
-        coupleno.setText(" C: " + (pc.getDetails().get("Couple_No") != null ? pc.getDetails().get("Couple_No") : ""));
-
 //        if((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("0")){
 //            pregnancystatus.setText(",Not Pregnant");
 //        }
@@ -133,9 +143,9 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
 //            pregnancystatus.setText("");
 //        }
-        village.setText("v: " + humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")) + ", " + "M: " + humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
+        village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? (pc.getDetails().get("Mem_Village_Name")+",") : "").replace("+", "_")) + humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")));
 
-        lmp.setText(pc.getDetails().get("LMP") != null ? pc.getDetails().get("LMP") : "");
+        date_of_death.setText(pc.getDetails().get("Date_Death") != null ? pc.getDetails().get("Date_Death") : "");
 
         age.setText(pc.getDetails().get("Calc_Age_Confirm") != null ? "("+pc.getDetails().get("Calc_Age_Confirm")+")" : "");
 //        calc_HoH_dob_confirm
@@ -148,41 +158,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }
         nid.setText("NID: " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : ""));
         brid.setText("BRID: " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : ""));
-        fp_status.setText("Fp Status: " + (pc.getDetails().get("Birth_Control") != null ? pc.getDetails().get("Birth_Control") : ""));
-        tt_dose_given.setText("TT Dose Given: " + (pc.getDetails().get("TT_Count") != null ? pc.getDetails().get("TT_Count") : ""));
-        last_vstatus.setText("Last VStatus: " + (pc.getDetails().get("ELCO_Status") != null ? pc.getDetails().get("ELCO_Status") : ""));
-
-
-        List<Alert> BNFalertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_BNF");
-        bnfButton(BNFalertlist_for_client, pvfdue, pc);
-        pvfdue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((HH_woman_member_SmartRegisterActivity) ((Activity) context)).startFormActivity("elco_register", pc.getCaseId(),null);
-
-            }
-
-        });
-
-        List<Alert> Vaccinealertlist_for_client = checkAlertListForVaccine(pc);
-
-
-
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//        try {
-//            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
-//            GregorianCalendar calendar = new GregorianCalendar();
-//                calendar.setTime(edd_date);
-//                calendar.add(Calendar.DATE, 259);
-//                edd_date.setTime(calendar.getTime().getTime());
-//            edd.setText("EDD :" + format.format(edd_date));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-        constructRiskFlagView(pc, itemView);
-//        constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
-//        constructNBNFDueBlock(pc, itemView);
-//        contstructNextVaccinedateBlock(pc,itemView);
+//        tt_dose_given.setText("TT Dose Given: " + (pc.getDetails().get("TT_Count") != null ? pc.getDetails().get("TT_Count") : ""));
+//        last_vstatus.setText("Last VStatus: " + (pc.getDetails().get("ELCO_Status") != null ? pc.getDetails().get("ELCO_Status") : ""));
 
 
         itemView.setLayoutParams(clientViewLayoutParams);
@@ -443,7 +420,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
     @Override
     public View inflatelayoutForCursorAdapter() {
-        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_dgfp_elco, null);
+        View View = (ViewGroup) inflater().inflate(R.layout.smart_register_dgfp_death, null);
         return View;
     }
 

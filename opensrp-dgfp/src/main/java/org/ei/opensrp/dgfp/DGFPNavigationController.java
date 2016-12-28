@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
+import org.ei.opensrp.dgfp.child.dgfp_child_SmartRegisterActivity;
+import org.ei.opensrp.dgfp.death.dgfp_death_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.hh_member.HH_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.injectables.dgfp_injectable_SmartRegisterActivity;
@@ -41,7 +43,7 @@ public class DGFPNavigationController extends org.ei.opensrp.view.controller.Nav
     }
     @Override
     public void startChildSmartRegistry() {
-//        activity.startActivity(new Intent(activity, HH_child_member_SmartRegisterActivity.class));
+        activity.startActivity(new Intent(activity,dgfp_child_SmartRegisterActivity.class));
     }
 
     public void startHHElcoSmartRegistry() {
@@ -56,19 +58,20 @@ public class DGFPNavigationController extends org.ei.opensrp.view.controller.Nav
     @Override
     public void startPNCSmartRegistry() {
         activity.startActivity(new Intent(activity, mCarePNCSmartRegisterActivity.class));
-
     }
     public void startnutritionSmartRegistry() {
         activity.startActivity(new Intent(activity, dgfp_nutrition_SmartRegisterActivity.class));
 
     }public void startadolescentSmartRegistry() {
         activity.startActivity(new Intent(activity, dgfp_adolescent_SmartRegisterActivity.class));
-
     }
 
     public void startinjectableSmartRegistry() {
         activity.startActivity(new Intent(activity, dgfp_injectable_SmartRegisterActivity.class));
-
     }
 
+    public void startdeathSmartRegistry() {
+        activity.startActivity(new Intent(activity, dgfp_death_SmartRegisterActivity.class));
+
+    }
 }

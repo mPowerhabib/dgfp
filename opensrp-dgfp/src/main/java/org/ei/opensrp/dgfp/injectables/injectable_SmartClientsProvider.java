@@ -77,7 +77,7 @@ public class injectable_SmartClientsProvider implements SmartRegisterCLientsProv
         TextView name = (TextView) itemView.findViewById(R.id.name);
         TextView husband_name_or_mothersname = (TextView) itemView.findViewById(R.id.husband_name_or_mothers_name);
         TextView gob_hhid = (TextView) itemView.findViewById(R.id.gob_hhid);
-        TextView coupleno_or_fathersname = (TextView) itemView.findViewById(R.id.coupleno_or_fathers_name);
+        TextView coupleno_or_fathersname = (TextView) itemView.findViewById(R.id.coupleno);
 //        TextView pregnancystatus = (TextView)itemView.findViewById(R.id.pregnancystatus);
         TextView village = (TextView) itemView.findViewById(R.id.village_mauzapara);
         TextView age = (TextView) itemView.findViewById(R.id.age);
