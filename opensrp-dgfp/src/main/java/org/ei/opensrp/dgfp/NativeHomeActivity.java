@@ -113,7 +113,7 @@ public class NativeHomeActivity extends SecuredActivity {
         findViewById(R.id.btn_pnc_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_nutrition_register).setOnClickListener(onRegisterStartListener);
         findViewById(R.id.btn_adolescent_register).setOnClickListener(onRegisterStartListener);
-
+        findViewById(R.id.btn_injectable_register).setOnClickListener(onRegisterStartListener);
 //        findViewById(R.id.btn_child_register).setOnClickListener(onRegisterStartListener);
 //
 //        findViewById(R.id.btn_reporting).setOnClickListener(onButtonsClickListener);
@@ -217,7 +217,7 @@ public class NativeHomeActivity extends SecuredActivity {
         injectablecursor.close();
         injectableClientCountView.setText(valueOf(injectablecount));
 
-        Cursor deathcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_Eligible_Injectables\":\"1\"%' "));
+        Cursor deathcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')"));
         deathcursor.moveToFirst();
         deathcount = deathcursor.getInt(0);
         deathcursor.close();
@@ -348,6 +348,10 @@ public class NativeHomeActivity extends SecuredActivity {
 //
                 case R.id.btn_adolescent_register:
                     ((DGFPNavigationController)navigationController).startadolescentSmartRegistry();
+                    break;
+
+                case R.id.btn_injectable_register:
+                    ((DGFPNavigationController)navigationController).startinjectableSmartRegistry();
                     break;
 //
                 case R.id.btn_nutrition_register:

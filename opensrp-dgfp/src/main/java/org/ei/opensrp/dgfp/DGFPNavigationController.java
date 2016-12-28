@@ -7,6 +7,7 @@ import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.hh_member.HH_member_SmartRegisterActivity;
+import org.ei.opensrp.dgfp.injectables.dgfp_injectable_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.nutrition.dgfp_nutrition_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.pnc.mCarePNCSmartRegisterActivity;
 import org.ei.opensrp.view.controller.ANMController;
@@ -65,5 +66,9 @@ public class DGFPNavigationController extends org.ei.opensrp.view.controller.Nav
 
     }
 
+    public void startinjectableSmartRegistry() {
+        activity.startActivity(new Intent(activity, dgfp_injectable_SmartRegisterActivity.class));
+
+    }
 
 }

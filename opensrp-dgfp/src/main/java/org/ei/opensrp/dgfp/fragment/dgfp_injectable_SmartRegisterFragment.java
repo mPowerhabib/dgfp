@@ -23,7 +23,6 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
-import org.ei.opensrp.dgfp.adolescent.adolescent_SmartClientsProvider;
 import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.WomanDetailActivity;
@@ -34,7 +33,6 @@ import org.ei.opensrp.dgfp.elco.tt4handler;
 import org.ei.opensrp.dgfp.elco.tt5handler;
 import org.ei.opensrp.dgfp.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dgfp.hh_member.HouseholdCensusDueDateSort;
-import org.ei.opensrp.dgfp.nutrition.dgfp_nutrition_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.nutrition.nutritionServiceModeOption;
 import org.ei.opensrp.dgfp.nutrition.nutrition_SmartClientsProvider;
 import org.ei.opensrp.provider.SmartRegisterClientsProvider;
@@ -65,7 +63,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 /**
  * Created by koros on 11/2/15.
  */
-public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
+public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartRegisterCursorAdapterFragment {
 
     private SmartRegisterClientsProvider clientProvider = null;
     private CommonPersonObjectController controller;
@@ -244,8 +242,8 @@ public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartReg
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.adolescent_form:
-                    ((dgfp_adolescent_SmartRegisterActivity)getActivity()).startFormActivity("adolescent_health", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
+                case R.id.next_injectable_dose:
+                    ((dgfp_adolescent_SmartRegisterActivity)getActivity()).startFormActivity("injectable", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
                     Log.v("do as you will", "button was click");
                     break;
@@ -381,7 +379,7 @@ public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
         countqueryBUilder.joinwithALerts("members", "FW CENSUS");
-        countSelect = countqueryBUilder.mainCondition(" details like '%\"Adolescent\":\"1\"%' ");
+        countSelect = countqueryBUilder.mainCondition(" details like '%\"Is_Eligible_Injectables\":\"1\"%' ");
         Sortqueries = sortByAlertmethod();
 
         CountExecute();
@@ -390,12 +388,12 @@ public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartReg
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
         queryBUilder.joinwithALerts("members", "FW CENSUS");
-        mainSelect = queryBUilder.mainCondition(" details like '%\"Adolescent\":\"1\"%' ");
+        mainSelect = queryBUilder.mainCondition(" details like '%\"Is_Eligible_Injectables\":\"1\"%' ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
-        adolescent_SmartClientsProvider hhscp = new adolescent_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
+        nutrition_SmartClientsProvider hhscp = new nutrition_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
         clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();
