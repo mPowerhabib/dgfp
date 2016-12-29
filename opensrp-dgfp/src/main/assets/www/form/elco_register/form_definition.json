@@ -17,64 +17,77 @@
         "bind": "/model/instance/EligibleCoupleRegister/changes"
       },
       {
-        "name": "existing_Mauzapara",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Mauzapara"
+        "name": "Mem_Mauzapara",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Mauzapara",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_GoB_HHID",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_GoB_HHID"
+        "name": "Member_GoB_HHID",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_GoB_HHID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_F_Name",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Mem_F_Name"
+        "name": "Mem_F_Name",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Mem_F_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Spouse_Name",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Spouse_Name"
+        "name": "Spouse_Name",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Spouse_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_NID",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_NID"
+        "name": "ELCO_NID",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_NID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_Marital_Status",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Mem_Marital_Status"
+        "name": "Mem_Marital_Status",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Mem_Marital_Status",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_BRID",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_BRID"
+        "name": "ELCO_BRID",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_BRID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Calc_Age_Confirm",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Calc_Age_Confirm"
+        "name": "Calc_Age_Confirm",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Calc_Age_Confirm",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_ELCO",
         "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO"
       },
       {
-        "name": "existing_Couple_No",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Couple_No"
+        "name": "Couple_No",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Couple_No",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_Mobile_Number",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_Mobile_Number"
+        "name": "ELCO_Mobile_Number",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_ELCO_Mobile_Number",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_HoH_F_Name",
         "bind": "/model/instance/EligibleCoupleRegister/existing_HoH_F_Name"
       },
       {
-        "name": "existing_Final_Dist",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Dist"
+        "name": "Final_Dist",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Dist",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Final_Union",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Union"
+        "name": "Final_Union",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Union",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Final_Vill",
-        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Vill"
+        "name": "Final_Vill",
+        "bind": "/model/instance/EligibleCoupleRegister/existing_Final_Vill",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_location",

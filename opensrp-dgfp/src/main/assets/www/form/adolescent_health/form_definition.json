@@ -17,56 +17,69 @@
         "bind": "/model/instance/AdolescentHealth/changes"
       },
       {
-        "name": "existing_GoB_HHID",
-        "bind": "/model/instance/AdolescentHealth/existing_GoB_HHID"
+        "name": "Member_GoB_HHID",
+        "bind": "/model/instance/AdolescentHealth/existing_GoB_HHID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_F_Name",
-        "bind": "/model/instance/AdolescentHealth/existing_Mem_F_Name"
+        "name": "Mem_F_Name",
+        "bind": "/model/instance/AdolescentHealth/existing_Mem_F_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Child_Mother",
-        "bind": "/model/instance/AdolescentHealth/existing_Child_Mother"
+        "name": "Child_Mother",
+        "bind": "/model/instance/AdolescentHealth/existing_Child_Mother",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Child_Father",
-        "bind": "/model/instance/AdolescentHealth/existing_Child_Father"
+        "name": "Child_Father",
+        "bind": "/model/instance/AdolescentHealth/existing_Child_Father",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Final_Vill",
-        "bind": "/model/instance/AdolescentHealth/existing_Final_Vill"
+        "name": "Final_Vill",
+        "bind": "/model/instance/AdolescentHealth/existing_Final_Vill",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_Mobile_Number",
-        "bind": "/model/instance/AdolescentHealth/existing_Mem_Mobile_Number"
+        "name": "Mem_Mobile_Number",
+        "bind": "/model/instance/AdolescentHealth/existing_Mem_Mobile_Number",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Couple_No",
-        "bind": "/model/instance/AdolescentHealth/existing_Couple_No"
+        "name": "Couple_No",
+        "bind": "/model/instance/AdolescentHealth/existing_Couple_No",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Member_Birth_Date",
-        "bind": "/model/instance/AdolescentHealth/existing_Member_Birth_Date"
+        "name": "Member_Birth_Date",
+        "bind": "/model/instance/AdolescentHealth/existing_Member_Birth_Date",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Premature_Birth",
-        "bind": "/model/instance/AdolescentHealth/existing_Premature_Birth"
+        "name": "Premature_Birth",
+        "bind": "/model/instance/AdolescentHealth/existing_Premature_Birth",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_HR",
-        "bind": "/model/instance/AdolescentHealth/existing_HR"
+        "name": "HR",
+        "bind": "/model/instance/AdolescentHealth/existing_HR",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_NID",
-        "bind": "/model/instance/AdolescentHealth/existing_ELCO_NID"
+        "name": "ELCO_NID",
+        "bind": "/model/instance/AdolescentHealth/existing_ELCO_NID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_BRID",
-        "bind": "/model/instance/AdolescentHealth/existing_ELCO_BRID"
+        "name": "ELCO_BRID",
+        "bind": "/model/instance/AdolescentHealth/existing_ELCO_BRID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_BRID",
-        "bind": "/model/instance/AdolescentHealth/existing_Mem_BRID"
+        "name": "Mem_BRID",
+        "bind": "/model/instance/AdolescentHealth/existing_Mem_BRID",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Mauzapara",

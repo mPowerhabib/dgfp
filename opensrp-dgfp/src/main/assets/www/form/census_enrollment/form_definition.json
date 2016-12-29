@@ -43,43 +43,53 @@
       },
       {
         "name": "existing_Country",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Country"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Country",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Division",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Division"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Division",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_District",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_District"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_District",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Upazilla",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Upazilla"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Upazilla",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Union",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Union"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Union",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Ward",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Ward"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Ward",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Subunit",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Subunit"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Subunit",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Mauzapara",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Mauzapara"
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Mauzapara",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_GPS",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_GPS"
+        "name": "GPS",
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_GPS",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Village_Name",
-        "bind": "/model/instance/CensusNewMemberRegistration/existing_Village_Name"
+        "name": "Village_Name",
+        "bind": "/model/instance/CensusNewMemberRegistration/existing_Village_Name",
+        "shouldLoadValue": true
       },
       {
         "name": "Form_Name",

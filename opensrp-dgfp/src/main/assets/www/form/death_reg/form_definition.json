@@ -17,64 +17,79 @@
         "bind": "/model/instance/DeathReg/changes"
       },
       {
-        "name": "existing_Calc_DoB_Confirm",
-        "bind": "/model/instance/DeathReg/existing_Calc_DoB_Confirm"
+        "name": "Calc_DoB_Confirm",
+        "bind": "/model/instance/DeathReg/existing_Calc_DoB_Confirm",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_GoB_HHID",
-        "bind": "/model/instance/DeathReg/existing_GoB_HHID"
+        "bind": "/model/instance/DeathReg/existing_GoB_HHID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_F_Name",
-        "bind": "/model/instance/DeathReg/existing_Mem_F_Name"
+        "name": "Mem_F_Name",
+        "bind": "/model/instance/DeathReg/existing_Mem_F_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Child_Mother",
-        "bind": "/model/instance/DeathReg/existing_Child_Mother"
+        "name": "Child_Mother",
+        "bind": "/model/instance/DeathReg/existing_Child_Mother",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Child_Father",
-        "bind": "/model/instance/DeathReg/existing_Child_Father"
+        "name": "Child_Father",
+        "bind": "/model/instance/DeathReg/existing_Child_Father",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Final_Vill",
-        "bind": "/model/instance/DeathReg/existing_Final_Vill"
+        "name": "Final_Vill",
+        "bind": "/model/instance/DeathReg/existing_Final_Vill",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_Mobile_Number",
-        "bind": "/model/instance/DeathReg/existing_Mem_Mobile_Number"
+        "name": "Mem_Mobile_Number",
+        "bind": "/model/instance/DeathReg/existing_Mem_Mobile_Number",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Couple_No",
-        "bind": "/model/instance/DeathReg/existing_Couple_No"
+        "name": "Couple_No",
+        "bind": "/model/instance/DeathReg/existing_Couple_No",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Spouse_Name",
-        "bind": "/model/instance/DeathReg/existing_Spouse_Name"
+        "name": "Spouse_Name",
+        "bind": "/model/instance/DeathReg/existing_Spouse_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Member_Gender",
-        "bind": "/model/instance/DeathReg/existing_Member_Gender"
+        "name": "Member_Gender",
+        "bind": "/model/instance/DeathReg/existing_Member_Gender",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_HoH_F_Name",
-        "bind": "/model/instance/DeathReg/existing_HoH_F_Name"
+        "bind": "/model/instance/DeathReg/existing_HoH_F_Name",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_NID",
-        "bind": "/model/instance/DeathReg/existing_ELCO_NID"
+        "name": "ELCO_NID",
+        "bind": "/model/instance/DeathReg/existing_ELCO_NID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_ELCO_BRID",
-        "bind": "/model/instance/DeathReg/existing_ELCO_BRID"
+        "name": "ELCO_BRID",
+        "bind": "/model/instance/DeathReg/existing_ELCO_BRID",
+        "shouldLoadValue": true
       },
       {
-        "name": "existing_Mem_BRID",
-        "bind": "/model/instance/DeathReg/existing_Mem_BRID"
+        "name": "Mem_BRID",
+        "bind": "/model/instance/DeathReg/existing_Mem_BRID",
+        "shouldLoadValue": true
       },
       {
         "name": "existing_Mauzapara",
-        "bind": "/model/instance/DeathReg/existing_Mauzapara"
+        "bind": "/model/instance/DeathReg/existing_Mauzapara",
+        "shouldLoadValue": true
       },
       {
         "name": "today",
