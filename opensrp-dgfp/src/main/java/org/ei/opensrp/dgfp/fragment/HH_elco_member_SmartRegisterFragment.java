@@ -381,7 +381,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
         setTablename("members");
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder();
         countqueryBUilder.SelectInitiateMainTableCounts("members");
-        countqueryBUilder.joinwithALerts("members", "FW CENSUS");
+        countqueryBUilder.joinwithALerts("members", "ELCO PSRF");
         countSelect = countqueryBUilder.mainCondition(" details like '%\"Eligible\":\"1\"%' ");
         Sortqueries = sortByAlertmethod();
 
@@ -390,7 +390,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
         queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "calc_age_confirm","Child_mother_name", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status","missedCount"});
-        queryBUilder.joinwithALerts("members", "FW CENSUS");
+        queryBUilder.joinwithALerts("members", "ELCO PSRF");
         mainSelect = queryBUilder.mainCondition(" details like '%\"Eligible\":\"1\"%' ");
         queryBUilder.addCondition(filters);
         Sortqueries = sortByAlertmethod();

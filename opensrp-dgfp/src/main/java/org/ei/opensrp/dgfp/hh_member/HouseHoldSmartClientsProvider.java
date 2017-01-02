@@ -2,6 +2,7 @@ package org.ei.opensrp.dgfp.hh_member;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.commonregistry.CommonPersonObjectController;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
+import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
@@ -38,6 +40,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static java.lang.String.valueOf;
 import static org.ei.opensrp.util.StringUtil.humanize;
 
 /**
@@ -70,6 +73,11 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
     Button warnbutton;
 
     AlertService alertService;
+    private TextView elco_number;
+    private TextView pw_number;
+    private TextView child_number;
+    private TextView adolescent_number;
+
     public HouseHoldSmartClientsProvider(Context context,
                                          View.OnClickListener onClickListener,
                                          AlertService alertService) {
@@ -99,13 +107,17 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
               age = (TextView)convertView.findViewById(R.id.txt_age);
          mobileno = (TextView)convertView.findViewById(R.id.mobile_no);
 
-             headofhouseholdname = (TextView)convertView.findViewById(R.id.householdheadname);
-               last_visit_date = (TextView)convertView.findViewById(R.id.last_visit_date);
-             due_visit_date = (TextView)convertView.findViewById(R.id.next_visit_date);
-             due_date_holder = (FrameLayout)convertView.findViewById(R.id.hh_due_date_holder);
-             profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
-            profilelayout.setOnClickListener(onClickListener);
-         profilelayout.setTag(smartRegisterClient);
+        headofhouseholdname = (TextView)convertView.findViewById(R.id.householdheadname);
+        last_visit_date = (TextView)convertView.findViewById(R.id.last_visit_date);
+        due_visit_date = (TextView)convertView.findViewById(R.id.next_visit_date);
+        elco_number = (TextView)convertView.findViewById(R.id.elco_no);
+        pw_number = (TextView)convertView.findViewById(R.id.pw_no);
+        child_number = (TextView)convertView.findViewById(R.id.child_no);
+        adolescent_number = (TextView)convertView.findViewById(R.id.adolescent_no);
+        due_date_holder = (FrameLayout)convertView.findViewById(R.id.hh_due_date_holder);
+        profilepic.setImageDrawable(context.getResources().getDrawable(R.mipmap.household_profile_thumb));
+        profilelayout.setOnClickListener(onClickListener);
+        profilelayout.setTag(smartRegisterClient);
         CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "FW CENSUS");
@@ -138,14 +150,45 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
         }
          nid.setText("NID: "+ (pc.getDetails().get("HoH_NID")!=null?pc.getDetails().get("HoH_NID"):""));
          brid.setText("BRID: "+ (pc.getDetails().get("HoH_BRID")!=null?pc.getDetails().get("HoH_BRID"):""));
-         mobileno.setText(pc.getDetails().get("HoH_Mobile_number")!=null?pc.getDetails().get("HoH_Mobile_number"):"");
+         mobileno.setText("Mob No: "+(pc.getDetails().get("HoH_Mobile_number")!=null?pc.getDetails().get("HoH_Mobile_number"):""));
 //         bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
          village.setText((humanize((pc.getDetails().get("Village_Name")!=null?pc.getDetails().get("Village_Name"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("BLOCK")!=null?pc.getDetails().get("BLOCK"):"").replace("+","_"))));
          headofhouseholdname.setText(pc.getColumnmaps().get("HoH_F_Name")!=null?pc.getColumnmaps().get("HoH_F_Name"):"");
         Date lastdate = converdatefromString((pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):""));
-         last_visit_date.setText(pc.getDetails().get("Date_Of_Reg")!=null?pc.getDetails().get("Date_Of_Reg"):"");
+         last_visit_date.setText(pc.getDetails().get("Census_Date")!=null?pc.getDetails().get("Census_Date"):pc.getDetails().get("Reg_Date"));
+
+
+        int childcount = 0;
+        int adolescentcount = 0;
+        int pwcount = 0;
+        int elcocount = 0;
+        SmartRegisterQueryBuilder sqb = new SmartRegisterQueryBuilder();
+        Cursor countcursor = org.ei.opensrp.Context.getInstance().commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members", " relationalid = '"+pc.entityId()+"' and details like '%\"Child\":\"1\"%' "));
+        countcursor.moveToFirst();
+        childcount= countcursor.getInt(0);
+        countcursor.close();
+        child_number.setText("Child : "+valueOf(childcount));
+
+        countcursor = org.ei.opensrp.Context.getInstance().commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members", " relationalid = '"+pc.entityId()+"' and details like '%\"Adolescent\":\"1\"%' "));
+        countcursor.moveToFirst();
+        adolescentcount= countcursor.getInt(0);
+        countcursor.close();
+        adolescent_number.setText("Adolescent : "+valueOf(adolescentcount));
+
+        countcursor = org.ei.opensrp.Context.getInstance().commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members", " relationalid = '"+pc.entityId()+"' and details like '%\"Eligible\":\"1\"%' "));
+        countcursor.moveToFirst();
+        elcocount= countcursor.getInt(0);
+        countcursor.close();
+        elco_number.setText("ELCO : "+valueOf(elcocount));
+
+        countcursor = org.ei.opensrp.Context.getInstance().commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members", " relationalid = '"+pc.entityId()+"' and details like '%\"PW\":\"1\"%' "));
+        countcursor.moveToFirst();
+        pwcount= countcursor.getInt(0);
+        countcursor.close();
+        pw_number.setText("PW : "+valueOf(pwcount));
+
 
 
 

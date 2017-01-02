@@ -49,8 +49,8 @@ public class WomanServiceModeOption extends ServiceModeOption {
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.elco_unique_id, R.string.last_vaccine,
-                        R.string.next_vaccine,R.string.bnf
+                        R.string.hh_profile, R.string.elco_unique_id, R.string.header_other_info,
+                        R.string.elco_lmp,R.string.elco_psrf_due_date
                         };
             }
         };

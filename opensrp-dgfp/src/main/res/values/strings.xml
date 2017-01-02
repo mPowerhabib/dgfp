@@ -440,6 +440,7 @@
     <string name="date_of_last_visit">Date Of Last Visit</string>
     <string name="nutritiontaken">Nutrition Taken</string>
     <string name="nutritionform">Nutrition Form</string>
+    <string name="header_other_info">Other Info</string>
 
 
 </resources>

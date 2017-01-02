@@ -54,6 +54,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
     protected CommonPersonObjectController controller;
     AlertService alertService;
+    String [] arrayofbirthcontrol = new String []{"Oral Pill","Condom","Injectable","IUD","Implant","Pemananently Sterilized(Male)","Pemananently Sterilized(Female)","ECP","Referred for Side-effects","Referred for Methods"};
 
     public HH_woman_member_SmartClientsProvider(Context context,
                                                 View.OnClickListener onClickListener, AlertService alertService) {
@@ -148,9 +149,17 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }
         nid.setText("NID: " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : ""));
         brid.setText("BRID: " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : ""));
-        fp_status.setText("Fp Status: " + (pc.getDetails().get("Birth_Control") != null ? pc.getDetails().get("Birth_Control") : ""));
         tt_dose_given.setText("TT Dose Given: " + (pc.getDetails().get("TT_Count") != null ? pc.getDetails().get("TT_Count") : ""));
         last_vstatus.setText("Last VStatus: " + (pc.getDetails().get("ELCO_Status") != null ? pc.getDetails().get("ELCO_Status") : ""));
+
+
+        String birthcontrolstring = "";
+        int birthcontrolindex = Integer.parseInt((pc.getDetails().get("Birth_Control") != null ? pc.getDetails().get("Birth_Control") : "99"));
+
+        if(birthcontrolindex<99){
+            birthcontrolstring = arrayofbirthcontrol[birthcontrolindex];
+        }
+        fp_status.setText("Fp Status: " + birthcontrolstring);
 
 
         List<Alert> BNFalertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_BNF");
