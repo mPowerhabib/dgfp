@@ -23,6 +23,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.death.deathServiceModeOption;
 import org.ei.opensrp.dgfp.death.death_SmartClientsProvider;
 import org.ei.opensrp.dgfp.death.dgfp_death_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
@@ -85,7 +86,7 @@ public class dgfp_death_SmartRegisterFragment extends SecuredNativeSmartRegister
 
             @Override
             public ServiceModeOption serviceMode() {
-                return new nutritionServiceModeOption(clientsProvider());
+                return new deathServiceModeOption(clientsProvider());
             }
 
             @Override
@@ -101,7 +102,7 @@ public class dgfp_death_SmartRegisterFragment extends SecuredNativeSmartRegister
 
             @Override
             public String nameInShortFormForTitle() {
-                return getResources().getString(R.string.woman_register_label);
+                return getResources().getString(R.string.home_death_label)+" "+getResources().getString(R.string.register_label);
             }
         };
     }

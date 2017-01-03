@@ -443,6 +443,9 @@
     <string name="header_other_info">Other Info</string>
     <string name="last_injectable_date">Last Injectable Dose</string>
     <string name="next_injectable_date">Next Injectable Dose</string>
+    <string name="date_of_death">Date of Death</string>
+    <string name="cause_of_death">Cause of Death</string>
+    <string name="record_death">Record Death</string>
 
 
 </resources>

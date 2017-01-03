@@ -92,7 +92,7 @@
         "shouldLoadValue": true
       },
       {
-        "name": "today",
+        "name": "death_today",
         "bind": "/model/instance/DeathReg/today"
       },
       {

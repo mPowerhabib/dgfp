@@ -25,7 +25,7 @@ public class deathServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.woman_register_label);
+       return Context.getInstance().getStringResource(R.string.home_death_label);
     }
 
     @Override
@@ -49,8 +49,8 @@ public class deathServiceModeOption extends ServiceModeOption {
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.elco_unique_id, R.string.date_of_last_visit,
-                        R.string.nutritiontaken,R.string.nutritionform
+                        R.string.hh_profile, R.string.elco_unique_id, R.string.date_of_death,
+                        R.string.cause_of_death,R.string.record_death
                         };
             }
         };
