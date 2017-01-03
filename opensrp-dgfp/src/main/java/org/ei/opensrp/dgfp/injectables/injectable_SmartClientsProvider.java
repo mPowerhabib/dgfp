@@ -88,8 +88,8 @@ public class injectable_SmartClientsProvider implements SmartRegisterCLientsProv
         profileinfolayout.setOnClickListener(onClickListener);
         profileinfolayout.setTag(smartRegisterClient);
 
-        follow_up.setOnClickListener(onClickListener);
-        follow_up.setTag(smartRegisterClient);
+//        follow_up.setOnClickListener(onClickListener);
+//        follow_up.setTag(smartRegisterClient);
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
 
@@ -136,236 +136,108 @@ public class injectable_SmartClientsProvider implements SmartRegisterCLientsProv
 //        date_of_last_visit.setText(pc.getDetails().get("nutrition_Visit_Date") != null ? pc.getDetails().get("nutrition_Visit_Date") : "");
 
         age.setText(pc.getDetails().get("Calc_Age_Confirm") != null ? "("+pc.getDetails().get("Calc_Age_Confirm")+")" : "");
-//        calc_HoH_dob_confirm
-//        try {
-//            int days = DateUtil.dayDifference(DateUtil.getLocalDate((pc.getDetails().get("calc_dob_confirm") != null ?  pc.getDetails().get("calc_dob_confirm")  : "")), DateUtil.today());
-//            int calc_age = days / 365;
-//            age.setText(calc_age);
-//        }catch (Exception e){
-//
-//        }
+
+
+
+
+
+
         nid.setText("NID: " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : ""));
         brid.setText("BRID: " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : ""));
+
+
+
+        String datetoconvert = "";
+        String scheduledate = "";
+        if(pc.getDetails().get("Format_Injection_Date")!=null){
+            datetoconvert = pc.getDetails().get("Format_Injection_Date");
+            scheduledate =  setDate(datetoconvert,90);
+        }
+        if(pc.getDetails().get("injectable_Today")!=null){
+            datetoconvert = pc.getDetails().get("injectable_Today");
+            scheduledate =  setDate(datetoconvert,7);
+        }
+        List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Injectables");
+        singleALertButtonView(alertlist_for_client,follow_up,pc,scheduledate,datetoconvert);
 //        tt_dose_given.setText("TT Dose Given: " + (pc.getDetails().get("TT_Count") != null ? pc.getDetails().get("TT_Count") : ""));
 //        last_vstatus.setText("Last VStatus: " + (pc.getDetails().get("ELCO_Status") != null ? pc.getDetails().get("ELCO_Status") : ""));
 
 
         itemView.setLayoutParams(clientViewLayoutParams);
     }
-
-    private List<Alert> checkAlertListForVaccine(CommonPersonObjectClient pc) {
-        List<Alert> Woman_TT1alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT1");
-        List<Alert> Woman_TT2alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT2");
-        List<Alert> Woman_TT3alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT3");
-        List<Alert> Woman_TT4alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT4");
-        List<Alert> Woman_TT5alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Woman_TT5");
-        if (Woman_TT5alertlist_for_client.size() > 0) {
-            return Woman_TT5alertlist_for_client;
-        } else if (Woman_TT4alertlist_for_client.size() > 0) {
-            return Woman_TT4alertlist_for_client;
-        } else if (Woman_TT3alertlist_for_client.size() > 0) {
-            return Woman_TT3alertlist_for_client;
-        } else if (Woman_TT2alertlist_for_client.size() > 0) {
-            return Woman_TT2alertlist_for_client;
-        } else {
-            return Woman_TT1alertlist_for_client;
-        }
-
-    }
-
-
-    private void vaccineButton(List<Alert> vaccinealertlist_for_client, CommonPersonObjectClient pc, TextView vaccinebutton) {
-        if (vaccinealertlist_for_client.size() == 0) {
-            vaccinebutton.setText("Not Synced to Server");
-            vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
-            vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-//            pvfdue.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-            vaccinebutton.setOnClickListener(onClickListener);
-            vaccinebutton.setTag(R.id.clientobject,pc);
-
-        }
-        for (int i = 0; i < vaccinealertlist_for_client.size(); i++) {
-            String Schedulename = vaccinealertlist_for_client.get(i).scheduleName();
-            if (Schedulename.equalsIgnoreCase("Woman_TT1")) {
-                vaccinebutton.setText("TT1 \n" + (pc.getDetails().get("final_lmp") != null ? pc.getDetails().get("final_lmp") : ""));
-            }
-            if (Schedulename.equalsIgnoreCase("Woman_TT2")) {
-                vaccinebutton.setText("TT2 \n" + setDate((pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : ""),28));
-            }
-            if (Schedulename.equalsIgnoreCase("Woman_TT3")) {
-                vaccinebutton.setText("TT3 \n" + setDate((pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : ""),182));
-            }
-            if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
-                vaccinebutton.setText("TT4 \n" + setDate((pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : ""),364));
-            }
-            if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
-                vaccinebutton.setText("TT5 \n" + setDate((pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : ""),364));
-            }
-
-//            vaccinebutton.setText(vaccinealertlist_for_client.get(i).expiryDate());
-            if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
-                vaccinebutton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-                vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
-                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
-            }
-            if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
-                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-                vaccinebutton.setOnClickListener(onClickListener);
-                vaccinebutton.setTag(R.id.clientobject,pc);
-                vaccinebutton.setTag(R.id.clientTTSchedulename,Schedulename);
-            }
-            if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
-                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                vaccinebutton.setOnClickListener(onClickListener);
-                vaccinebutton.setTag(R.id.clientobject,pc);
-                vaccinebutton.setTag(R.id.clientTTSchedulename,Schedulename);
-                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
-            }
-            if (vaccinealertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
-                vaccinebutton.setTextColor(context.getResources().getColor(R.color.text_black));
-                vaccinebutton.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
-                vaccinebutton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-                });
-            }
-            if (vaccinealertlist_for_client.get(i).isComplete()) {
-//                vaccinebutton.setText("visited");
-                if (Schedulename.equalsIgnoreCase("Woman_TT1")) {
-                    vaccinebutton.setText("TT1 \n" + (pc.getDetails().get("tt1_final") != null ? pc.getDetails().get("tt1_final") : ""));
-                }
-                if (Schedulename.equalsIgnoreCase("Woman_TT2")) {
-                    vaccinebutton.setText("TT2 \n" + (pc.getDetails().get("tt2_final") != null ? pc.getDetails().get("tt2_final") : ""));
-                }
-                if (Schedulename.equalsIgnoreCase("Woman_TT3")) {
-                    vaccinebutton.setText("TT3 \n" + (pc.getDetails().get("tt3_final") != null ? pc.getDetails().get("tt3_final") : ""));
-                }
-                if (Schedulename.equalsIgnoreCase("Woman_TT4")) {
-                    vaccinebutton.setText("TT4 \n" + (pc.getDetails().get("tt4_final") != null ? pc.getDetails().get("tt4_final") : ""));
-                }
-                if (Schedulename.equalsIgnoreCase("Woman_TT5")) {
-                    vaccinebutton.setText("TT5 \n" + (pc.getDetails().get("tt5_final") != null ? pc.getDetails().get("tt5_final") : ""));
-                }
-                vaccinebutton.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                vaccinebutton.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
-            }
-        }
-
-    }
-
-    private void bnfButton(List<Alert> bnFalertlist_for_client, TextView pvfdue, final CommonPersonObjectClient pc) {
-        if ((pc.getDetails().get("Visit_status") != null ? pc.getDetails().get("Visit_status") : "").equalsIgnoreCase("3")) {
-            pvfdue.setText("Launch Birth outcome Form");
-            pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            pvfdue.setOnClickListener(new View.OnClickListener() {
+    public void singleALertButtonView(List<Alert> alertlist_for_client,TextView due_visit_date, CommonPersonObjectClient smartRegisterClient,String textforComplete,String textfornotcomplete){
+        if(alertlist_for_client.size() == 0 ){
+            due_visit_date.setText("Not Synced to Server");
+            due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+            due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            due_visit_date.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AllCommonsRepository allchildRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
-                    CommonPersonObject childobject = allchildRepository.findByCaseID(pc.entityId());
-                    AllCommonsRepository houserep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
-                    final CommonPersonObject householdObject = houserep.findByCaseID(childobject.getRelationalId());
-                    JSONObject overridejsonobject = new JSONObject();
-                    try {
-                        overridejsonobject.put("existing_doo", ((pc.getDetails().get("DOO") != null ? pc.getDetails().get("DOO") : "")));
-                        overridejsonobject.put("current_woman_id", ((pc.getCaseId())));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
-
-
-                    ((HH_woman_member_SmartRegisterActivity) ((Activity) context)).startFormActivity("birthoutcome", householdObject.getCaseId(), fieldOverrides.getJSONString());
 
                 }
             });
+            due_visit_date.setOnClickListener(onClickListener);
+            due_visit_date.setTag(smartRegisterClient);
 
-            if (((pc.getDetails().get("outcome_active") != null ? pc.getDetails().get("outcome_active") : "").equalsIgnoreCase("1"))) {
-                pvfdue.setText("Complete");
-                pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
-                pvfdue.setOnClickListener(new View.OnClickListener() {
+        }
+        for(int i = 0;i<alertlist_for_client.size();i++){
+            if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
+//                due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
+                due_visit_date.setText(textfornotcomplete);
+
+                due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                     }
                 });
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+
+                due_visit_date.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
             }
-        } else {
-            if (bnFalertlist_for_client.size() == 0) {
-                pvfdue.setText("Not Synced to Server");
-                pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
-                pvfdue.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-//            pvfdue.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-                pvfdue.setOnClickListener(onClickListener);
-                pvfdue.setTag(pc);
+            if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")){
+//                due_visit_date.setText(alertlist_for_client.get(i).startDate());
+                due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+
+                due_visit_date.setOnClickListener(onClickListener);
+                due_visit_date.setTag(smartRegisterClient);
+                due_visit_date.setText(textfornotcomplete);
+            }
+            if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
+//                due_visit_date.setText((alertlist_for_client.get(i).startDate()));
+                due_visit_date.setOnClickListener(onClickListener);
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+
+                due_visit_date.setTag(smartRegisterClient);
+                due_visit_date.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+                due_visit_date.setText(textfornotcomplete);
 
             }
-            for (int i = 0; i < bnFalertlist_for_client.size(); i++) {
-                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")) {
-                    pvfdue.setText(bnFalertlist_for_client.get(i).expiryDate());
+            if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
 
-                    pvfdue.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                due_visit_date.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
+                due_visit_date.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                        }
-                    });
-                    pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
-                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_upcoming_light_blue));
-                }
-                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("upcoming")) {
-                    pvfdue.setText(bnFalertlist_for_client.get(i).startDate());
-                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                    pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-                    pvfdue.setOnClickListener(onClickListener);
-                    pvfdue.setTag(pc);
+                    }
+                });
+                due_visit_date.setText(textfornotcomplete);
+            }
+            if(alertlist_for_client.get(i).isComplete()){
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 
-                }
-                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")) {
-                    pvfdue.setOnClickListener(onClickListener);
-                    pvfdue.setTag(pc);
-                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
-                }
-                if (bnFalertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")) {
-                    pvfdue.setTextColor(context.getResources().getColor(R.color.text_black));
-                    pvfdue.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.client_list_header_dark_grey));
-                    pvfdue.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-                }
-                if (bnFalertlist_for_client.get(i).isComplete()) {
-                    pvfdue.setText("visited");
-                    pvfdue.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                    pvfdue.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
-                }
+                due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                due_visit_date.setText(textforComplete);
             }
         }
     }
+
+
+
+
 
 
 

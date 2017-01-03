@@ -25,7 +25,7 @@ public class injectableServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.woman_register_label);
+       return Context.getInstance().getStringResource(R.string.home_injectable_label);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class injectableServiceModeOption extends ServiceModeOption {
         return new ClientsHeaderProvider() {
             @Override
             public int count() {
-                return 5;
+                return 4;
             }
 
             @Override
@@ -43,14 +43,14 @@ public class injectableServiceModeOption extends ServiceModeOption {
 
             @Override
             public int[] weights() {
-                return new int[]{6,4,3,4,3};
+                return new int[]{6,4,5,5};
             }
 
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.elco_unique_id, R.string.date_of_last_visit,
-                        R.string.nutritiontaken,R.string.nutritionform
+                        R.string.hh_profile, R.string.elco_unique_id, R.string.last_injectable_date,
+                        R.string.next_injectable_date
                         };
             }
         };

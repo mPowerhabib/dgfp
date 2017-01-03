@@ -120,42 +120,41 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 //            e.printStackTrace();
 //        }
 
-//        if(pc.getDetails().get("FWWOMNID").length()>0) {
-//            String NIDSourcestring = "NID: " +  (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") + " ";
-//            nid.setText(Html.fromHtml(NIDSourcestring));
-//            nid.setVisibility(View.VISIBLE);
-//        }
-//        if(pc.getDetails().get("FWWOMBID").length()>0) {
-//            String BRIDSourcestring = "BRID: " +  (pc.getDetails().get("FWWOMBID") != null ? pc.getDetails().get("FWWOMBID") : "") + " ";
-//            brid.setText(Html.fromHtml(BRIDSourcestring));
-//            brid.setVisibility(View.VISIBLE);
-//        }
+        if(pc.getDetails().get("Mem_NID").length()>0) {
+            String NIDSourcestring = "NID: " +  (pc.getDetails().get("Mem_NID") != null ? pc.getDetails().get("Mem_NID") : "") + " ";
+            nid.setText(Html.fromHtml(NIDSourcestring));
+            nid.setVisibility(View.VISIBLE);
+        }
+        if(pc.getDetails().get("Mem_BRID").length()>0) {
+            String BRIDSourcestring = "BRID: " +  (pc.getDetails().get("Mem_BRID") != null ? pc.getDetails().get("Mem_BRID") : "") + " ";
+            brid.setText(Html.fromHtml(BRIDSourcestring));
+            brid.setVisibility(View.VISIBLE);
+        }
 
 //        Log.v("brid tag",pc.getDetails().get("FWWOMBID"));
 
 
 
-//        if(pc.getDetails().get("FWGESTATIONALAGE")!=null){
-//            String GASourcestring = "GA: " + pc.getDetails().get("FWGESTATIONALAGE")+ " weeks" + " ";
-//
-//            ga.setText(Html.fromHtml(GASourcestring));
-//        }
-//
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//        try {
-//            Date edd_date = format.parse(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"");
-//            GregorianCalendar calendar = new GregorianCalendar();
-//                calendar.setTime(edd_date);
-//                calendar.add(Calendar.DATE, 259);
-//                edd_date.setTime(calendar.getTime().getTime());
-//            String EDDSourcestring = "EDD: " +  format.format(edd_date)+ " ";
-//
-//            edd.setText(Html.fromHtml(EDDSourcestring));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        if(pc.getDetails().get("Gestational_Age")!=null){
+            String GASourcestring = "GA: " + pc.getDetails().get("Gestational_Age")+ " weeks" + " ";
+
+            ga.setText(Html.fromHtml(GASourcestring));
+        }
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date edd_date = format.parse(pc.getDetails().get("EDD")!=null?pc.getDetails().get("EDD"):"");
+
+            String EDDSourcestring = "EDD: " +  format.format(edd_date)+ " ";
+
+            edd.setText(Html.fromHtml(EDDSourcestring));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         constructRiskFlagView(pc,itemView);
-        constructANCReminderDueBlock(pc.getColumnmaps().get("FWPSRLMP")!=null?pc.getColumnmaps().get("FWPSRLMP"):"",pc, itemView);
+        constructANCReminderDueBlock(pc.getDetails().get("LMP")!=null?pc.getDetails().get("LMP"):"",pc, itemView);
         constructNBNFDueBlock(pc, itemView);
         constructAncVisitStatusBlock(pc,itemView);
 

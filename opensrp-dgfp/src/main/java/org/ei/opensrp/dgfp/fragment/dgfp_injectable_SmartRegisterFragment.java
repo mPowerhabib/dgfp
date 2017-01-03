@@ -34,6 +34,7 @@ import org.ei.opensrp.dgfp.elco.tt5handler;
 import org.ei.opensrp.dgfp.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dgfp.hh_member.HouseholdCensusDueDateSort;
 import org.ei.opensrp.dgfp.injectables.dgfp_injectable_SmartRegisterActivity;
+import org.ei.opensrp.dgfp.injectables.injectableServiceModeOption;
 import org.ei.opensrp.dgfp.injectables.injectable_SmartClientsProvider;
 import org.ei.opensrp.dgfp.nutrition.nutritionServiceModeOption;
 import org.ei.opensrp.dgfp.nutrition.nutrition_SmartClientsProvider;
@@ -85,7 +86,7 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public ServiceModeOption serviceMode() {
-                return new nutritionServiceModeOption(clientsProvider());
+                return new injectableServiceModeOption(clientsProvider());
             }
 
             @Override
@@ -101,7 +102,7 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String nameInShortFormForTitle() {
-                return getResources().getString(R.string.woman_register_label);
+                return getResources().getString(R.string.home_injectable_label);
             }
         };
     }

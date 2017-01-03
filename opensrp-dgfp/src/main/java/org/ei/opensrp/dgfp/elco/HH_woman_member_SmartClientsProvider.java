@@ -172,7 +172,22 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
         });
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "ELCO PSRF");
-        singleALertButtonView(alertlist_for_client,pvfdue,pc,"","");
+//        Reg_Date
+//        Census_Date
+        String datetoconvert = "";
+        String scheduledate = "";
+        if(pc.getDetails().get("Reg_Date")!=null){
+          datetoconvert = pc.getDetails().get("Reg_Date");
+        }
+        if(pc.getDetails().get("Census_Date")!=null){
+            datetoconvert = pc.getDetails().get("Census_Date");
+        }
+        if(!datetoconvert.equalsIgnoreCase("")) {
+//            Date scheduledate = converdatefromString(datetoconvert);
+          scheduledate =  setDate(datetoconvert,84);
+        }
+
+        singleALertButtonView(alertlist_for_client,pvfdue,pc,datetoconvert,scheduledate);
 
         constructRiskFlagView(pc, itemView);
         itemView.setLayoutParams(clientViewLayoutParams);
@@ -196,6 +211,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         for(int i = 0;i<alertlist_for_client.size();i++){
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("normal")){
 //                due_visit_date.setText(alertlist_for_client.get(i).expiryDate());
+                due_visit_date.setText(textfornotcomplete);
 
                 due_visit_date.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -214,7 +230,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                 due_visit_date.setOnClickListener(onClickListener);
                 due_visit_date.setTag(smartRegisterClient);
-
+                due_visit_date.setText(textfornotcomplete);
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("urgent")){
 //                due_visit_date.setText((alertlist_for_client.get(i).startDate()));
@@ -223,6 +239,8 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                 due_visit_date.setTag(smartRegisterClient);
                 due_visit_date.setBackgroundColor(context.getResources().getColor(org.ei.opensrp.R.color.alert_urgent_red));
+                due_visit_date.setText(textfornotcomplete);
+
             }
             if(alertlist_for_client.get(i).status().value().equalsIgnoreCase("expired")){
                 due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
@@ -234,11 +252,13 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
                     }
                 });
+                due_visit_date.setText(textfornotcomplete);
             }
             if(alertlist_for_client.get(i).isComplete()){
                 due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
 
                 due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green_mcare));
+                due_visit_date.setText(textforComplete);
             }
         }
     }

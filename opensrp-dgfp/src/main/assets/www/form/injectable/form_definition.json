@@ -126,7 +126,7 @@
         "shouldLoadValue": true
       },
       {
-        "name": "Today",
+        "name": "injectable_Today",
         "bind": "/model/instance/Injectable/Today"
       },
       {
