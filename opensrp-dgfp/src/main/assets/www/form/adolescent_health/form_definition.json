@@ -86,7 +86,7 @@
         "bind": "/model/instance/AdolescentHealth/existing_Mauzapara"
       },
       {
-        "name": "today",
+        "name": "adolescent_today",
         "bind": "/model/instance/AdolescentHealth/today"
       },
       {
