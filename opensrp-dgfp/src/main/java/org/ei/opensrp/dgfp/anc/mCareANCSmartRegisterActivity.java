@@ -91,6 +91,7 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
                 onPageChanged(position);
             }
         });
+        context.formSubmissionRouter().getHandlerMap().put("birth_notification",new nbnfhandler(this));
     }
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
@@ -432,5 +433,10 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
         retrieveAndSaveUnsubmittedFormData();
     }
 
+    @Override
+    protected void onDestroy() {
+        context.formSubmissionRouter().getHandlerMap().remove("birth_notification");
 
+        super.onDestroy();
+    }
 }

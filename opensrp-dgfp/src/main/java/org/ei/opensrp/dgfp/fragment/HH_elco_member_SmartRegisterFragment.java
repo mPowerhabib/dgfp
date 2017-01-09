@@ -245,7 +245,7 @@ public class HH_elco_member_SmartRegisterFragment extends SecuredNativeSmartRegi
                     startActivity(intent);
                     break;
                 case R.id.pvf:
-                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("pregnancy_status_birth_notification", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
+                    ((HH_woman_member_SmartRegisterActivity)getActivity()).startFormActivity("elco_register", ((CommonPersonObjectClient) view.getTag()).entityId(), null);
 //                    CustomFontTextView ancreminderDueDate = (CustomFontTextView)view.findViewById(R.id.anc_reminder_due_date);
                     Log.v("do as you will", "button was click");
 

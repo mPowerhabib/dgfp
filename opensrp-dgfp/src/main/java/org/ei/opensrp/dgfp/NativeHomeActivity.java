@@ -189,7 +189,7 @@ public class NativeHomeActivity extends SecuredActivity {
 
 //        ecRegisterClientCountView.setText(valueOf(hhcount));
 //        fpRegisterClientCountView.setText(valueOf(womancount));
-        Cursor anccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"PW\":\"1\"%' "));
+        Cursor anccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Preg_Status\":\"1\"%' "));
         anccountcursor.moveToFirst();
         anccount = anccountcursor.getInt(0);
         anccountcursor.close();

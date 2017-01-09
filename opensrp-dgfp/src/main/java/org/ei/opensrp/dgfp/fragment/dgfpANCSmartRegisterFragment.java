@@ -369,12 +369,12 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
 
         setTablename("members");
         SmartRegisterQueryBuilder countqueryBUilder = new SmartRegisterQueryBuilder(ancMainCountWithJoins());
-        countSelect = countqueryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'");
+        countSelect = countqueryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"Preg_Status\":\"1\"%'");
         mainCondition = "(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'";
         super.CountExecute();
 
         SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder(ancMainSelectWithJoins());
-        mainSelect = queryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"PW\":\"1\"%'");
+        mainSelect = queryBUilder.mainCondition("(members.Mem_F_Name not null ) AND members.details  LIKE '%\"Preg_Status\":\"1\"%'");
         Sortqueries = sortByFWWOMFNAME();
 
         currentlimit = 20;

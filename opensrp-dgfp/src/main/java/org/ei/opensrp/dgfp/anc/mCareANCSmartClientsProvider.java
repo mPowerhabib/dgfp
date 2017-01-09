@@ -453,7 +453,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
     private void constructNBNFDueBlock(final CommonPersonObjectClient pc, View itemView) {
 
         alertTextandStatus alerttextstatus = null;
-        List <Alert>alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(),"BirthNotificationPregnancyStatusFollowUp");
+        List <Alert>alertlist = org.ei.opensrp.Context.getInstance().alertService().findByEntityIdAndAlertNames(pc.entityId(),"Birth_Notification");
         if(alertlist.size() != 0){
             alerttextstatus = setAlertStatus("","",alertlist);
             if(alerttextstatus.alertText.length()>0){

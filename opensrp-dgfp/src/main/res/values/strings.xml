@@ -446,6 +446,7 @@
     <string name="date_of_death">Date of Death</string>
     <string name="cause_of_death">Cause of Death</string>
     <string name="record_death">Record Death</string>
+    <string name="childregistration">Child Form</string>
 
 
 </resources>

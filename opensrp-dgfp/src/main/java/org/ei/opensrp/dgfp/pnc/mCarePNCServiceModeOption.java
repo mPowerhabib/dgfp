@@ -33,7 +33,7 @@ public class mCarePNCServiceModeOption extends ServiceModeOption {
         return new ClientsHeaderProvider() {
             @Override
             public int count() {
-                return 6;
+                return 7;
             }
 
             @Override
@@ -43,14 +43,14 @@ public class mCarePNCServiceModeOption extends ServiceModeOption {
 
             @Override
             public int[] weights() {
-                return new int[]{12,6,5,6,6,5};
+                return new int[]{10,4,4,6,6,5,5};
             }
 
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
                         R.string.elco_profile, R.string.elco_unique_id, R.string.pnc_outcome,
-                        R.string.pnc_date_of_outcome,R.string.pnc_reminder_status,R.string.pnc_reminder_due};
+                        R.string.pnc_date_of_outcome,R.string.pnc_reminder_status,R.string.pnc_reminder_due,R.string.childregistration};
             }
         };
     }
