@@ -1,6 +1,8 @@
 <model>
   <instance>
-    <EligibleCoupleRegister encounter_type="Eligible Couple" id="EligibleCoupleRegister" version="201612200731">
+    <EligibleCoupleRegister
+        xmlns:jr="http://openrosa.org/javarosa"
+        xmlns:orx="http://openrosa.org/xforms" encounter_type="Eligible Couple" id="EligibleCoupleRegister" version="201701081315">
       <formhub>
         <uuid/>
       </formhub>
@@ -112,6 +114,7 @@
       <Eligible/>
       <PW/>
       <Current_Form_Status/>
+      <Nutrition/>
       <meta>
         <instanceID/>
       </meta>

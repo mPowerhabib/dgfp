@@ -424,6 +424,10 @@
       {
         "name": "Current_Form_Status",
         "bind": "/model/instance/EligibleCoupleRegister/Current_Form_Status"
+      },
+      {
+        "name": "Nutrition",
+        "bind": "/model/instance/EligibleCoupleRegister/Nutrition"
       }
     ]
   }
