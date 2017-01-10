@@ -1,5 +1,6 @@
 package org.ei.opensrp.dgfp.pnc;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Html;
 import android.util.Log;
@@ -16,6 +17,7 @@ import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
 import org.ei.opensrp.dgfp.application.dgfpApplication;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
@@ -158,14 +160,42 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         itemView.setLayoutParams(clientViewLayoutParams);
         constructRiskFlagView(pc, itemView);
         constructPNCReminderDueBlock((pc.getColumnmaps().get("FWBNFDTOO") != null ? pc.getColumnmaps().get("FWBNFDTOO") : ""),pc, itemView);
-//        constructNBNFDueBlock(pc, itemView);s
+        constructNBNFDueBlock(pc, itemView);
         constructPncVisitStatusBlock(pc,itemView);
+    }
+    private void constructNBNFDueBlock(final CommonPersonObjectClient pc, View itemView) {
+
+        CustomFontTextView NBNFDueDate = (CustomFontTextView)itemView.findViewById(R.id.nbnf_due_date);
+//        ChildRegistraton_Today
+        AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+        CommonPersonObject childobject = allmemberRepository.findByCaseID(pc.entityId());
+        allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
+        CommonPersonObject householdobject = allmemberRepository.findByCaseID(childobject.getRelationalId());
+
+        if (pc.getDetails().get("Visit_Status").equalsIgnoreCase("3")&&(householdobject.getDetails().get("ChildRegistraton")==null)) {
+            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            NBNFDueDate.setText("Register Child");
+            NBNFDueDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    mCarePNCSmartRegisterActivity.childtoRegisterEntityID =pc.entityId();
+                    AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+                    CommonPersonObject childobject = allmemberRepository.findByCaseID(pc.entityId());
+                    ((mCarePNCSmartRegisterActivity) ((Activity) context)).startFormActivity("childregistration", childobject.getRelationalId(), null);
 
 
+                }
+            });
+        }else{
+            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
+            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            NBNFDueDate.setText("Child Registered");
 
+        }
+        NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
 
-
-//        return itemView;
     }
     private String doolay(CommonPersonObjectClient ancclient) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

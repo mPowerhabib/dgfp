@@ -56,6 +56,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 public class mCarePNCSmartRegisterActivity extends SecuredNativeSmartRegisterActivity {
 
+    public static String childtoRegisterEntityID ="";
     private SmartRegisterClientsProvider clientProvider = null;
     private CommonPersonObjectController controller;
     private VillageController villageController;
@@ -94,7 +95,7 @@ public class mCarePNCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
     }
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
-//        formNames.add("pnc_reminder_visit_1");
+        formNames.add("childregistration");
 //        formNames.add("pnc_reminder_visit_2");
 //        formNames.add("pnc_reminder_visit_3");
 
