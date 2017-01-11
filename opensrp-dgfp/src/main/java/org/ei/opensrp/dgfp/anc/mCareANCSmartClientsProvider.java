@@ -199,8 +199,8 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 
 
     private void checkAnc1StatusAndform(ImageView anc1tick, TextView anc1text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWANC1DATE")!=null){
-            anc1text.setText("ANC1: "+pc.getDetails().get("FWANC1DATE"));
+        if(pc.getDetails().get("ANC1_Due_Date")!=null){
+            anc1text.setText("ANC1: "+pc.getDetails().get("ANC1_Due_Date"));
             if(pc.getDetails().get("anc1_current_formStatus")!=null){
                 if(pc.getDetails().get("anc1_current_formStatus").equalsIgnoreCase("upcoming")){
 //                    anc1tick.setTextColor(context.getResources().getColor(R.color.alert_complete_green));

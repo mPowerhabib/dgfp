@@ -96,8 +96,11 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
         formNames.add("birth_notification");
-        formNames.add("childregistration");
-//        formNames.add("anc_reminder_visit_3");
+//        formNames.add("childregistration");
+        formNames.add("anc_visit1");
+        formNames.add("anc_visit2");
+        formNames.add("anc_visit3");
+        formNames.add("anc_visit4");
 //        formNames.add("anc_reminder_visit_4");
 //        formNames.add("birthnotificationpregnancystatusfollowup");
 
@@ -165,19 +168,19 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
 
 
         if (ancvisittext.contains("ANC4")) {
-            overridemap.put("ANC4_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc4form), "anc_reminder_visit_4", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            overridemap.put("anc4_current_formStatus", alertstatus);
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc4form), "anc_visit4", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         } else if (ancvisittext.contains("ANC3")) {
             Log.v("anc3 form status",alertstatus);
-            overridemap.put("ANC3_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc3form), "anc_reminder_visit_3", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            overridemap.put("anc3_current_formStatus", alertstatus);
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc3form), "anc_visit3", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         } else if (ancvisittext.contains("ANC2")) {
-            overridemap.put("ANC2_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc2form), "anc_reminder_visit_2", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            overridemap.put("anc2_current_formStatus", alertstatus);
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc2form), "anc_visit2", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         } else if (ancvisittext.contains("ANC1")) {
             Log.v("anc1 form status",alertstatus);
             overridemap.put("anc1_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc1form), "anc_reminder_visit_1", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.anc1form), "anc_visit1", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         }else {
             return new DialogOption[]{};
         }
