@@ -179,7 +179,7 @@ public class NativeHomeActivity extends SecuredActivity {
         hhcountcursor.close();
         HouseholdRegisterClientCountView.setText(valueOf(hhcount));
 
-        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Eligible\":\"1\"%' "));
+        Cursor elcocountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Eligible\":\"1\"%' and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%') "));
         elcocountcursor.moveToFirst();
         womancount= elcocountcursor.getInt(0);
         elcocountcursor.close();
@@ -189,31 +189,31 @@ public class NativeHomeActivity extends SecuredActivity {
 
 //        ecRegisterClientCountView.setText(valueOf(hhcount));
 //        fpRegisterClientCountView.setText(valueOf(womancount));
-        Cursor anccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Preg_Status\":\"1\"%' "));
+        Cursor anccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Preg_Status\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')  "));
         anccountcursor.moveToFirst();
         anccount = anccountcursor.getInt(0);
         anccountcursor.close();
         AncRegisterClientCountView.setText(valueOf(anccount));
 
-        Cursor pnccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_PNC\":\"1\"%' "));
+        Cursor pnccountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_PNC\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')  "));
         pnccountcursor.moveToFirst();
         pnccount = pnccountcursor.getInt(0);
         pnccountcursor.close();
         PncRegisterClientCountView.setText(valueOf(pnccount));
 
-        Cursor childcountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Child\":\"1\"%' "));
+        Cursor childcountcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Child\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')  "));
         childcountcursor.moveToFirst();
         childcount = childcountcursor.getInt(0);
         childcountcursor.close();
         ChildRegisterClientCountView.setText(valueOf(childcount));
 
-        Cursor nutritioncursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Nutrition\":\"1\"%' "));
+        Cursor nutritioncursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Nutrition\":\"1\"%' and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')  "));
         nutritioncursor.moveToFirst();
         nutritioncount = nutritioncursor.getInt(0);
         nutritioncursor.close();
         nutritionClientCountView.setText(valueOf(nutritioncount));
 
-        Cursor injectablecursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_Eligible_Injectables\":\"1\"%' "));
+        Cursor injectablecursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Is_Eligible_Injectables\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')   "));
         injectablecursor.moveToFirst();
         injectablecount = injectablecursor.getInt(0);
         injectablecursor.close();
@@ -228,7 +228,7 @@ public class NativeHomeActivity extends SecuredActivity {
 
 
 
-        Cursor adolescentcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Adolescent\":\"1\"%' "));
+        Cursor adolescentcursor = context.commonrepository("members").RawCustomQueryForAdapter(sqb.queryForCountOnRegisters("members"," details like '%\"Adolescent\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')  "));
         adolescentcursor.moveToFirst();
         adolescentcount = adolescentcursor.getInt(0);
         adolescentcursor.close();
