@@ -126,7 +126,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
 //            e.printStackTrace();
 //        }
 
-        dateofdelivery.setText(pc.getColumnmaps().get("FWBNFDTOO")!=null?pc.getColumnmaps().get("FWBNFDTOO"):"");
+        dateofdelivery.setText(pc.getColumnmaps().get("DOO")!=null?pc.getColumnmaps().get("DOO"):"");
         String outcomevalue = pc.getColumnmaps().get("FWBNFSTS")!=null?pc.getColumnmaps().get("FWBNFSTS"):"";
 
         if(outcomevalue.equalsIgnoreCase("3")){
@@ -159,7 +159,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
         itemView.setLayoutParams(clientViewLayoutParams);
         constructRiskFlagView(pc, itemView);
-        constructPNCReminderDueBlock((pc.getColumnmaps().get("FWBNFDTOO") != null ? pc.getColumnmaps().get("FWBNFDTOO") : ""),pc, itemView);
+        constructPNCReminderDueBlock((pc.getColumnmaps().get("DOO") != null ? pc.getColumnmaps().get("DOO") : ""),pc, itemView);
         constructNBNFDueBlock(pc, itemView);
         constructPncVisitStatusBlock(pc,itemView);
     }
@@ -238,8 +238,8 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
 
 
     private void checkPnc1StatusAndform(ImageView anc1tick, TextView anc1text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWPNC1DATE")!=null){
-            anc1text.setText("PNC1: "+pc.getDetails().get("FWPNC1DATE"));
+        if(pc.getDetails().get("PNC1_Due_Date")!=null){
+            anc1text.setText("PNC1: "+pc.getDetails().get("PNC1_Due_Date"));
             if(pc.getDetails().get("pnc1_current_formStatus")!=null){
                 if(pc.getDetails().get("pnc1_current_formStatus").equalsIgnoreCase("upcoming")){
                     anc1tick.setVisibility(View.VISIBLE);
@@ -284,8 +284,8 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
     }
     private void checkPnc2StatusAndform(ImageView anc2tick, TextView anc2text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWPNC2DATE")!=null){
-            anc2text.setText("PNC2: "+pc.getDetails().get("FWPNC2DATE"));
+        if(pc.getDetails().get("PNC2_Due_Date")!=null){
+            anc2text.setText("PNC2: "+pc.getDetails().get("PNC2_Due_Date"));
             if(pc.getDetails().get("pnc2_current_formStatus")!=null){
                 if(pc.getDetails().get("pnc2_current_formStatus").equalsIgnoreCase("upcoming")){
                     anc2tick.setVisibility(View.VISIBLE);
@@ -331,8 +331,8 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         }
     }
     private void checkPnc3StatusAndform(ImageView anc3tick, TextView anc3text, CommonPersonObjectClient pc) {
-        if(pc.getDetails().get("FWPNC3DATE")!=null){
-            anc3text.setText("PNC3: "+pc.getDetails().get("FWPNC3DATE"));
+        if(pc.getDetails().get("PNC3_Due_Date")!=null){
+            anc3text.setText("PNC3: "+pc.getDetails().get("PNC3_Due_Date"));
             if(pc.getDetails().get("pnc3_current_formStatus")!=null){
                 if(pc.getDetails().get("pnc3_current_formStatus").equalsIgnoreCase("upcoming")){
                     anc3tick.setVisibility(View.VISIBLE);

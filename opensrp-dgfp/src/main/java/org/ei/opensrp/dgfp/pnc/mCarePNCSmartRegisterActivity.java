@@ -165,13 +165,13 @@ public class mCarePNCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
         if (ancvisittext.contains("PNC3")) {
             Log.v("pnc3 form status",alertstatus);
             overridemap.put("pnc3_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc3form), "pnc_reminder_visit_3", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc3form), "pnc_visit3", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         } else if (ancvisittext.contains("PNC2")) {
             overridemap.put("pnc2_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc2form), "pnc_reminder_visit_2", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc2form), "pnc_visit2", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         } else if (ancvisittext.contains("PNC1")) {
             overridemap.put("pnc1_current_formStatus", alertstatus);
-            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc1form), "pnc_reminder_visit_1", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
+            return new DialogOption[]{new OpenFormOption(getResources().getString(R.string.pnc1form), "pnc_visit1", formController,overridemap, OpenFormOption.ByColumnAndByDetails.bydefault)};
         }else {
             return new DialogOption[]{};
         }
