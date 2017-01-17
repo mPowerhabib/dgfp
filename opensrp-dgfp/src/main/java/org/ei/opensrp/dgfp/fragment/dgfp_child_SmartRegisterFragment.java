@@ -23,6 +23,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.child.child_SmartClientsProvider;
 import org.ei.opensrp.dgfp.child.dgfp_child_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.WomanDetailActivity;
@@ -396,7 +397,7 @@ public class dgfp_child_SmartRegisterFragment extends SecuredNativeSmartRegister
         Sortqueries = sortByAlertmethod();
         currentquery  = queryBUilder.orderbyCondition(Sortqueries);
         Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(currentquery, 20, 0)));
-        nutrition_SmartClientsProvider hhscp = new nutrition_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
+        child_SmartClientsProvider hhscp = new child_SmartClientsProvider(getActivity(),clientActionHandler,context.alertService());
         clientAdapter = new SmartRegisterPaginatedCursorAdapter(getActivity(), c, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","calc_age_confirm","Child_mother_name","Member_GOB_HHID","Marital_status","Pregnancy_Status","missedCount"}));
         clientsView.setAdapter(clientAdapter);
         updateSearchView();

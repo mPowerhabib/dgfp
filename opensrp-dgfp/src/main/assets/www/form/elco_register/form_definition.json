@@ -110,7 +110,7 @@
         "bind": "/model/instance/EligibleCoupleRegister/ELCO_Date"
       },
       {
-        "name": "ELCO_Status",
+        "name": "Visit_Status",
         "bind": "/model/instance/EligibleCoupleRegister/ELCO_Status"
       },
       {

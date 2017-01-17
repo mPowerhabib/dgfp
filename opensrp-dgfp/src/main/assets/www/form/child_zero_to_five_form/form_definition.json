@@ -87,7 +87,7 @@
         "shouldLoadValue": true
       },
       {
-        "name": "today",
+        "name": "child_today",
         "bind": "/model/instance/Child_0-5yr/today"
       },
       {
