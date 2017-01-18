@@ -20,6 +20,7 @@ import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
 import org.ei.opensrp.dgfp.application.dgfpApplication;
 import org.ei.opensrp.domain.Alert;
+import org.ei.opensrp.domain.form.FieldOverrides;
 import org.ei.opensrp.service.AlertService;
 import org.ei.opensrp.util.DateUtil;
 import org.ei.opensrp.view.contract.SmartRegisterClient;
@@ -29,12 +30,15 @@ import org.ei.opensrp.view.dialog.FilterOption;
 import org.ei.opensrp.view.dialog.ServiceModeOption;
 import org.ei.opensrp.view.dialog.SortOption;
 import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -172,26 +176,47 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("household");
         CommonPersonObject householdobject = allmemberRepository.findByCaseID(childobject.getRelationalId());
 
-        if (pc.getDetails().get("Visit_Status").equalsIgnoreCase("3")&&(householdobject.getDetails().get("ChildRegistraton")==null)) {
-            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
-            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            NBNFDueDate.setText("Register Child");
-            NBNFDueDate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        if (pc.getDetails().get("Visit_Status").equalsIgnoreCase("3")&&(pc.getDetails().get("is_child_register_done")!=null)) {
+            if(pc.getDetails().get("is_child_register_done").equalsIgnoreCase("0")){
+                NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+                NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                NBNFDueDate.setText("Register Child");
+                NBNFDueDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-                    mCarePNCSmartRegisterActivity.childtoRegisterEntityID =pc.entityId();
-                    AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
-                    CommonPersonObject childobject = allmemberRepository.findByCaseID(pc.entityId());
-                    ((mCarePNCSmartRegisterActivity) ((Activity) context)).startFormActivity("childregistration", childobject.getRelationalId(), null);
+                        mCarePNCSmartRegisterActivity.childtoRegisterEntityID = pc.entityId();
+                        AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+
+                        CommonPersonObject childobject = allmemberRepository.findByCaseID(pc.entityId());
+
+                        JSONObject overridejsonobject = new JSONObject();
+                        try {
+                            overridejsonobject.put("mother_relational_ID", pc.entityId());
+                            overridejsonobject.put("existing_Spouse_Name", pc.getDetails().get("Spouse_Name"));
+                            overridejsonobject.put("existing_Mem_F_Name", pc.getColumnmaps().get("Mem_F_Name"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        FieldOverrides fieldOverrides = new FieldOverrides(overridejsonobject.toString());
 
 
-                }
-            });
+                        ((mCarePNCSmartRegisterActivity) ((Activity) context)).startFormActivity("childregistration", childobject.getRelationalId(), fieldOverrides.getJSONString());
+
+
+                    }
+                });
+            }else if (pc.getDetails().get("is_child_register_done").equalsIgnoreCase("1")){
+                NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
+                NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                NBNFDueDate.setText("Child Registered");
+            }
         }else{
-            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
-            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            NBNFDueDate.setText("Child Registered");
+            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.text_black));
+            NBNFDueDate.setText("Not applicable");
 
         }
         NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));

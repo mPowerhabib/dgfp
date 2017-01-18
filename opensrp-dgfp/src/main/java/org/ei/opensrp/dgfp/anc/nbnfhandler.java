@@ -11,7 +11,9 @@ import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.domain.form.FormSubmission;
 import org.ei.opensrp.service.formSubmissionHandler.FormSubmissionHandler;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class nbnfhandler implements FormSubmissionHandler {
 
@@ -23,8 +25,15 @@ public class nbnfhandler implements FormSubmissionHandler {
     @Override
     public void handle(FormSubmission submission) {
         String entityID = submission.entityId();
-//        Log.v("fieldvalue",""+submission.getFieldValue("Visit_Status"));
-//        AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+        Log.v("fieldvalue",""+submission.getFieldValue("Visit_Status"));
+        if(submission.getFieldValue("Visit_Status").equalsIgnoreCase("3")) {
+            AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+            Map<String, String> memberDetails = new HashMap<String, String>();
+
+            memberDetails.put("is_child_register_done", "0");
+
+            allmemberRepository.mergeDetails(entityID, memberDetails);
+        }
 //        CommonPersonObject memberobject = allmemberRepository.findByCaseID(entityID);
 //        if(submission.getFieldValue("Visit_Status")!= null){
 //            if(submission.getFieldValue("Visit_Status").equalsIgnoreCase("3")){

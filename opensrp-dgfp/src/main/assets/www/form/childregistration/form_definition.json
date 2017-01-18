@@ -78,7 +78,7 @@
         "shouldLoadValue": true
       },
       {
-        "name": "Spouse_Name",
+        "name": "existing_Spouse_Name",
         "bind": "/model/instance/ChildRegistraton/existing_Spouse_Name"
       },
       {
@@ -97,6 +97,10 @@
         "name": "Visit_Date",
         "bind": "/model/instance/ChildRegistraton/existing_Visit_Date",
         "shouldLoadValue": true
+      },
+      {
+        "name": "mother_relational_ID",
+        "bind": "/model/instance/ChildRegistraton/mother_relational_ID"
       },
       {
         "name": "existing_DOO",
@@ -238,6 +242,10 @@
           {
             "name": "Mem_GPS",
             "bind": "/model/instance/ChildRegistraton/Reg_Newborn/Mem_GPS"
+          },
+          {
+            "name": "mother_UUID",
+            "bind": "/model/instance/ChildRegistraton/Reg_Newborn/mother_UUID"
           },
           {
             "name": "Child_Mother",

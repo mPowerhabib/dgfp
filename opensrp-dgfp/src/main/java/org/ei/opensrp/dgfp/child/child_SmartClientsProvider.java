@@ -96,8 +96,8 @@ public class child_SmartClientsProvider implements SmartRegisterCLientsProviderF
 
 
         name.setText(pc.getColumnmaps().get("Mem_F_Name") != null ? pc.getColumnmaps().get("Mem_F_Name") : "");
-        mothersname.setText(pc.getColumnmaps().get("Child_Mother") != null ? pc.getColumnmaps().get("Child_Mother") : "");
-        fathersname.setText(pc.getColumnmaps().get("Child_Father") != null ? pc.getColumnmaps().get("Child_Father") : "");
+        mothersname.setText(pc.getDetails().get("Child_Mother") != null ? pc.getDetails().get("Child_Mother") : "");
+        fathersname.setText(pc.getDetails().get("Child_Father") != null ? pc.getDetails().get("Child_Father") : "");
 
 //        gob_hhid.setText((pc.getDetails().get("Member_GoB_HHID") != null ? pc.getDetails().get("Member_GoB_HHID") : ""));
 

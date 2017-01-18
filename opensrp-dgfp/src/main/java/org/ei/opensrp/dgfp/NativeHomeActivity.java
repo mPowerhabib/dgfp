@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import org.ei.opensrp.Context;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
+import org.ei.opensrp.dgfp.anc.nbnfhandler;
+import org.ei.opensrp.dgfp.pnc.ChildRegistrationhandler;
 import org.ei.opensrp.event.Listener;
 import org.ei.opensrp.service.HTTPAgent;
 import org.ei.opensrp.service.PendingFormSubmissionService;
@@ -100,7 +102,8 @@ public class NativeHomeActivity extends SecuredActivity {
         initialize();
         DisplayFormFragment.formInputErrorMessage = getResources().getString(R.string.forminputerror);
         DisplayFormFragment.okMessage = getResources().getString(R.string.okforminputerror);
-//        context.formSubmissionRouter().getHandlerMap().put("birthoutcome",new BirthOutcomeHandler());
+        context.formSubmissionRouter().getHandlerMap().put("childregistration",new ChildRegistrationhandler(this));
+        context.formSubmissionRouter().getHandlerMap().put("birth_notification",new nbnfhandler(this));
 
 
 

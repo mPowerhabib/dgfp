@@ -1,69 +1,72 @@
 <model>
-  <instance>
-    <ChildRegistraton encounter_type="Child Registration" id="ChildRegistration" version="201612260637">
-      <formhub>
-        <uuid/>
-      </formhub>
-      <existing_Mauzapara/>
-      <existing_Country/>
-      <existing_Division/>
-      <existing_District/>
-      <existing_Upazilla/>
-      <existing_Union/>
-      <existing_Ward/>
-      <existing_Subunit/>
-      <existing_Final_Vill/>
-      <existing_GPS/>
-      <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id"/>
-      <existing_Mem_F_Name/>
-      <existing_GoB_HHID/>
-      <existing_HoH_F_Name/>
-      <existing_Spouse_Name/>
-      <existing_Couple_No/>
-      <existing_ELCO_Mobile_Number/>
-      <existing_EDD/>
-      <existing_Visit_Date/>
-      <existing_DOO/>
-      <Today openmrs_entity="encounter" openmrs_entity_id="encounter_date"/>
-      <start openmrs_entity="concept" openmrs_entity_id="163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-      <end openmrs_entity="concept" openmrs_entity_id="163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-      <Reg_Newborn template="" openmrs_entity="person" openmrs_entity_id="Child Vital Status">
-        <Child_Vital_Status openmrs_entity="concept" openmrs_entity_id="159926AAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-        <Child_Weight/>
-        <Premature_Birth/>
-        <Member_Gender openmrs_entity="concept" openmrs_entity_id="1587AAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-        <Name_Check/>
-        <Child_Name/>
-        <Mem_F_Name openmrs_entity="person" openmrs_entity_id="first_name"/>
-        <Mem_L_Name openmrs_entity="person" openmrs_entity_id="last_name">"."</Mem_L_Name>
-        <Member_Birth_Date/>
-        <Calc_Age/>
-        <Member_Age openmrs_entity="Concept" openmrs_entity_id="a04427c9-c616-48c9-8588-5bb96173f56a"/>
-        <Mem_BRID/>
-        <Retype_Mem_BRID openmrs_entity="person_identifier" openmrs_entity_id="Birth Registration ID"/>
-        <Mem_BRID_Concept openmrs_entity="concept" openmrs_entity_id="163083AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-        <Member_GoB_HHID openmrs_entity="person_attribute" openmrs_entity_id="GoB_HHID"/>
-        <Member_Reg_Date/>
-        <Mem_Mobile_Number/>
-        <Mem_Country openmrs_entity="person_address" openmrs_entity_id="country" openmrs_entity_parent="usual_residence"/>
-        <Mem_Division openmrs_entity="person_address" openmrs_entity_id="stateProvince" openmrs_entity_parent="usual_residence"/>
-        <Mem_District openmrs_entity="person_address" openmrs_entity_id="countyDistrict" openmrs_entity_parent="usual_residence"/>
-        <Mem_Upazilla openmrs_entity="person_address" openmrs_entity_id="cityVillage" openmrs_entity_parent="usual_residence"/>
-        <Mem_Union openmrs_entity="person_address" openmrs_entity_id="address1" openmrs_entity_parent="usual_residence"/>
-        <Mem_Ward openmrs_entity="person_address" openmrs_entity_id="address2" openmrs_entity_parent="usual_residence"/>
-        <Mem_Subunit openmrs_entity="person_address" openmrs_entity_id="address3" openmrs_entity_parent="usual_residence"/>
-        <Mem_Mauzapara openmrs_entity="person_address" openmrs_entity_id="address4" openmrs_entity_parent="usual_residence"/>
-        <Mem_Village_Name/>
-        <Mem_GPS openmrs_entity="person_address" openmrs_entity_id="geopoint" openmrs_entity_parent="usual_residence"/>
-        <Child_Mother/>
-        <Child_Father/>
-        <add_child/>
-        <Child/>
-        <Nutrition/>
-      </Reg_Newborn>
-      <meta>
-        <instanceID/>
-      </meta>
-    </ChildRegistraton>
-  </instance>
+    <instance>
+        <ChildRegistraton
+             encounter_type="Child Registration" id="ChildRegistration" version="201701180632">
+            <formhub>
+                <uuid />
+            </formhub>
+            <existing_Mauzapara />
+            <existing_Country />
+            <existing_Division />
+            <existing_District />
+            <existing_Upazilla />
+            <existing_Union />
+            <existing_Ward />
+            <existing_Subunit />
+            <existing_Final_Vill />
+            <existing_GPS />
+            <existing_location openmrs_entity="encounter" openmrs_entity_id="location_id" />
+            <existing_Mem_F_Name />
+            <existing_GoB_HHID />
+            <existing_HoH_F_Name />
+            <existing_Spouse_Name />
+            <existing_Couple_No />
+            <existing_ELCO_Mobile_Number />
+            <existing_EDD />
+            <existing_Visit_Date />
+            <mother_relational_ID />
+            <existing_DOO />
+            <Today openmrs_entity="encounter" openmrs_entity_id="encounter_date" />
+            <start openmrs_entity="concept" openmrs_entity_id="163137AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+            <end openmrs_entity="concept" openmrs_entity_id="163138AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+            <Reg_Newborn openmrs_entity="person" openmrs_entity_id="Child Vital Status">
+                <Child_Vital_Status openmrs_entity="concept" openmrs_entity_id="159926AAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                <Child_Weight />
+                <Premature_Birth />
+                <Member_Gender openmrs_entity="concept" openmrs_entity_id="1587AAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                <Name_Check />
+                <Child_Name />
+                <Mem_F_Name openmrs_entity="person" openmrs_entity_id="first_name" />
+                <Mem_L_Name openmrs_entity="person" openmrs_entity_id="last_name">"."</Mem_L_Name>
+                <Member_Birth_Date />
+                <Calc_Age />
+                <Member_Age openmrs_entity="Concept" openmrs_entity_id="a04427c9-c616-48c9-8588-5bb96173f56a" />
+                <Mem_BRID />
+                <Retype_Mem_BRID openmrs_entity="person_identifier" openmrs_entity_id="Birth Registration ID" />
+                <Mem_BRID_Concept openmrs_entity="concept" openmrs_entity_id="163083AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                <Member_GoB_HHID openmrs_entity="person_attribute" openmrs_entity_id="GoB_HHID" />
+                <Member_Reg_Date />
+                <Mem_Mobile_Number />
+                <Mem_Country openmrs_entity="person_address" openmrs_entity_id="country" openmrs_entity_parent="usual_residence" />
+                <Mem_Division openmrs_entity="person_address" openmrs_entity_id="stateProvince" openmrs_entity_parent="usual_residence" />
+                <Mem_District openmrs_entity="person_address" openmrs_entity_id="countyDistrict" openmrs_entity_parent="usual_residence" />
+                <Mem_Upazilla openmrs_entity="person_address" openmrs_entity_id="cityVillage" openmrs_entity_parent="usual_residence" />
+                <Mem_Union openmrs_entity="person_address" openmrs_entity_id="address1" openmrs_entity_parent="usual_residence" />
+                <Mem_Ward openmrs_entity="person_address" openmrs_entity_id="address2" openmrs_entity_parent="usual_residence" />
+                <Mem_Subunit openmrs_entity="person_address" openmrs_entity_id="address3" openmrs_entity_parent="usual_residence" />
+                <Mem_Mauzapara openmrs_entity="person_address" openmrs_entity_id="address4" openmrs_entity_parent="usual_residence" />
+                <Mem_Village_Name />
+                <Mem_GPS openmrs_entity="person_address" openmrs_entity_id="geopoint" openmrs_entity_parent="usual_residence" />
+                <mother_UUID />
+                <Child_Mother />
+                <Child_Father />
+                <add_child />
+                <Child />
+                <Nutrition />
+            </Reg_Newborn>
+            <meta>
+                <instanceID />
+            </meta>
+        </ChildRegistraton>
+    </instance>
 </model>
