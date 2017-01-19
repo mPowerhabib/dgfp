@@ -214,9 +214,15 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
                 NBNFDueDate.setText("Child Registered");
             }
         }else{
-            NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            NBNFDueDate.setTextColor(context.getResources().getColor(R.color.text_black));
-            NBNFDueDate.setText("Not applicable");
+            if (pc.getDetails().get("is_child_register_done").equalsIgnoreCase("1")) {
+                NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
+                NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                NBNFDueDate.setText("Child Registered");
+            }else {
+                NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                NBNFDueDate.setTextColor(context.getResources().getColor(R.color.text_black));
+                NBNFDueDate.setText("Not applicable");
+            }
 
         }
         NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
