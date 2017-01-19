@@ -24,7 +24,7 @@ public class ChildRegistrationhandler implements FormSubmissionHandler {
         AllCommonsRepository allmemberRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
         Map<String, String> memberDetails = new HashMap<String, String>();
 
-        memberDetails.put("is_child_register_done", submission.getFieldValue("1"));
+        memberDetails.put("is_child_register_done", "1");
 
         allmemberRepository.mergeDetails(entityID, memberDetails);
 //        CommonPersonObject memberobject = allmemberRepository.findByCaseID(entityID);

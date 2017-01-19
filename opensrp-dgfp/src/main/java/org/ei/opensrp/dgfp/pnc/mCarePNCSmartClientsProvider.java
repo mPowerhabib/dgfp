@@ -130,7 +130,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
 //            e.printStackTrace();
 //        }
 
-        dateofdelivery.setText(pc.getColumnmaps().get("DOO")!=null?pc.getColumnmaps().get("DOO"):"");
+        dateofdelivery.setText(pc.getDetails().get("DOO")!=null?pc.getDetails().get("DOO"):"");
         String outcomevalue = pc.getColumnmaps().get("FWBNFSTS")!=null?pc.getColumnmaps().get("FWBNFSTS"):"";
 
         if(outcomevalue.equalsIgnoreCase("3")){
@@ -193,6 +193,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
                         JSONObject overridejsonobject = new JSONObject();
                         try {
                             overridejsonobject.put("mother_relational_ID", pc.entityId());
+                            overridejsonobject.put("existing_DOO", doolay(pc));
                             overridejsonobject.put("existing_Spouse_Name", pc.getDetails().get("Spouse_Name"));
                             overridejsonobject.put("existing_Mem_F_Name", pc.getColumnmaps().get("Mem_F_Name"));
 
@@ -214,15 +215,11 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
                 NBNFDueDate.setText("Child Registered");
             }
         }else{
-            if (pc.getDetails().get("is_child_register_done").equalsIgnoreCase("1")) {
-                NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
-                NBNFDueDate.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-                NBNFDueDate.setText("Child Registered");
-            }else {
+
                 NBNFDueDate.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
                 NBNFDueDate.setTextColor(context.getResources().getColor(R.color.text_black));
                 NBNFDueDate.setText("Not applicable");
-            }
+
 
         }
         NBNFDueDate.setText(dgfpApplication.convertToEnglishDigits(NBNFDueDate.getText().toString()));
@@ -231,7 +228,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
     private String doolay(CommonPersonObjectClient ancclient) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date edd_date = format.parse(ancclient.getColumnmaps().get("FWBNFDTOO")!=null?ancclient.getColumnmaps().get("FWBNFDTOO"):"");
+            Date edd_date = format.parse(ancclient.getDetails().get("DOO")!=null?ancclient.getDetails().get("DOO"):"");
             GregorianCalendar calendar = new GregorianCalendar();
             calendar.setTime(edd_date);
             edd_date.setTime(calendar.getTime().getTime());
