@@ -23,6 +23,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.child.childServiceModeOption;
 import org.ei.opensrp.dgfp.child.child_SmartClientsProvider;
 import org.ei.opensrp.dgfp.child.dgfp_child_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
@@ -85,7 +86,7 @@ public class dgfp_child_SmartRegisterFragment extends SecuredNativeSmartRegister
 
             @Override
             public ServiceModeOption serviceMode() {
-                return new nutritionServiceModeOption(clientsProvider());
+                return new childServiceModeOption(clientsProvider());
             }
 
             @Override

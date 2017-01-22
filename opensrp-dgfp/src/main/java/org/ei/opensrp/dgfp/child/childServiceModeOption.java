@@ -25,7 +25,7 @@ public class childServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.woman_register_label);
+       return Context.getInstance().getStringResource(R.string.child_register_title_in_short);
     }
 
     @Override
@@ -43,14 +43,14 @@ public class childServiceModeOption extends ServiceModeOption {
 
             @Override
             public int[] weights() {
-                return new int[]{6,4,3,4,3};
+                return new int[]{7,4,3,3,3};
             }
 
             @Override
             public int[] headerTextResourceIds() {
                 return new int[]{
-                        R.string.hh_profile, R.string.elco_unique_id, R.string.date_of_last_visit,
-                        R.string.nutritiontaken,R.string.nutritionform
+                        R.string.hh_profile, R.string.elco_unique_id, R.string.child_dob,
+                        R.string.vaccination_details,R.string.child_follow_up
                         };
             }
         };

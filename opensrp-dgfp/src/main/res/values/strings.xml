@@ -447,6 +447,8 @@
     <string name="cause_of_death">Cause of Death</string>
     <string name="record_death">Record Death</string>
     <string name="childregistration">Child Form</string>
+    <string name="vaccination_details">Vaccination Details</string>
+    <string name="child_follow_up">Child Follow Up</string>
 
 
 </resources>

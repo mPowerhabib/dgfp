@@ -117,7 +117,7 @@ public class child_SmartClientsProvider implements SmartRegisterCLientsProviderF
        }
        village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? (pc.getDetails().get("Mem_Village_Name")+",") : "").replace("+", "_")) + humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")));
 
-        date_of_birth.setText(pc.getDetails().get("Calc_Dob_Confirm") != null ? pc.getDetails().get("Calc_Dob_Confirm") : "");
+        date_of_birth.setText(pc.getDetails().get("Member_Birth_Date") != null ? pc.getDetails().get("Member_Birth_Date") : "");
 
         age.setText(pc.getDetails().get("Calc_Age_Confirm") != null ? "("+pc.getDetails().get("Calc_Age_Confirm")+")" : "");
 //       nid.setText("NID: " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : ""));
@@ -135,8 +135,29 @@ public class child_SmartClientsProvider implements SmartRegisterCLientsProviderF
 
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "Child_05yr");
         singleALertButtonView(alertlist_for_client,follow_up,pc,datetoconvert,scheduledate);
-
+        constructvaccineVisitStatusBlock(pc,itemView);
+        constructRiskFlagView(pc,itemView);
         itemView.setLayoutParams(clientViewLayoutParams);
+
+    }
+
+    private void constructvaccineVisitStatusBlock(CommonPersonObjectClient pc, View itemview) {
+//        vaccines_2
+        ImageView lastvaccinestick = (ImageView) itemview.findViewById(R.id.encc1tick);
+        TextView lastvaccinetext = (TextView) itemview.findViewById(R.id.encc1text);
+
+
+        lastvaccinetext.setVisibility(View.INVISIBLE);
+        lastvaccinestick.setVisibility(View.INVISIBLE);
+        if (!(pc.getDetails().get("Vaccines") != null ? pc.getDetails().get("Vaccines") : "").equalsIgnoreCase("")) {
+            String lastvaccine = (pc.getDetails().get("Vaccines") != null ? pc.getDetails().get("Vaccines") : "");
+            lastvaccine = lastvaccine.trim();
+            lastvaccine = lastvaccine.replace(" ",",");
+            lastvaccinestick.setVisibility(View.VISIBLE);
+            lastvaccinetext.setVisibility(View.VISIBLE);
+            lastvaccinetext.setText(lastvaccine);
+        }
+
 
     }
 
