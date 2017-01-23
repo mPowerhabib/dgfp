@@ -449,6 +449,9 @@
     <string name="childregistration">Child Form</string>
     <string name="vaccination_details">Vaccination Details</string>
     <string name="child_follow_up">Child Follow Up</string>
+    <string name="outcome_info">Outcome Info</string>
+    <string name="counselling">Councelling</string>
+    <string name="adolescent_form">Adolescent Form</string>
 
 
 </resources>

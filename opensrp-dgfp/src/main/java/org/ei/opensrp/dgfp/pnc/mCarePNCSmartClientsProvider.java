@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.ei.opensrp.commonregistry.AllCommonsRepository;
 import org.ei.opensrp.commonregistry.CommonPersonObject;
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
+import org.ei.opensrp.commonregistry.CommonRepository;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
 import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.dgfp.anc.mCareANCSmartRegisterActivity;
@@ -35,6 +36,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -90,7 +92,8 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView brid = (TextView)itemView.findViewById(R.id.brid);
         TextView delivery_outcome = (TextView)itemView.findViewById(R.id.deliveryoutcome);
         TextView dateofdelivery = (TextView)itemView.findViewById(R.id.date_of_outcome);
-
+        TextView typeofdelivery = (TextView)itemView.findViewById(R.id.deliverytype);
+        TextView typeofbirth = (TextView)itemView.findViewById(R.id.birthtype);
 //        TextView psrfdue = (TextView)itemView.findViewById(R.id.psrf_due_date);
 ////        Button due_visit_date = (Button)itemView.findViewById(R.id.hh_due_date);
 //
@@ -117,7 +120,22 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         age.setText("("+(pc.getDetails().get("Calc_Age_Confirm")!=null?pc.getDetails().get("Calc_Age_Confirm"):"")+") ");
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
-//        AllCommonsRepository allmotherRepository = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+
+
+
+//         org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("members");
+        CommonRepository allmemberRepository =org.ei.opensrp.Context.getInstance().commonrepository("members");
+        ArrayList <CommonPersonObject> childrenmembers = (ArrayList<CommonPersonObject>) allmemberRepository.readAllcommon(allmemberRepository.RawCustomQueryForAdapter("Select * from members where  (members.Mem_F_Name not null ) AND details like '%\"Child\":\"1\"%'  and Not (details like '%\"Visit_Status\":\"10\"%' or details like '%\"Visit_Status\":\"11\"%')and (details like '%\"mother_UUID\":\""+pc.entityId()+"\"%')"));
+        String premature_birth = "";
+        for(int i = 0;i<childrenmembers.size();i++){
+            premature_birth = (childrenmembers.get(i).getDetails().get("Premature_Birth")!=null?childrenmembers.get(i).getDetails().get("Premature_Birth"):"");
+        }
+        if(premature_birth.equalsIgnoreCase("0")){
+            premature_birth = "Birth: "+"Normal";
+        }else if(premature_birth.equalsIgnoreCase("1")){
+            premature_birth = "Birth: "+"Premature";
+        }
+
 //        CommonPersonObject childobject = allmotherRepository.findByCaseID(smartRegisterClient.entityId());
 //        AllCommonsRepository elcorep = org.ei.opensrp.Context.getInstance().allCommonsRepositoryobjects("elco");
 //        final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
@@ -130,40 +148,57 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
 //            e.printStackTrace();
 //        }
 
-        dateofdelivery.setText(pc.getDetails().get("DOO")!=null?pc.getDetails().get("DOO"):"");
-        String outcomevalue = pc.getColumnmaps().get("FWBNFSTS")!=null?pc.getColumnmaps().get("FWBNFSTS"):"";
+        dateofdelivery.setText("DOO: "+(pc.getDetails().get("DOO")!=null?pc.getDetails().get("DOO"):""));
+        String outcomevalue = pc.getDetails().get("Visit_Status")!=null?pc.getDetails().get("Visit_Status"):"";
 
         if(outcomevalue.equalsIgnoreCase("3")){
-            delivery_outcome.setText(context.getString(R.string.mcare_pnc_liveBirth));
+            delivery_outcome.setText("Outcome: "+context.getString(R.string.mcare_pnc_liveBirth));
         }else if (outcomevalue.equalsIgnoreCase("4")){
-            delivery_outcome.setText(context.getString(R.string.mcare_pnc_Stillbirth));
+            delivery_outcome.setText("Outcome: "+context.getString(R.string.mcare_pnc_Stillbirth));
         }
+
+        String deliveryvalue = pc.getDetails().get("Delivery_Type")!=null?pc.getDetails().get("Delivery_Type"):"";
+        if(deliveryvalue.equalsIgnoreCase("1")){
+            typeofdelivery.setText("Delivery: "+"Normal");
+        }else if (deliveryvalue.equalsIgnoreCase("2")){
+            typeofdelivery.setText("Delivery: "+"Caesarean");
+        }else{
+            typeofdelivery.setText("");
+        }
+//        typeofdelivery.setText(pc.getDetails().get("Delivery_Type")!=null?pc.getDetails().get("Delivery_Type"):"");
+
+
+
+
+
+
+        typeofbirth.setText(premature_birth);
 
 
 //        delivery_outcome.setText(pc.getDetails().get("FWBNFSTS")!=null?pc.getDetails().get("FWBNFSTS"):"");
 
-        if((pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "").length()>0) {
-            nid.setText(Html.fromHtml("NID:" + " " + (pc.getDetails().get("FWWOMNID") != null ? pc.getDetails().get("FWWOMNID") : "") ));
+        if((pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : "").length()>0) {
+            nid.setText(Html.fromHtml("NID:" + " " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : "") ));
             nid.setVisibility(View.VISIBLE);
         }else{
             nid.setVisibility(View.GONE);
         }
-        if((pc.getDetails().get("FWWOMBID") != null ? pc.getDetails().get("FWWOMBID") : "").length()>0) {
-            brid.setText(Html.fromHtml("BRID:" + " " + (pc.getDetails().get("FWWOMBID") != null ? pc.getDetails().get("FWWOMBID") : "")));
+        if((pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : "").length()>0) {
+            brid.setText(Html.fromHtml("BRID:" + " " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : "")));
             brid.setVisibility(View.VISIBLE);
         }else{
             brid.setVisibility(View.GONE);
         }
           try {
 //                    dateofdelivery.setText(Html.fromHtml("DOO:" +"<b> "+ (pc.getColumnmaps().get("FWBNFDTOO") != null ? pc.getColumnmaps().get("FWBNFDTOO") : "")+ "</b>"));
-                   dateofdelivery.setText(Html.fromHtml("" +" "+ doolay(pc)));
+                   dateofdelivery.setText(Html.fromHtml("DOO" +": "+ doolay(pc)));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
         itemView.setLayoutParams(clientViewLayoutParams);
         constructRiskFlagView(pc, itemView);
-        constructPNCReminderDueBlock((pc.getColumnmaps().get("DOO") != null ? pc.getColumnmaps().get("DOO") : ""),pc, itemView);
+        constructPNCReminderDueBlock((pc.getDetails().get("DOO") != null ? pc.getDetails().get("DOO") : ""),pc, itemView);
         constructNBNFDueBlock(pc, itemView);
         constructPncVisitStatusBlock(pc,itemView);
     }

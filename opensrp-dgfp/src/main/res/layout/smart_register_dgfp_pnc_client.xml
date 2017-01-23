@@ -147,7 +147,7 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:layout_gravity="center">
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -178,34 +178,41 @@
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1">
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            style="@style/CustomFontTextViewStyle"
-            android:id="@+id/deliveryoutcome" />
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="@dimen/smart_register_client_divider_height"
-        android:layout_height="fill_parent"
-        android:src="@color/smart_register_client_divider_color"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
         android:layout_weight="1.5">
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="New Button"
             style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
             android:id="@+id/date_of_outcome"
             android:textSize="12sp"
             android:layout_margin="1dp" />
+
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:id="@+id/deliveryoutcome"
+            android:layout_margin="1dp"
+            android:textSize="12sp" />
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:id="@+id/deliverytype"
+            android:layout_margin="1dp"
+            android:textSize="12sp" />
+        <org.ei.opensrp.view.customControls.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
+            android:id="@+id/birthtype"
+            android:layout_margin="1dp"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -307,7 +314,7 @@
         android:orientation="horizontal"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1.25"
+        android:layout_weight="1.5"
         >
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
@@ -322,13 +329,13 @@
         android:orientation="horizontal"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="1.25">
+        android:layout_weight="1.5">
 
         <org.ei.opensrp.view.customControls.CustomFontTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="New Button"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
+            style="@style/CustomFontTextViewStyle.ListView.Medium.TwoLine"
             android:id="@+id/nbnf_due_date"
             android:background="@color/status_bar_text_almost_white"
             android:layout_margin="2dp" />

@@ -169,7 +169,7 @@ public class CommonRepository extends DrishtiRepository {
         return values;
     }
 
-    private List<CommonPersonObject> readAllcommon(Cursor cursor) {
+    public List<CommonPersonObject> readAllcommon(Cursor cursor) {
         cursor.moveToFirst();
         List<CommonPersonObject> commons = new ArrayList<CommonPersonObject>();
         while (!cursor.isAfterLast()) {
