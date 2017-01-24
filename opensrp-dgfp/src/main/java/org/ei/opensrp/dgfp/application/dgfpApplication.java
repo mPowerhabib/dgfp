@@ -3,6 +3,8 @@ package org.ei.opensrp.dgfp.application;
 import android.content.Intent;
 import android.content.res.Configuration;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import org.acra.ReportingInteractionMode;
 import org.acra.annotation.ReportsCrashes;
 import org.ei.opensrp.Context;
@@ -33,6 +35,7 @@ public class dgfpApplication extends DrishtiApplication {
     public void onCreate() {
         DrishtiSyncScheduler.setReceiverClass(SyncBroadcastReceiver.class);
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
 //        ACRA.init(this);
 
         DrishtiSyncScheduler.setReceiverClass(SyncBroadcastReceiver.class);
@@ -95,5 +98,11 @@ public class dgfpApplication extends DrishtiApplication {
 
         return newValue;
     }
+    public static void setCrashlyticsUser(Context context) {
+              if(context != null && context.userService() != null
+                               && context.allSharedPreferences() != null) {
+                      Crashlytics.setUserName(context.allSharedPreferences().fetchRegisteredANM());
+                   }
+           }
 
 }

@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.ei.opensrp.Context;
+import org.ei.opensrp.dgfp.application.dgfpApplication;
 import org.ei.opensrp.domain.LoginResponse;
 import org.ei.opensrp.domain.Response;
 import org.ei.opensrp.domain.ResponseStatus;
@@ -297,6 +298,7 @@ public class LoginActivity extends Activity {
     }
 
     private void goToHome() {
+        dgfpApplication.setCrashlyticsUser(context);
         startActivity(new Intent(this, NativeHomeActivity.class));
         finish();
     }
