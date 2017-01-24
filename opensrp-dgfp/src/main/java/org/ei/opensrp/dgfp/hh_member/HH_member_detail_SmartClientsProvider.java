@@ -2,15 +2,21 @@ package org.ei.opensrp.dgfp.hh_member;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
+import org.ei.opensrp.commonregistry.CommonRepository;
 import org.ei.opensrp.cursoradapter.SmartRegisterCLientsProviderForCursorAdapter;
+import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
+import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.service.AlertService;
@@ -26,6 +32,7 @@ import org.ei.opensrp.view.viewHolder.OnClickFormLauncher;
 import java.util.List;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
  * Created by user on 2/12/15.
@@ -49,8 +56,11 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+//        clientViewLayoutParams = new AbsListView.LayoutParams(MATCH_PARENT,
+//                (int) context.getResources().getDimension(org.ei.opensrp.R.dimen.list_item_height));
+
         clientViewLayoutParams = new AbsListView.LayoutParams(MATCH_PARENT,
-                (int) context.getResources().getDimension(org.ei.opensrp.R.dimen.list_item_height));
+                WRAP_CONTENT);
         txtColorBlack = context.getResources().getColor(org.ei.opensrp.R.color.text_black);
     }
 
@@ -68,6 +78,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         TextView general = (TextView)itemView.findViewById(R.id.general);
         TextView newborn_or_fp = (TextView)itemView.findViewById(R.id.newborn_pr_fp);
 
+        ListView childlist = (ListView)itemView.findViewById(R.id.childlist);
 
 
 
@@ -78,6 +89,9 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
 
         final CommonPersonObjectClient pc = (CommonPersonObjectClient) smartRegisterClient;
+
+        childlist.setAdapter(adapter(pc.getCaseId(),pc));
+
         general.setOnClickListener(onClickListener);
         general.setTag(smartRegisterClient);
 
@@ -469,5 +483,22 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         public void setAlertstatus(String alertstatus) {
             this.alertstatus = alertstatus;
         }
+    }
+    protected SmartRegisterPaginatedCursorAdapter adapter(String relationalid,SmartRegisterClient pc) {
+        CommonRepository commonRepository = org.ei.opensrp.Context.getInstance().commonrepository("members");
+        SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
+        queryBUilder.SelectInitiateMainTable("members", new String[]{"relationalid", "details", "Mem_F_Name", "EDD", "Child_calc_age","calc_age_confirm", "Member_GOB_HHID", "Marital_status", "Pregnancy_Status"});
+        queryBUilder.joinwithALerts("members", "FW CENSUS");
+        String mainSelect = queryBUilder.mainCondition("  (details like '%\"mother_UUID\":\""+pc.entityId()+"\"%') ");
+        queryBUilder.addCondition("");
+//        String Sortqueries = sortByAlertmethod();
+//        currentquery  = queryBUilder.orderbyCondition(Sortqueries);
+        Cursor c = commonRepository.RawCustomQueryForAdapter(queryBUilder.Endquery(queryBUilder.addlimitandOffset(mainSelect, 200, 0)));
+        HH_member_detail_SmartClientsProvider hhscp = new HH_member_detail_SmartClientsProvider(context,onClickListener,org.ei.opensrp.Context.getInstance().alertService());
+        SmartRegisterPaginatedCursorAdapter clientAdapter = new SmartRegisterPaginatedCursorAdapter(context, c, hhscp, new CommonRepository("members",new String []{"Mem_F_Name","EDD","Child_calc_age","calc_age_confirm","Member_GOB_HHID","Marital_status","Pregnancy_Status"}));
+
+
+        return  clientAdapter;
+//        return new SmartRegisterPaginatedAdapter(new HouseholdDetailsSmartClientsProvider(this,paginationViewHandler ,householdcontroller));
     }
 }
