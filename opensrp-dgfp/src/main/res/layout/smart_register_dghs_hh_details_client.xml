@@ -5,18 +5,26 @@
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
     android:weightSum="10">
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
         android:weightSum="10">
 
-    <LinearLayout
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/ischildofarrow"
+            android:visibility="gone"
+            android:src="@mipmap/ischildof" />
+
+        <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_weight="7"
-        android:id="@+id/profile_info_layout">
+            android:id="@+id/profile_info_layout"
+            android:paddingRight="20dp">
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -85,61 +93,73 @@
 
     </LinearLayout>
 
-    <ImageView
-            android:layout_width="@dimen/smart_register_client_divider_height"
-            android:layout_height="fill_parent"
-            android:src="@color/smart_register_client_divider_color"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.5"
-        >
-
-        <org.ei.opensrp.view.customControls.CustomFontTextView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="New Born"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
-            android:id="@+id/newborn_pr_fp"
-            android:background="@color/alert_upcoming_yellow"
-            android:layout_gravity="center"
-            android:gravity="center" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:layout_gravity="right">
+
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                >
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="New Born"
+                    style="@style/CustomFontTextViewStyle.ListView.Medium"
+                    android:id="@+id/newborn_pr_fp"
+                    android:background="@color/alert_upcoming_yellow"
+                    android:layout_gravity="center"
+                    android:padding="25dp"
+                    android:gravity="center" />
+
+                </LinearLayout>
+
+                <ImageView
+                android:layout_width="@dimen/smart_register_client_divider_height"
+                android:layout_height="fill_parent"
+                android:src="@color/smart_register_client_divider_color"/>
+
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.5"
+                >
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="General"
+                    style="@style/CustomFontTextViewStyle.ListView.Medium"
+                    android:id="@+id/general"
+                    android:padding="25dp"
+                    android:background="@color/alert_upcoming_yellow"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/smart_register_client_divider_height"
+                    android:layout_height="fill_parent"
+                    android:src="@color/smart_register_client_divider_color"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
-    <ImageView
-        android:layout_width="@dimen/smart_register_client_divider_height"
-        android:layout_height="fill_parent"
-        android:src="@color/smart_register_client_divider_color"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.5"
-        >
-
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="General"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
-            android:id="@+id/general"
-            android:background="@color/alert_upcoming_yellow"
-            android:layout_gravity="center"
-            android:gravity="center" />
-    </LinearLayout>
-
-    <ImageView
-            android:layout_width="@dimen/smart_register_client_divider_height"
-            android:layout_height="fill_parent"
-            android:src="@color/smart_register_client_divider_color"/>
-
-</LinearLayout>
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/childlist"
-        android:layout_marginLeft="10dp" />
+        android:id="@+id/childlist" />
 </LinearLayout>

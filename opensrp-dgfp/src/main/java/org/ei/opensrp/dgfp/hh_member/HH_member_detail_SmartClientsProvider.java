@@ -80,6 +80,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
         ListView childlist = (ListView)itemView.findViewById(R.id.childlist);
 
+        ImageView ischildof = (ImageView) itemView.findViewById(R.id.ischildofarrow);
 
 
 //        TextView psrfdue = (TextView)itemView.findViewById(R.id.psrf_due_date);
@@ -101,8 +102,15 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
         profilepic.setOnClickListener(onClickListener);
         profilepic.setTag(smartRegisterClient);
 
+        if(pc.getDetails().get("mother_UUID")!=null){
+            ischildof.setVisibility(View.VISIBLE);
+        }else{
+            ischildof.setVisibility(View.GONE);
 
-        if((pc.getDetails().get("Is_child")!=null?pc.getDetails().get("Is_child"):"").equalsIgnoreCase("1")){
+        }
+
+
+        if((pc.getDetails().get("Child")!=null?pc.getDetails().get("Child"):"").equalsIgnoreCase("1")){
             name.setText(pc.getColumnmaps().get("Mem_F_Name")!=null?pc.getColumnmaps().get("Mem_F_Name"):"");
             uniqueid.setVisibility(View.GONE);
             age.setText(pc.getColumnmaps().get("Child_calc_age")!=null?pc.getColumnmaps().get("Child_calc_age"):"");
@@ -114,7 +122,7 @@ public class HH_member_detail_SmartClientsProvider implements SmartRegisterCLien
 
             }
             maritalstatus.setVisibility(View.GONE);
-            if ((pc.getDetails().get("Child_gender") != null ? pc.getDetails().get("Child_gender") : "").equalsIgnoreCase("1")) {
+            if ((pc.getDetails().get("Member_Gender") != null ? pc.getDetails().get("Member_Gender") : "").equalsIgnoreCase("1")) {
                 profilepic.setImageResource(R.drawable.child_boy_infant);
 //                newborn_or_fp.setText("Family Planning");
                 newborn_or_fp.setVisibility(View.INVISIBLE);

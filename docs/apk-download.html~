@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Apk download</title>
+   <link rel="icon" href="../img/favicon.ico" type="image/x-icon" />
+   <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+   <link href="../css/style.css" rel="stylesheet"/>
+   <script src="../js/jquery.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
+   <script src="../js/custom.js"></script>
+   <script type="text/javascript" src="//use.typekit.net/cqm0oty.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+   <header class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://smartregister.org/index.html">
+            <img src="http://smartregister.org/img/logo-mini.png" class="img-responsive"/>
+            </a>
+         </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div id="navigation"></div>
+         <script>
+            $("#navigation").load("resources/nav.html");
+         </script>
+      </div>
+   </header>
+   <div class="container content-box">
+      <h2>Apk downloads</h2>
+      <br>
+      <div class="col-md-3">
+         <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a data-toggle="pill" href="#ec">EC </a></li>
+            <li><a data-toggle="pill" href="#ona_vc">Ona Vaccinator </a></li>
+            <li><a data-toggle="pill" href="#thr_bd">THRIVE Bangladesh</a></li>
+            <li><a data-toggle="pill" href="#thr_indo">THRIVE Indonesia</a></li>
+            <li><a data-toggle="pill" href="#thr_pk">THRIVE Pakistan</a></li>
+         </ul>
+      </div>
+      <div class="col-md-9">
+         <div class="tab-content">
+            <div id="ec" class="tab-pane fade in active">
+               <h3>EC Apk</h3>
+               <div class="table-responsive">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>QR Code</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>opensrp-v1.0.0_ec_built_on_06-10-16</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0BwkteZyRzaQOaVJKd2F0RENvOVU&chs=180x180&choe=UTF-8&chld=L|2' alt=''></td>
+                        </tr>
+                        <tr>
+                           <td>archive opensrp-mcare-ec_3_built_on_04-10-16</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0BwkteZyRzaQOMC14SkotZjZsODg&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a></td>
+                        </tr>
+                        <tr>
+                           <td>archive opensrp-mcare-ec_2_built_on_21-09-16</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B4bsrvzHqGt-bHp5SEN0Rkp6dTA&chs=180x180&choe=UTF-8&chld=L|2' alt=''></td>
+                        </tr>
+                        <tr>
+                           <td>archive opensrp-mcare-ec_1_built_on_15-09-16</td>
+                           <td><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B4bsrvzHqGt-cXhxZm5GcVBRaGM&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'><a href='http://www.qrcode-generator.de' border='0' style='cursor:default'  rel='nofollow'></a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div id="ona_vc" class="tab-pane fade">
+               <h3>Vaccinator Apk</h3>
+               <div class="table-responsive">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>QR Code</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>pk_vaccinator_updated_screens_built_on_24-11-16</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0BwkteZyRzaQOWnJFYjZZWEZ4a2M&chs=180x180&choe=UTF-8&chld=L|2' alt=''></td>
+                        </tr>
+                        <tr>
+                           <td>path_app_built_on_20-01-17</td>
+                           <td><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0BwkteZyRzaQObHB4RkZnVVBCaUk&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'><a href='http://www.qrcode-generator.de' border='0' style='cursor:default'  rel='nofollow'></a></td>
+                        </tr>
+                        <tr>
+                           <td>chms_app_built_on_10-01-17</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0BwkteZyRzaQOOVpwc0VtWjN6aFE&chs=180x180&choe=UTF-8&chld=L|2' alt=''></td>
+                        </tr>
+                        <tr>
+                           <td>pk_vaccinator_app_for_gavi_built_on_04-10-16</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B4bsrvzHqGt-Q3dZQTRwNkpvWGM&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div id="thr_bd" class="tab-pane fade">               
+            	<!-- Add Bangladesh Apks -->
+		<h3>Bangladesh Apks</h3>
+               <div class="table-responsive">
+                  <table class="table">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>QR Code</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>mcare-opensrp-ver38-bult-25th-jan</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B9AKt4Ln_f4HOHJ3bkNmenl4TW8&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a></td>
+                        </tr>
+                        <tr>
+                           <td>dghs-opensrp(bangladesh vaccinator app)-ver21-bult-25th-jan</td>
+                           <td><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B9AKt4Ln_f4HT3NnZHkyM1RjSUU&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'><a href='http://www.qrcode-generator.de' border='0' style='cursor:default'  rel='nofollow'></a></td>
+                        </tr>  
+			<tr>
+                           <td>dgfp-opensrp(bangladesh nutrition app)-ver21-bult-25th-jan</td>
+                           <td><a rel='nofollow' href='http://www.qrcode-generator.de' border='0' style='cursor:default'><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D0B9AKt4Ln_f4HTm1LajdCODRoQlk&chs=180x180&choe=UTF-8&chld=L|2' alt=''></a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div id="thr_indo" class="tab-pane fade">
+            	<!-- Add Indonesia Apks -->
+            </div>
+            <div id="thr_pk" class="tab-pane fade">
+            	<!-- Add Pakistan Apks -->
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container footer">
+      <div class="col-md-9" style="padding-top: 5px;">
+         <a href="../index.html">Home</a>
+         <a href="../about-about-opensrp.html">About</a>
+         <a href="../tech-different.html">Technology</a>
+         <a href="../adaptation-overview.html">Adaptation Process</a>
+         <a href="../implementations-pakistan.html">Implementations</a>
+         <a href="https://twitter.com/opensrp" style="color:#999">Follow @OpenSRP</a>
+      </div>
+      <div class="col-md-3" >
+         <img src="../img/logo-footer.png" height="25px" style="position: absolute; right:0px;">
+      </div>
+   </div>
+</body>
+</html>
