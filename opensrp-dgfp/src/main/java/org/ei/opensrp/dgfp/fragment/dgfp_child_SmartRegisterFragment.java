@@ -23,6 +23,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.child.ChildDetailActivity;
 import org.ei.opensrp.dgfp.child.childServiceModeOption;
 import org.ei.opensrp.dgfp.child.child_SmartClientsProvider;
 import org.ei.opensrp.dgfp.child.dgfp_child_SmartRegisterActivity;
@@ -241,8 +242,8 @@ public class dgfp_child_SmartRegisterFragment extends SecuredNativeSmartRegister
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-                    WomanDetailActivity.womanclient = (CommonPersonObjectClient)view.getTag();
-                    Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
+                    ChildDetailActivity.ChildClient = (CommonPersonObjectClient)view.getTag();
+                    Intent intent = new Intent(getActivity(),ChildDetailActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.child_followup_form:
