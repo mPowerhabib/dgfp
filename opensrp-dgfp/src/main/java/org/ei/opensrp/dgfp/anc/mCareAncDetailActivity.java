@@ -108,9 +108,9 @@ public class mCareAncDetailActivity extends Activity {
 
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
-        AllCommonsRepository allmotherRepository = Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+        AllCommonsRepository allmotherRepository = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject childobject = allmotherRepository.findByCaseID(ancclient.entityId());
-        AllCommonsRepository elcorep = Context.getInstance().allCommonsRepositoryobjects("elco");
+        AllCommonsRepository elcorep = Context.getInstance().allCommonsRepositoryobjects("members");
         final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
         try {
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
@@ -129,9 +129,9 @@ public class mCareAncDetailActivity extends Activity {
 
         village.setText(Html.fromHtml(getString(R.string.elco_details_mauza) + " " + humanize(ancclient.getDetails().get("mauza") != null ? ancclient.getDetails().get("mauza") : "")));
             /////from househld
-        AllCommonsRepository allancRepository = Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+        AllCommonsRepository allancRepository = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject ancobject = allancRepository.findByCaseID(ancclient.entityId());
-        AllCommonsRepository allelcorep = Context.getInstance().allCommonsRepositoryobjects("elco");
+        AllCommonsRepository allelcorep = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject elcoparent = allelcorep.findByCaseID(ancobject.getRelationalId());
 
 //
@@ -139,12 +139,12 @@ public class mCareAncDetailActivity extends Activity {
         checkAnc2view(ancclient);
         checkAnc3view(ancclient);
         checkAnc4view(ancclient);
-        numberofChildrenView(elcoparent);
-        numberofstillbirthview(elcoparent);
-        historyofmr(elcoparent);
-        historyofsb(elcoparent);
-        pregnancyin2years(elcoparent);
-        eddlay(ancclient);
+//        numberofChildrenView(elcoparent);
+//        numberofstillbirthview(elcoparent);
+//        historyofmr(elcoparent);
+//        historyofsb(elcoparent);
+//        pregnancyin2years(elcoparent);
+//        eddlay(ancclient);
 
 
 

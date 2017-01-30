@@ -103,9 +103,9 @@ public class mCarePncDetailActivity extends Activity {
         age.setText(Html.fromHtml(getString(R.string.elco_age_label)+" " + (ancclient.getDetails().get("FWWOMAGE") != null ? ancclient.getDetails().get("FWWOMAGE") : "")));
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
-        AllCommonsRepository allmotherRepository = Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+        AllCommonsRepository allmotherRepository = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject childobject = allmotherRepository.findByCaseID(ancclient.entityId());
-        AllCommonsRepository elcorep = Context.getInstance().allCommonsRepositoryobjects("elco");
+        AllCommonsRepository elcorep = Context.getInstance().allCommonsRepositoryobjects("members");
         final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
         try {
             int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
@@ -139,9 +139,9 @@ public class mCarePncDetailActivity extends Activity {
             pregnancy_outcome.setText(getString(R.string.mcare_pnc_Stillbirth));
         }
 
-        AllCommonsRepository allancRepository = Context.getInstance().allCommonsRepositoryobjects("mcaremother");
+        AllCommonsRepository allancRepository = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject ancobject = allancRepository.findByCaseID(ancclient.entityId());
-        AllCommonsRepository allelcorep = Context.getInstance().allCommonsRepositoryobjects("elco");
+        AllCommonsRepository allelcorep = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject elcoparent = allelcorep.findByCaseID(ancobject.getRelationalId());
        checkPnc1view(ancclient);
         checkPnc2view(ancclient);
