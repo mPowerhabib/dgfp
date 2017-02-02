@@ -163,14 +163,14 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
 
 
-        pvfdue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((HH_woman_member_SmartRegisterActivity) ((Activity) context)).startFormActivity("elco_register", pc.getCaseId(),null);
-
-            }
-
-        });
+//        pvfdue.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ((HH_woman_member_SmartRegisterActivity) ((Activity) context)).startFormActivity("elco_register", pc.getCaseId(),null);
+//
+//            }
+//
+//        });
         List<Alert> alertlist_for_client = alertService.findByEntityIdAndAlertNames(pc.entityId(), "ELCO PSRF");
 //        Reg_Date
 //        Census_Date
@@ -179,12 +179,12 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
         if(pc.getDetails().get("Reg_Date")!=null){
           datetoconvert = pc.getDetails().get("Reg_Date");
         }
-        if(pc.getDetails().get("Census_Date")!=null){
-            datetoconvert = pc.getDetails().get("Census_Date");
+        if(pc.getDetails().get("ELCO_Date")!=null){
+            datetoconvert = pc.getDetails().get("ELCO_Date");
         }
         if(!datetoconvert.equalsIgnoreCase("")) {
 //            Date scheduledate = converdatefromString(datetoconvert);
-          scheduledate =  setDate(datetoconvert,84);
+          scheduledate =  setDate(datetoconvert,56);
         }
 
         singleALertButtonView(alertlist_for_client,pvfdue,pc,datetoconvert,scheduledate);
@@ -195,17 +195,30 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 
     public void singleALertButtonView(List<Alert> alertlist_for_client,TextView due_visit_date, CommonPersonObjectClient smartRegisterClient,String textforComplete,String textfornotcomplete){
         if(alertlist_for_client.size() == 0 ){
-            due_visit_date.setText("Not Synced to Server");
-            due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
-            due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
-            due_visit_date.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-            due_visit_date.setOnClickListener(onClickListener);
-            due_visit_date.setTag(smartRegisterClient);
+            if(smartRegisterClient.getDetails().get("ELCO_Date")==null){
+                due_visit_date.setText(smartRegisterClient.getDetails().get("Member_Reg_Date"));
+                due_visit_date.setOnClickListener(onClickListener);
+                due_visit_date.setTag(smartRegisterClient);
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.alert_upcoming_yellow));
+            }else{
+                due_visit_date.setText(textforComplete);
+                due_visit_date.setOnClickListener(onClickListener);
+                due_visit_date.setTag(smartRegisterClient);
+                due_visit_date.setTextColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+                due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.alert_complete_green));
+            }
+//            due_visit_date.setText("Not Synced to Server");
+//            due_visit_date.setTextColor(context.getResources().getColor(R.color.text_black));
+//            due_visit_date.setBackgroundColor(context.getResources().getColor(R.color.status_bar_text_almost_white));
+//            due_visit_date.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
+//            due_visit_date.setOnClickListener(onClickListener);
+//            due_visit_date.setTag(smartRegisterClient);
 
         }
         for(int i = 0;i<alertlist_for_client.size();i++){
