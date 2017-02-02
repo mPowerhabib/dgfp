@@ -50,6 +50,7 @@ public class WomanDetailActivity extends Activity {
 
     private static ImageFetcher mImageFetcher;
 
+    String [] arrayofbirthcontrol = new String []{"Referred","Oral Pill","Condom","Injectable","IUD","Implant","Pemananently Sterilized(Male)","Pemananently Sterilized(Female)","ECP","Referred for Side-effects","Referred for Methods"};
 
 
 
@@ -66,7 +67,7 @@ public class WomanDetailActivity extends Activity {
         TextView nid = (TextView) findViewById(R.id.womandetail_womanid);
         TextView hid = (TextView) findViewById(R.id.womandetail_womahid);
         TextView husbandname = (TextView) findViewById(R.id.womandetail_husbandname);
-        TextView pregnancystatus = (TextView) findViewById(R.id.womandetail_pregnancystatus);
+//        TextView pregnancystatus = (TextView) findViewById(R.id.womandetail_pregnancystatus);
         TextView fathersname = (TextView) findViewById(R.id.womandetail_fathers_name);
         TextView epicardno = (TextView) findViewById(R.id.womandetail_epicardno);
         TextView womandob = (TextView) findViewById(R.id.womandetail_womandob);
@@ -76,19 +77,24 @@ public class WomanDetailActivity extends Activity {
         TextView today = (TextView)findViewById(R.id.woman_detail_today);
         TextView vaccination =(TextView) findViewById(R.id.womandetail_vaccinationstatus);
 
-        //VACCINES INFORMATION/////////////////////////////////////////////////
-        TextView tt1TextView =(TextView) findViewById(R.id.womandetail_tt1);
-        TextView tt2TextView =(TextView) findViewById(R.id.womandetail_tt2);
-        TextView tt3TextView =(TextView) findViewById(R.id.womandetail_tt3);
-        TextView tt4TextView =(TextView) findViewById(R.id.womandetail_tt4);
-        TextView tt5TextView =(TextView) findViewById(R.id.womandetail_tt5);
+        //Woman summary/////////////////////////////////////////////////
+        TextView registrationdate =(TextView) findViewById(R.id.womandetail_registration_date);
+        TextView last_visit_date =(TextView) findViewById(R.id.womandetail_last_visit_date);
+        TextView tt_status =(TextView) findViewById(R.id.womandetail_tt_status);
+        TextView tt_doses =(TextView) findViewById(R.id.womandetail_tt_doses_given);
+        TextView use_fp_method =(TextView) findViewById(R.id.womandetail_use_fp);
+        TextView has_changed_fp_method =(TextView) findViewById(R.id.womandetail_has_changed_fp);
+        TextView previous_fp_method =(TextView) findViewById(R.id.womandetail_previous_fp);
+        TextView current_fp_method =(TextView) findViewById(R.id.womandetail_current_fp);
+        TextView fp_given =(TextView) findViewById(R.id.womandetail_fp_product_given);
         ///////////////////////////////////////////////////////////////////////
 
         //PREGNANCY INFORMATION/////////////////////////////////////////////////
+
 //        TextView pregnant =(TextView) findViewById(R.id.pregnanctdetail);
-        TextView lmp =(TextView) findViewById(R.id.womandetail_lmp);
-        TextView edd =(TextView) findViewById(R.id.womandetail_edd);
-        TextView ga =(TextView) findViewById(R.id.womandetail_ga);
+//        TextView lmp =(TextView) findViewById(R.id.womandetail_lmp);
+//        TextView edd =(TextView) findViewById(R.id.womandetail_edd);
+//        TextView ga =(TextView) findViewById(R.id.womandetail_ga);
         ///////////////////////////////////////////////////////////////////////
 
 
@@ -139,7 +145,7 @@ public class WomanDetailActivity extends Activity {
         }
 //        number_of_child.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
 
-        pregnancystatus.setText((womanclient.getDetails().get("pregnant") != null ? womanclient.getDetails().get("pregnant") : ""));
+//        pregnancystatus.setText((womanclient.getDetails().get("pregnant") != null ? womanclient.getDetails().get("pregnant") : ""));
 //       godhhid.setText(getString(R.string.hhid_gob_elco_label) + (womanclient.getColumnmaps().get("Member_GOB_HHID") != null ? womanclient.getColumnmaps().get("Member_GOB_HHID") : ""));
 //        psf_due_date.setText(Elcoclient.getDetails().get("FWPSRDATE") != null ? Elcoclient.getDetails().get("FWPSRDATE") : "");
 
@@ -154,9 +160,9 @@ public class WomanDetailActivity extends Activity {
             HouseHoldDetailActivity.setImagetoHolder(this, womanclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
 //        TextView lmp  = (TextView)findViewById(R.id.lmp_date);
-        lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"N/A");
-        edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"N/A");
-        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga")+" weeks":"N/A");
+//        lmp.setText(womanclient.getDetails().get("final_lmp")!=null?womanclient.getDetails().get("final_lmp"):"N/A");
+//        edd.setText(womanclient.getDetails().get("final_edd")!=null?womanclient.getDetails().get("final_edd"):"N/A");
+//        ga.setText(womanclient.getDetails().get("final_ga")!=null?womanclient.getDetails().get("final_ga")+" weeks":"N/A");
 
 
 
@@ -179,12 +185,60 @@ public class WomanDetailActivity extends Activity {
 //        if(!(womanclient.getDetails().get("TT1_Date_of_Vaccination")!=null?womanclient.getDetails().get("TT1_Date_of_Vaccination"):"").equalsIgnoreCase("")){
 //            TextView tt1_text = (TextView)findViewById(R.id.tt1date);
         //"██"+
-        ttcheck(womanclient,tt1TextView,(View)findViewById(R.id.womandetail_tt1_block),"tt1_final","Woman_TT1");
-        ttcheck(womanclient,tt2TextView,(View)findViewById(R.id.womandetail_tt2_block),"tt2_final","Woman_TT2");
-        ttcheck(womanclient,tt3TextView,(View)findViewById(R.id.womandetail_tt3_block),"tt3_final","Woman_TT3");
-        ttcheck(womanclient,tt4TextView,(View)findViewById(R.id.womandetail_tt4_block),"tt4_final","Woman_TT4");
-        ttcheck(womanclient,tt5TextView,(View)findViewById(R.id.womandetail_tt5_block),"tt5_final","Woman_TT5");
-//        tt1TextView.setText((womanclient.getDetails().get("tt1_final")!=null?womanclient.getDetails().get("tt1_final"):"N/A"));
+//        ttcheck(womanclient,tt3TextView,(View)findViewById(R.id.womandetail_tt3_block),"tt3_final","Woman_TT3");
+//        ttcheck(womanclient,tt4TextView,(View)findViewById(R.id.womandetail_tt4_block),"tt4_final","Woman_TT4");
+//        ttcheck(womanclient,tt5TextView,(View)findViewById(R.id.womandetail_tt5_block),"tt5_final","Woman_TT5");
+
+
+        registrationdate.setText((womanclient.getDetails().get("Member_Reg_Date")!=null?womanclient.getDetails().get("Member_Reg_Date"):"N/A"));
+        last_visit_date.setText((womanclient.getDetails().get("ELCO_Date")!=null?womanclient.getDetails().get("ELCO_Date"):"N/A"));
+
+        String ttstatusstring = (womanclient.getDetails().get("TT_Status")!=null?womanclient.getDetails().get("TT_Status"):"N/A");
+        if(ttstatusstring.equalsIgnoreCase("0")){
+            ttstatusstring = "No";
+        }else if(ttstatusstring.equalsIgnoreCase("1")){
+            ttstatusstring = "Yes";
+        }
+        tt_status.setText(ttstatusstring);
+
+        tt_doses.setText((womanclient.getDetails().get("TT_Dose")!=null?womanclient.getDetails().get("TT_Dose"):"N/A"));
+
+        String usingfp = (womanclient.getDetails().get("Using_FP")!=null?womanclient.getDetails().get("Using_FP"):"N/A");
+        if(usingfp.equalsIgnoreCase("0")){
+            usingfp = "No";
+        }else if(usingfp.equalsIgnoreCase("1")){
+            usingfp = "Yes";
+        }
+        use_fp_method.setText(usingfp);
+
+         String has_changed_fp = (womanclient.getDetails().get("Has_Changed")!=null?womanclient.getDetails().get("Has_Changed"):"N/A");
+        if(has_changed_fp.equalsIgnoreCase("0")){
+            has_changed_fp = "No";
+        }else if(has_changed_fp.equalsIgnoreCase("1")){
+            has_changed_fp = "Yes";
+        }
+        has_changed_fp_method.setText(has_changed_fp);
+
+
+        String lastfp = (womanclient.getDetails().get("Last_FP_Method")!=null?womanclient.getDetails().get("Last_FP_Method"):"N/A");
+        if(!(lastfp.equalsIgnoreCase("N/A")||lastfp.equalsIgnoreCase("99")||lastfp.equalsIgnoreCase(""))){
+            previous_fp_method.setText(arrayofbirthcontrol[Integer.parseInt(lastfp)]);
+        }else if (lastfp.equalsIgnoreCase("99")){
+            previous_fp_method.setText("None");
+        }else{
+            previous_fp_method.setText(lastfp);
+        }
+
+        String currentfp = (womanclient.getDetails().get("Changed_FP_Method")!=null?womanclient.getDetails().get("Changed_FP_Method"):"N/A");
+        if(!(currentfp.equalsIgnoreCase("N/A")||currentfp.equalsIgnoreCase(""))){
+            current_fp_method.setText(arrayofbirthcontrol[Integer.parseInt(currentfp)]);
+        }else{
+            current_fp_method.setText(currentfp);
+        }
+         fp_given.setText((womanclient.getDetails().get("Calc_FP_Given_Date")!=null?womanclient.getDetails().get("Calc_FP_Given_Date"):"N/A"));
+
+
+
 //        tt2TextView.setText((womanclient.getDetails().get("tt2_final")!=null?womanclient.getDetails().get("tt2_final"):"N/A"));
 //        tt3TextView.setText((womanclient.getDetails().get("tt3_final")!=null?womanclient.getDetails().get("tt3_final"):"N/A"));
 //        tt4TextView.setText((womanclient.getDetails().get("tt4_final")!=null?womanclient.getDetails().get("tt4_final"):"N/A"));

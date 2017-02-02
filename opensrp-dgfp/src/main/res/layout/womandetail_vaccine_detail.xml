@@ -4,238 +4,6 @@
     android:orientation="horizontal"
     android:weightSum="2"
     android:background="#ffffff">
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/listview_background_rounded">
-
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            >
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="TT 1 : "
-                android:layout_margin="5dp"
-                android:id="@+id/womandetail_tt1_text"
-                android:textSize="14sp"
-                android:textColor="@color/text_black"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical" />
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/client_list_header_dark_grey"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/womandetail_tt1_block"
-                    android:layout_margin="5dp" />
-
-                </TableRow>
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="N/A "
-                android:layout_margin="5dp"
-                android:id="@+id/womandetail_tt1"
-                android:textSize="14sp"
-                android:textColor="@color/text_black"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical" />
-
-
-        </TableRow>
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            >
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="TT 2 : "
-                android:id="@+id/womandetail_tt2_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/client_list_header_dark_grey"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/womandetail_tt2_block"
-                    android:layout_margin="5dp" />
-
-            </TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="N/A"
-                android:id="@+id/womandetail_tt2"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-
-        </TableRow>
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            >
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="TT 3 : "
-                android:id="@+id/womandetail_tt3_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical">
-                <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/client_list_header_dark_grey"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/womandetail_tt3_block"
-                    android:layout_margin="5dp" />
-            </TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="N/A"
-                android:id="@+id/womandetail_tt3"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-
-        </TableRow>
-
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            >
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="TT 4 : "
-                android:id="@+id/womandetail_tt4_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@color/client_list_header_dark_grey"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/womandetail_tt4_block"
-                    android:layout_margin="5dp" />
-            </TableRow>
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="N/A"
-                android:id="@+id/womandetail_tt4"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-
-        </TableRow>
-
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            >
-
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="TT 5 : "
-                android:id="@+id/womandetail_tt5_text"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <View
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/womandetail_tt5_block"
-                    android:background="@color/client_list_header_dark_grey"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp" />
-            </TableRow>
-
-
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="N/A"
-                android:id="@+id/womandetail_tt5"
-                android:textSize="14sp"
-                android:layout_margin="5dp"
-                android:textColor="@color/text_black"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1" />
-
-        </TableRow>
-
-
-
-    </TableLayout>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -252,9 +20,9 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="Pregnant: "
+                android:text="Registration Date: "
                 android:layout_margin="5dp"
-                android:id="@+id/pregnancy_text"
+                android:id="@+id/registration_text_label"
                 android:textSize="14sp"
                 android:textColor="@color/text_black"
                 android:layout_weight="1"
@@ -267,7 +35,7 @@
                 style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="N/A "
                 android:layout_margin="5dp"
-                android:id="@+id/womandetail_pregnancystatus"
+                android:id="@+id/womandetail_registration_date"
                 android:textSize="14sp"
                 android:textColor="@color/text_black"
                 android:layout_weight="1"
@@ -284,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="LMP: "
-                android:id="@+id/womandetail_lmp_text"
+                android:text="Last Visit Date: "
+                android:id="@+id/womandetail_last_visit_date_label"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
@@ -297,7 +65,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="N/A"
-                android:id="@+id/womandetail_lmp"
+                android:id="@+id/womandetail_last_visit_date"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
@@ -315,8 +83,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="EDD: "
-                android:id="@+id/womandetail_edd_text"
+                android:text="TT Status: "
+                android:id="@+id/womandetail_tt_status_label"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
@@ -329,7 +97,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="N/A"
-                android:id="@+id/womandetail_edd"
+                android:id="@+id/womandetail_tt_status"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
@@ -349,8 +117,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="GA : "
-                android:id="@+id/womandetail_ga_text"
+                android:text="TT Doses Given : "
+                android:id="@+id/womandetail_tt_doses_given_label"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
@@ -364,7 +132,177 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="N/A"
-                android:id="@+id/womandetail_ga"
+                android:id="@+id/womandetail_tt_doses_given"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Use Fp Method : "
+                android:id="@+id/womandetail_use_fp_text_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/womandetail_use_fp"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Has Changed Fp Method : "
+                android:id="@+id/womandetail_has_changed_fp_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/womandetail_has_changed_fp"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Previous FP Method : "
+                android:id="@+id/womandetail_previous_fp_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/womandetail_previous_fp"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Current FP Method : "
+                android:id="@+id/womandetail_current_fp_text_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/womandetail_current_fp"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="FP Product Given Date : "
+                android:id="@+id/womandetail_fp_product_given_text_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/womandetail_fp_product_given"
                 android:textSize="14sp"
                 android:layout_margin="5dp"
                 android:textColor="@color/text_black"
