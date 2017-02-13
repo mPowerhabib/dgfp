@@ -498,8 +498,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
                         alerttextstatus = setAlertStatus(lmpdate,"ANC1",alertlist);
 
                     }else{
-                        alerttextstatus = new alertTextandStatus("ANC1-"+lmpdate,"upcoming");
-
+                        alerttextstatus = new alertTextandStatus("Not synced","not synced");
                     }
                 }
             }
