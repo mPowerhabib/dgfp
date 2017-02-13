@@ -173,24 +173,24 @@ public class mCarePncDetailActivity extends Activity {
 
     }
 
-    private void pregnancyin2years(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPREGTWYRS")!=null?ecclient.getDetails().get("FWPSRPREGTWYRS"):"0";
-        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
-        stillbirth.setText(text);
-    }
-
-    private void historyofsb(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPRSB")!=null?ecclient.getDetails().get("FWPSRPRSB"):"0";
-        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
-        stillbirth.setText(text);
-    }
-
-    private void historyofmr(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPRMC")!=null?ecclient.getDetails().get("FWPSRPRMC"):"0";
-        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
-        stillbirth.setText(text);
-
-    }
+//    private void pregnancyin2years(CommonPersonObject ecclient) {
+//        String text = ecclient.getDetails().get("FWPSRPREGTWYRS")!=null?ecclient.getDetails().get("FWPSRPREGTWYRS"):"0";
+//        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
+//        stillbirth.setText(text);
+//    }
+//
+//    private void historyofsb(CommonPersonObject ecclient) {
+//        String text = ecclient.getDetails().get("FWPSRPRSB")!=null?ecclient.getDetails().get("FWPSRPRSB"):"0";
+//        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
+//        stillbirth.setText(text);
+//    }
+//
+//    private void historyofmr(CommonPersonObject ecclient) {
+//        String text = ecclient.getDetails().get("FWPSRPRMC")!=null?ecclient.getDetails().get("FWPSRPRMC"):"0";
+//        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
+//        stillbirth.setText(text);
+//
+//    }
 
     private void numberofstillbirthview(CommonPersonObject ecclient) {
         String text = ecclient.getDetails().get("FWPSRNBDTH")!=null?ecclient.getDetails().get("FWPSRNBDTH"):"0";
@@ -198,12 +198,12 @@ public class mCarePncDetailActivity extends Activity {
         stillbirth.setText(text);
     }
 
-    private void numberofChildrenView(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRTOTBIRTH")!=null?ecclient.getDetails().get("FWPSRTOTBIRTH"):"0";
-        TextView numberofChildren = (TextView)findViewById(R.id.livechildren);
-        numberofChildren.setText(text);
-
-    }
+//    private void numberofChildrenView(CommonPersonObject ecclient) {
+//        String text = ecclient.getDetails().get("FWPSRTOTBIRTH")!=null?ecclient.getDetails().get("FWPSRTOTBIRTH"):"0";
+//        TextView numberofChildren = (TextView)findViewById(R.id.livechildren);
+//        numberofChildren.setText(text);
+//
+//    }
     private void checktempView(CommonPersonObjectClient ecclient) {
         LinearLayout templayout = (LinearLayout)findViewById(R.id.temperature_layout);
         TextView anc1date = (TextView)findViewById(R.id.temperature);

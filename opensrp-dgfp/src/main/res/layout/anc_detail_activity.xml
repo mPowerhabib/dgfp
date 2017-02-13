@@ -106,7 +106,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:layout_margin="2dp"
-                    android:id="@+id/edd_layout">
+                    android:id="@+id/edd_layout"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="50dp"
@@ -338,7 +339,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle"
-                        android:text="Number of Alive Children"
+                        android:text="TT Given"
                         android:id="@+id/textView18"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
@@ -348,7 +349,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/livechildren"
+                        android:id="@+id/tt_given"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />
@@ -372,7 +373,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle"
-                        android:text="Number of Stillbirths"
+                        android:text="Gravita"
                         android:id="@+id/textView8"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
@@ -382,7 +383,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/stillbirths"
+                        android:id="@+id/gravita"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />
@@ -400,7 +401,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle"
-                        android:text="History of MR"
+                        android:text="Age of Youngest Child"
                         android:id="@+id/history_of_mr_label"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
@@ -409,7 +410,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/history_of_mr"
+                        android:id="@+id/age_of_youngest_child"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />
@@ -427,7 +428,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle"
-                        android:text="History of SB"
+                        android:text="Has Bled During Pregnancy"
                         android:id="@+id/history_of_sb_label"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
@@ -437,7 +438,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle.ListView.Medium"
-                        android:id="@+id/history_of_sb"
+                        android:id="@+id/has_bled_during_pregnancy"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />
@@ -454,7 +455,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle"
-                        android:text="Pregnancy in last 2 years"
+                        android:text="Last Delivery Process"
                         android:id="@+id/history_of_pregnancy_label"
                         android:layout_weight="1"
                         android:layout_gravity="center_vertical"
@@ -464,7 +465,111 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         style="@style/CustomFontTextViewStyle.ListView.Medium"
-                        android:id="@+id/number_of_pregnancy"
+                        android:id="@+id/last_delivery_process"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp" >
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Prolonged Delivery"
+                        android:id="@+id/prolonged_delivery_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black" />
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:id="@+id/prolonged_delivery"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp" >
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Child Died Within 48 Hours"
+                        android:id="@+id/child_died_within_hours_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black" />
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:id="@+id/child_died_within_hours"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp" >
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Still Birth"
+                        android:id="@+id/still_birth_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black" />
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:id="@+id/still_birth"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp" >
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Heavy Bleeding During Delivery"
+                        android:id="@+id/heavy_bleeding_during_delivery_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black" />
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:id="@+id/heavy_bleeding_during_delivery"
                         android:layout_gravity="center_vertical"
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />

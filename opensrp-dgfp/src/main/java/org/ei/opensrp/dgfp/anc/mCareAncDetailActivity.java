@@ -139,7 +139,16 @@ public class mCareAncDetailActivity extends Activity {
         checkAnc2view(ancclient);
         checkAnc3view(ancclient);
         checkAnc4view(ancclient);
-//        numberofChildrenView(elcoparent);
+
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.tt_given),"TT_Count");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.gravita),"Gravida");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.age_of_youngest_child),"Age_Youngest_Child");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.has_bled_during_pregnancy),"Bleeding");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.last_delivery_process),"Caesarean");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.prolonged_delivery),"Prolong_Delivery");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.child_died_within_hours),"Birth_Outcome");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.still_birth),"Dead_Child");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.heavy_bleeding_during_delivery),"Heavy_Blood_Flow");
 //        numberofstillbirthview(elcoparent);
 //        historyofmr(elcoparent);
 //        historyofsb(elcoparent);
@@ -197,49 +206,25 @@ public class mCareAncDetailActivity extends Activity {
 
     }
 
-    private void pregnancyin2years(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPREGTWYRS")!=null?ecclient.getDetails().get("FWPSRPREGTWYRS"):"N/A";
-        TextView stillbirth = (TextView)findViewById(R.id.number_of_pregnancy);
-        stillbirth.setText(text);
+
+    private void assign_text_to_givenView(CommonPersonObjectClient ecclient,TextView tview,String detailvariable) {
+        String text = ecclient.getDetails().get(detailvariable)!=null?ecclient.getDetails().get(detailvariable):"N/A";
+        tview.setText(text);
     }
 
-    private void historyofsb(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPRSB")!=null?ecclient.getDetails().get("FWPSRPRSB"):"N/A";
-        TextView stillbirth = (TextView)findViewById(R.id.history_of_sb);
-        stillbirth.setText(text);
-    }
 
-    private void historyofmr(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRPRMC")!=null?ecclient.getDetails().get("FWPSRPRMC"):"N/A";
-        TextView stillbirth = (TextView)findViewById(R.id.history_of_mr);
-        stillbirth.setText(text);
-
-    }
-
-    private void numberofstillbirthview(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRNBDTH")!=null?ecclient.getDetails().get("FWPSRNBDTH"):"N/A";
-        TextView stillbirth = (TextView)findViewById(R.id.stillbirths);
-        stillbirth.setText(text);
-    }
-
-    private void numberofChildrenView(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRTOTBIRTH")!=null?ecclient.getDetails().get("FWPSRTOTBIRTH"):"N/A";
-        TextView numberofChildren = (TextView)findViewById(R.id.livechildren);
-        numberofChildren.setText(text);
-
-    }
     private void checkAnc4view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.anc4_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_4");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWANC4DATE")!=null){
+        if(alertlist.size()!=0 && ecclient.getDetails().get("ANC4_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
             for(int i = 0;i<alertlist.size();i++){
                 String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWANC4DATE")!=null?ecclient.getDetails().get("FWANC4DATE"):"";
+                String text = ecclient.getDetails().get("ANC4_Due_Date")!=null?ecclient.getDetails().get("ANC4_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.anc4date);
-                if((ecclient.getDetails().get("ANC4_current_formStatus")!=null?ecclient.getDetails().get("ANC4_current_formStatus"):"").equalsIgnoreCase("upcoming")){
+                if((ecclient.getDetails().get("anc4_current_formStatus")!=null?ecclient.getDetails().get("anc4_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("ANC4_current_formStatus")!=null?ecclient.getDetails().get("ANC4_current_formStatus"):"").equalsIgnoreCase("urgent")){
+                }else if((ecclient.getDetails().get("anc4_current_formStatus")!=null?ecclient.getDetails().get("anc4_current_formStatus"):"").equalsIgnoreCase("urgent")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
                 }
                 anc1date.setText(text);
@@ -252,15 +237,15 @@ public class mCareAncDetailActivity extends Activity {
     private void checkAnc3view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.anc3_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_3");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWANC3DATE")!=null){
+        if(alertlist.size()!=0 && ecclient.getDetails().get("ANC3_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
             for(int i = 0;i<alertlist.size();i++){
                 String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWANC3DATE")!=null?ecclient.getDetails().get("FWANC3DATE"):"";
+                String text = ecclient.getDetails().get("ANC3_Due_Date")!=null?ecclient.getDetails().get("ANC3_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.anc3date);
-                if((ecclient.getDetails().get("ANC3_current_formStatus")!=null?ecclient.getDetails().get("ANC3_current_formStatus"):"").equalsIgnoreCase("upcoming")){
+                if((ecclient.getDetails().get("anc3_current_formStatus")!=null?ecclient.getDetails().get("anc3_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("ANC3_current_formStatus")!=null?ecclient.getDetails().get("ANC3_current_formStatus"):"").equalsIgnoreCase("urgent")){
+                }else if((ecclient.getDetails().get("anc3_current_formStatus")!=null?ecclient.getDetails().get("anc3_current_formStatus"):"").equalsIgnoreCase("urgent")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
                 }
                 anc1date.setText(text);
@@ -274,15 +259,15 @@ public class mCareAncDetailActivity extends Activity {
     private void checkAnc2view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.anc2_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_2");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWANC2DATE")!=null){
+        if(alertlist.size()!=0 && ecclient.getDetails().get("ANC2_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
             for(int i = 0;i<alertlist.size();i++){
                 String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWANC2DATE")!=null?ecclient.getDetails().get("FWANC2DATE"):"";
+                String text = ecclient.getDetails().get("ANC2_Due_Date")!=null?ecclient.getDetails().get("ANC2_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.anc2date);
-                if((ecclient.getDetails().get("ANC2_current_formStatus")!=null?ecclient.getDetails().get("ANC2_current_formStatus"):"").equalsIgnoreCase("upcoming")){
+                if((ecclient.getDetails().get("anc2_current_formStatus")!=null?ecclient.getDetails().get("anc2_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("ANC2_current_formStatus")!=null?ecclient.getDetails().get("ANC2_current_formStatus"):"").equalsIgnoreCase("urgent")){
+                }else if((ecclient.getDetails().get("anc2_current_formStatus")!=null?ecclient.getDetails().get("anc2_current_formStatus"):"").equalsIgnoreCase("urgent")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
                 }
                 anc1date.setText(text);
@@ -295,12 +280,12 @@ public class mCareAncDetailActivity extends Activity {
 
     private void checkAnc1view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.anc1_layout);
-        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_1");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWANC1DATE")!=null){
+//        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_1");
+        if(ecclient.getDetails().get("ANC1_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
-            for(int i = 0;i<alertlist.size();i++){
-                String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWANC1DATE")!=null?ecclient.getDetails().get("FWANC1DATE"):"";
+//            for(int i = 0;i<alertlist.size();i++){
+//                String status = alertlist.get(i).status().value();
+                String text = ecclient.getDetails().get("ANC1_Due_Date")!=null?ecclient.getDetails().get("ANC1_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.anc1date);
                 if((ecclient.getDetails().get("anc1_current_formStatus")!=null?ecclient.getDetails().get("anc1_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
@@ -309,7 +294,7 @@ public class mCareAncDetailActivity extends Activity {
                 }
                 anc1date.setText(text);
 
-            }
+//            }
         }else{
             anc1layout.setVisibility(View.GONE);
         }
