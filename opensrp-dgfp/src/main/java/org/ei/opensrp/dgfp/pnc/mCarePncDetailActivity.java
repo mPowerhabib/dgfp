@@ -204,11 +204,7 @@ public class mCarePncDetailActivity extends Activity {
 //
 //    }
 
-    private void numberofstillbirthview(CommonPersonObject ecclient) {
-        String text = ecclient.getDetails().get("FWPSRNBDTH")!=null?ecclient.getDetails().get("FWPSRNBDTH"):"0";
-        TextView stillbirth = (TextView)findViewById(R.id.preganancy_type_of_delivery);
-        stillbirth.setText(text);
-    }
+
 
 //    private void numberofChildrenView(CommonPersonObject ecclient) {
 //        String text = ecclient.getDetails().get("FWPSRTOTBIRTH")!=null?ecclient.getDetails().get("FWPSRTOTBIRTH"):"0";
