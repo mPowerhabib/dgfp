@@ -46,37 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/smart_register_client_divider_height"
-        android:src="@color/smart_register_client_divider_color"
-        android:id="@+id/imageView3" />
-
-    <LinearLayout
-            android:id="@+id/clients_header_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/list_view_margin_left_and_right"
-            android:orientation="horizontal">
-
-        <org.ei.opensrp.view.customControls.CustomFontTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/elco_details_summary"
-            android:id="@+id/inhabitants"
-            style="@style/CustomFontTextViewStyle.ListView.Medium"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/text_black"
-            android:textStyle="bold"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/smart_register_client_divider_height"
-            android:src="@color/smart_register_client_divider_color"/>
-
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -95,149 +64,36 @@
                 android:id="@+id/imageView" />
 
             <LinearLayout
+                    android:id="@+id/clients_header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/list_view_margin_left_and_right"
+                    android:orientation="horizontal">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/inhabitants"
+                    style="@style/CustomFontTextViewStyle.ListView.Medium"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="PNC Visits" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/smart_register_client_divider_height"
+                android:src="@color/smart_register_client_divider_color"
+                android:id="@+id/imageView3" />
+
+            <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ffffff">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_margin="2dp"
-                    android:id="@+id/edd_layout">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView7"
-                        android:src="@mipmap/icon_event_edd"
-                        android:layout_margin="10dp" />
-
-                    <org.ei.opensrp.view.customControls.CustomFontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        style="@style/CustomFontTextViewStyle"
-                        android:text="@string/pnc_Details_date_of_outcome"
-                        android:id="@+id/textView6"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/date_of_outcome"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/text_black"
-                        android:layout_marginRight="5dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_margin="2dp"
-                    android:id="@+id/pregnancy_outcome_layout">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView89"
-                        android:src="@mipmap/icon_event_child"
-                        android:layout_margin="10dp" />
-
-                    <org.ei.opensrp.view.customControls.CustomFontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        style="@style/CustomFontTextViewStyle"
-                        android:text="@string/pregnancy_outcome"
-                        android:id="@+id/pregnancy_outcome_label"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/preganancy_outcome"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/text_black"
-                        android:layout_marginRight="5dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_margin="2dp"
-                    android:id="@+id/pregnancy_type_of_delivery">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView891"
-                        android:src="@mipmap/icon_event_child"
-                        android:layout_margin="10dp" />
-
-                    <org.ei.opensrp.view.customControls.CustomFontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        style="@style/CustomFontTextViewStyle"
-                        android:text="@string/pnc_typeofdelivery"
-                        android:id="@+id/type_of_delivery_label"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:id="@+id/preganancy_type_of_delivery"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/text_black"
-                        android:layout_marginRight="5dp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_margin="2dp"
-                    android:id="@+id/temperature_layout">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/imageView800"
-                        android:src="@mipmap/thermometer"
-                        android:layout_margin="10dp" />
-
-                    <org.ei.opensrp.view.customControls.CustomFontTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        style="@style/CustomFontTextViewStyle"
-                        android:text="Temperature"
-                        android:id="@+id/temperature_level"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Medium Text"
-                        android:id="@+id/temperature"
-                        android:layout_gravity="center_vertical"
-                        android:textColor="@color/text_black"
-                        android:layout_marginRight="5dp" />
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -349,6 +205,304 @@
                         android:textColor="@color/text_black"
                         android:layout_marginRight="5dp" />
                 </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/outcome_header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/list_view_margin_left_and_right"
+                android:orientation="horizontal">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/outcomedetails"
+                    style="@style/CustomFontTextViewStyle.ListView.Medium"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="Outcome Details" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/smart_register_client_divider_height"
+                android:src="@color/smart_register_client_divider_color"
+                android:id="@+id/imageView11" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp"
+                    android:id="@+id/outcometype_layout">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Outcome Type"
+                        android:id="@+id/outcometype_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Medium Text"
+                        android:id="@+id/outcome_type"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp"
+                    android:id="@+id/deliverytype_layout">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Delivery Type"
+                        android:id="@+id/deliverytype_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Medium Text"
+                        android:id="@+id/deliverytype"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp"
+                    android:id="@+id/deliverylocation_layout">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Delivery Location"
+                        android:id="@+id/deliverylocation_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/deliverylocation"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="No of Live Birth"
+                        android:id="@+id/no_of_Live_birth_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:singleLine="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/no_of_live_birth"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Is Referred"
+                        android:id="@+id/isreferred_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/is_referred"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Child  wrapped with clean/dry clothe"
+                        android:id="@+id/child_wrapped_with_dry_clothe_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/child_wrapped_with_dry_clother"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Used Chlorhexidin 7.1%"
+                        android:id="@+id/chlorhexdin_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/chlorhexidin"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Breastfeeding initiated within 1 hour of birth"
+                        android:id="@+id/breastfeeding_initiated_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/breastfeeding_initiated"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_margin="2dp">
+
+                    <org.ei.opensrp.view.customControls.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle"
+                        android:text="Baby kept away from bath for 1st 3 days"
+                        android:id="@+id/baby_kept_away_label"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/CustomFontTextViewStyle.ListView.Medium"
+                        android:text="Medium Text"
+                        android:id="@+id/baby_kept_away"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/text_black"
+                        android:layout_marginRight="5dp" />
+                </LinearLayout>
+
 
             </LinearLayout>
 

@@ -96,7 +96,10 @@ public class mCarePNCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
     private String[] buildFormNameList(){
         List<String> formNames = new ArrayList<String>();
         formNames.add("childregistration");
-//        formNames.add("pnc_reminder_visit_2");
+        formNames.add("pnc_visit1");
+        formNames.add("pnc_visit2");
+        formNames.add("pnc_visit3");
+        formNames.add("pnc_visit4");
 //        formNames.add("pnc_reminder_visit_3");
 
 

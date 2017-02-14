@@ -169,21 +169,7 @@ public class ChildDetailActivity extends Activity {
     }
 
 
-    private void checktempView(CommonPersonObjectClient ecclient) {
-        LinearLayout templayout = (LinearLayout)findViewById(R.id.temperature_layout);
-        TextView anc1date = (TextView)findViewById(R.id.temperature);
-        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_4");
-        if(ecclient.getDetails().get("FWPNC3TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC3TEMP")!=null?ecclient.getDetails().get("FWPNC3TEMP"):"");
-        }else if(ecclient.getDetails().get("FWPNC2TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC2TEMP")!=null?ecclient.getDetails().get("FWPNC2TEMP"):"");
-        }else if(ecclient.getDetails().get("FWPNC1TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC1TEMP")!=null?ecclient.getDetails().get("FWPNC1TEMP"):"");
-        }else{
-            templayout.setVisibility(View.GONE);
-        }
 
-    }
     private void checkEncc3view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.encc3_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "enccrv_3");

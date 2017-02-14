@@ -72,8 +72,6 @@ public class mCarePncDetailActivity extends Activity {
         TextView jivitahhid = (TextView) findViewById(R.id.jivitahhid);
         TextView godhhid = (TextView) findViewById(R.id.gobhhid);
         TextView village = (TextView) findViewById(R.id.village);
-        TextView typeofdelivery  = (TextView) findViewById(R.id.preganancy_type_of_delivery);
-        TextView pregnancy_outcome  = (TextView) findViewById(R.id.preganancy_outcome);
 
 
         ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
@@ -123,39 +121,53 @@ public class mCarePncDetailActivity extends Activity {
         godhhid.setText(Html.fromHtml(getString(R.string.hhid_gob_elco_label)+" " + (ancclient.getColumnmaps().get("GOBHHID") != null ? ancclient.getColumnmaps().get("GOBHHID") : "")));
         village.setText(Html.fromHtml(getString(R.string.elco_details_mauza) + " " + humanize(ancclient.getDetails().get("mauza") != null ? ancclient.getDetails().get("mauza") : "")));
 
-        String type_of_delivery = ancclient.getDetails().get("FWPNC1DELTYPE") != null ? ancclient.getDetails().get("FWPNC1DELTYPE") : "";
-        if (type_of_delivery.equalsIgnoreCase("1")){
-            typeofdelivery.setText(getString(R.string.norma_birth));
-        } else if (type_of_delivery.equalsIgnoreCase("2")){
-            typeofdelivery.setText(getString(R.string.Caeserian_section));
-        }else{
-            typeofdelivery.setText(getString(R.string.dont_know));
-        }
-           String outcomevalue = ancclient.getColumnmaps().get("FWBNFSTS")!=null?ancclient.getColumnmaps().get("FWBNFSTS") : "";
+//        String type_of_delivery = ancclient.getDetails().get("FWPNC1DELTYPE") != null ? ancclient.getDetails().get("FWPNC1DELTYPE") : "";
+//        if (type_of_delivery.equalsIgnoreCase("1")){
+//            typeofdelivery.setText(getString(R.string.norma_birth));
+//        } else if (type_of_delivery.equalsIgnoreCase("2")){
+//            typeofdelivery.setText(getString(R.string.Caeserian_section));
+//        }else{
+//            typeofdelivery.setText(getString(R.string.dont_know));
+//        }
+//           String outcomevalue = ancclient.getColumnmaps().get("FWBNFSTS")!=null?ancclient.getColumnmaps().get("FWBNFSTS") : "";
+//
+//        if (outcomevalue.equalsIgnoreCase("3")){
+//            pregnancy_outcome.setText(getString(R.string.mcare_pnc_liveBirth));
+//        } else if (outcomevalue.equalsIgnoreCase("4")){
+//            pregnancy_outcome.setText(getString(R.string.mcare_pnc_Stillbirth));
+//        }
 
-        if (outcomevalue.equalsIgnoreCase("3")){
-            pregnancy_outcome.setText(getString(R.string.mcare_pnc_liveBirth));
-        } else if (outcomevalue.equalsIgnoreCase("4")){
-            pregnancy_outcome.setText(getString(R.string.mcare_pnc_Stillbirth));
-        }
 
-        AllCommonsRepository allancRepository = Context.getInstance().allCommonsRepositoryobjects("members");
-        CommonPersonObject ancobject = allancRepository.findByCaseID(ancclient.entityId());
-        AllCommonsRepository allelcorep = Context.getInstance().allCommonsRepositoryobjects("members");
-        CommonPersonObject elcoparent = allelcorep.findByCaseID(ancobject.getRelationalId());
        checkPnc1view(ancclient);
         checkPnc2view(ancclient);
         checkAnc3view(ancclient);
-        checktempView(ancclient);
        doolay(ancclient);
         final ImageView householdview = (ImageView) findViewById(R.id.householdprofileview);
 
         if (ancclient.getDetails().get("profilepic") != null) {
             setImagetoHolder(mCarePncDetailActivity.this, ancclient.getDetails().get("profilepic"), householdview, R.mipmap.woman_placeholder);
         }
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.outcome_type),"Visit_Status");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.deliverytype),"Delivery_Type");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.deliverylocation),"Where_Delivered");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.no_of_live_birth),"Num_Live_Birth");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.is_referred),"Is_Referred");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.child_wrapped_with_dry_clother),"Is_Cleaned");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.chlorhexidin),"Chlorhexidin");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.breastfeeding_initiated),"Breastmilk_Fed");
+        assign_text_to_givenView(ancclient,(TextView)findViewById(R.id.baby_kept_away),"Not_Bathed");
 
 
 
+
+
+
+
+    }
+
+    private void assign_text_to_givenView(CommonPersonObjectClient ecclient,TextView tview,String detailvariable) {
+        String text = ecclient.getDetails().get(detailvariable)!=null?ecclient.getDetails().get(detailvariable):"N/A";
+        tview.setText(text);
     }
 
     private void doolay(CommonPersonObjectClient ancclient) {
@@ -204,33 +216,19 @@ public class mCarePncDetailActivity extends Activity {
 //        numberofChildren.setText(text);
 //
 //    }
-    private void checktempView(CommonPersonObjectClient ecclient) {
-        LinearLayout templayout = (LinearLayout)findViewById(R.id.temperature_layout);
-        TextView anc1date = (TextView)findViewById(R.id.temperature);
-        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_4");
-        if(ecclient.getDetails().get("FWPNC3TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC3TEMP")!=null?ecclient.getDetails().get("FWPNC3TEMP"):"");
-        }else if(ecclient.getDetails().get("FWPNC2TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC2TEMP")!=null?ecclient.getDetails().get("FWPNC2TEMP"):"");
-        }else if(ecclient.getDetails().get("FWPNC1TEMP")!=null){
-            anc1date.setText(ecclient.getDetails().get("FWPNC1TEMP")!=null?ecclient.getDetails().get("FWPNC1TEMP"):"");
-        }else{
-            templayout.setVisibility(View.GONE);
-        }
 
-    }
     private void checkAnc3view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.pnc3_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "ancrv_3");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWPNC3DATE")!=null){
+        if(alertlist.size()!=0 && ecclient.getDetails().get("PNC3_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
             for(int i = 0;i<alertlist.size();i++){
                 String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWPNC3DATE")!=null?ecclient.getDetails().get("FWPNC3DATE"):"";
+                String text = ecclient.getDetails().get("PNC3_Due_Date")!=null?ecclient.getDetails().get("PNC3_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.pnc3date);
-                if((ecclient.getDetails().get("pnc3_current_formStatus")!=null?ecclient.getDetails().get("pnc3_current_formStatus"):"").equalsIgnoreCase("upcoming")){
+                if((ecclient.getDetails().get("PNC3_current_formStatus")!=null?ecclient.getDetails().get("PNC3_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("pnc3_current_formStatus")!=null?ecclient.getDetails().get("pnc3_current_formStatus"):"").equalsIgnoreCase("urgent")){
+                }else if((ecclient.getDetails().get("PNC3_current_formStatus")!=null?ecclient.getDetails().get("PNC3_current_formStatus"):"").equalsIgnoreCase("urgent")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
                 }
                 anc1date.setText(text);
@@ -244,15 +242,15 @@ public class mCarePncDetailActivity extends Activity {
     private void checkPnc2view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.pnc2_layout);
         List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "pncrv_2");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWPNC2DATE")!=null){
+        if(alertlist.size()!=0 && ecclient.getDetails().get("PNC2_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
             for(int i = 0;i<alertlist.size();i++){
                 String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWPNC2DATE")!=null?ecclient.getDetails().get("FWPNC2DATE"):"";
+                String text = ecclient.getDetails().get("PNC2_Due_Date")!=null?ecclient.getDetails().get("PNC2_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.pnc2date);
-                if((ecclient.getDetails().get("pnc2_current_formStatus")!=null?ecclient.getDetails().get("pnc2_current_formStatus"):"").equalsIgnoreCase("upcoming")){
+                if((ecclient.getDetails().get("PNC2_current_formStatus")!=null?ecclient.getDetails().get("PNC2_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
-                }else if((ecclient.getDetails().get("pnc2_current_formStatus")!=null?ecclient.getDetails().get("pnc2_current_formStatus"):"").equalsIgnoreCase("urgent")){
+                }else if((ecclient.getDetails().get("PNC2_current_formStatus")!=null?ecclient.getDetails().get("PNC2_current_formStatus"):"").equalsIgnoreCase("urgent")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_urgent_red));
                 }
                 anc1date.setText(text);
@@ -265,12 +263,12 @@ public class mCarePncDetailActivity extends Activity {
 
     private void checkPnc1view(CommonPersonObjectClient ecclient) {
         LinearLayout anc1layout = (LinearLayout)findViewById(R.id.pnc1_layout);
-        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "pncrv_1");
-        if(alertlist.size()!=0 && ecclient.getDetails().get("FWPNC1DATE")!=null){
+//        List<Alert> alertlist = Context.getInstance().alertService().findByEntityIdAndAlertNames(ecclient.entityId(), "pncrv_1");
+        if(ecclient.getDetails().get("PNC1_Due_Date")!=null){
 //            alerttextstatus = setAlertStatus("ANC1",alertlist);
-            for(int i = 0;i<alertlist.size();i++){
-                String status = alertlist.get(i).status().value();
-                String text = ecclient.getDetails().get("FWPNC1DATE")!=null?ecclient.getDetails().get("FWPNC1DATE"):"";
+//            for(int i = 0;i<alertlist.size();i++){
+//                String status = alertlist.get(i).status().value();
+                String text = ecclient.getDetails().get("PNC1_Due_Date")!=null?ecclient.getDetails().get("PNC1_Due_Date"):"";
                 TextView anc1date = (TextView)findViewById(R.id.pnc1date);
                 if((ecclient.getDetails().get("pnc1_current_formStatus")!=null?ecclient.getDetails().get("pnc1_current_formStatus"):"").equalsIgnoreCase("upcoming")){
                     anc1date.setTextColor(getResources().getColor(R.color.alert_complete_green));
@@ -279,7 +277,7 @@ public class mCarePncDetailActivity extends Activity {
                 }
                 anc1date.setText(text);
 
-            }
+//            }
         }else{
             anc1layout.setVisibility(View.GONE);
         }
