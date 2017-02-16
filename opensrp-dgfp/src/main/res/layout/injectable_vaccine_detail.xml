@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:background="#ffffff">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/listview_background_rounded">
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Menstruation Stopped :"
+                android:layout_margin="5dp"
+                android:id="@+id/registration_text_label"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A "
+                android:layout_margin="5dp"
+                android:id="@+id/menstruationstopped"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Heavy Blood Flow During Menstruation : "
+                android:id="@+id/womandetail_last_visit_date_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/heavybloodflow"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Blood Drip Between Two Menstrual :"
+                android:id="@+id/womandetail_tt_status_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/blood_drop_between_two_menstrual"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Irregular Period : "
+                android:id="@+id/womandetail_tt_doses_given_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/irregular_period"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="Slightly Weight Gain : "
+                android:id="@+id/womandetail_use_fp_text_label"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+
+            <org.ei.opensrp.view.customControls.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                style="@style/CustomFontTextViewStyle.noPadding"
+                android:text="N/A"
+                android:id="@+id/slightlyweightgain"
+                android:textSize="14sp"
+                android:layout_margin="5dp"
+                android:textColor="@color/text_black"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</LinearLayout>
