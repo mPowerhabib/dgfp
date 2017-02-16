@@ -228,6 +228,9 @@ public class dgfpANCSmartRegisterFragment extends SecuredNativeSmartRegisterCurs
                     Log.v("do as you will", (String) view.getTag(R.id.textforAncRegister));
                     showFragmentDialog(new EditDialogOptionModelForANC((String)view.getTag(R.id.textforAncRegister),(String)view.getTag(R.id.AlertStatustextforAncRegister)), view.getTag(R.id.clientobject));
                     break;
+                case R.id.nbnf_due_date:
+                    showFragmentDialog(new EditDialogOptionModelfornbnf(), view.getTag(R.id.clientobject));
+                    break;
             }
         }
 

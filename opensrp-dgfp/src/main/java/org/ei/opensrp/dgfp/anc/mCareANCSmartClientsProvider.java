@@ -469,9 +469,9 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         NBNFDueDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pc.getDetails().get("Visit_Status").equalsIgnoreCase("1")||pc.getDetails().get("Visit_Status").equalsIgnoreCase("2")||pc.getDetails().get("Visit_Status").equalsIgnoreCase("6")||pc.getDetails().get("Preg_Status").equalsIgnoreCase("1")||pc.getDetails().get("Preg_Status").equalsIgnoreCase("4")){
+//                if(pc.getDetails().get("Visit_Status").equalsIgnoreCase("1")||pc.getDetails().get("Visit_Status").equalsIgnoreCase("2")||pc.getDetails().get("Visit_Status").equalsIgnoreCase("6")||pc.getDetails().get("Preg_Status").equalsIgnoreCase("1")||pc.getDetails().get("Preg_Status").equalsIgnoreCase("4")){
                     ((mCareANCSmartRegisterActivity) ((Activity) context)).startFormActivity("birth_notification", pc.entityId(),null);
-                }
+//                }
             }
         });
         setalerttextandColorInView(NBNFDueDate, alerttextstatus, pc);

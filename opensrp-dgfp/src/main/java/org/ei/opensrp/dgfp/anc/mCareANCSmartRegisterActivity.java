@@ -156,7 +156,7 @@ public class mCareANCSmartRegisterActivity extends SecuredNativeSmartRegisterAct
     public DialogOption[] getEditOptions() {
         return new DialogOption[]{
 
-                new OpenFormOption(getResources().getString(R.string.nbnf), "birthnotificationpregnancystatusfollowup", formController)
+                new OpenFormOption(getResources().getString(R.string.nbnf), "birth_notification", formController)
         };
     }
     public DialogOption[] getEditOptionsforanc(String visittext,String alertstatus) {
