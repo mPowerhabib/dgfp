@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +21,12 @@ import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.dgfp.hh_member.HouseHoldDetailActivity;
 import org.ei.opensrp.domain.Alert;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.File;
 import java.io.IOException;
@@ -68,14 +75,14 @@ public class WomanDetailActivity extends Activity {
         TextView hid = (TextView) findViewById(R.id.womandetail_womahid);
         TextView husbandname = (TextView) findViewById(R.id.womandetail_husbandname);
 //        TextView pregnancystatus = (TextView) findViewById(R.id.womandetail_pregnancystatus);
-        TextView fathersname = (TextView) findViewById(R.id.womandetail_fathers_name);
-        TextView epicardno = (TextView) findViewById(R.id.womandetail_epicardno);
+        TextView marriagelife = (TextView) findViewById(R.id.womandetail_marriage_life);
+//        TextView epicardno = (TextView) findViewById(R.id.womandetail_epicardno);
         TextView womandob = (TextView) findViewById(R.id.womandetail_womandob);
         TextView address = (TextView) findViewById(R.id.womandetail_address);
         TextView maritalstatus = (TextView) findViewById(R.id.womandetail_marital_status);
-        TextView contactno = (TextView) findViewById(R.id.womandetail_phone_number);
+//        TextView contactno = (TextView) findViewById(R.id.womandetail_phone_number);
         TextView today = (TextView)findViewById(R.id.woman_detail_today);
-        TextView vaccination =(TextView) findViewById(R.id.womandetail_vaccinationstatus);
+//        TextView vaccination =(TextView) findViewById(R.id.womandetail_vaccinationstatus);
 
         //Woman summary/////////////////////////////////////////////////
         TextView registrationdate =(TextView) findViewById(R.id.womandetail_registration_date);
@@ -106,33 +113,37 @@ public class WomanDetailActivity extends Activity {
             }
         });
 
-        name.setText(humanize((womanclient.getColumnmaps().get("Member_Fname") != null ? womanclient.getColumnmaps().get("Member_Fname") : "").replace("+", "_")));
+        name.setText(humanize((womanclient.getColumnmaps().get("Mem_F_Name") != null ? womanclient.getColumnmaps().get("Mem_F_Name") : "").replace("+", "_")));
 
-        brid.setText(humanize((womanclient.getDetails().get("Member_BRID") != null ? womanclient.getDetails().get("Member_BRID") : "").replace("+", "_")));
+        brid.setText(humanize("BRID: "+(womanclient.getDetails().get("Mem_BRID") != null ? womanclient.getDetails().get("Mem_BRID") : "").replace("+", "_")));
 
-        nid.setText(humanize((womanclient.getDetails().get("Member_NID") != null ? womanclient.getDetails().get("Member_NID") : "").replace("+", "_")));
+        nid.setText(humanize("NID: "+(womanclient.getDetails().get("Mem_NID") != null ? womanclient.getDetails().get("Mem_NID") : "").replace("+", "_")));
 
-        hid.setText(humanize((womanclient.getDetails().get("Member_HID") != null ? womanclient.getDetails().get("Member_HID") : "").replace("+", "_")));
+        hid.setText(humanize("GOB HHID: "+(womanclient.getDetails().get("Member_GoB_HHID") != null ? womanclient.getDetails().get("Member_GoB_HHID") : "").replace("+", "_")));
 
-        husbandname.setText((womanclient.getDetails().get("Husband_name") != null ? womanclient.getDetails().get("Husband_name") : ""));
+        husbandname.setText("Spouse Name: "+((womanclient.getDetails().get("Spouse_Name") != null ? womanclient.getDetails().get("Spouse_Name") : "")));
 
-        fathersname.setText((womanclient.getDetails().get("Father_name") != null ? womanclient.getDetails().get("Father_name") : ""));
+        marriagelife.setText("Marriage Life: "+((womanclient.getDetails().get("Married_Life") != null ? womanclient.getDetails().get("Married_Life") : "")));
 
-        epicardno.setText((womanclient.getDetails().get("epi_card_number") != null ? womanclient.getDetails().get("epi_card_number") : ""));
 
-        womandob.setText((womanclient.getDetails().get("calc_dob_confirm") != null ? womanclient.getDetails().get("calc_dob_confirm") : ""));
-        SpannableString content = new SpannableString((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""));
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        contactno.setText(content);
-        contactno.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""))));
-//                startActivity(intent);
-            }
-        });
-
-        address.setText((womanclient.getDetails().get("HH_Address") != null ? womanclient.getDetails().get("HH_Address") : ""));
+        womandob.setText("Age: "+calculateage(getageindays(getdate((womanclient.getDetails().get("Calc_Dob_Confirm") != null ? womanclient.getDetails().get("Calc_Dob_Confirm") : "")))));
+//        SpannableString content = new SpannableString((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""));
+//        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+//        contactno.setText(content);
+//        contactno.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ((womanclient.getDetails().get("contact_phone_number") != null ? womanclient.getDetails().get("contact_phone_number") : ""))));
+////                startActivity(intent);
+//            }
+//        });
+        address.setText("Address: "+(humanize((womanclient.getDetails().get("Mem_Subunit") != null ? womanclient.getDetails().get("Mem_Subunit") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Village_Name") != null ? womanclient.getDetails().get("Mem_Village_Name") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Mauzapara") != null ? womanclient.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Union") != null ? womanclient.getDetails().get("Mem_Union") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Upazilla") != null ? womanclient.getDetails().get("Mem_Upazilla") : "").replace("+", "_")))
+        );
+//        .setText("Address: "+(womanclient.getDetails().get("HH_Address") != null ? womanclient.getDetails().get("HH_Address") : ""));
 
         if(((womanclient.getColumnmaps().get("Marital_status")!=null?womanclient.getColumnmaps().get("Marital_status"):"")).equalsIgnoreCase("1")){
             maritalstatus.setText("Unmarried");
@@ -172,7 +183,7 @@ public class WomanDetailActivity extends Activity {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = df.format(c.getTime());
         today.setText("Today: " +formattedDate+" ");
-        vaccination.setText(immunizationStatus(womanclient));
+//        vaccination.setText(immunizationStatus(womanclient));
 
 
 //        LinearLayout measleslayout = (LinearLayout)findViewById(R.id.measles_layout);
@@ -308,6 +319,46 @@ public class WomanDetailActivity extends Activity {
 //
 //    }
 //
+    private String calculateage(int i) {
+
+
+
+            return i/365 + " years";
+
+    }
+    public int getageindays(DateTime date){
+        DateTime now = new DateTime();
+        DateTimeZone dtz = DateTimeZone.getDefault();
+        LocalDate today = now.toLocalDate();
+        DateTime bday = date;
+        DateTime startOfToday = today.toDateTimeAtStartOfDay(now.getZone());
+        DateTimeFormatter dtfOut = DateTimeFormat.forPattern("yyyy-MM-dd");
+        try {
+            Log.v("today's date-birthdate", bday.toString(dtfOut));
+
+            Log.v("today's date", startOfToday.toString(dtfOut));
+        }catch (Exception e){
+
+        }
+//        LocalDate bday = new LocalDate(date);
+//        LocalDate now = new LocalDate();
+        Days days = Days.daysBetween(bday, startOfToday);
+        return days.getDays();
+    }
+    public DateTime getdate(String date) {
+
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+            DateTime dt = formatter.parseDateTime(date+ " 00:00:00");
+            return dt;
+//            Date returndate = format.parse(date);
+//            return returndate;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public void ttcheck(CommonPersonObjectClient womanclient, TextView tt1TextView,View block,String ttfinalKey,String ttschedulename){
         if(!(womanclient.getDetails().get(ttfinalKey)!=null?womanclient.getDetails().get(ttfinalKey):"").equalsIgnoreCase("")){
             block.setBackgroundColor(getResources().getColor(R.color.alert_complete_green));
