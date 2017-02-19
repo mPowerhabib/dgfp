@@ -77,7 +77,7 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
         TextView age = (TextView)mView.findViewById(R.id.age);
         TextView nid = (TextView)mView.findViewById(R.id.nid);
         TextView brid = (TextView)mView.findViewById(R.id.brid);
-        TextView bdh = (TextView)mView.findViewById(R.id.healthid);
+        TextView mobileno = (TextView)mView.findViewById(R.id.mobileno);
         TextView general = (TextView)mView.findViewById(R.id.general);
 
         ImageButton back = (ImageButton)mView.findViewById(R.id.btn_back_to_home);
@@ -93,12 +93,17 @@ public class HouseHoldDetailActivity extends SecuredFragment implements View.OnC
 
 
         householdhead_name.setText(householdclient.getColumnmaps().get("HoH_F_Name"));
-        ward.setText("Ward - "+humanize((householdclient.getDetails().get("WARD") != null ? householdclient.getDetails().get("WARD") : "").replace("+", "_")));
+        ward.setText("Address: "+(humanize((householdclient.getDetails().get("Subunit") != null ? householdclient.getDetails().get("Subunit") : "").replace("+", "_")))+", "+
+                (humanize((householdclient.getDetails().get("Village_Name") != null ? householdclient.getDetails().get("Village_Name") : "").replace("+", "_")))+", "+
+                (humanize((householdclient.getDetails().get("Mauzapara") != null ? householdclient.getDetails().get("Mauzapara") : "").replace("+", "_")))+", "+
+                (humanize((householdclient.getDetails().get("Union") != null ? householdclient.getDetails().get("Union") : "").replace("+", "_")))+", "+
+                (humanize((householdclient.getDetails().get("Upazilla") != null ? householdclient.getDetails().get("Upazilla") : "").replace("+", "_")))
+        );
         gobhhid.setText(getResources().getString(R.string.hhid_gob) + (householdclient.getColumnmaps().get("HHID")!=null?householdclient.getColumnmaps().get("HHID"):""));
-        age.setText("Age : " + (householdclient.getDetails().get("calc_HoH_age_confirm")!=null?householdclient.getDetails().get("calc_HoH_age_confirm"):""));
+        age.setText(",Age : " + (householdclient.getDetails().get("Calc_HoH_Age_Confirm")!=null?householdclient.getDetails().get("Calc_HoH_Age_Confirm"):""));
         nid.setText("NID : " + (householdclient.getDetails().get("HoH_NID")!=null?householdclient.getDetails().get("HoH_NID"):""));
         brid.setText("BRID : " + (householdclient.getDetails().get("HoH_BRID")!=null?householdclient.getDetails().get("HoH_BRID"):""));
-        bdh.setText("HID : " + (householdclient.getDetails().get("HoH_HID")!=null?householdclient.getDetails().get("HoH_HID"):""));
+        mobileno.setText("Mobile No : " + (householdclient.getDetails().get("HoH_Mobile_number")!=null?householdclient.getDetails().get("HoH_Mobile_number"):""));
 
         final ImageView householdview = (ImageView)mView.findViewById(R.id.householdprofileview);
 

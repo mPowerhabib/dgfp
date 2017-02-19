@@ -101,7 +101,7 @@ public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegi
 
             @Override
             public String nameInShortFormForTitle() {
-                return getResources().getString(R.string.woman_register_label);
+                return getResources().getString(R.string.home_nutrition_label);
             }
         };
     }

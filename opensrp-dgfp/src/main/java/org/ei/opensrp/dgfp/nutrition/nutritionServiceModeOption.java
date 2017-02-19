@@ -25,7 +25,7 @@ public class nutritionServiceModeOption extends ServiceModeOption {
 
     @Override
     public String name() {
-       return Context.getInstance().getStringResource(R.string.woman_register_label);
+       return Context.getInstance().getStringResource(R.string.home_nutrition_label);
     }
 
     @Override

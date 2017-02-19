@@ -26,53 +26,68 @@
             android:layout_marginBottom="5dp"
             android:layout_margin="5dp">
 
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
-                android:text="Large Text"
-                android:id="@+id/name_household_head"
-                android:textSize="20sp"
-                android:textColor="@color/text_black" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    style="@style/CustomFontTextViewStyle.ListView.Bold.NoPadding"
+                    android:text="Large Text"
+                    android:id="@+id/name_household_head"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black" />
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="age"
+                    android:id="@+id/age"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_black"
+                    android:layout_marginLeft="2dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="Nid"
+                    android:id="@+id/nid"
+                    android:textSize="16sp"
+                    android:layout_margin="2dp"
+                    android:textColor="@color/text_black" />
+
+                <org.ei.opensrp.view.customControls.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    style="@style/CustomFontTextViewStyle.noPadding"
+                    android:text="@string/BRID"
+                    android:id="@+id/brid"
+                    android:textSize="16sp"
+                    android:layout_margin="2dp"
+                    android:textColor="@color/text_black" />
+            </LinearLayout>
 
             <org.ei.opensrp.view.customControls.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="Nid"
-                android:id="@+id/nid"
-                android:textSize="16sp"
-                android:layout_margin="2dp"
-                android:textColor="@color/text_black" />
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="@string/BRID"
-                android:id="@+id/brid"
-                android:textSize="16sp"
-                android:layout_margin="2dp"
-                android:textColor="@color/text_black" />
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
                 android:text="HID"
-                android:id="@+id/healthid"
-                android:textSize="16sp"
-                android:layout_margin="2dp"
-                android:textColor="@color/text_black" />
-            <org.ei.opensrp.view.customControls.CustomFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                style="@style/CustomFontTextViewStyle.noPadding"
-                android:text="age"
-                android:id="@+id/age"
+                android:id="@+id/mobileno"
                 android:textSize="16sp"
                 android:layout_margin="2dp"
                 android:textColor="@color/text_black" />

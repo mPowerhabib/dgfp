@@ -77,6 +77,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
     private TextView pw_number;
     private TextView child_number;
     private TextView adolescent_number;
+    private TextView upazilla;
 
     public HouseHoldSmartClientsProvider(Context context,
                                          View.OnClickListener onClickListener,
@@ -103,6 +104,7 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
          brid = (TextView)convertView.findViewById(R.id.brid);
 //         bdh = (TextView)convertView.findViewById(R.id.bdh);
              village = (TextView)convertView.findViewById(R.id.village);
+        upazilla = (TextView)convertView.findViewById(R.id.upazilla);
              profilepic =(ImageView)convertView.findViewById(R.id.profilepic);
               age = (TextView)convertView.findViewById(R.id.txt_age);
          mobileno = (TextView)convertView.findViewById(R.id.mobile_no);
@@ -154,8 +156,10 @@ public class HouseHoldSmartClientsProvider implements SmartRegisterCLientsProvid
 //         bdh.setText("BDH: "+(pc.getDetails().get("HoH_HID")!=null?pc.getDetails().get("HoH_HID"):""));
 
 //         jvitahhid.setText(pc.getColumnmaps().get("FWJIVHHID")!=null?pc.getColumnmaps().get("FWJIVHHID"):"");
-         village.setText((humanize((pc.getDetails().get("Village_Name")!=null?pc.getDetails().get("Village_Name"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("BLOCK")!=null?pc.getDetails().get("BLOCK"):"").replace("+","_"))));
-         headofhouseholdname.setText(pc.getColumnmaps().get("HoH_F_Name")!=null?pc.getColumnmaps().get("HoH_F_Name"):"");
+         village.setText((humanize((pc.getDetails().get("Village_Name")!=null?pc.getDetails().get("Village_Name"):"").replace("+","_")))+", "+(humanize((pc.getDetails().get("Union")!=null?pc.getDetails().get("Union"):"").replace("+","_"))));
+        upazilla.setText(pc.getDetails().get("Upazilla")!=null?pc.getDetails().get("Upazilla"):"");
+
+        headofhouseholdname.setText(pc.getColumnmaps().get("HoH_F_Name")!=null?pc.getColumnmaps().get("HoH_F_Name"):"");
         Date lastdate = converdatefromString((pc.getDetails().get("Census_Date")!=null?pc.getDetails().get("Census_Date"):pc.getDetails().get("Reg_Date")));
          last_visit_date.setText(pc.getDetails().get("Census_Date")!=null?pc.getDetails().get("Census_Date"):pc.getDetails().get("Reg_Date"));
 

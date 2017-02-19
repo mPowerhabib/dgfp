@@ -134,7 +134,7 @@ public class HH_woman_member_SmartClientsProvider implements SmartRegisterCLient
 //        }else if ((pc.getColumnmaps().get("Pregnancy_Status")!=null?pc.getColumnmaps().get("Pregnancy_Status"):"").equalsIgnoreCase("9")){
 //            pregnancystatus.setText("");
 //        }
-        village.setText("v: " + humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")) + ", " + "M: " + humanize((pc.getDetails().get("Member_BLOCK") != null ? pc.getDetails().get("Member_BLOCK") : "").replace("+", "_")));
+        village.setText("v: " + humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")) + ", " + "M: " + humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")));
 
         lmp.setText(pc.getDetails().get("LMP") != null ? pc.getDetails().get("LMP") : "");
 

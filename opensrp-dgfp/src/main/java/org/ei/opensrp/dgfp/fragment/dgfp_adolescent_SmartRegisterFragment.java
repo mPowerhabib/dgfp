@@ -23,6 +23,7 @@ import org.ei.opensrp.cursoradapter.SmartRegisterPaginatedCursorAdapter;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.LoginActivity;
 import org.ei.opensrp.dgfp.R;
+import org.ei.opensrp.dgfp.adolescent.adolescentServiceModeOption;
 import org.ei.opensrp.dgfp.adolescent.adolescent_SmartClientsProvider;
 import org.ei.opensrp.dgfp.adolescent.dgfp_adolescent_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.elco.HH_woman_member_SmartRegisterActivity;
@@ -85,7 +86,7 @@ public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public ServiceModeOption serviceMode() {
-                return new nutritionServiceModeOption(clientsProvider());
+                return new adolescentServiceModeOption(clientsProvider());
             }
 
             @Override
@@ -101,7 +102,7 @@ public class dgfp_adolescent_SmartRegisterFragment extends SecuredNativeSmartReg
 
             @Override
             public String nameInShortFormForTitle() {
-                return getResources().getString(R.string.woman_register_label);
+                return getResources().getString(R.string.adolescent_register_label);
             }
         };
     }
