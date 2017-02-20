@@ -85,7 +85,7 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView name = (TextView)itemView.findViewById(R.id.name);
         TextView spousename = (TextView)itemView.findViewById(R.id.spousename);
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
-        TextView jivitahhid = (TextView)itemView.findViewById(R.id.jivitahhid);
+        TextView coupleno = (TextView)itemView.findViewById(R.id.coupleno);
         TextView village = (TextView)itemView.findViewById(R.id.village);
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView nid = (TextView)itemView.findViewById(R.id.nid);
@@ -112,8 +112,8 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
         name.setText(humanize(pc.getColumnmaps().get("Mem_F_Name")!=null?pc.getColumnmaps().get("Mem_F_Name"):""));
         spousename.setText(humanize(pc.getDetails().get("Spouse_Name")!=null?pc.getDetails().get("Spouse_Name"):""));
         gobhhid.setText(" "+(pc.getDetails().get("Member_GoB_HHID")!=null?pc.getDetails().get("Member_GoB_HHID"):""));
-        jivitahhid.setText(pc.getColumnmaps().get("JiVitAHHID")!=null?pc.getColumnmaps().get("JiVitAHHID"):"");
-        village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")));
+        coupleno.setText(pc.getDetails().get("Couple_No")!=null?pc.getDetails().get("Couple_No"):"");
+        village.setText((humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")))+","+(humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_"))));
 //
 //
 //
@@ -177,14 +177,14 @@ public class mCarePNCSmartClientsProvider implements SmartRegisterCLientsProvide
 
 //        delivery_outcome.setText(pc.getDetails().get("FWBNFSTS")!=null?pc.getDetails().get("FWBNFSTS"):"");
 
-        if((pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : "").length()>0) {
-            nid.setText(Html.fromHtml("NID:" + " " + (pc.getDetails().get("ELCO_NID") != null ? pc.getDetails().get("ELCO_NID") : "") ));
+        if((pc.getDetails().get("Mem_NID") != null ? pc.getDetails().get("Mem_NID") : "").length()>0) {
+            nid.setText(Html.fromHtml("NID:" + " " + (pc.getDetails().get("Mem_NID") != null ? pc.getDetails().get("Mem_NID") : "") ));
             nid.setVisibility(View.VISIBLE);
         }else{
             nid.setVisibility(View.GONE);
         }
-        if((pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : "").length()>0) {
-            brid.setText(Html.fromHtml("BRID:" + " " + (pc.getDetails().get("ELCO_BRID") != null ? pc.getDetails().get("ELCO_BRID") : "")));
+        if((pc.getDetails().get("Mem_BRID") != null ? pc.getDetails().get("Mem_BRID") : "").length()>0) {
+            brid.setText(Html.fromHtml("BRID:" + " " + (pc.getDetails().get("Mem_BRID") != null ? pc.getDetails().get("Mem_BRID") : "")));
             brid.setVisibility(View.VISIBLE);
         }else{
             brid.setVisibility(View.GONE);

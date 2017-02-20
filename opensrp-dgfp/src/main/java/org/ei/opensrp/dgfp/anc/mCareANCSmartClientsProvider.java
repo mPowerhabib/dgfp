@@ -76,7 +76,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
         TextView name = (TextView)itemView.findViewById(R.id.name);
         TextView spousename = (TextView)itemView.findViewById(R.id.spousename);
         TextView gobhhid = (TextView)itemView.findViewById(R.id.gobhhid);
-        TextView jivitahhid = (TextView)itemView.findViewById(R.id.jivitahhid);
+        TextView coupleno = (TextView)itemView.findViewById(R.id.coupleno);
         TextView village = (TextView)itemView.findViewById(R.id.village);
         TextView age = (TextView)itemView.findViewById(R.id.age);
         TextView nid = (TextView)itemView.findViewById(R.id.nid);
@@ -103,8 +103,10 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 //        id.setText(pc.getDetails().get("case_id")!=null?pc.getCaseId():"");
         name.setText(humanize(pc.getColumnmaps().get("Mem_F_Name")!=null?pc.getColumnmaps().get("Mem_F_Name"):""));
         spousename.setText(humanize(pc.getDetails().get("Spouse_Name")!=null?pc.getDetails().get("Spouse_Name"):""));
+        coupleno.setText((pc.getDetails().get("Couple_No")!=null?pc.getDetails().get("Couple_No"):""));
+
         gobhhid.setText(" "+(pc.getDetails().get("Member_GoB_HHID")!=null?pc.getDetails().get("Member_GoB_HHID"):""));
-        village.setText(humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")));
+        village.setText((humanize((pc.getDetails().get("Mem_Village_Name") != null ? pc.getDetails().get("Mem_Village_Name") : "").replace("+", "_")))+","+(humanize((pc.getDetails().get("Mem_Mauzapara") != null ? pc.getDetails().get("Mem_Mauzapara") : "").replace("+", "_"))));
         age.setText("("+(pc.getDetails().get("Calc_Age_Confirm")!=null?pc.getDetails().get("Calc_Age_Confirm"):"")+") ");
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
@@ -143,7 +145,7 @@ public class mCareANCSmartClientsProvider implements SmartRegisterCLientsProvide
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date edd_date = format.parse(pc.getDetails().get("EDD")!=null?pc.getDetails().get("EDD"):"");
+            Date edd_date = format.parse(pc.getDetails().get("Calc_EDD")!=null?pc.getDetails().get("Calc_EDD"):"");
 
             String EDDSourcestring = "EDD: " +  format.format(edd_date)+ " ";
 

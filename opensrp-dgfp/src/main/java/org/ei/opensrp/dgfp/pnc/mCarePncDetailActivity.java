@@ -23,11 +23,18 @@ import org.ei.opensrp.commonregistry.CommonPersonObjectClient;
 import org.ei.opensrp.dgfp.R;
 import org.ei.opensrp.domain.Alert;
 import org.ei.opensrp.util.DateUtil;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -64,15 +71,15 @@ public class mCarePncDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         Context context = Context.getInstance();
         setContentView(R.layout.pnc_detail_activity);
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView brid = (TextView) findViewById(R.id.brid);
-        TextView nid = (TextView) findViewById(R.id.womannid);
-        TextView husbandname = (TextView) findViewById(R.id.husbandname);
-        TextView age = (TextView) findViewById(R.id.age);
-        TextView jivitahhid = (TextView) findViewById(R.id.jivitahhid);
-        TextView godhhid = (TextView) findViewById(R.id.gobhhid);
-        TextView village = (TextView) findViewById(R.id.village);
-
+        TextView name = (TextView) findViewById(R.id.womandetail_name);
+        TextView brid = (TextView) findViewById(R.id.womandetail_womabrid);
+        TextView nid = (TextView) findViewById(R.id.womandetail_womanid);
+        TextView hid = (TextView) findViewById(R.id.womandetail_womahid);
+        TextView husbandname = (TextView) findViewById(R.id.womandetail_husbandname);
+        TextView marriagelife = (TextView) findViewById(R.id.womandetail_marriage_life);
+        TextView womandob = (TextView) findViewById(R.id.womandetail_womandob);
+        TextView address = (TextView) findViewById(R.id.womandetail_address);
+        TextView today = (TextView)findViewById(R.id.woman_detail_today);
 
         ImageButton back = (ImageButton) findViewById(org.ei.opensrp.R.id.btn_back_to_home);
         back.setOnClickListener(new View.OnClickListener() {
@@ -82,46 +89,48 @@ public class mCarePncDetailActivity extends Activity {
             }
         });
 
-        name.setText(humanize((ancclient.getColumnmaps().get("FWWOMFNAME") != null ? ancclient.getColumnmaps().get("FWWOMFNAME") : "").replace("+", "_")));
+        CommonPersonObjectClient womanclient = ancclient;
+        ////////////////////////////////profile view /////////////////////////////////////////////////
+        name.setText(humanize((womanclient.getColumnmaps().get("Mem_F_Name") != null ? womanclient.getColumnmaps().get("Mem_F_Name") : "").replace("+", "_")));
+
+        brid.setText(humanize("BRID: "+(womanclient.getDetails().get("Mem_BRID") != null ? womanclient.getDetails().get("Mem_BRID") : "").replace("+", "_")));
+
+        nid.setText(humanize("NID: "+(womanclient.getDetails().get("Mem_NID") != null ? womanclient.getDetails().get("Mem_NID") : "").replace("+", "_")));
+
+        hid.setText(humanize("GOB HHID: "+(womanclient.getDetails().get("Member_GoB_HHID") != null ? womanclient.getDetails().get("Member_GoB_HHID") : "").replace("+", "_")));
+
+        husbandname.setText("Spouse Name: "+((womanclient.getDetails().get("Spouse_Name") != null ? womanclient.getDetails().get("Spouse_Name") : "")));
+
+        marriagelife.setText("Marriage Life: "+((womanclient.getDetails().get("Married_Life") != null ? womanclient.getDetails().get("Married_Life") : "")));
 
 
-        if((ancclient.getDetails().get("FWWOMBID") != null ? ancclient.getDetails().get("FWWOMBID") : "").length()>0) {
-            brid.setText(Html.fromHtml(getString(R.string.BRID) + " " + humanize((ancclient.getDetails().get("FWWOMBID") != null ? ancclient.getDetails().get("FWWOMBID") : "").replace("+", "_")) ));
-            brid.setVisibility(View.VISIBLE);
-        }else{
-            brid.setVisibility(View.GONE);
-        }
-        if((ancclient.getDetails().get("FWWOMNID") != null ? ancclient.getDetails().get("FWWOMNID") : "").length()>0) {
-            nid.setText(Html.fromHtml(getString(R.string.NID) + " " + humanize((ancclient.getDetails().get("FWWOMNID") != null ? ancclient.getDetails().get("FWWOMNID") : "").replace("+", "_")) ));
-            nid.setVisibility(View.VISIBLE);
-        }else{
-            nid.setVisibility(View.GONE);
-        }
-        husbandname.setText(Html.fromHtml(getString(R.string.elco_details_husband_name_label)+" "+humanize((ancclient.getDetails().get("FWHUSNAME") != null ? ancclient.getDetails().get("FWHUSNAME") : ""))));
-        age.setText(Html.fromHtml(getString(R.string.elco_age_label)+" " + (ancclient.getDetails().get("FWWOMAGE") != null ? ancclient.getDetails().get("FWWOMAGE") : "")));
+        womandob.setText("Age: "+calculateage(getageindays(getdate((womanclient.getDetails().get("Calc_Dob_Confirm") != null ? womanclient.getDetails().get("Calc_Dob_Confirm") : "")))));
+
+        address.setText("Address: "+(humanize((womanclient.getDetails().get("Mem_Subunit") != null ? womanclient.getDetails().get("Mem_Subunit") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Village_Name") != null ? womanclient.getDetails().get("Mem_Village_Name") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Mauzapara") != null ? womanclient.getDetails().get("Mem_Mauzapara") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Union") != null ? womanclient.getDetails().get("Mem_Union") : "").replace("+", "_")))+", "+
+                (humanize((womanclient.getDetails().get("Mem_Upazilla") != null ? womanclient.getDetails().get("Mem_Upazilla") : "").replace("+", "_")))
+        );
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => " + c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = df.format(c.getTime());
+        today.setText("Today: " +formattedDate+" ");
+
 
         DateUtil.setDefaultDateFormat("yyyy-MM-dd");
         AllCommonsRepository allmotherRepository = Context.getInstance().allCommonsRepositoryobjects("members");
         CommonPersonObject childobject = allmotherRepository.findByCaseID(ancclient.entityId());
         AllCommonsRepository elcorep = Context.getInstance().allCommonsRepositoryobjects("members");
         final CommonPersonObject elcoObject = elcorep.findByCaseID(childobject.getRelationalId());
-        try {
-            int days = DateUtil.dayDifference(DateUtil.getLocalDate((elcoObject.getDetails().get("FWBIRTHDATE") != null ?  elcoObject.getDetails().get("FWBIRTHDATE")  : "")), DateUtil.today());
-            Log.v("days",""+days);
-            int calc_age = days / 365;
-            age.setText(Html.fromHtml(getString(R.string.elco_age_label)+" " + calc_age));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
 
 
 
-        jivitahhid.setText(Html.fromHtml(getString(R.string.hhiid_jivita_elco_label)+" "+(ancclient.getColumnmaps().get("JiVitAHHID") != null ? ancclient.getColumnmaps().get("JiVitAHHID") : "")));
-        godhhid.setText(Html.fromHtml(getString(R.string.hhid_gob_elco_label)+" " + (ancclient.getColumnmaps().get("GOBHHID") != null ? ancclient.getColumnmaps().get("GOBHHID") : "")));
-        village.setText(Html.fromHtml(getString(R.string.elco_details_mauza) + " " + humanize(ancclient.getDetails().get("mauza") != null ? ancclient.getDetails().get("mauza") : "")));
-
-//        String type_of_delivery = ancclient.getDetails().get("FWPNC1DELTYPE") != null ? ancclient.getDetails().get("FWPNC1DELTYPE") : "";
+      //        String type_of_delivery = ancclient.getDetails().get("FWPNC1DELTYPE") != null ? ancclient.getDetails().get("FWPNC1DELTYPE") : "";
 //        if (type_of_delivery.equalsIgnoreCase("1")){
 //            typeofdelivery.setText(getString(R.string.norma_birth));
 //        } else if (type_of_delivery.equalsIgnoreCase("2")){
@@ -371,5 +380,45 @@ public class mCarePncDetailActivity extends Activity {
 //        options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 //        Bitmap bitmap = BitmapFactory.decodeFile(file, options);
 //        view.setImageBitmap(bitmap);
+    }
+    private String calculateage(int i) {
+
+
+
+        return i/365 + " years";
+
+    }
+    public int getageindays(DateTime date){
+        DateTime now = new DateTime();
+        DateTimeZone dtz = DateTimeZone.getDefault();
+        LocalDate today = now.toLocalDate();
+        DateTime bday = date;
+        DateTime startOfToday = today.toDateTimeAtStartOfDay(now.getZone());
+        DateTimeFormatter dtfOut = DateTimeFormat.forPattern("yyyy-MM-dd");
+        try {
+            Log.v("today's date-birthdate", bday.toString(dtfOut));
+
+            Log.v("today's date", startOfToday.toString(dtfOut));
+        }catch (Exception e){
+
+        }
+//        LocalDate bday = new LocalDate(date);
+//        LocalDate now = new LocalDate();
+        Days days = Days.daysBetween(bday, startOfToday);
+        return days.getDays();
+    }
+    public DateTime getdate(String date) {
+
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+            DateTime dt = formatter.parseDateTime(date+ " 00:00:00");
+            return dt;
+//            Date returndate = format.parse(date);
+//            return returndate;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
