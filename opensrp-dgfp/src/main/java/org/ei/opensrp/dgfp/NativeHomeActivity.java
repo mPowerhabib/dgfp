@@ -1,5 +1,6 @@
 package org.ei.opensrp.dgfp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import org.ei.opensrp.Context;
 import org.ei.opensrp.cursoradapter.SmartRegisterQueryBuilder;
 import org.ei.opensrp.dgfp.anc.nbnfhandler;
+import org.ei.opensrp.dgfp.clientDownload.ClientSearchActivity;
 import org.ei.opensrp.dgfp.pnc.ChildRegistrationhandler;
 import org.ei.opensrp.event.Listener;
 import org.ei.opensrp.service.HTTPAgent;
@@ -383,6 +385,7 @@ public class NativeHomeActivity extends SecuredActivity {
 
                 case R.id.btn_videos:
 //                    navigationController.startVideos();
+                    startActivity(new Intent(getApplicationContext(), ClientSearchActivity.class));
                     break;
             }
         }
