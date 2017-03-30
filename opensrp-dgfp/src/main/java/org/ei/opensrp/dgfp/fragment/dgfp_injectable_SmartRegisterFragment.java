@@ -33,6 +33,7 @@ import org.ei.opensrp.dgfp.elco.tt4handler;
 import org.ei.opensrp.dgfp.elco.tt5handler;
 import org.ei.opensrp.dgfp.hh_member.HHWardCommonObjectFilterOption;
 import org.ei.opensrp.dgfp.hh_member.HouseholdCensusDueDateSort;
+import org.ei.opensrp.dgfp.injectables.McareInjectablesDetailActivity;
 import org.ei.opensrp.dgfp.injectables.dgfp_injectable_SmartRegisterActivity;
 import org.ei.opensrp.dgfp.injectables.injectableServiceModeOption;
 import org.ei.opensrp.dgfp.injectables.injectable_SmartClientsProvider;
@@ -241,8 +242,8 @@ public class dgfp_injectable_SmartRegisterFragment extends SecuredNativeSmartReg
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.profile_info_layout:
-                    WomanDetailActivity.womanclient = (CommonPersonObjectClient)view.getTag();
-                    Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
+                    McareInjectablesDetailActivity.injectableClient = (CommonPersonObjectClient) view.getTag();
+                    Intent intent = new Intent(dgfp_injectable_SmartRegisterFragment.this.getActivity(), McareInjectablesDetailActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.next_injectable_dose:

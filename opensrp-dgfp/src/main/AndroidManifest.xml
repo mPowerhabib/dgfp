@@ -72,6 +72,11 @@
             android:theme="@style/AppThemeNoActionBarAndTitle"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape"/>
+        <activity android:name=".injectables.McareInjectablesDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
         <activity android:name=".death.dgfp_death_SmartRegisterActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppThemeNoActionBarAndTitle"
@@ -93,6 +98,11 @@
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape"/>
         <activity android:name=".clientDownload.ClientsViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppThemeNoActionBarAndTitle"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".clientDownload.ClientSave"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppThemeNoActionBarAndTitle"
             android:windowSoftInputMode="adjustResize"

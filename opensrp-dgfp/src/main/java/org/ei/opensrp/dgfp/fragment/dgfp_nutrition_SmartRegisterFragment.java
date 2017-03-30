@@ -242,7 +242,7 @@ public class dgfp_nutrition_SmartRegisterFragment extends SecuredNativeSmartRegi
                 case R.id.profile_info_layout:
                     WomanDetailActivity.womanclient = (CommonPersonObjectClient)view.getTag();
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
-                    startActivity(intent);
+                    //startActivity(intent);
                     break;
                 case R.id.nutrition_form:
                     CommonPersonObjectClient pc = ((CommonPersonObjectClient) view.getTag());
