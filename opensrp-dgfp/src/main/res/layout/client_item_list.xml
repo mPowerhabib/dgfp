@@ -10,7 +10,7 @@
         android:layout_marginLeft="10.0dip">
 
         <TextView android:textColor="@android:color/white"
-            android:id="@id/firstName"
+            android:id="@+id/firstName"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
         <TextView android:textStyle="bold"
