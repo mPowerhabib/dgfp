@@ -243,7 +243,7 @@ public class dgfp_death_SmartRegisterFragment extends SecuredNativeSmartRegister
                 case R.id.profile_info_layout:
                     WomanDetailActivity.womanclient = (CommonPersonObjectClient)view.getTag();
                     Intent intent = new Intent(getActivity(),WomanDetailActivity.class);
-                    startActivity(intent);
+                    //startActivity(intent);
                     break;
                 case R.id.death_record_form:
                     CommonPersonObjectClient pc = ((CommonPersonObjectClient) view.getTag());
